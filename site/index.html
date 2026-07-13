@@ -1,0 +1,4209 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chuyển Đổi AI Doanh Nghiệp | Sunext</title>
+<meta name="description" content="Sunext đồng hành doanh nghiệp chuyển đổi AI: đánh giá sẵn sàng, chiến lược, đào tạo đội ngũ và triển khai giải pháp AI có kết quả đo lường được."/>
+
+<link rel="canonical" href="https://sunext.vn/"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+  .enterprise-shadow { box-shadow: 0px 10px 30px rgba(24,0,61,0.05); }
+  .enterprise-shadow:hover { box-shadow: 0px 20px 40px rgba(24,0,61,0.08); }
+  .gradient-text { background: linear-gradient(90deg,#782DDC 0%,#FF7A00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .brand-gradient { background: linear-gradient(135deg,#782DDC 0%,#FF7A00 100%); }
+  .gate-blur { filter: blur(6px); user-select: none; pointer-events: none; }
+  @keyframes spinslow { to { transform: rotate(360deg); } }
+  .animate-spin-slow { animation: spinslow 3s linear infinite; }
+
+  /* ── Text balance: tránh chữ rớt lẻ dòng cuối ── */
+  h1, h2, h3, h4,
+  .text-h2, .text-h3, .text-h1 {
+    text-wrap: balance;
+  }
+  p, .text-on-surface-variant {
+    text-wrap: pretty;
+  }
+
+  /* ── Arrow nudge: mũi tên trượt nhẹ sang phải khi hover ── */
+  .arrow-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  a:hover .arrow-icon,
+  button:hover .arrow-icon {
+    transform: translateX(6px);
+  }
+
+  /* ── Taste-Skill: Spring easing & custom cubic-bezier ── */
+  :root {
+    --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --snap:   cubic-bezier(0.32, 0.72, 0, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── Animated Theme Toggle ── */
+  .theme-toggle-btn {
+    position: relative;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid rgba(120,45,220,0.25);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+    flex-shrink: 0;
+  }
+  .theme-toggle-btn:hover {
+    background: rgba(120,45,220,0.07);
+    border-color: rgba(120,45,220,0.5);
+    box-shadow: 0 0 16px rgba(120,45,220,0.18);
+  }
+  .theme-toggle-btn:active { transform: scale(0.92); }
+  /* Icon wrapper — two icons stacked, one visible at a time */
+  .theme-toggle-icons {
+    position: relative; width: 22px; height: 22px;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .theme-icon {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.35s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .theme-icon svg { width: 20px; height: 20px; }
+  /* Sun icon */
+  .theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: #FF7A00;
+  }
+  .theme-icon-moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.4);
+    color: #782DDC;
+  }
+  /* Dark mode states */
+  html.dark .theme-icon-sun {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.4);
+  }
+  html.dark .theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  /* Ray burst animation on toggle */
+  @keyframes ray-burst {
+    0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+    60%  { transform: scale(1.6) rotate(180deg); opacity: 0.6; }
+    100% { transform: scale(2.2) rotate(360deg); opacity: 0; }
+  }
+  .theme-toggle-btn .ray-burst {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255,122,0,0.35) 0%, transparent 70%);
+    opacity: 0;
+  }
+  .theme-toggle-btn.burst .ray-burst { animation: ray-burst 0.55s var(--spring) forwards; }
+  /* Dark mode global overrides */
+  html.dark body { background:#0f0a1a; color:#e8e0f0; }
+  html.dark .bg-surface { background:#1a1225 !important; }
+  html.dark .bg-surface-container-low { background:#150f22 !important; }
+  html.dark .bg-surface-container { background:#1e1530 !important; }
+  html.dark header { background:rgba(15,10,26,0.92) !important; border-color:rgba(255,255,255,0.08) !important; }
+  html.dark .bg-white { background:#1e1530 !important; }
+  html.dark .text-on-surface-variant { color:#b0a0cc !important; }
+  html.dark .border-outline-variant\/30 { border-color:rgba(255,255,255,0.08) !important; }
+
+  /* ── Scroll Reveal System (IntersectionObserver driven) ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s var(--spring), transform 0.75s var(--spring);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 0.8s var(--spring), transform 0.8s var(--spring);
+    }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94) translateY(20px);
+      transition: opacity 0.7s var(--spring), transform 0.7s var(--spring);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.75s var(--spring), transform 0.75s var(--spring);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.75s var(--spring), transform 0.75s var(--spring);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Stagger delays for children */
+    .stagger > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger > *:nth-child(2) { transition-delay: 80ms; }
+    .stagger > *:nth-child(3) { transition-delay: 160ms; }
+    .stagger > *:nth-child(4) { transition-delay: 240ms; }
+    .stagger > *:nth-child(5) { transition-delay: 320ms; }
+    .stagger > *:nth-child(6) { transition-delay: 400ms; }
+    .stagger > *:nth-child(7) { transition-delay: 480ms; }
+    .stagger > *:nth-child(8) { transition-delay: 560ms; }
+  }
+
+  /* ── Card hover micro-interactions (taste-skill: haptic depth) ── */
+  .card-hover {
+    transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring), border-color 0.3s ease;
+    will-change: transform;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 48px rgba(24, 0, 61, 0.12);
+    border-color: #782DDC;
+  }
+  .card-hover:active { transform: translateY(-2px) scale(0.99); }
+
+  /* ── Morph Scroll Cards (Lộ trình 6 bước) ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .morph-card {
+      opacity: 0;
+      transform: perspective(900px) rotateX(18deg) translateY(60px) scale(0.92);
+      transform-origin: center bottom;
+      transition:
+        opacity 0.8s var(--spring),
+        transform 0.8s var(--spring),
+        box-shadow 0.8s var(--spring),
+        border-color 0.4s ease;
+      will-change: opacity, transform, box-shadow;
+      position: relative;
+    }
+    .morph-card.morph-visible {
+      opacity: 1;
+      transform: perspective(900px) rotateX(0deg) translateY(0) scale(1);
+      box-shadow: 0 0 0 0 rgba(120, 45, 220, 0);
+    }
+    /* Glow pulse after morph-in */
+    .morph-card.morph-glow {
+      animation: morph-glow-pulse 1.2s var(--spring) forwards;
+    }
+    @keyframes morph-glow-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(120, 45, 220, 0.5), 0 10px 30px rgba(24,0,61,0.06); }
+      50%  { box-shadow: 0 0 0 8px rgba(120, 45, 220, 0.15), 0 20px 48px rgba(24,0,61,0.12); }
+      100% { box-shadow: 0 0 0 0 rgba(120, 45, 220, 0), 0 10px 30px rgba(24,0,61,0.06); }
+    }
+    /* Floating particle dots */
+    .morph-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(120,45,220,0.0), rgba(255,122,0,0.0));
+      transition: background 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .morph-card.morph-visible::before {
+      background: linear-gradient(135deg, rgba(120,45,220,0.06), rgba(255,122,0,0.04));
+    }
+    /* Progress line removed */
+    .morph-card::after {
+      content: none;
+    }
+    /* Stagger delays for the 6 cards */
+    .morph-card[data-morph-index="0"] { transition-delay: 0ms; }
+    .morph-card[data-morph-index="1"] { transition-delay: 110ms; }
+    .morph-card[data-morph-index="2"] { transition-delay: 220ms; }
+    .morph-card[data-morph-index="3"] { transition-delay: 0ms; }
+    .morph-card[data-morph-index="4"] { transition-delay: 110ms; }
+    .morph-card[data-morph-index="5"] { transition-delay: 220ms; }
+    /* Override glow-pulse delay per card */
+    .morph-card[data-morph-index="0"].morph-glow { animation-delay: 0.8s; }
+    .morph-card[data-morph-index="1"].morph-glow { animation-delay: 0.9s; }
+    .morph-card[data-morph-index="2"].morph-glow { animation-delay: 1.0s; }
+    .morph-card[data-morph-index="3"].morph-glow { animation-delay: 0.8s; }
+    .morph-card[data-morph-index="4"].morph-glow { animation-delay: 0.9s; }
+    .morph-card[data-morph-index="5"].morph-glow { animation-delay: 1.0s; }
+  }
+
+  /* Tier badge neon accent */
+  .morph-card .tier-badge {
+    position: relative;
+    overflow: hidden;
+  }
+  .morph-card .tier-badge::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(120,45,220,0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    border-radius: inherit;
+  }
+  .morph-card.morph-visible .tier-badge::after {
+    transform: translateX(100%);
+  }
+
+  /* Icon pop animation */
+  .morph-card .card-icon {
+    transition: transform 0.5s var(--spring), color 0.3s ease;
+  }
+  .morph-card.morph-visible .card-icon {
+    animation: icon-pop 0.6s var(--spring) forwards;
+  }
+  @keyframes icon-pop {
+    0%   { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+    60%  { transform: scale(1.25) rotate(5deg);  opacity: 1; }
+    100% { transform: scale(1) rotate(0deg);    opacity: 1; }
+  }
+  .morph-card[data-morph-index="0"] .card-icon { animation-delay: 0.55s; }
+  .morph-card[data-morph-index="1"] .card-icon { animation-delay: 0.65s; }
+  .morph-card[data-morph-index="2"] .card-icon { animation-delay: 0.75s; }
+  .morph-card[data-morph-index="3"] .card-icon { animation-delay: 0.55s; }
+  .morph-card[data-morph-index="4"] .card-icon { animation-delay: 0.65s; }
+  .morph-card[data-morph-index="5"] .card-icon { animation-delay: 0.75s; }
+
+  /* ── Button micro-interactions (scoped, not global on all anchors) ── */
+  button,
+  a[class*="bg-cta"], a[class*="bg-white"], a[class*="border-[1.5px]"], a[class*="border-2"],
+  a[class*="inline-block"], a[class*="inline-flex"] {
+    transition: transform 0.35s var(--spring), box-shadow 0.35s var(--spring);
+  }
+  button:active,
+  a[class*="bg-cta"]:active, a[class*="bg-white"]:active { transform: scale(0.97); }
+
+  /* ── Logo intro (light streak → forms logo) ── */
+  #logo-wrap { position: relative; text-decoration: none; }
+  #logo-anim {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    padding: 2px 0;
+  }
+  .logo-word {
+    display: inline-block;
+    background: linear-gradient(95deg,#782DDC 0%,#9b4dff 38%,#FF7A00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Revealed left→right following the streak */
+    clip-path: inset(0 100% 0 0);
+    animation: logo-reveal 1.0s cubic-bezier(0.5,0,0.2,1) 0.35s forwards;
+    will-change: clip-path;
+  }
+  @keyframes logo-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+  }
+
+  /* The colored streak bar that sweeps across */
+  .logo-streak {
+    position: absolute;
+    top: -10%;
+    left: -18px;
+    width: 26px;
+    height: 120%;
+    border-radius: 40px;
+    background: linear-gradient(180deg, transparent, #9b4dff 30%, #FF7A00 70%, transparent);
+    filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    animation: logo-streak-move 1.15s cubic-bezier(0.5,0,0.2,1) 0.3s forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes logo-streak-move {
+    0%   { opacity:0; transform: translateX(0) scaleY(0.7); }
+    15%  { opacity:1; }
+    80%  { opacity:1; }
+    100% { opacity:0; transform: translateX(var(--streak-end,140px)) scaleY(1); }
+  }
+
+  /* Trailing particles that stream along with the streak */
+  .logo-particles {
+    position: absolute;
+    left: 0; top: 50%;
+    width: 100%; height: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .logo-dot {
+    position: absolute;
+    left: 0; top: 0;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-word { animation: none; clip-path: none; }
+    .logo-streak, .logo-dot { display: none; }
+  }
+  .trust-item {
+    transition: opacity 0.3s ease, transform 0.3s var(--spring);
+  }
+  .trust-item:hover { opacity: 1 !important; transform: translateY(-2px); }
+
+  /* ── Gradient border animation on CTA section ── */
+  @property --cta-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes cta-rotate { to { --cta-angle: 360deg; } }
+
+  /* ── Spotlight glow on section headings ── */
+  .section-eyebrow {
+    position: relative;
+    display: inline-block;
+  }
+  .section-eyebrow::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, #782DDC, #FF7A00);
+    border-radius: 99px;
+    opacity: 0;
+    transition: opacity 0.4s ease, width 0.4s var(--spring);
+  }
+  .section-eyebrow.visible::after { opacity: 1; width: 48px; }
+
+  /* ── Vercel-style nav handled by /css/vercel-nav.css ── */
+
+  /* ── Floating particles on hero (pure CSS) ── */
+  @keyframes float-1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-18px) scale(1.05)} }
+  @keyframes float-2 { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-12px) rotate(5deg)} }
+  @keyframes float-3 { 0%,100%{transform:translateY(0)} 33%{transform:translateY(-10px)} 66%{transform:translateY(-20px)} }
+
+  /* ── Subtle glow lift on primary CTAs (B2B trust-first, no aggressive pulse) ── */
+  .btn-pulse {
+    position: relative;
+  }
+  .btn-pulse:hover {
+    box-shadow: 0 8px 28px rgba(255, 122, 0, 0.45);
+  }
+
+  /* ── Hero light section ── */
+  .hero-dark {
+    background:
+      radial-gradient(ellipse at 75% 35%, rgba(120,45,220,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse at 25% 75%, rgba(255,122,0,0.09) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 90%, rgba(120,45,220,0.06) 0%, transparent 40%),
+      #fef7ff;
+    overflow: hidden;
+  }
+
+  /* ── Orbit animation ── */
+  .orbits-wrap {
+    position: relative;
+    width: 560px;
+    height: 560px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+  .orbits-scene {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    transform: scale(0.68);
+    transform-origin: center;
+    flex-shrink: 0;
+  }
+  .o-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+  }
+  .o-ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255,180,50,0) 0%, rgba(255,140,30,0.55) 43%, rgba(255,180,50,0) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .o-spin-cw  { animation: o-cw  linear infinite; }
+  .o-spin-ccw { animation: o-ccw linear infinite; }
+  @keyframes o-cw  { from{transform:translate(-50%,-50%) rotate(0deg)}   to{transform:translate(-50%,-50%) rotate(360deg)} }
+  @keyframes o-ccw { from{transform:translate(-50%,-50%) rotate(0deg)}   to{transform:translate(-50%,-50%) rotate(-360deg)} }
+  .o-counter-cw  { animation: oc-cw  linear infinite; }
+  .o-counter-ccw { animation: oc-ccw linear infinite; }
+  @keyframes oc-cw  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+  @keyframes oc-ccw { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
+  .o-center {
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:4px; border-radius:50%;
+  }
+  .o-count-num { font-size:64px; font-weight:800; color:#240d48; line-height:1; }
+  .o-count-lbl { font-size:14px; font-weight:600; color:rgba(36,13,72,0.7); }
+  .o-avatar-pos { position:absolute; top:50%; left:50%; }
+  .o-avatar-upright { display:flex; }
+  .o-avatar {
+    object-fit:cover;
+    opacity:0;
+    animation: o-fly-in 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes o-fly-in {
+    from { opacity:0; transform:scale(0.3) rotate(-180deg); filter:blur(8px); }
+    to   { opacity:1; transform:scale(1)   rotate(0deg);    filter:blur(0); }
+  }
+  .o-round    { border-radius:50%; }
+  .o-square   { border-radius:20px; }
+  .o-squelg   { border-radius:24px; }
+  .glow-purple { box-shadow: 0 0 28px rgba(160,104,255,0.75); }
+  .glow-yellow { box-shadow: 0 0 28px rgba(255,214,90,0.75); }
+  .glow-pink   { box-shadow: 0 0 28px rgba(255,110,199,0.75); }
+  .glow-blue   { box-shadow: 0 0 28px rgba(96,165,250,0.75); }
+  .glow-orange { box-shadow: 0 0 28px rgba(255,138,60,0.75); }
+  .glow-green  { box-shadow: 0 0 28px rgba(16,163,127,0.75); }
+  .glow-teal   { box-shadow: 0 0 28px rgba(32,128,141,0.75); }
+
+  @media (max-width: 1024px) {
+    .orbits-wrap { width: 400px; height: 400px; }
+    .orbits-scene { transform: scale(0.48); }
+  }
+  @media (max-width: 768px) {
+    .orbits-wrap { width: 300px; height: 300px; }
+    .orbits-scene { transform: scale(0.36); }
+  }
+
+  /* ── Sun center ── */
+  .sun-core {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sun-halo {
+    position: absolute;
+    inset: -44px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,210,60,0.28) 0%, rgba(255,140,0,0.14) 45%, transparent 70%);
+    animation: sun-pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .sun-rays-wrap {
+    position: absolute;
+    inset: -52px;
+    animation: sun-spin 18s linear infinite;
+    pointer-events: none;
+  }
+  .sun-rays-inner-wrap {
+    position: absolute;
+    inset: -36px;
+    animation: sun-spin-rev 11s linear infinite;
+    pointer-events: none;
+  }
+  .sun-rays, .sun-rays-inner { width: 100%; height: 100%; }
+  .sun-ball {
+    position: relative;
+    z-index: 2;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 36% 32%, #fffde7 0%, #ffe566 16%, #ffc107 42%, #ff8f00 68%, #e65100 100%);
+    box-shadow:
+      0 0 0 5px rgba(255,210,60,0.25),
+      0 0 28px rgba(255,180,0,0.9),
+      0 0 70px rgba(255,120,0,0.55),
+      0 0 130px rgba(255,70,0,0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    animation: sun-glow 4s ease-in-out infinite;
+  }
+  @keyframes sun-spin     { from{transform:rotate(0deg)}  to{transform:rotate(360deg)}  }
+  @keyframes sun-spin-rev { from{transform:rotate(0deg)}  to{transform:rotate(-360deg)} }
+  @keyframes sun-pulse {
+    0%,100% { transform:scale(1);    opacity:.65; }
+    50%     { transform:scale(1.18); opacity:1;   }
+  }
+  @keyframes sun-glow {
+    0%,100% { box-shadow: 0 0 0 5px rgba(255,210,60,0.25), 0 0 28px rgba(255,180,0,0.9),  0 0 70px rgba(255,120,0,0.55),  0 0 130px rgba(255,70,0,0.22); }
+    50%     { box-shadow: 0 0 0 9px rgba(255,220,70,0.4),  0 0 50px rgba(255,210,0,1),    0 0 100px rgba(255,150,0,0.75), 0 0 180px rgba(255,90,0,0.35); }
+  }
+
+  /* ── AI Tool icon style ── */
+  .ai-tool-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .ai-tool-icon:hover { transform: scale(1.12); }
+  .ai-tool-icon img { width:100%; height:100%; object-fit:contain; }
+
+  /* ══ New Hero: video card + floating navbar + marquee ══ */
+  .font-display { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; }
+  .font-montserrat { font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif; }
+  .font-inter   { font-family: 'Inter', 'Plus Jakarta Sans', sans-serif; }
+
+  .hero-card {
+    position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
+    border-radius: 48px; background:#fef7ff;
+    border:1px solid rgba(203,195,215,0.5);
+    box-shadow: 0 40px 100px -20px rgba(24,0,61,0.10);
+    overflow:hidden; min-height:600px; display:flex; flex-direction:column;
+  }
+  .hero-video-layer { position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; user-select:none; }
+  /* hue-rotate shifts the blue block toward Sunext CTA orange (#FF7A00); gray tiles stay neutral */
+  .hero-video { width:100%; height:100%; object-fit:cover; transform:scale(1.05); transition:transform 1s; filter: hue-rotate(172deg) saturate(2.6) brightness(1.06); }
+  /* Brand tint over video: shifts blue toward brand purple→orange, keeps left readable for dark text */
+  .hero-fade { position:absolute; inset:0; z-index:10; pointer-events:none;
+    background:
+      linear-gradient(100deg, rgba(254,247,255,0.97) 0%, rgba(245,236,255,0.86) 28%, rgba(236,220,255,0.46) 50%, rgba(254,247,255,0.06) 78%, transparent 100%),
+      linear-gradient(125deg, rgba(120,45,220,0.30) 0%, rgba(150,60,230,0.16) 45%, rgba(255,122,0,0.22) 100%); }
+  .hero-content { position:relative; z-index:20; flex:1; display:flex; flex-direction:column; align-items:flex-start; }
+
+  .hero-cta {
+    background:#240d48; color:#fff; border-radius:9999px;
+    padding:14px 30px; font-weight:600; font-size:15px;
+    display:inline-flex; align-items:center; gap:8px;
+    box-shadow:0 10px 30px rgba(36,13,72,0.28);
+    transition: transform .3s var(--spring), box-shadow .3s var(--spring);
+  }
+  .hero-cta:hover { transform: scale(1.05); box-shadow:0 14px 40px rgba(36,13,72,0.38); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  @keyframes hero-fade-up { from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:none;} }
+  .hero-anim-text { animation: hero-fade-up .8s cubic-bezier(0.16,1,0.3,1) .1s both; }
+
+  /* Marquee logo scroller */
+  @keyframes marquee-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .marquee-mask { overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track { display:flex; width:max-content; gap:20px; animation: marquee-scroll 36s linear infinite; padding:4px 0; }
+  .marquee-mask:hover .marquee-track { animation-play-state:paused; }
+  .logo-card {
+    position:relative; height:88px; width:152px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:9999px;
+    background:#fff;
+    border:1px solid rgba(203,195,215,0.55);
+    box-shadow:0 2px 10px rgba(36,13,72,0.05);
+    transition: transform .3s var(--spring), box-shadow .3s ease, border-color .3s ease;
+    overflow:hidden;
+  }
+  .logo-card:hover {
+    transform:translateY(-2px);
+    border-color:rgba(120,45,220,0.28);
+    box-shadow:0 6px 20px rgba(120,45,220,0.10);
+  }
+  .logo-card-glow {
+    position:absolute; inset:0; border-radius:inherit;
+    opacity:0;
+    transition: opacity .35s ease;
+  }
+  .logo-card:hover .logo-card-glow { opacity:0.12; }
+  .logo-card img {
+    position:relative; z-index:2; max-width:50%; max-height:36%; object-fit:contain;
+    transition: transform .3s var(--spring);
+  }
+  .logo-card:hover img { transform:scale(1.05); }
+  .logo-card-fallback {
+    position:relative; z-index:2; font-weight:700; font-size:14px; color:#4b4455;
+  }
+
+  /* ── Partner marquee: square logo cards ── */
+  .partner-marquee-track { gap: 16px; }
+  .partner-logo-card {
+    position: relative;
+    width: 110px; height: 110px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(203,195,215,0.55);
+    box-shadow: 0 2px 10px rgba(36,13,72,0.05);
+    transition: transform .3s var(--spring), box-shadow .3s ease, border-color .3s ease;
+    overflow: hidden;
+    padding: 14px;
+  }
+  .partner-logo-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(120,45,220,0.3);
+    box-shadow: 0 8px 24px rgba(120,45,220,0.12);
+  }
+  .partner-logo-card img {
+    position: relative; z-index: 2;
+    max-width: 100%; max-height: 100%;
+    width: auto; height: auto;
+    object-fit: contain;
+    transition: transform .3s var(--spring);
+  }
+  .partner-logo-card:hover img { transform: scale(1.08); }
+  .partner-logo-card .logo-card-glow {
+    position: absolute; inset: 0; border-radius: inherit;
+    opacity: 0; transition: opacity .35s ease;
+    background: linear-gradient(135deg,#782DDC,#FF7A00);
+  }
+  .partner-logo-card:hover .logo-card-glow { opacity: 0.08; }
+  .partner-logo-card .logo-card-fallback {
+    font-size: 11px; font-weight: 700; color: #4b4455;
+    text-align: center; line-height: 1.3;
+  }
+
+  /* ── Chương trình đào tạo: interactive step selector ── */
+  .programs-scroll-section { position: relative; }
+  .programs-scroll-section.py-stack-xl {
+    padding-top: clamp(2rem, 4vw, 3rem);
+    padding-bottom: 1.5rem;
+  }
+  .programs-scroll-stage {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 32px);
+  }
+  .programs-interactive {
+    display: grid;
+    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: stretch;
+  }
+  .programs-steps-nav {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    align-content: stretch;
+    height: 100%;
+    min-height: 280px;
+    padding: 0;
+  }
+  .programs-steps-line {
+    position: absolute;
+    left: 19px;
+    top: calc(100% / 6);
+    bottom: calc(100% / 6);
+    width: 2px;
+    background: #e2d8ef;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .programs-steps-line-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, #782DDC 0%, #FF7A00 100%);
+    border-radius: 2px;
+    transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .programs-step-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 0 12px 0 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 14px;
+    transition: background 0.2s ease;
+  }
+  .programs-step-item:hover { background: rgba(120,45,220,0.06); }
+  .programs-step-item:focus-visible {
+    outline: 2px solid #782DDC;
+    outline-offset: 2px;
+  }
+  .programs-step-dot {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #7c7486;
+    background: #faf7ff;
+    border: 2px solid #d8cce8;
+    transition: all 0.3s ease;
+  }
+  .programs-step-item.is-active .programs-step-dot,
+  .programs-step-item:hover .programs-step-dot {
+    color: #fff;
+    background: #782DDC;
+    border-color: #782DDC;
+    box-shadow: 0 4px 14px rgba(120,45,220,0.28);
+  }
+  .programs-step-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 0;
+    min-width: 0;
+  }
+  .programs-step-tier {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #9b8fad;
+  }
+  .programs-step-item.is-active .programs-step-tier { color: #782DDC; }
+  .programs-step-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4b4455;
+    line-height: 1.3;
+  }
+  .programs-step-item.is-active .programs-step-name { color: #1c1528; }
+  .programs-detail-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid rgba(120,45,220,0.12);
+    border-radius: 20px;
+    padding: clamp(24px, 3vw, 36px);
+    box-shadow: 0 8px 32px rgba(120,45,220,0.07);
+    min-height: 280px;
+    overflow: hidden;
+  }
+  .programs-text-stack {
+    position: relative;
+    min-height: 240px;
+    pointer-events: none;
+  }
+  .programs-text-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .programs-text-panel.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .programs-text-panel h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    background-image: linear-gradient(90deg, #782DDC 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .programs-text-panel .programs-tier {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #782DDC;
+    background: rgba(120,45,220,0.08);
+    border: 1px solid rgba(120,45,220,0.15);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+  .programs-text-panel p {
+    text-align: left;
+    color: #4b4455;
+    line-height: 1.65;
+    font-size: 15px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .programs-text-panel .programs-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .programs-text-panel .programs-meta span {
+    font-size: 11px;
+    font-weight: 700;
+    color: #7c7486;
+    background: #f5f0fa;
+    padding: 4px 10px;
+    border-radius: 9999px;
+  }
+  @media only screen and (max-width: 767px) {
+    .programs-desktop-only { display: none !important; }
+  }
+  @media only screen and (min-width: 768px) {
+    .programs-mobile-only { display: none !important; }
+    .programs-scroll-header { margin-bottom: 1.25rem !important; }
+  }
+
+  @media (max-width:768px) {
+    .hero-card { min-height:560px; border-radius:32px; }
+    .hero-fade { background:
+      linear-gradient(180deg, rgba(254,247,255,0.96) 0%, rgba(245,236,255,0.72) 42%, rgba(254,247,255,0.06) 82%, transparent 100%),
+      linear-gradient(125deg, rgba(120,45,220,0.28) 0%, rgba(255,122,0,0.20) 100%); }
+  }
+
+  .assessment-flip-card {
+    background-color: transparent;
+    width: 100%;
+    perspective: 1000px;
+    cursor: pointer;
+    outline: none;
+  }
+  .assessment-flip-card:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.75);
+    outline-offset: 4px;
+    border-radius: 20px;
+  }
+  .assessment-flip-inner {
+    position: relative;
+    width: 100%;
+    min-height: 330px;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+  }
+  .assessment-flip-card:hover .assessment-flip-inner,
+  .assessment-flip-card.is-flipped .assessment-flip-inner {
+    transform: rotateY(180deg);
+  }
+  .assessment-flip-front,
+  .assessment-flip-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .assessment-flip-front {
+    background: #fff;
+    border: 1px solid rgba(120, 45, 220, 0.1);
+    box-shadow: 0 10px 30px rgba(24, 0, 61, 0.05);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 768px) {
+    .assessment-flip-front { padding: 26px 28px; }
+  }
+  .assessment-preview-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7c7486;
+    margin-bottom: 14px;
+  }
+  .assessment-preview-summary {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .assessment-preview-ring {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 12px rgba(120, 45, 220, 0.15));
+  }
+  .assessment-preview-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  .assessment-preview-ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    line-height: 1;
+  }
+  .assessment-preview-ring-tier {
+    font-size: 20px;
+    font-weight: 800;
+    color: #782DDC;
+    font-variant-numeric: tabular-nums;
+  }
+  .assessment-preview-ring-of {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9b8fad;
+    margin-left: 1px;
+  }
+  .assessment-preview-ring-sub {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7c7486;
+  }
+  .assessment-preview-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #240d48;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .assessment-preview-desc {
+    font-size: 11px;
+    line-height: 1.45;
+    color: #4b4455;
+    margin-bottom: 10px;
+  }
+  .assessment-preview-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .assessment-preview-stat {
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .assessment-preview-stat.is-primary {
+    background: rgba(120, 45, 220, 0.08);
+    color: #782DDC;
+  }
+  .assessment-preview-stat.is-cta {
+    background: rgba(255, 122, 0, 0.1);
+    color: #c45a00;
+  }
+  .assessment-preview-stat.is-muted {
+    background: #f4eaff;
+    color: #5c5470;
+  }
+  .assessment-preview-roadmap {
+    border-top: 1px solid rgba(120, 45, 220, 0.12);
+    padding-top: 14px;
+    margin-top: auto;
+  }
+  .assessment-preview-roadmap > .assessment-preview-label {
+    margin-bottom: 8px;
+  }
+  .assessment-road-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .assessment-road-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 82px;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+  }
+  .assessment-road-item + .assessment-road-item {
+    border-top: 1px solid rgba(120, 45, 220, 0.08);
+  }
+  .assessment-road-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #240d48;
+    line-height: 1.3;
+  }
+  .assessment-road-item.is-muted .assessment-road-label {
+    color: #5c5470;
+    font-weight: 500;
+  }
+  .assessment-road-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .assessment-road-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    padding: 5px 6px;
+    border-radius: 9999px;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .assessment-road-pill.is-cta {
+    background: rgba(255, 122, 0, 0.12);
+    color: #c45a00;
+  }
+  .assessment-road-pill.is-primary {
+    background: rgba(120, 45, 220, 0.1);
+    color: #782DDC;
+  }
+  .assessment-road-pill.is-muted {
+    background: #f4eaff;
+    color: #5c5470;
+  }
+  .assessment-flip-back {
+    background: linear-gradient(145deg, #1a0836 0%, #2a1060 42%, #1f0d42 100%);
+    color: #fff;
+    transform: rotateY(180deg);
+    box-shadow: 0 12px 36px rgba(94, 0, 190, 0.28);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .ai-score-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255, 122, 0, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 0% 100%, rgba(120, 45, 220, 0.35) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .ai-score-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.14;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .ai-score-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -30px;
+    right: -20px;
+    border-radius: 50%;
+    background: rgba(120, 45, 220, 0.25);
+    filter: blur(28px);
+    pointer-events: none;
+  }
+  .ai-score-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 14px;
+  }
+  .ai-score-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #d6baff;
+    background: rgba(120, 45, 220, 0.2);
+    border: 1px solid rgba(214, 186, 255, 0.25);
+  }
+  .ai-score-header .material-symbols-outlined {
+    font-size: 14px;
+    color: #FF7A00;
+  }
+  .ai-tier-display {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ai-tier-num {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, #d6baff 55%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-variant-numeric: tabular-nums;
+  }
+  .ai-tier-name {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .ai-tier-desc {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .ai-tier-progress {
+    height: 5px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+  }
+  .ai-tier-progress-fill {
+    height: 100%;
+    width: 33.33%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #782DDC, #FF7A00);
+    box-shadow: 0 0 12px rgba(255, 122, 0, 0.45);
+  }
+  .ai-dept-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+  }
+  .ai-dept-metrics > p {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2px;
+  }
+  .ai-metric-row {
+    display: grid;
+    grid-template-columns: 52px 1fr 36px;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .ai-metric-row > span:first-child {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .ai-metric-row > span:last-child {
+    text-align: right;
+    color: #d6baff;
+    font-variant-numeric: tabular-nums;
+  }
+  .ai-metric-bar {
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+  .ai-metric-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #782DDC, #a855f7);
+  }
+  .ai-metric-bar.is-cta > span {
+    background: linear-gradient(90deg, #FF7A00, #ffb347);
+  }
+  .ai-metric-bar.is-muted > span {
+    background: linear-gradient(90deg, #6b5b7a, #9b8fad);
+  }
+  .ai-score-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .ai-score-footer span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .ai-score-footer .material-symbols-outlined {
+    font-size: 14px;
+    color: #782DDC;
+  }
+  @media (max-width: 767px) {
+    .assessment-flip-inner { min-height: 300px; }
+    .ai-tier-num { font-size: 38px; }
+  }
+
+  /* ── Flip Card – Lộ trình 6 bước ── */
+  .flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 20rem;
+    perspective: 100rem;
+    cursor: pointer;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 0.4rem 1.6rem 0 rgba(94, 0, 190, 0.10);
+    border-radius: 1.25rem;
+    border: 1px solid rgba(120,45,220,0.18);
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .flip-card-front {
+    background-color: #fff;
+    color: #240d48;
+  }
+  .flip-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background-image: linear-gradient(135deg, #782DDC 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+  }
+  .flip-icon {
+    font-size: 2rem !important;
+    background-image: linear-gradient(135deg, #782DDC 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .flip-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    background-image: linear-gradient(135deg, #782DDC 0%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.03em;
+  }
+  .flip-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+  }
+  .flip-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: rgba(120,45,220,0.08);
+    color: #782DDC;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.5rem;
+  }
+  .flip-cta {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #782DDC;
+    margin-top: auto;
+    padding: 0.4rem 1.2rem;
+    border: 1.5px solid rgba(120,45,220,0.35);
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(120,45,220,0.05);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .flip-card:hover .flip-cta {
+    background: rgba(120,45,220,0.12);
+    border-color: rgba(120,45,220,0.6);
+  }
+  .flip-card-back {
+    background: linear-gradient(135deg, #782DDC 0%, #5e00be 40%, #FF7A00 100%);
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: 0 1rem 3rem rgba(94, 0, 190, 0.35);
+    gap: 0;
+  }
+  .flip-title-back {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 0.5rem;
+    width: 85%;
+    letter-spacing: 0.04em;
+  }
+  .flip-tier-back {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 0.2rem 0.7rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .flip-desc-back {
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0 0 1.25rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    text-align: center;
+  }
+  .flip-link-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: auto;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .flip-link-back:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+  }
+
+  /* Mobile: show only back face, no flip */
+  @media only screen and (max-width: 549px) {
+    .flip-card {
+      height: auto !important;
+      perspective: none !important;
+    }
+    .flip-card-front { display: none; }
+    .flip-card-inner {
+      transform: none !important;
+      transition: none !important;
+      transform-style: flat !important;
+      box-shadow: none;
+      border: none;
+    }
+    .flip-card:hover .flip-card-inner { transform: none !important; }
+    .flip-card-back {
+      position: relative !important;
+      width: 100% !important;
+      height: auto !important;
+      transform: none !important;
+      backface-visibility: visible !important;
+      border-radius: 1.25rem !important;
+      padding: 2rem 1.5rem;
+    }
+    .flip-desc-back { font-size: 0.95rem; }
+  }
+
+  /* ── Giải pháp theo phòng ban: nav trái + panel phải ── */
+  #dept-tabs-section .dept-tabs-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  #dept-tabs-section .dept-unified-card {
+    display: grid;
+    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid rgba(120, 45, 220, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(120, 45, 220, 0.07);
+    overflow: hidden;
+  }
+  #dept-tabs-section .dept-tabs-nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    padding: 20px 14px;
+    background: #faf7ff;
+    border-right: 1px solid rgba(120, 45, 220, 0.1);
+  }
+  #dept-tabs-section .dept-tabs-line {
+    position: absolute;
+    left: 31px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    height: auto;
+    background: #e2d8ef;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  #dept-tabs-section .dept-tabs-line-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, #782ddc 0%, #ff7a00 100%);
+    border-radius: 2px;
+    transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #dept-tabs-section .dept-tab-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 10px 10px 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+    font-family: inherit;
+  }
+  #dept-tabs-section .dept-tab-item:hover { background: rgba(120, 45, 220, 0.06); }
+  #dept-tabs-section .dept-tab-item:focus-visible {
+    outline: 2px solid #782ddc;
+    outline-offset: 2px;
+  }
+  #dept-tabs-section .dept-tab-item.is-active { background: rgba(120, 45, 220, 0.08); }
+  #dept-tabs-section .dept-tab-icon {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7c7486;
+    background: #fff;
+    border: 2px solid #d8cce8;
+    transition: all 0.3s ease;
+  }
+  #dept-tabs-section .dept-tab-icon .material-symbols-outlined { font-size: 18px; }
+  #dept-tabs-section .dept-tab-item.is-active .dept-tab-icon,
+  #dept-tabs-section .dept-tab-item:hover .dept-tab-icon {
+    color: #fff;
+    background: #782ddc;
+    border-color: #782ddc;
+    box-shadow: 0 4px 12px rgba(120, 45, 220, 0.25);
+  }
+  #dept-tabs-section .dept-tab-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  #dept-tabs-section .dept-tab-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #9b8fad;
+  }
+  #dept-tabs-section .dept-tab-item.is-active .dept-tab-label { color: #782ddc; }
+  #dept-tabs-section .dept-tab-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4b4455;
+    line-height: 1.25;
+  }
+  #dept-tabs-section .dept-tab-item.is-active .dept-tab-name { color: #1c1528; }
+  #dept-tabs-section .dept-panel-main {
+    padding: 20px 22px;
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+  }
+  #dept-tabs-section .dept-panels-stack {
+    position: relative;
+    width: 100%;
+  }
+  #dept-tabs-section .dept-panel {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(200px, 0.95fr) minmax(0, 1.05fr);
+    gap: 20px;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(8px);
+    transition: opacity 0.32s ease, transform 0.32s ease, visibility 0.32s ease;
+    pointer-events: none;
+  }
+  #dept-tabs-section .dept-panel.is-active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  #dept-tabs-section .dept-panel-visual {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #f3eaff;
+    box-shadow: 0 6px 20px rgba(120, 45, 220, 0.1);
+  }
+  #dept-tabs-section .dept-panel-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  #dept-tabs-section .dept-panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+  #dept-tabs-section .dept-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  #dept-tabs-section .dept-panel-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: rgba(120, 45, 220, 0.1);
+    color: #782ddc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #dept-tabs-section .dept-panel-icon .material-symbols-outlined { font-size: 24px; }
+  #dept-tabs-section .dept-panel-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9b8fad;
+    margin-bottom: 3px;
+  }
+  #dept-tabs-section .dept-panel-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1c1528;
+    line-height: 1.2;
+  }
+  #dept-tabs-section .dept-panel-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #dept-tabs-section .dept-panel-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4b4455;
+    background: #f9f0ff;
+    border: 1px solid rgba(120, 45, 220, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  #dept-tabs-section .dept-panel-features .material-symbols-outlined {
+    font-size: 18px;
+    color: #782ddc;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-variation-settings: "FILL" 1;
+  }
+  #dept-tabs-section .dept-panel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    font-size: 13px;
+    font-weight: 700;
+    color: #782ddc;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+  #dept-tabs-section .dept-panel-cta:hover { color: #5e00be; gap: 10px; }
+  #dept-tabs-section .dept-panel-cta .material-symbols-outlined { font-size: 16px; }
+  @media only screen and (max-width: 767px) {
+    #dept-tabs-section .dept-unified-card { grid-template-columns: 1fr; }
+    #dept-tabs-section .dept-tabs-nav {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 6px;
+      padding: 12px;
+      border-right: none;
+      border-bottom: 1px solid rgba(120, 45, 220, 0.1);
+      scrollbar-width: none;
+    }
+    #dept-tabs-section .dept-tabs-nav::-webkit-scrollbar { display: none; }
+    #dept-tabs-section .dept-tabs-line { display: none; }
+    #dept-tabs-section .dept-tab-item {
+      flex: 0 0 auto;
+      flex-direction: column;
+      min-width: 80px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    #dept-tabs-section .dept-tab-label { display: none; }
+    #dept-tabs-section .dept-tab-name { font-size: 11px; }
+    #dept-tabs-section .dept-panel-main { padding: 16px 14px 20px; }
+    #dept-tabs-section .dept-panel {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    #dept-tabs-section .dept-panel-visual {
+      aspect-ratio: 16 / 10;
+      border-radius: 12px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #dept-tabs-section .dept-panel,
+    #dept-tabs-section .dept-tabs-line-fill { transition: none; }
+  }
+
+  /* ── Case study illustrations + focus hover ── */
+  #case-studies-section .case-study-visual {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #f3eaff;
+  }
+  #case-studies-section .case-study-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #case-studies-section .case-studies-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 1024px) {
+    #case-studies-section .case-studies-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding: 12px 4px 20px;
+    }
+    #case-studies-section .case-study-card {
+      transition: transform 400ms ease, filter 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+      transform-origin: center center;
+      will-change: transform, filter;
+    }
+    #case-studies-section .case-study-card:hover {
+      transform: scale(1.06);
+      z-index: 2;
+      border-color: rgba(94, 0, 190, 0.45);
+      box-shadow: 0 20px 40px rgba(24, 0, 61, 0.12);
+    }
+    #case-studies-section .case-studies-cards:hover > .case-study-card:not(:hover) {
+      filter: blur(8px);
+      transform: scale(0.94);
+      opacity: 0.85;
+    }
+    #case-studies-section .case-study-card:hover .case-study-visual img {
+      transform: scale(1.04);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #case-studies-section .case-study-card,
+    #case-studies-section .case-studies-cards:hover > .case-study-card:not(:hover) {
+      transition: none !important;
+      transform: none !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+  }
+</style>
+<script id="tailwind-config">
+tailwind.config = { darkMode: "class", theme: { extend: {
+  "colors": {"on-secondary-container":"#592600","background":"#fef7ff","tertiary":"#5c00c0","primary-fixed-dim":"#d6baff","on-surface":"#240d48","secondary-container":"#fb7800","outline":"#7c7486","surface":"#fef7ff","outline-variant":"#cdc2d7","primary":"#5e00be","inverse-primary":"#d6baff","on-secondary":"#ffffff","error":"#ba1a1a","surface-container-low":"#f9f0ff","inverse-surface":"#39255e","surface-container-high":"#f0e3ff","inverse-on-surface":"#f7edff","on-background":"#240d48","secondary":"#994700","surface-container-highest":"#ebdcff","surface-container-lowest":"#ffffff","on-error":"#ffffff","surface-container":"#f4eaff","on-surface-variant":"#4b4455","on-tertiary":"#ffffff","on-primary-container":"#e3cfff","primary-container":"#782ddc","primary-fixed":"#ecdcff","surface-variant":"#ebdcff","cta":"#FF7A00"},
+  "borderRadius": {"DEFAULT":"0.875rem","md":"0.875rem","lg":"1.25rem","xl":"1.75rem","full":"9999px","card":"1.25rem","container":"1.75rem"},
+  "spacing": {"stack-sm":"16px","stack-lg":"48px","stack-md":"24px","container-max":"1280px","margin-mobile":"20px","stack-xs":"8px","gutter":"32px","stack-xl":"80px"},
+  "fontSize": {"label-eyebrow":["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}],"h3-card":["22px",{"lineHeight":"1.4","fontWeight":"700"}],"h2":["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}],"h1-desktop":["64px",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"800"}],"h1-mobile":["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"800"}]}
+}}};
+</script>
+<link rel="stylesheet" href="/css/vercel-nav.css"/>
+<link rel="stylesheet" href="/css/btn-shine.css"/>
+<link rel="stylesheet" href="/css/footer-glow.css"/>
+<link rel="stylesheet" href="/css/tieuchi-tabs.css?v=20260713b"/>
+<link rel="stylesheet" href="/css/animated-calendar.css"/>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/20">
+
+<div class="bg-inverse-surface text-white py-3 text-center px-margin-mobile">
+  <p class="text-label-eyebrow uppercase tracking-widest">AI Maturity Assessment miễn phí, xác định lộ trình AI trong 5 phút
+    <a class="text-secondary-container ml-2 hover:underline inline-flex items-center gap-1" href="/ai-maturity-assessment/">Làm bài test ngay <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+  </p>
+</div>
+<header class="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0px_10px_30px_rgba(24,0,61,0.05)]">
+  <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-gutter py-4">
+    <div class="flex items-center gap-10">
+      <a id="logo-wrap" class="text-h3-card font-extrabold flex items-center gap-1" href="/">
+        <span id="logo-anim" aria-label="Sunext">
+          <span class="logo-particles" aria-hidden="true"></span>
+          <span class="logo-word">Sunext</span>
+          <span class="logo-streak" aria-hidden="true"></span>
+        </span>
+      </a>
+      <nav class="vercel-nav hidden lg:flex items-center text-[15px]" aria-label="Điều hướng chính"><span class="vercel-nav-hover" aria-hidden="true"></span><span class="vercel-nav-underline" aria-hidden="true"></span><a class="vercel-nav-link" href="/giai-phap/" data-path="/giai-phap">Giải pháp AI</a><a class="vercel-nav-link" href="/chuong-trinh/" data-path="/chuong-trinh">Chương trình</a><a class="vercel-nav-link" href="/giai-phap-theo-phong-ban/" data-path="/giai-phap-theo-phong-ban">Theo phòng ban</a><a class="vercel-nav-link" href="/ai-maturity-assessment/" data-path="/ai-maturity-assessment">Assessment</a><a class="vercel-nav-link" href="/case-studies/" data-path="/case-studies">Case Studies</a><a class="vercel-nav-link" href="/about/" data-path="/about">Về Sunext</a></nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <!-- Animated Theme Toggle -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
+        <div class="ray-burst"></div>
+        <div class="theme-toggle-icons">
+          <span class="theme-icon theme-icon-sun">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+              <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+              <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+              <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+            </svg>
+          </span>
+          <span class="theme-icon theme-icon-moon">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </span>
+        </div>
+      </button>
+      <a class="hidden xl:flex items-center gap-1 text-on-surface-variant font-bold hover:text-primary transition-colors" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+      <a class="hidden sm:inline-block bg-cta text-white px-6 py-3 rounded-[14px] font-bold shadow-[0_4px_14px_rgba(255,122,0,0.39)] hover:-translate-y-0.5 active:scale-95 transition-all" href="/contact/">Đặt lịch tư vấn</a>
+      <button class="lg:hidden w-11 h-11 rounded-[12px] border border-outline-variant flex items-center justify-center" onclick="document.getElementById('mmenu').classList.toggle('hidden')" aria-label="Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mmenu" class="hidden lg:hidden bg-surface border-t border-outline-variant/30 px-margin-mobile pb-6">
+    <a class="block py-3 border-b border-outline-variant/30 font-bold" href="/giai-phap/">Giải pháp AI</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/chuong-trinh/">Chương trình</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/giai-phap-theo-phong-ban/">Theo phòng ban</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/ai-maturity-assessment/">Assessment</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/case-studies/">Case Studies</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/about/">Về Sunext</a>
+    <a class="block py-3 font-bold text-primary" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS ↗</a>
+  </div>
+</header>
+<main>
+<!-- Hero: video card + floating navbar -->
+<section class="w-full px-margin-mobile md:px-gutter pt-8">
+  <div class="hero-card">
+    <div class="hero-video-layer">
+      <video class="hero-video" autoplay loop muted playsinline>
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260505_101331_74f9b798-3f00-4e86-8a01-377aa16ffeaa.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-content px-8 md:px-16 pt-10 md:pt-14 pb-28">
+      <div class="hero-anim-text max-w-[600px] space-y-5">
+        <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full text-primary font-bold text-label-eyebrow uppercase tracking-widest">
+          <span class="material-symbols-outlined text-[16px]" style="color:#782DDC">verified</span> B2B AI Transformation
+        </div>
+        <h1 class="font-montserrat w-fit h-fit text-left text-[34px] md:text-[50px] font-semibold tracking-tight leading-[1.08]" style="color:#240d48">
+          Chuyển đổi AI <span class="gradient-text">từ chiến lược đến thực thi</span>
+        </h1>
+        <p class="font-inter w-fit h-fit leading-relaxed text-[15px]" style="color:#4b4455">
+          Sunext giúp doanh nghiệp xác định đúng điểm nghẽn, thiết kế đúng giải pháp AI và triển khai để tạo ra kết quả có thể đo lường.
+        </p>
+        <ul class="space-y-2.5">
+          <li class="flex items-center gap-3" style="color:#240d48">
+            <span class="w-[22px] h-[22px] rounded-full bg-cta/20 border border-cta/50 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-cta text-[13px]" style="font-variation-settings:'FILL' 1;">check</span>
+            </span>
+            <span>Đánh giá sẵn sàng AI trước khi đầu tư công cụ</span>
+          </li>
+          <li class="flex items-center gap-3" style="color:#240d48">
+            <span class="w-[22px] h-[22px] rounded-full bg-cta/20 border border-cta/50 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-cta text-[13px]" style="font-variation-settings:'FILL' 1;">check</span>
+            </span>
+            <span>Lộ trình rõ ràng: chiến lược, đào tạo và triển khai</span>
+          </li>
+          <li class="flex items-center gap-3" style="color:#240d48">
+            <span class="w-[22px] h-[22px] rounded-full bg-cta/20 border border-cta/50 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-cta text-[13px]" style="font-variation-settings:'FILL' 1;">check</span>
+            </span>
+            <span>Giải pháp gắn với quy trình vận hành thực tế</span>
+          </li>
+        </ul>
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a class="bg-cta text-white px-7 py-3.5 rounded-full font-bold text-[15px] text-center shadow-[0_4px_20px_rgba(255,122,0,0.4)] hover:shadow-[0_8px_28px_rgba(255,122,0,0.55)] hover:-translate-y-0.5 transition-all" href="/ai-maturity-assessment/">Làm AI Maturity Assessment</a>
+          <a class="border-[1.5px] border-primary/40 text-primary px-7 py-3.5 rounded-full font-bold text-[15px] text-center hover:bg-primary/5 hover:-translate-y-0.5 transition-all bg-white/60 backdrop-blur-sm" href="/giai-phap/">Xem giải pháp AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Marquee logo scroller -->
+<section class="pt-10 pb-2">
+  <div class="marquee-mask max-w-container-max mx-auto px-margin-mobile">
+    <div class="marquee-track" id="ai-marquee"></div>
+  </div>
+</section>
+<section class="py-stack-xl"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-stack-lg">
+  <h2 class="text-h2 mb-6">Lộ trình 6 bước chuyển đổi AI</h2>
+  <p class="text-on-surface-variant max-w-2xl mx-auto">Từ đánh giá sẵn sàng đến mở rộng trong tổ chức — mỗi bước gắn với kết quả đo lường được, không dừng ở đào tạo hay mua công cụ.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="morph-tier-grid">
+
+  <div class="flip-card morph-card" data-morph-index="0">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">01</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">assessment</span>
+        <h3 class="flip-title">Đánh giá</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">Sẵn sàng AI</span>
+          <span class="flip-badge">Dữ liệu · Hệ thống · Đội ngũ</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 1 · Đánh giá</span>
+        <p class="flip-title-back">Đánh giá</p>
+        <p class="flip-desc-back">Đánh giá mức độ sẵn sàng ứng dụng AI của doanh nghiệp trên dữ liệu, hệ thống và năng lực đội ngũ.</p>
+        <a href="/ai-maturity-assessment/" class="flip-link-back">Làm Assessment <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card morph-card" data-morph-index="1">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">02</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">strategy</span>
+        <h3 class="flip-title">Chiến lược</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">Lộ trình đầu tư</span>
+          <span class="flip-badge">Use case · KPI</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 2 · Chiến lược</span>
+        <p class="flip-title-back">Chiến lược</p>
+        <p class="flip-desc-back">Xây dựng chiến lược và lộ trình AI phù hợp với ưu tiên kinh doanh, use case và chỉ số thành công.</p>
+        <a href="/contact/" class="flip-link-back">Trao đổi chiến lược <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card morph-card" data-morph-index="2">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">03</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">school</span>
+        <h3 class="flip-title">Xây dựng</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">Năng lực đội ngũ</span>
+          <span class="flip-badge">Theo phòng ban</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 3 · Xây dựng</span>
+        <p class="flip-title-back">Xây dựng</p>
+        <p class="flip-desc-back">Huấn luyện và xây dựng năng lực AI theo phòng ban, cấp bậc và tình huống sử dụng thực tế.</p>
+        <a href="/chuong-trinh/" class="flip-link-back">Xem chương trình <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card morph-card" data-morph-index="3">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">04</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">rocket_launch</span>
+        <h3 class="flip-title">Thực thi</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">Triển khai AI</span>
+          <span class="flip-badge">Quy trình thực tế</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 4 · Thực thi</span>
+        <p class="flip-title-back">Thực thi</p>
+        <p class="flip-desc-back">Triển khai AI vào quy trình làm việc thực tế và các hệ thống nòng cốt của doanh nghiệp.</p>
+        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card morph-card" data-morph-index="4">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">05</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">monitoring</span>
+        <h3 class="flip-title">Đo lường &amp; Tối ưu</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">ROI liên tục</span>
+          <span class="flip-badge">Cải tiến theo dữ liệu</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 5 · Đo lường &amp; Tối ưu</span>
+        <p class="flip-title-back">Đo lường &amp; Tối ưu</p>
+        <p class="flip-desc-back">Theo dõi mức độ ứng dụng, hiệu suất làm việc và ROI; cải tiến liên tục theo dữ liệu thực tế.</p>
+        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card morph-card" data-morph-index="5">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="flip-number">06</div>
+        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">hub</span>
+        <h3 class="flip-title">Mở rộng &amp; Duy trì</h3>
+        <div class="flip-badges">
+          <span class="flip-badge">AI trong tổ chức</span>
+          <span class="flip-badge">Lợi thế dài hạn</span>
+        </div>
+        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
+      </div>
+      <div class="flip-card-back">
+        <span class="flip-tier-back">Bước 6 · Mở rộng &amp; Duy trì</span>
+        <p class="flip-title-back">Mở rộng &amp; Duy trì</p>
+        <p class="flip-desc-back">Tích hợp AI trong tổ chức thông qua dữ liệu, hệ thống và ra quyết định — duy trì lợi thế dài hạn.</p>
+        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+
+</div></div></section>
+<section class="programs-scroll-section py-stack-xl bg-surface-container-low" id="programs-scroll-section">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6 programs-scroll-header">
+      <div class="max-w-2xl">
+        <h2 class="text-h2 mb-4">Chương trình đào tạo</h2>
+        <p class="text-on-surface-variant">Thiết kế cho nhu cầu thực tế của doanh nghiệp Việt, có lộ trình progression rõ ràng từ nền tảng đến chuyên sâu.</p>
+      </div>
+      <a class="text-primary font-bold flex items-center gap-2 whitespace-nowrap" href="/chuong-trinh/">Xem tất cả chương trình <span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+  </div>
+
+  <!-- Desktop: step selector + detail card -->
+  <div class="programs-desktop-only programs-scroll-stage" id="programs-scroll-stage">
+    <div class="programs-interactive">
+      <nav class="programs-steps-nav" aria-label="Lộ trình 3 tầng chương trình">
+        <div class="programs-steps-line" aria-hidden="true"><div class="programs-steps-line-fill" id="programs-line-fill"></div></div>
+        <button type="button" class="programs-step-item is-active" data-step="0" aria-pressed="true" aria-controls="program-text1">
+          <span class="programs-step-dot">1</span>
+          <span class="programs-step-info">
+            <span class="programs-step-tier">Tầng 1</span>
+            <span class="programs-step-name">AI in Business</span>
+          </span>
+        </button>
+        <button type="button" class="programs-step-item" data-step="1" aria-pressed="false" aria-controls="program-text2">
+          <span class="programs-step-dot">2</span>
+          <span class="programs-step-info">
+            <span class="programs-step-tier">Tầng 2</span>
+            <span class="programs-step-name">AI in Marketing</span>
+          </span>
+        </button>
+        <button type="button" class="programs-step-item" data-step="2" aria-pressed="false" aria-controls="program-text3">
+          <span class="programs-step-dot">3</span>
+          <span class="programs-step-info">
+            <span class="programs-step-tier">Tầng 3</span>
+            <span class="programs-step-name">Agentics AI</span>
+          </span>
+        </button>
+      </nav>
+      <div class="programs-detail-card">
+        <div class="programs-text-stack">
+          <div class="programs-text-panel is-active" id="program-text1" role="tabpanel">
+            <span class="programs-tier">Tầng 1 · Nền móng bắt buộc</span>
+            <h3>AI in Business</h3>
+            <p>Chương trình xóa mù AI dành cho toàn bộ tổ chức. Nền móng bắt buộc trước khi doanh nghiệp bước vào các tầng tự động hóa sâu hơn. Chuẩn hóa năng lực Prompting 4 bước, thực chiến 100%.</p>
+            <div class="programs-meta">
+              <span>1-2 ngày</span><span>Toàn bộ tổ chức</span><span>100% thực chiến</span>
+            </div>
+            <a class="inline-flex items-center gap-1 text-primary font-bold text-sm" href="/chuong-trinh/ai-in-business/">Xem chương trình <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+          </div>
+          <div class="programs-text-panel" id="program-text2" role="tabpanel" hidden>
+            <span class="programs-tier">Tầng 2 · Chuyên môn phòng ban</span>
+            <h3>AI in Marketing</h3>
+            <p>Ứng dụng AI vào khối Marketing trong 1-2 ngày: content đa kênh x5 tốc độ, tạo hình ảnh Midjourney chuẩn brand, phân tích đối thủ tự động.</p>
+            <div class="programs-meta">
+              <span>1-2 ngày</span><span>Marketing Manager</span><span>Content Factory</span>
+            </div>
+            <a class="inline-flex items-center gap-1 text-primary font-bold text-sm" href="/chuong-trinh/ai-in-marketing/">Xem chương trình <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+          </div>
+          <div class="programs-text-panel" id="program-text3" role="tabpanel" hidden>
+            <span class="programs-tier">Tầng 3 · Chuyên sâu nhất</span>
+            <h3>Agentics AI Automations</h3>
+            <p>Tự tạo đội ngũ AI Agent làm việc 24/7: nhận yêu cầu, phân loại email, cập nhật dữ liệu tự động. Triển khai automation xuyên suốt phòng ban trong 3-5 ngày.</p>
+            <div class="programs-meta">
+              <span>3-5 ngày</span><span>Ops &amp; IT Lead</span><span>AI Agent 24/7</span>
+            </div>
+            <a class="inline-flex items-center gap-1 text-primary font-bold text-sm" href="/chuong-trinh/agentics-ai-automations/">Xem chương trình <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile: card grid -->
+  <div class="programs-mobile-only max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-lg">
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-gutter">
+
+  <!-- Featured card: col-span-3 -->
+  <div class="lg:col-span-3 bg-white rounded-[20px] enterprise-shadow flex flex-col border border-outline-variant/30 overflow-hidden hover:border-primary transition-colors">
+    <div class="h-36 brand-gradient flex flex-col justify-end px-8 pb-6 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl translate-x-1/4 -translate-y-1/4"></div>
+      <span class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase w-fit mb-3">Tầng 1: Nền móng bắt buộc</span>
+      <span class="text-white font-extrabold text-[28px] leading-tight">AI in Business</span>
+    </div>
+    <div class="p-8 flex-grow flex flex-col">
+      <div class="flex gap-4 mb-5 text-xs font-bold text-on-surface-variant">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1-2 ngày</span>
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">groups</span> Toàn bộ tổ chức</span></div>
+      <p class="text-on-surface-variant text-base mb-6 flex-grow leading-relaxed">Chương trình xóa mù AI dành cho toàn bộ tổ chức. Nền móng bắt buộc trước khi doanh nghiệp bước vào các tầng tự động hóa sâu hơn. Chuẩn hóa năng lực Prompting 4 bước, thực chiến 100%.</p>
+      <div class="grid grid-cols-3 gap-3 mb-6">
+        <div class="bg-surface-container rounded-[14px] p-3 text-center"><p class="font-extrabold text-primary text-lg">100%</p><p class="text-[10px] text-on-surface-variant mt-1">Thực chiến</p></div>
+        <div class="bg-surface-container rounded-[14px] p-3 text-center"><p class="font-extrabold text-primary text-lg">4 bước</p><p class="text-[10px] text-on-surface-variant mt-1">Prompting chuẩn</p></div>
+        <div class="bg-surface-container rounded-[14px] p-3 text-center"><p class="font-extrabold text-primary text-lg">1-2 ngày</p><p class="text-[10px] text-on-surface-variant mt-1">Hoàn thành</p></div>
+      </div>
+      <div class="flex justify-between items-center pt-5 border-t border-outline-variant/30">
+        <p class="text-[12px] text-on-surface-variant">Tiếp theo: <span class="font-bold text-primary">AI in Marketing</span></p>
+        <a class="bg-cta text-white px-5 py-2.5 rounded-[14px] font-bold text-sm hover:-translate-y-0.5 transition-all" href="/chuong-trinh/ai-in-business/">Xem chương trình</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 smaller cards stacked: col-span-2 -->
+  <div class="lg:col-span-2 flex flex-col gap-gutter">
+    <div class="bg-white rounded-[20px] enterprise-shadow flex flex-col border border-outline-variant/30 overflow-hidden hover:border-primary transition-colors flex-1">
+      <div class="h-20 brand-gradient flex items-center justify-between px-6">
+        <span class="text-white font-extrabold text-[18px]">AI in Marketing</span>
+        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Tầng 2</span></div>
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="flex gap-3 mb-3 text-xs font-bold text-on-surface-variant">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1-2 ngày</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">person</span> Marketing Manager</span></div>
+        <p class="text-on-surface-variant text-sm mb-4 flex-grow">Content đa kênh x5 tốc độ, tạo hình ảnh Midjourney chuẩn brand, phân tích đối thủ tự động.</p>
+        <div class="flex justify-between items-center pt-4 border-t border-outline-variant/30">
+          <p class="text-[11px] text-on-surface-variant">Sau: <span class="font-bold text-primary">Agentics</span></p>
+          <a class="bg-cta text-white px-4 py-2 rounded-[14px] font-bold text-sm hover:-translate-y-0.5 transition-all" href="/chuong-trinh/ai-in-marketing/">Xem</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-inverse-surface rounded-[20px] enterprise-shadow flex flex-col overflow-hidden hover:ring-2 hover:ring-primary transition-all flex-1">
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <span class="bg-secondary-container text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Tầng 3</span>
+          <span class="bg-cta/20 text-cta px-2 py-1 rounded-full text-[10px] font-bold uppercase">Chuyên sâu nhất</span>
+        </div>
+        <h4 class="text-white font-extrabold text-[18px] mb-3 leading-tight">Agentics AI Automations</h4>
+        <div class="flex gap-3 mb-3 text-xs font-bold text-on-primary-container">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 3-5 ngày</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">person</span> Ops & IT Lead</span></div>
+        <p class="text-on-primary-container text-sm mb-4 flex-grow">AI Agent vận hành 24/7: nhận yêu cầu, phân loại email, cập nhật dữ liệu tự động.</p>
+        <a class="bg-cta text-white px-4 py-2.5 rounded-[14px] font-bold text-sm text-center hover:-translate-y-0.5 transition-all block" href="/chuong-trinh/agentics-ai-automations/">Xem chương trình</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+  </div>
+</section>
+
+<!-- Marquee: Partner brand logos below training section -->
+<section class="py-10 bg-surface-container-low border-t border-outline-variant/20" aria-label="Doanh nghiệp đã đồng hành">
+  <p class="text-center text-sm font-semibold text-on-surface-variant mb-6">Được hơn <span class="text-primary font-extrabold">50+</span> doanh nghiệp trên toàn quốc tin chọn và đồng hành</p>
+  <div class="marquee-mask">
+    <div class="marquee-track partner-marquee-track" id="partner-marquee">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Assessment highlight -->
+
+<section class="py-stack-xl"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="brand-gradient rounded-[28px] p-8 md:p-stack-lg flex flex-col md:grid md:grid-cols-2 gap-stack-lg items-center overflow-hidden relative">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+  <div class="text-white relative z-10">
+    <h2 class="text-h2 mb-6">Biết chính xác doanh nghiệp của bạn đang ở đâu</h2>
+    <p class="text-lg opacity-90 mb-stack-md leading-relaxed">Làm bài AI Maturity Assessment 10 câu trong 5 phút để nhận điểm số, tầng khuyến nghị và các chương trình phù hợp nhất. Báo cáo gửi thẳng vào email công ty của bạn.</p>
+    <div class="space-y-4 mb-8">
+      <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span><span class="font-bold">10 câu hỏi đánh giá thực trạng vận hành</span></div>
+      <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span><span class="font-bold">Kết quả kèm lộ trình 6 tầng & chương trình đề xuất</span></div>
+      <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span><span class="font-bold">Miễn phí hoàn toàn cho doanh nghiệp Việt</span></div></div>
+    <a class="inline-block bg-white text-primary px-8 py-4 rounded-[14px] font-bold text-[18px] shadow-xl hover:-translate-y-1 transition-all" href="/ai-maturity-assessment/">Bắt đầu Assessment ngay</a></div>
+  <div class="w-full relative z-10">
+    <div class="assessment-flip-card" tabindex="0" role="button" aria-label="Lật xem bảng điểm AI Maturity">
+      <div class="assessment-flip-inner">
+        <div class="assessment-flip-front enterprise-shadow">
+          <p class="assessment-preview-label">Mẫu kết quả Assessment</p>
+          <div class="assessment-preview-summary">
+            <div class="assessment-preview-ring">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <defs>
+                  <linearGradient id="assessment-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#782DDC"/>
+                    <stop offset="100%" stop-color="#FF7A00"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#f0e3ff" stroke-width="9"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="url(#assessment-ring-grad)" stroke-width="9" stroke-dasharray="239" stroke-dashoffset="159" stroke-linecap="round"/>
+                <circle cx="50" cy="12" r="2.5" fill="#782DDC"/>
+                <circle cx="82.9" cy="31" r="2.5" fill="#FF7A00"/>
+                <circle cx="82.9" cy="69" r="2.5" fill="#dcd0e8"/>
+                <circle cx="50" cy="88" r="2.5" fill="#dcd0e8"/>
+                <circle cx="17.1" cy="69" r="2.5" fill="#dcd0e8"/>
+                <circle cx="17.1" cy="31" r="2.5" fill="#dcd0e8"/>
+              </svg>
+              <div class="assessment-preview-ring-center">
+                <span class="assessment-preview-ring-tier">2<span class="assessment-preview-ring-of">/6</span></span>
+                <span class="assessment-preview-ring-sub">Tầng</span>
+              </div>
+            </div>
+            <div>
+              <p class="assessment-preview-title">AI Nâng Cao</p>
+              <p class="assessment-preview-desc">Doanh nghiệp đã có nền tảng. Sẵn sàng triển khai AI theo phòng ban.</p>
+              <div class="assessment-preview-stats">
+                <span class="assessment-preview-stat is-primary">HR<br>72%</span>
+                <span class="assessment-preview-stat is-cta">MKT<br>58%</span>
+                <span class="assessment-preview-stat is-muted">Sales<br>41%</span>
+              </div>
+            </div>
+          </div>
+          <div class="assessment-preview-roadmap">
+            <p class="assessment-preview-label">Lộ trình khuyến nghị</p>
+            <div class="assessment-road-list">
+              <div class="assessment-road-item">
+                <span class="assessment-road-label"><span class="assessment-road-dot bg-cta"></span>AI in Business</span>
+                <span class="assessment-road-pill is-cta">Bắt đầu ngay</span>
+              </div>
+              <div class="assessment-road-item is-muted">
+                <span class="assessment-road-label"><span class="assessment-road-dot bg-primary"></span>AI Nâng Cao Marketing</span>
+                <span class="assessment-road-pill is-primary">Tháng 2-3</span>
+              </div>
+              <div class="assessment-road-item is-muted">
+                <span class="assessment-road-label"><span class="assessment-road-dot bg-outline-variant"></span>Agentics AI Automation</span>
+                <span class="assessment-road-pill is-muted">Sau 6 tháng</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="assessment-flip-back">
+          <div class="ai-score-bg" aria-hidden="true"></div>
+          <div class="ai-score-grid" aria-hidden="true"></div>
+          <div class="ai-score-glow" aria-hidden="true"></div>
+          <div class="ai-score-content">
+            <div class="ai-score-header">
+              <span class="material-symbols-outlined">psychology</span>
+              AI Maturity Scorecard
+            </div>
+            <div class="ai-tier-display">
+              <span class="ai-tier-num">02</span>
+              <div>
+                <p class="ai-tier-name">AI Nâng Cao</p>
+                <p class="ai-tier-desc">Tầng 2 / 6 · Sẵn sàng triển khai theo phòng ban</p>
+                <div class="ai-tier-progress" aria-hidden="true"><div class="ai-tier-progress-fill"></div></div>
+              </div>
+            </div>
+            <div class="ai-dept-metrics">
+              <p>Điểm theo phòng ban</p>
+              <div class="ai-metric-row">
+                <span>HR</span>
+                <div class="ai-metric-bar"><span style="width:72%"></span></div>
+                <span>72%</span>
+              </div>
+              <div class="ai-metric-row">
+                <span>Marketing</span>
+                <div class="ai-metric-bar is-cta"><span style="width:58%"></span></div>
+                <span>58%</span>
+              </div>
+              <div class="ai-metric-row">
+                <span>Sales</span>
+                <div class="ai-metric-bar is-muted"><span style="width:41%"></span></div>
+                <span>41%</span>
+              </div>
+            </div>
+            <div class="ai-score-footer">
+              <span><span class="material-symbols-outlined">verified</span> Sunext Assessment</span>
+              <span>Chuyển đổi số</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+<section class="py-stack-xl bg-surface-container-low" id="dept-tabs-section"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-stack-lg">
+  <h2 class="text-h2 mb-4">Giải pháp AI theo phòng ban</h2>
+  <p class="text-on-surface-variant max-w-2xl mx-auto">Mỗi bộ phận có thách thức riêng. Chúng tôi thiết kế AI workflow chuyên biệt cho từng đơn vị.</p>
+</div>
+<div class="dept-tabs-shell" data-tieuchi-tabs>
+  <div class="dept-unified-card">
+    <nav class="dept-tabs-nav" role="tablist" aria-label="Giải pháp theo phòng ban">
+      <div class="dept-tabs-line" aria-hidden="true"><div class="dept-tabs-line-fill"></div></div>
+      <button type="button" class="dept-tab-item is-active" data-tieuchi-tab="0" aria-selected="true">
+        <span class="dept-tab-icon"><span class="material-symbols-outlined">badge</span></span>
+        <span class="dept-tab-info"><span class="dept-tab-label">Phòng ban</span><span class="dept-tab-name">HR & Nhân sự</span></span>
+      </button>
+      <button type="button" class="dept-tab-item" data-tieuchi-tab="1" aria-selected="false">
+        <span class="dept-tab-icon"><span class="material-symbols-outlined">campaign</span></span>
+        <span class="dept-tab-info"><span class="dept-tab-label">Phòng ban</span><span class="dept-tab-name">Marketing</span></span>
+      </button>
+      <button type="button" class="dept-tab-item" data-tieuchi-tab="2" aria-selected="false">
+        <span class="dept-tab-icon"><span class="material-symbols-outlined">trending_up</span></span>
+        <span class="dept-tab-info"><span class="dept-tab-label">Phòng ban</span><span class="dept-tab-name">Sales</span></span>
+      </button>
+      <button type="button" class="dept-tab-item" data-tieuchi-tab="3" aria-selected="false">
+        <span class="dept-tab-icon"><span class="material-symbols-outlined">settings_suggest</span></span>
+        <span class="dept-tab-info"><span class="dept-tab-label">Phòng ban</span><span class="dept-tab-name">Operations</span></span>
+      </button>
+      <button type="button" class="dept-tab-item" data-tieuchi-tab="4" aria-selected="false">
+        <span class="dept-tab-icon"><span class="material-symbols-outlined">dns</span></span>
+        <span class="dept-tab-info"><span class="dept-tab-label">Phòng ban</span><span class="dept-tab-name">IT & Security</span></span>
+      </button>
+    </nav>
+    <div class="dept-panel-main">
+      <div class="dept-panels-stack">
+        <article class="dept-panel is-active" data-tieuchi-panel="0" aria-hidden="false">
+          <figure class="dept-panel-visual">
+            <img src="/images/departments/hr.png" alt="Phòng ban HR & Nhân sự" width="640" height="480" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="dept-panel-body">
+            <div class="dept-panel-head">
+              <div class="dept-panel-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div><p class="dept-panel-eyebrow">Giải pháp 01</p><h3 class="dept-panel-title">HR & Nhân sự</h3></div>
+            </div>
+            <ul class="dept-panel-features">
+              <li><span class="material-symbols-outlined">check_circle</span> Sàng lọc CV tự động theo tiêu chí</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Soạn JD chuẩn trong 5 phút</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Chatbot trả lời FAQ ứng viên 24/7</li>
+            </ul>
+            <a class="dept-panel-cta" href="/giai-phap-theo-phong-ban/hr/">Xem giải pháp chi tiết <span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </article>
+        <article class="dept-panel" data-tieuchi-panel="1" aria-hidden="true">
+          <figure class="dept-panel-visual">
+            <img src="/images/departments/marketing.png" alt="Phòng ban Marketing" width="640" height="480" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="dept-panel-body">
+            <div class="dept-panel-head">
+              <div class="dept-panel-icon"><span class="material-symbols-outlined">campaign</span></div>
+              <div><p class="dept-panel-eyebrow">Giải pháp 02</p><h3 class="dept-panel-title">Marketing</h3></div>
+            </div>
+            <ul class="dept-panel-features">
+              <li><span class="material-symbols-outlined">check_circle</span> Viết content đa kênh x5 tốc độ</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Tạo hình ảnh Midjourney chuẩn brand</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Phân tích đối thủ tự động</li>
+            </ul>
+            <a class="dept-panel-cta" href="/giai-phap-theo-phong-ban/marketing/">Xem giải pháp chi tiết <span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </article>
+        <article class="dept-panel" data-tieuchi-panel="2" aria-hidden="true">
+          <figure class="dept-panel-visual">
+            <img src="/images/departments/sales.png" alt="Phòng ban Sales" width="640" height="480" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="dept-panel-body">
+            <div class="dept-panel-head">
+              <div class="dept-panel-icon"><span class="material-symbols-outlined">trending_up</span></div>
+              <div><p class="dept-panel-eyebrow">Giải pháp 03</p><h3 class="dept-panel-title">Sales</h3></div>
+            </div>
+            <ul class="dept-panel-features">
+              <li><span class="material-symbols-outlined">check_circle</span> Email chào hàng cá nhân hóa hàng loạt</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Phân tích hành vi & chấm điểm Lead</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Tóm tắt cuộc họp tự động</li>
+            </ul>
+            <a class="dept-panel-cta" href="/giai-phap-theo-phong-ban/sales/">Xem giải pháp chi tiết <span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </article>
+        <article class="dept-panel" data-tieuchi-panel="3" aria-hidden="true">
+          <figure class="dept-panel-visual">
+            <img src="/images/departments/operations.png" alt="Phòng ban Operations" width="640" height="480" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="dept-panel-body">
+            <div class="dept-panel-head">
+              <div class="dept-panel-icon"><span class="material-symbols-outlined">settings_suggest</span></div>
+              <div><p class="dept-panel-eyebrow">Giải pháp 04</p><h3 class="dept-panel-title">Operations</h3></div>
+            </div>
+            <ul class="dept-panel-features">
+              <li><span class="material-symbols-outlined">check_circle</span> Báo cáo liên phòng ban tự động</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Theo dõi KPI realtime</li>
+              <li><span class="material-symbols-outlined">check_circle</span> Phát hiện bất thường dữ liệu</li>
+            </ul>
+            <a class="dept-panel-cta" href="/giai-phap-theo-phong-ban/operations/">Xem giải pháp chi tiết <span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </article>
+        <article class="dept-panel" data-tieuchi-panel="4" aria-hidden="true">
+          <figure class="dept-panel-visual">
+            <img src="/images/departments/it.png" alt="Phòng ban IT & Security" width="640" height="480" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="dept-panel-body">
+            <div class="dept-panel-head">
+              <div class="dept-panel-icon"><span class="material-symbols-outlined">dns</span></div>
+              <div><p class="dept-panel-eyebrow">Giải pháp 05</p><h3 class="dept-panel-title">IT & Security</h3></div>
+            </div>
+            <ul class="dept-panel-features">
+              <li><span class="material-symbols-outlined">check_circle</span> Build Vector DB nội bộ</li>
+              <li><span class="material-symbols-outlined">check_circle</span> RAG chatbot cho knowledge base</li>
+              <li><span class="material-symbols-outlined">check_circle</span> API gateway AI tập trung</li>
+            </ul>
+            <a class="dept-panel-cta" href="/giai-phap-theo-phong-ban/it/">Xem giải pháp chi tiết <span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+<section class="py-stack-lg bg-surface-container-low" id="phuong-phap-section">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-stack-lg">
+  <h2 class="text-h2">Phương pháp luận 5 bước</h2>
+  <p class="text-on-surface-variant mt-3 max-w-xl mx-auto text-sm">Click vào từng bước để xem chi tiết</p>
+</div>
+
+<style>
+  /* ── Growth Staircase — interactive + panel ── */
+  .growth-shell {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .growth-wrap {
+    --growth-label-h: 64px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    min-height: 300px;
+    padding-bottom: 4px;
+  }
+  .growth-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .growth-step:hover .growth-icon-wrap { transform: translateY(-2px); }
+  .growth-step.is-active { z-index: 3; }
+  .growth-step:not(.is-active) .growth-bar { opacity: 0.72; }
+  .growth-step:not(.is-active):hover .growth-bar { opacity: 0.9; }
+  .growth-step:focus-visible {
+    outline: 2px solid #782DDC;
+    outline-offset: 4px;
+    border-radius: 12px;
+  }
+  .growth-bar {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    border: 1.5px solid rgba(120,45,220,0.2);
+    border-bottom: none;
+    position: relative;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 8px 0;
+    transform-origin: bottom center;
+  }
+  .growth-step.is-active .growth-bar {
+    opacity: 1;
+    box-shadow: 0 8px 28px rgba(120,45,220,0.18);
+    border-color: rgba(120,45,220,0.55);
+  }
+  .growth-step--1 .growth-bar {
+    height: 80px;
+    background: linear-gradient(180deg, rgba(120,45,220,0.18) 0%, rgba(120,45,220,0.06) 100%);
+    border-color: rgba(120,45,220,0.28);
+  }
+  .growth-step--2 .growth-bar {
+    height: 130px;
+    background: linear-gradient(180deg, rgba(120,45,220,0.24) 0%, rgba(120,45,220,0.08) 100%);
+    border-color: rgba(120,45,220,0.32);
+  }
+  .growth-step--3 .growth-bar {
+    height: 180px;
+    background: linear-gradient(180deg, rgba(120,45,220,0.32) 0%, rgba(120,45,220,0.10) 100%);
+    border-color: rgba(120,45,220,0.4);
+  }
+  .growth-step--4 .growth-bar {
+    height: 230px;
+    background: linear-gradient(180deg, rgba(160,60,200,0.28) 0%, rgba(255,122,0,0.10) 100%);
+    border-color: rgba(200,80,120,0.35);
+  }
+  .growth-step--5 .growth-bar {
+    height: 280px;
+    background: linear-gradient(180deg, rgba(255,122,0,0.30) 0%, rgba(255,122,0,0.08) 100%);
+    border-color: rgba(255,122,0,0.42);
+  }
+  .growth-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid rgba(120,45,220,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(120,45,220,0.1);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .growth-step.is-active .growth-icon-wrap {
+    transform: scale(1.08) translateY(-2px);
+    border-color: #782DDC;
+    box-shadow: 0 6px 18px rgba(120,45,220,0.25);
+  }
+  .growth-step--5.is-active .growth-icon-wrap {
+    border-color: #FF7A00;
+    box-shadow: 0 6px 18px rgba(255,122,0,0.25);
+  }
+  .growth-icon-wrap .material-symbols-outlined {
+    font-size: 26px;
+    color: #782DDC;
+    transition: color 0.3s ease;
+    font-variation-settings: 'FILL' 1;
+  }
+  .growth-step--5 .growth-icon-wrap .material-symbols-outlined { color: #FF7A00; }
+  .growth-num {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #782DDC, #FF7A00);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(120,45,220,0.4);
+  }
+  .growth-step--5 .growth-num { background: linear-gradient(135deg, #FF7A00, #f59e0b); }
+  .growth-label {
+    text-align: center;
+    height: var(--growth-label-h);
+    padding: 18px 4px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    position: relative;
+    z-index: 2;
+  }
+  .growth-label h4 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #782DDC;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+  }
+  .growth-label span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #9b8fad;
+    line-height: 1.2;
+  }
+  .growth-step--5 .growth-label h4 { color: #FF7A00; }
+  .growth-step.is-active .growth-label h4 { color: #240d48; }
+  .growth-step.is-active .growth-label span { color: #782DDC; }
+  .growth-ground {
+    position: absolute;
+    bottom: var(--growth-label-h);
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(120,45,220,0.12);
+    border-radius: 2px;
+    z-index: 1;
+    transform-origin: left center;
+    transform: scaleX(0);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .growth-ground-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, #782DDC 0%, #FF7A00 100%);
+    border-radius: 2px;
+    transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+  .growth-arrow-tip {
+    position: absolute;
+    bottom: var(--growth-label-h);
+    right: 0;
+    transform: translateX(12px) translateY(50%);
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .growth-panel {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid rgba(120,45,220,0.12);
+    border-radius: 18px;
+    padding: 20px 24px;
+    box-shadow: 0 8px 28px rgba(120,45,220,0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    min-height: 100px;
+    border-left: 4px solid #782DDC;
+    transition: border-left-color 0.35s ease;
+  }
+  .growth-panel.is-orange-accent { border-left-color: #FF7A00; }
+  .growth-panel.is-mid-accent { border-left-color: #b44d9a; }
+  .growth-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .growth-panel-counter {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: #782DDC;
+    background: rgba(120,45,220,0.08);
+    border: 1px solid rgba(120,45,220,0.15);
+    padding: 3px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .growth-panel-counter.is-orange { color: #FF7A00; background: rgba(255,122,0,0.1); border-color: rgba(255,122,0,0.2); }
+  .growth-panel-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(120,45,220,0.1);
+    color: #782DDC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+  .growth-panel-icon.is-orange {
+    background: rgba(255,122,0,0.12);
+    color: #FF7A00;
+  }
+  .growth-panel-icon.is-mid {
+    background: rgba(180,77,154,0.12);
+    color: #b44d9a;
+  }
+  .growth-panel-icon .material-symbols-outlined {
+    font-size: 26px;
+    font-variation-settings: 'FILL' 1;
+  }
+  .growth-panel-body { flex: 1; min-width: 0; }
+  .growth-panel-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9b8fad;
+    margin: 0;
+  }
+  .growth-panel-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1c1528;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .growth-panel-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: #782DDC;
+    margin: 0 0 8px;
+  }
+  .growth-panel.is-orange-accent .growth-panel-subtitle { color: #FF7A00; }
+  .growth-panel.is-mid-accent .growth-panel-subtitle { color: #b44d9a; }
+  .growth-panel-desc {
+    font-size: 14px;
+    color: #4b4455;
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .growth-wrap {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 8px;
+      min-height: unset;
+      padding-bottom: 16px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .growth-wrap::-webkit-scrollbar { display: none; }
+    .growth-step {
+      flex: 0 0 72px;
+      min-width: 72px;
+    }
+    .growth-step--1 .growth-bar,
+    .growth-step--2 .growth-bar,
+    .growth-step--3 .growth-bar,
+    .growth-step--4 .growth-bar,
+    .growth-step--5 .growth-bar {
+      height: 72px !important;
+      border-radius: 14px;
+      border-bottom: 1.5px solid rgba(120,45,220,0.2);
+      padding: 10px 6px;
+    }
+    .growth-label { display: none; }
+    .growth-icon-wrap { width: 44px; height: 44px; }
+    .growth-icon-wrap .material-symbols-outlined { font-size: 22px; }
+    .growth-ground, .growth-arrow-tip { display: none; }
+    .growth-panel {
+      margin-top: 16px;
+      padding: 18px 16px;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .growth-step, .growth-bar, .growth-icon-wrap, .growth-panel-icon { transition: none; }
+  }
+</style>
+
+<div class="growth-shell">
+  <div class="growth-wrap" id="growth-staircase" role="tablist" aria-label="Phương pháp luận 5 bước">
+    <div class="growth-ground" id="growth-ground" aria-hidden="true">
+      <div class="growth-ground-fill" id="growth-ground-fill"></div>
+    </div>
+
+    <button type="button" class="growth-step growth-step--1 is-active" data-step="0" role="tab" aria-selected="true"
+      data-title="Discovery" data-subtitle="Khảo sát nhu cầu" data-eyebrow="Bước 01" data-icon="search"
+      data-desc="Khảo sát nhu cầu và xác định bài toán kinh doanh cụ thể. Sunext lắng nghe trước, tư vấn sau.">
+      <div class="growth-bar">
+        <div class="growth-icon-wrap">
+          <span class="growth-num">1</span>
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </div>
+      <div class="growth-label"><h4>Discovery</h4><span>Khảo sát</span></div>
+    </button>
+
+    <button type="button" class="growth-step growth-step--2" data-step="1" role="tab" aria-selected="false"
+      data-title="Audit" data-subtitle="Đánh giá sẵn sàng" data-eyebrow="Bước 02" data-icon="analytics"
+      data-desc="Đánh giá hạ tầng dữ liệu và mức độ sẵn sàng công nghệ. Xác định đường nhanh nhất để ra kết quả.">
+      <div class="growth-bar">
+        <div class="growth-icon-wrap">
+          <span class="growth-num">2</span>
+          <span class="material-symbols-outlined">analytics</span>
+        </div>
+      </div>
+      <div class="growth-label"><h4>Audit</h4><span>Đánh giá</span></div>
+    </button>
+
+    <button type="button" class="growth-step growth-step--3" data-step="2" role="tab" aria-selected="false"
+      data-title="Train" data-subtitle="Đào tạo đội ngũ" data-eyebrow="Bước 03" data-icon="model_training"
+      data-desc="Đào tạo đội ngũ nòng cốt theo lộ trình tầng tương ứng. Chương trình thực chiến 100%, áp dụng ngay vào công việc.">
+      <div class="growth-bar">
+        <div class="growth-icon-wrap">
+          <span class="growth-num">3</span>
+          <span class="material-symbols-outlined">model_training</span>
+        </div>
+      </div>
+      <div class="growth-label"><h4>Train</h4><span>Đào tạo</span></div>
+    </button>
+
+    <button type="button" class="growth-step growth-step--4" data-step="3" role="tab" aria-selected="false"
+      data-title="Deploy" data-subtitle="Triển khai thực chiến" data-eyebrow="Bước 04" data-icon="rocket_launch"
+      data-desc="Triển khai MVP và các AI Agents chuyên biệt. Tự động hóa quy trình, đo lường hiệu quả sớm nhất có thể.">
+      <div class="growth-bar">
+        <div class="growth-icon-wrap">
+          <span class="growth-num">4</span>
+          <span class="material-symbols-outlined">rocket_launch</span>
+        </div>
+      </div>
+      <div class="growth-label"><h4>Deploy</h4><span>Triển khai</span></div>
+    </button>
+
+    <button type="button" class="growth-step growth-step--5" data-step="4" role="tab" aria-selected="false"
+      data-title="Review" data-subtitle="Đo lường & tối ưu" data-eyebrow="Bước 05" data-icon="insights"
+      data-desc="Đo lường hiệu quả (ROI) và tối ưu hóa liên tục. Vòng lặp cải tiến thường xuyên để AI ngày càng mạnh hơn.">
+      <div class="growth-bar">
+        <div class="growth-icon-wrap">
+          <span class="growth-num">5</span>
+          <span class="material-symbols-outlined">insights</span>
+        </div>
+      </div>
+      <div class="growth-label"><h4>Review</h4><span>Tối ưu</span></div>
+    </button>
+
+    <div class="growth-arrow-tip" id="growth-arrow-tip" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M4 20 L20 4" stroke="#782DDC" stroke-width="3" stroke-linecap="round"/>
+        <path d="M10 4 L20 4 L20 14" stroke="#782DDC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="growth-panel" id="growth-panel" role="tabpanel" aria-live="polite">
+    <div class="growth-panel-icon" id="growth-panel-icon-wrap">
+      <span class="material-symbols-outlined" id="growth-panel-icon">search</span>
+    </div>
+    <div class="growth-panel-body">
+      <div class="growth-panel-head">
+        <span class="growth-panel-eyebrow" id="growth-panel-eyebrow">Bước 01</span>
+        <span class="growth-panel-counter" id="growth-panel-counter">01 / 05</span>
+      </div>
+      <h3 class="growth-panel-title" id="growth-panel-title">Discovery</h3>
+      <p class="growth-panel-subtitle" id="growth-panel-subtitle">Khảo sát nhu cầu</p>
+      <p class="growth-panel-desc" id="growth-panel-desc">Khảo sát nhu cầu và xác định bài toán kinh doanh cụ thể. Sunext lắng nghe trước, tư vấn sau.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var staircase = document.getElementById('growth-staircase');
+  if (!staircase) return;
+
+  var steps = staircase.querySelectorAll('.growth-step');
+  var panelEyebrow = document.getElementById('growth-panel-eyebrow');
+  var panelTitle = document.getElementById('growth-panel-title');
+  var panelSubtitle = document.getElementById('growth-panel-subtitle');
+  var panelDesc = document.getElementById('growth-panel-desc');
+  var panelIcon = document.getElementById('growth-panel-icon');
+  var panelIconWrap = document.getElementById('growth-panel-icon-wrap');
+  var panelCounter = document.getElementById('growth-panel-counter');
+  var panel = document.getElementById('growth-panel');
+  var groundFill = document.getElementById('growth-ground-fill');
+  var activeIdx = 0;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pad2(n) { return n < 10 ? '0' + n : String(n); }
+
+  function selectStep(idx) {
+    if (idx < 0 || idx >= steps.length) return;
+    activeIdx = idx;
+    steps.forEach(function(step, i) {
+      var on = i === idx;
+      step.classList.toggle('is-active', on);
+      step.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    var current = steps[idx];
+    if (!current) return;
+    panelEyebrow.textContent = current.dataset.eyebrow;
+    panelTitle.textContent = current.dataset.title;
+    if (panelSubtitle) panelSubtitle.textContent = current.dataset.subtitle || '';
+    panelDesc.textContent = current.dataset.desc;
+    panelIcon.textContent = current.dataset.icon;
+    panelCounter.textContent = pad2(idx + 1) + ' / 05';
+    panelIconWrap.classList.toggle('is-orange', idx === 4);
+    panelIconWrap.classList.toggle('is-mid', idx === 3);
+    panelCounter.classList.toggle('is-orange', idx === 4);
+    panel.classList.toggle('is-orange-accent', idx === 4);
+    panel.classList.toggle('is-mid-accent', idx === 3);
+    if (groundFill) {
+      groundFill.style.width = ((idx + 1) / steps.length * 100) + '%';
+    }
+    if (typeof gsap !== 'undefined' && panel && !reduced) {
+      gsap.fromTo(panel,
+        { autoAlpha: 0.55, y: 8 },
+        { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power2.out', overwrite: true }
+      );
+    }
+  }
+
+  steps.forEach(function(step) {
+    var idx = parseInt(step.dataset.step, 10);
+    step.addEventListener('click', function() { selectStep(idx); });
+    step.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectStep(idx);
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        selectStep(Math.min(idx + 1, steps.length - 1));
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        selectStep(Math.max(idx - 1, 0));
+      }
+    });
+  });
+
+  selectStep(0);
+})();
+</script>
+
+</div></section>
+<!-- Security -->
+<section class="bg-inverse-surface py-stack-xl">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col md:grid md:grid-cols-2 gap-stack-lg items-center">
+    <div class="text-white">
+      <h2 class="text-h2 mb-6 text-white">Bảo mật dữ liệu là nguyên tắc thiết kế</h2>
+      <p class="text-on-primary-container mb-stack-md leading-relaxed">Dữ liệu là tài sản quý giá nhất của doanh nghiệp. Mọi giải pháp AI của Sunext được xây trên nền an toàn thông tin khắt khe nhất: NDA trước khi tư vấn, không dùng dữ liệu khách hàng để train model.</p>
+      <a class="inline-flex items-center gap-4 py-4 px-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors" href="/security/">
+        <span class="material-symbols-outlined text-secondary-container" style="font-variation-settings:'FILL' 1;">shield</span>
+        <span class="font-bold">Xem cam kết bảo mật của Sunext</span></a></div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="glass-card p-6 rounded-2xl"><span class="material-symbols-outlined text-primary-fixed-dim mb-4">vpn_key</span><h4 class="text-white font-bold mb-2">Private LLM</h4><p class="text-xs text-on-primary-container">Mô hình chạy riêng trên hạ tầng doanh nghiệp, dữ liệu không rời tường lửa.</p></div><div class="glass-card p-6 rounded-2xl"><span class="material-symbols-outlined text-primary-fixed-dim mb-4">encrypted</span><h4 class="text-white font-bold mb-2">E2E Encryption</h4><p class="text-xs text-on-primary-container">Dữ liệu mã hóa đầu cuối trong toàn bộ quá trình xử lý và lưu trữ.</p></div><div class="glass-card p-6 rounded-2xl"><span class="material-symbols-outlined text-primary-fixed-dim mb-4">history</span><h4 class="text-white font-bold mb-2">Audit Logs</h4><p class="text-xs text-on-primary-container">Mọi tương tác với AI được ghi lại và kiểm chứng được.</p></div><div class="glass-card p-6 rounded-2xl"><span class="material-symbols-outlined text-primary-fixed-dim mb-4">account_tree</span><h4 class="text-white font-bold mb-2">Anonymization</h4><p class="text-xs text-on-primary-container">Tự động ẩn danh thông tin nhạy cảm trước khi đưa vào mô hình.</p></div>
+    </div>
+  </div>
+</section>
+<section class="py-stack-xl" id="case-studies-section"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<h2 class="text-h2 mb-stack-lg text-center">Dự án chuyển đổi AI</h2>
+<div class="case-studies-cards">
+<a href="/case-studies/" class="case-study-card block bg-white border border-outline-variant/30 rounded-[24px] enterprise-shadow p-8">
+  <span class="text-primary font-bold text-xs uppercase mb-3 block">Bảo hiểm · Đào tạo AI quy mô quốc gia</span>
+  <h3 class="text-h3-card mb-4">Prudential — Ngày Mind: đào tạo AI và xây dựng agent nội bộ</h3>
+  <figure class="case-study-visual mb-5">
+    <img src="/images/case-studies/retail-hr-ai.png" alt="Chương trình đào tạo AI và agent nội bộ cho đội ngũ tư vấn bảo hiểm" width="640" height="360" loading="lazy" decoding="async"/>
+  </figure>
+  <p class="text-sm text-on-surface-variant mb-5 leading-relaxed">Masterclass online quy mô lớn kết hợp AI Agent nội bộ cho đội ngũ tư vấn bảo hiểm, tập trung quy trình tư vấn có tác động cao.</p>
+  <p class="text-sm font-semibold text-on-surface mb-5">Nâng cao chất lượng tư vấn và hỗ trợ đội ngũ trên toàn quốc.</p>
+  <span class="text-primary font-bold text-sm inline-flex items-center gap-1">Xem dự án <span class="material-symbols-outlined text-[16px]">arrow_forward</span></span></a>
+<a href="/case-studies/" class="case-study-card block bg-white border border-outline-variant/30 rounded-[24px] enterprise-shadow p-8">
+  <span class="text-primary font-bold text-xs uppercase mb-3 block">Tài chính · Private Cloud</span>
+  <h3 class="text-h3-card mb-4">Chatbot nội bộ cho 20 công ty tài chính tại Nhật Bản</h3>
+  <figure class="case-study-visual mb-5">
+    <img src="/images/case-studies/content-marketing.png" alt="Chatbot nội bộ khai thác tri thức trên Private Cloud" width="640" height="360" loading="lazy" decoding="async"/>
+  </figure>
+  <p class="text-sm text-on-surface-variant mb-5 leading-relaxed">Triển khai chatbot nội bộ trên Private Cloud với RAG, OpenSearch và Code Interpreter cho môi trường yêu cầu bảo mật cao.</p>
+  <p class="text-sm font-semibold text-on-surface mb-5">Tra cứu tài liệu, quản lý tri thức và phân tích dữ liệu an toàn.</p>
+  <span class="text-primary font-bold text-sm inline-flex items-center gap-1">Xem dự án <span class="material-symbols-outlined text-[16px]">arrow_forward</span></span></a>
+<a href="/case-studies/" class="case-study-card block bg-white border border-outline-variant/30 rounded-[24px] enterprise-shadow p-8">
+  <span class="text-primary font-bold text-xs uppercase mb-3 block">Nhật Bản · AI Sales</span>
+  <h3 class="text-h3-card mb-4">Trợ lý AI Sales: transcript, tóm tắt và tuân thủ</h3>
+  <figure class="case-study-visual mb-5">
+    <img src="/images/case-studies/manufacturing-auditor.png" alt="Trợ lý AI Sales hỗ trợ hội thoại và tuân thủ" width="640" height="360" loading="lazy" decoding="async"/>
+  </figure>
+  <p class="text-sm text-on-surface-variant mb-5 leading-relaxed">Ghi âm, speech-to-text, tóm tắt cuộc họp và phân tích hội thoại cho Sales/CS, kèm Compliance Detection.</p>
+  <p class="text-sm font-semibold text-on-surface mb-5">Nhận diện tín hiệu mua hàng, cơ hội chốt sales và rủi ro tuân thủ kịp thời.</p>
+  <span class="text-primary font-bold text-sm inline-flex items-center gap-1">Xem dự án <span class="material-symbols-outlined text-[16px]">arrow_forward</span></span></a></div>
+<div class="text-center mt-stack-md"><a class="text-primary font-bold inline-flex items-center gap-2" href="/case-studies/">Xem tất cả dự án <span class="material-symbols-outlined">arrow_forward</span></a></div></div></section>
+
+<section class="py-stack-xl"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<h2 class="text-h2 mb-stack-lg text-center">Đội ngũ lãnh đạo</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="text-center bg-white rounded-[20px] p-8 enterprise-shadow border border-outline-variant/30">
+  <div class="relative w-24 h-24 mx-auto mb-6">
+    <div class="w-24 h-24 rounded-full bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center text-primary font-extrabold text-2xl" aria-hidden="true">LT</div>
+    <span class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-cta flex items-center justify-center shadow-md"><span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1;">verified</span></span>
+  </div>
+  <h4 class="text-h3-card">Lý Đức Toàn</h4><p class="text-primary font-bold mb-3">CEO</p>
+  <p class="text-sm text-on-surface-variant">25 năm kinh nghiệm sales B2B và lãnh đạo bán hàng tại các tập đoàn đa quốc gia như Tetra Pak và Multi-Color Corporation.</p>
+</div>
+<div class="text-center bg-white rounded-[20px] p-8 enterprise-shadow border border-outline-variant/30">
+  <div class="relative w-24 h-24 mx-auto mb-6">
+    <div class="w-24 h-24 rounded-full bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center text-primary font-extrabold text-2xl" aria-hidden="true">NH</div>
+    <span class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-primary flex items-center justify-center shadow-md"><span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1;">psychology</span></span>
+  </div>
+  <h4 class="text-h3-card">Nguyễn Phước Vĩnh Hưng</h4><p class="text-primary font-bold mb-3">Chief AI Officer</p>
+  <p class="text-sm text-on-surface-variant">10 năm chiến lược, vận hành và chuyển đổi AI đa ngành. Triển khai chuyển đổi AI cho hơn 30 doanh nghiệp từ năm 2023.</p>
+</div>
+<div class="text-center bg-white rounded-[20px] p-8 enterprise-shadow border border-outline-variant/30">
+  <div class="relative w-24 h-24 mx-auto mb-6">
+    <div class="w-24 h-24 rounded-full bg-primary/10 ring-2 ring-primary/20 flex items-center justify-center text-primary font-extrabold text-2xl" aria-hidden="true">LN</div>
+    <span class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center shadow-md"><span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings:'FILL' 1;">code</span></span>
+  </div>
+  <h4 class="text-h3-card">Lê Hoài Nam</h4><p class="text-primary font-bold mb-3">Chief Technology Officer</p>
+  <p class="text-sm text-on-surface-variant">Hơn 15 năm xây dựng phần mềm cho ngân hàng, chứng khoán và bảo hiểm tại Nhật Bản; dẫn dắt đội ngũ hơn 100 kỹ sư.</p>
+</div>
+</div>
+<div class="text-center mt-stack-md"><a class="text-primary font-bold inline-flex items-center gap-2" href="/about/">Xem toàn bộ đội ngũ lãnh đạo <span class="material-symbols-outlined">arrow_forward</span></a></div>
+</div></section>
+<section class="py-stack-xl"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="bg-inverse-surface rounded-[28px] flex flex-col lg:grid lg:grid-cols-2" id="strategy-call">
+  <div class="p-8 md:p-stack-lg text-white flex flex-col justify-center">
+    <h2 class="text-h2 mb-6">Đặt lịch tư vấn chiến lược</h2>
+    <p class="text-lg opacity-80 mb-stack-md">30 phút trao đổi 1-1 miễn phí với chuyên gia Sunext để xác định lộ trình AI phù hợp nhất với doanh nghiệp của bạn.</p>
+    <div class="space-y-5">
+      <div class="flex items-center gap-4"><span class="material-symbols-outlined text-secondary-container">verified</span><span class="font-bold">Cam kết NDA trước khi tư vấn</span></div>
+      <div class="flex items-center gap-4"><span class="material-symbols-outlined text-secondary-container">schedule</span><span class="font-bold">Phản hồi trong 24 giờ làm việc</span></div>
+      <div class="flex items-center gap-4"><span class="material-symbols-outlined text-secondary-container">call</span><a href="tel:0909134153" class="font-bold hover:text-secondary-container transition-colors">0909 134 153</a></div>
+      <div class="flex items-center gap-4"><span class="material-symbols-outlined text-secondary-container">mail</span><a href="mailto:contact@sunext.vn" class="font-bold hover:text-secondary-container transition-colors">contact@sunext.vn</a></div>
+    </div>
+  </div>
+  <div class="bg-white p-8 md:p-stack-lg rounded-b-[28px] lg:rounded-r-[28px] lg:rounded-bl-none">
+    <form class="space-y-4" data-strategy-form>
+      <input type="hidden" name="interested_program" value=""/>
+      <input type="hidden" name="interested_tier" value=""/>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Họ và tên *</label>
+          <input required class="w-full h-[50px] rounded-[14px] border-outline-variant focus:ring-primary/10 focus:border-primary px-4" placeholder="Nguyễn Văn A" type="text" name="fullName"/></div>
+        <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Chức vụ *</label>
+          <input required class="w-full h-[50px] rounded-[14px] border-outline-variant focus:ring-primary/10 focus:border-primary px-4" placeholder="CEO / HR Director..." type="text" name="jobTitle"/></div>
+      </div>
+      <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Email công ty *</label>
+        <input required class="w-full h-[50px] rounded-[14px] border-outline-variant focus:ring-primary/10 focus:border-primary px-4" placeholder="name@company.com" type="email" name="email"/>
+        <p class="hidden text-error text-xs mt-1 font-bold" data-email-err>Vui lòng dùng email công ty (không dùng Gmail/Yahoo/Hotmail...).</p></div>
+      <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Tên doanh nghiệp *</label>
+        <input required class="w-full h-[50px] rounded-[14px] border-outline-variant focus:ring-primary/10 focus:border-primary px-4" placeholder="Công ty ABC" type="text" name="companyName"/></div>
+      <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Ngày mong muốn tư vấn *</label>
+        <div class="animated-calendar" data-animated-calendar data-placeholder="Chọn ngày" data-radius="14">
+          <input type="hidden" name="preferredDate" required/>
+        </div>
+      </div>
+      <div><label class="block text-xs font-bold text-on-surface-variant mb-2 uppercase">Vấn đề đang gặp (Pain point) *</label>
+        <textarea required class="w-full h-24 rounded-[14px] border-outline-variant focus:ring-primary/10 focus:border-primary px-4 py-3" name="painPoint" placeholder="Ví dụ: Cần tự động hóa quy trình sàng lọc CV cho phòng HR..."></textarea></div>
+      <label class="flex items-start gap-3 text-xs text-on-surface-variant">
+        <input type="checkbox" name="consent" required class="mt-0.5 rounded border-outline-variant text-primary focus:ring-primary/20"/>
+        Tôi đồng ý nhận thông tin tư vấn từ Sunext theo <a class="underline text-primary" href="/privacy/">Chính sách bảo mật</a>.</label>
+      <button class="btn-shine w-full bg-cta text-white h-[56px] rounded-[14px] font-bold text-[17px] shadow-lg hover:shadow-cta/40 transition-all" type="submit">Gửi yêu cầu tư vấn</button>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var PERSONAL = /@(gmail|yahoo|hotmail|outlook|icloud|proton|aol)\./i;
+  document.querySelectorAll("[data-strategy-form]").forEach(function(f){
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var em = f.querySelector('[name=email]'); var err = f.querySelector("[data-email-err]");
+      if (PERSONAL.test(em.value)) { err.classList.remove("hidden"); em.focus(); return; }
+      err.classList.add("hidden");
+      var btn = f.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Đang gửi...";
+      setTimeout(function(){ window.location.href = "/thank-you/"; }, 800);
+    });
+  });
+})();
+</script></div></section>
+
+<section class="py-stack-xl">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+    <div class="brand-gradient rounded-[28px] p-stack-lg text-center text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div class="relative z-10">
+        <h2 class="text-h2 mb-8">Sẵn sàng để trở thành doanh nghiệp AI-First?</h2>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a class="bg-white text-primary px-10 py-4 rounded-[14px] font-bold text-[18px] shadow-2xl hover:-translate-y-1 transition-all" href="/ai-maturity-assessment/">Làm AI Assessment</a>
+          <a class="border-2 border-white text-white px-10 py-4 rounded-[14px] font-bold text-[18px] hover:bg-white/10 transition-all" href="/contact/">Đặt lịch tư vấn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<nav class="fixed bottom-0 left-0 w-full z-50 md:hidden bg-surface/95 backdrop-blur-sm border-t border-outline-variant/20 p-4 shadow-[0px_-10px_30px_rgba(24,0,61,0.08)]">
+  <a class="bg-cta text-white w-full py-4 rounded-xl flex items-center justify-center font-bold uppercase tracking-wider gap-2 active:scale-95 transition-all" href="/ai-maturity-assessment/">
+    <span class="material-symbols-outlined">rocket_launch</span> Làm Assessment</a>
+</nav>
+</main>
+<footer class="bg-inverse-surface text-surface-variant pt-stack-xl pb-stack-md border-t border-white/5 mt-stack-xl">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-5 gap-gutter">
+    <div class="md:col-span-2 space-y-6">
+      <a class="text-h3-card font-extrabold flex items-center gap-1 gradient-text" href="/">Sunext</a>
+      <p class="text-surface-variant/90 max-w-sm leading-relaxed">Sunext đồng hành doanh nghiệp chuyển đổi AI: từ đánh giá và chiến lược đến đào tạo đội ngũ và triển khai giải pháp có kết quả đo lường được.</p>
+      <div class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-secondary-container">verified_user</span> NDA-first · Triển khai an toàn · Kết quả đo lường được</div>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-6">Giải pháp</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/">Giải pháp AI</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/private-llm-rag/">Private LLM & RAG</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/ai-agent-chatbot/">AI Agent & Chatbot</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/ai-maturity-assessment/">AI Maturity Assessment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-6">Chương trình</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/">Tất cả chương trình</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/ai-in-business/">AI in Business</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/agentics-ai-automations/">Agentics AI Automations</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-bold mb-6">Công ty</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a class="hover:text-primary-fixed transition-colors" href="/about/">Về chúng tôi</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/security/">Cam kết bảo mật</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/khach-hang-doi-tac/">Khách hàng & Đối tác</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/faq/">FAQ</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/contact/">Liên hệ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-contact-bar max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-md flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-10 text-sm">
+    <a href="tel:0909134153" class="inline-flex items-center gap-2 hover:text-primary-fixed transition-colors">
+      <span class="material-symbols-outlined text-secondary-container text-[18px]">call</span>
+      <span class="font-bold">0909 134 153</span>
+    </a>
+    <a href="mailto:contact@sunext.vn" class="inline-flex items-center gap-2 hover:text-primary-fixed transition-colors">
+      <span class="material-symbols-outlined text-secondary-container text-[18px]">mail</span>
+      <span class="font-bold">contact@sunext.vn</span>
+    </a>
+    <span class="inline-flex items-start gap-2 max-w-md">
+      <span class="material-symbols-outlined text-secondary-container text-[18px] mt-0.5">location_on</span>
+      <span>Tầng 2, 68 Nguyễn Huệ, Phường Sài Gòn, TP. Hồ Chí Minh</span>
+    </span>
+  </div>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-lg pt-stack-sm border-t border-white/5 text-[12px] opacity-60 flex flex-col md:flex-row justify-between gap-4">
+    <p>© 2026 Sunext AI Transformation Consulting. All rights reserved.</p>
+    <p><a class="hover:underline" href="/privacy/">Chính sách bảo mật</a> · <a class="hover:underline" href="/terms/">Điều khoản</a> · Website không phải LMS. LMS dành riêng cho học viên doanh nghiệp.</p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll("[data-acc]").forEach(function(btn){
+  btn.addEventListener("click", function(){ btn.nextElementSibling.classList.toggle("hidden");
+    var ic = btn.querySelector(".material-symbols-outlined"); if(ic) ic.classList.toggle("rotate-180"); });
+});
+</script>
+
+<!-- Taste-Skill: Scroll Reveal & Micro-interaction System -->
+<script>
+(function(){
+  /* ── 1. Scroll Reveal via IntersectionObserver ── */
+  var revealClasses = ['reveal','reveal-up','reveal-scale','reveal-left','reveal-right','section-eyebrow'];
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  /* Auto-tag elements for reveal based on their role */
+  function initReveal(){
+    /* Section headings */
+    document.querySelectorAll('h2, h3').forEach(function(el, i){
+      if(!el.closest('.hero-dark') && !el.closest('#programs-scroll-section') && !el.closest('#dept-tabs-section') && !el.classList.contains('reveal') && !el.classList.contains('reveal-up')){
+        el.classList.add('reveal-up');
+        io.observe(el);
+      }
+    });
+
+    /* Cards - tier cards, program cards, case study cards */
+    document.querySelectorAll('.enterprise-shadow, [class*="rounded-[24px]"], [class*="rounded-[20px]"]').forEach(function(el, i){
+      if(!el.closest('.hero-dark') && !el.classList.contains('case-study-card') && !el.classList.contains('testimonial-card') && !el.closest('.assessment-flip-card')){
+        el.classList.add('reveal-scale', 'card-hover');
+        el.style.transitionDelay = Math.min(i % 4, 3) * 80 + 'ms';
+        io.observe(el);
+      }
+    });
+
+    /* Paragraph text blocks in sections */
+    document.querySelectorAll('section p, section ul, section .space-y-3').forEach(function(el){
+      if(!el.closest('.hero-dark') && !el.closest('#programs-scroll-section') && !el.closest('#dept-tabs-section') && !el.classList.contains('reveal') && !el.parentElement.classList.contains('reveal')){
+        el.classList.add('reveal');
+        io.observe(el);
+      }
+    });
+
+    /* Trust items */
+    document.querySelectorAll('.trust-item').forEach(function(el){ io.observe(el); });
+
+    /* Eyebrow labels */
+    document.querySelectorAll('.section-eyebrow').forEach(function(el){ io.observe(el); });
+
+    /* CTA links */
+    document.querySelectorAll('a[href="/ai-maturity-assessment/"], a[href="/contact/"]').forEach(function(el){
+      el.classList.add('btn-pulse');
+    });
+  }
+
+  /* ── 2. Stagger grid children on scroll ── */
+  function initStagger(){
+    document.querySelectorAll('section .grid, section [class*="grid-cols"]').forEach(function(grid){
+      if(grid.closest('.hero-dark') || grid.closest('#case-studies-section') || grid.closest('#programs-scroll-section')) return;
+      var children = Array.from(grid.children);
+      if(children.length < 2 || children.length > 9) return;
+      children.forEach(function(child, i){
+        child.classList.add('reveal-scale');
+        child.style.transitionDelay = (i * 75) + 'ms';
+        io.observe(child);
+      });
+    });
+  }
+
+  /* ── 3. Animated number counter ── */
+  function countUp(el, target, duration){
+    var start = null;
+    var raf = function(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(e * target);
+      el.textContent = val + (el.dataset.suffix || '');
+      if(p < 1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  var numIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target;
+        var target = parseFloat(el.dataset.count);
+        if(!isNaN(target)) countUp(el, target, 1800);
+        numIo.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  /* Tag stat numbers */
+  document.querySelectorAll('[data-count]').forEach(function(el){ numIo.observe(el); });
+
+  /* ── 4. Spotlight: card tracks mouse for subtle 3D tilt ── */
+  function initTilt(){
+    document.querySelectorAll('.card-hover').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = 'translateY(-6px) scale(1.01) rotateX(' + (-y * 5) + 'deg) rotateY(' + (x * 5) + 'deg)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ── 5. Marquee pause on hover ── */
+  document.querySelectorAll('[class*="animate-marquee"], .ticker-track').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ el.style.animationPlayState = 'paused'; });
+    el.addEventListener('mouseleave', function(){ el.style.animationPlayState = 'running'; });
+  });
+
+  /* ── 6. FAQ smooth accordion ── */
+  document.querySelectorAll('[data-acc]').forEach(function(btn){
+    var panel = btn.nextElementSibling;
+    if(panel){
+      panel.style.transition = 'max-height 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
+      panel.style.overflow = 'hidden';
+      panel.style.maxHeight = '0';
+      panel.style.opacity = '0';
+      panel.classList.remove('hidden');
+      btn._open = false;
+      btn.addEventListener('click', function(){
+        btn._open = !btn._open;
+        if(btn._open){
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          panel.style.opacity = '1';
+        } else {
+          panel.style.maxHeight = '0';
+          panel.style.opacity = '0';
+        }
+        var ic = btn.querySelector('.material-symbols-outlined');
+        if(ic) ic.style.transform = btn._open ? 'rotate(180deg)' : '';
+        ic && (ic.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1)');
+      });
+    }
+  });
+
+  /* ── Init all on DOM ready ── */
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ initReveal(); initStagger(); setTimeout(initTilt, 400); });
+  } else {
+    initReveal(); initStagger(); setTimeout(initTilt, 400);
+  }
+})();
+</script>
+
+<!-- Morph Scroll Effect for Lộ trình 6 bước cards -->
+<script>
+(function(){
+  var SPRING = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+  function spawnParticle(card) {
+    var colors = ['#782DDC','#9b4dff','#FF7A00','#a855f7','#f97316'];
+    for (var p = 0; p < 6; p++) {
+      (function(idx) {
+        var dot = document.createElement('span');
+        dot.style.cssText = [
+          'position:absolute',
+          'width:' + (4 + Math.random()*5) + 'px',
+          'height:' + (4 + Math.random()*5) + 'px',
+          'background:' + colors[idx % colors.length],
+          'border-radius:50%',
+          'pointer-events:none',
+          'z-index:10',
+          'left:' + (10 + Math.random()*80) + '%',
+          'top:' + (10 + Math.random()*80) + '%',
+          'opacity:0',
+          'transform:scale(0)',
+          'transition:opacity 0.4s ease, transform 0.6s ' + SPRING,
+          'will-change:transform,opacity'
+        ].join(';');
+        card.appendChild(dot);
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            var tx = (Math.random()-0.5)*80 + 'px';
+            var ty = (Math.random()-0.5)*80 + 'px';
+            dot.style.opacity = '1';
+            dot.style.transform = 'scale(1) translate(' + tx + ',' + ty + ')';
+            setTimeout(function(){
+              dot.style.opacity = '0';
+              dot.style.transform = 'scale(0) translate(' + tx + ',' + ty + ')';
+              setTimeout(function(){ dot.remove(); }, 500);
+            }, 350 + idx * 60);
+          });
+        });
+      })(p);
+    }
+  }
+
+  function initMorphCards() {
+    var cards = document.querySelectorAll('.morph-card');
+    if (!cards.length) return;
+
+    /* Group by rows: first 3 cards, then last 3 */
+    var rows = [[].slice.call(cards, 0, 3), [].slice.call(cards, 3, 6)];
+
+    rows.forEach(function(rowCards) {
+      var rowObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var card = entry.target;
+            card.classList.add('morph-visible');
+            /* Delay glow after morph in */
+            var idx = parseInt(card.getAttribute('data-morph-index') || '0') % 3;
+            setTimeout(function(){
+              card.classList.add('morph-glow');
+              spawnParticle(card);
+            }, 500 + idx * 110);
+            rowObserver.unobserve(card);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+      rowCards.forEach(function(card) {
+        /* Remove any conflicting reveal classes added by the general initReveal */
+        card.classList.remove('reveal-scale', 'reveal', 'reveal-up', 'visible');
+        card.style.transitionDelay = '';
+        rowObserver.observe(card);
+      });
+    });
+
+    /* Hover tilt for morph cards */
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        if (!card.classList.contains('morph-visible')) return;
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width  - 0.5;
+        var y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = [
+          'perspective(900px)',
+          'rotateX(' + (-y * 7) + 'deg)',
+          'rotateY(' + (x * 7) + 'deg)',
+          'translateY(-8px)',
+          'scale(1.02)'
+        ].join(' ');
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* Run after general initReveal so we can override class assignments */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(initMorphCards, 50);
+    });
+  } else {
+    setTimeout(initMorphCards, 50);
+  }
+})();
+</script>
+
+<!-- Orbit hero animation -->
+<script>
+(function(){
+  var ORBITS = [
+    { size:353, dir:'left',  dur:32 },
+    { size:501, dir:'right', dur:44 },
+    { size:649, dir:'right', dur:56 },
+    { size:797, dir:'left',  dur:68 },
+  ];
+
+  // AI tool icons via SimpleIcons CDN
+  var AI_TOOLS = [
+    { name:'ChatGPT',    bg:'#10A37F', src:'https://cdn.simpleicons.org/openai/ffffff',            orbit:1, deg:80,  r:177, sz:58, shape:'o-square', glow:'glow-green',  delay:0.6  },
+    { name:'Gemini',     bg:'#4285F4', src:'https://cdn.simpleicons.org/googlegemini/ffffff',       orbit:1, deg:260, r:177, sz:58, shape:'o-round',  glow:'glow-blue',   delay:0.9  },
+    { name:'Claude',     bg:'#D97757', src:'https://cdn.simpleicons.org/anthropic/ffffff',          orbit:2, deg:40,  r:251, sz:66, shape:'o-round',  glow:'glow-orange', delay:1.1  },
+    { name:'Perplexity', bg:'#1C1C1C', src:'https://cdn.simpleicons.org/perplexity/ffffff',         orbit:2, deg:160, r:251, sz:58, shape:'o-square', glow:'glow-teal',   delay:1.3  },
+    { name:'Midjourney', bg:'#000000', src:'https://cdn.simpleicons.org/midjourney/ffffff',         orbit:2, deg:290, r:251, sz:66, shape:'o-squelg', glow:'glow-pink',   delay:1.5  },
+    { name:'Make',       bg:'#6D00CC', src:'https://cdn.simpleicons.org/make/ffffff',               orbit:3, deg:70,  r:325, sz:58, shape:'o-squelg', glow:'glow-purple', delay:1.7  },
+    { name:'n8n',        bg:'#EA4B20', src:'https://cdn.simpleicons.org/n8n/ffffff',                orbit:3, deg:210, r:325, sz:66, shape:'o-square', glow:'glow-orange', delay:1.9  },
+    { name:'Cursor',     bg:'#1A1A2E', src:'https://cdn.simpleicons.org/cursor/ffffff',             orbit:4, deg:30,  r:399, sz:60, shape:'o-round',  glow:'glow-blue',   delay:2.1  },
+    { name:'Copilot',    bg:'#0078D4', src:'https://cdn.simpleicons.org/microsoftcopilot/ffffff',   orbit:4, deg:180, r:399, sz:66, shape:'o-squelg', glow:'glow-blue',   delay:2.35 },
+  ];
+
+  // 16-ray SVG: 8 long + 8 short alternating
+  function makeSunRays(size, longLen, shortLen, color) {
+    var c = size / 2;
+    var rects = '';
+    for (var i = 0; i < 16; i++) {
+      var isLong = i % 2 === 0;
+      var len = isLong ? longLen : shortLen;
+      var w = isLong ? 5 : 3.5;
+      rects += '<rect x="'+(c-w/2)+'" y="8" width="'+w+'" height="'+len+'" rx="'+(w/2)+'" transform="rotate('+(i*22.5)+' '+c+' '+c+')" fill="'+color+'" opacity="'+(isLong?'0.6':'0.38')+'"/>';
+    }
+    return '<svg viewBox="0 0 '+size+' '+size+'" xmlns="http://www.w3.org/2000/svg">'+rects+'</svg>';
+  }
+
+  var wrap = document.getElementById('orbits-hero');
+  if (!wrap) return;
+
+  var scene = document.createElement('div');
+  scene.className = 'orbits-scene';
+  wrap.appendChild(scene);
+
+  ORBITS.forEach(function(orb, i){
+    var idx = i + 1;
+    var spinClass    = orb.dir === 'left' ? 'o-spin-ccw'   : 'o-spin-cw';
+    var counterClass = orb.dir === 'left' ? 'o-counter-cw' : 'o-counter-ccw';
+
+    var ring = document.createElement('div');
+    ring.className = 'o-ring ' + spinClass;
+    ring.style.cssText = 'width:'+orb.size+'px;height:'+orb.size+'px;animation-duration:'+orb.dur+'s';
+
+    // Sun center on orbit 1
+    if (idx === 1) {
+      var center = document.createElement('div');
+      center.className = 'o-center ' + counterClass;
+      center.style.animationDuration = orb.dur + 's';
+      center.innerHTML =
+        '<div class="sun-core">'
+        + '<div class="sun-halo"></div>'
+        + '<div class="sun-rays-wrap">'+makeSunRays(280, 58, 36, 'rgba(255,210,60,0.7)')+'</div>'
+        + '<div class="sun-rays-inner-wrap">'+makeSunRays(240, 42, 26, 'rgba(255,160,30,0.5)')+'</div>'
+        + '<div class="sun-ball">'
+        + '<span class="o-count-num" id="o-count" style="font-size:54px;font-weight:900;color:#fff;line-height:1;text-shadow:0 2px 10px rgba(120,30,0,0.4)">0</span>'
+        + '<span class="o-count-lbl" style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.92);letter-spacing:0.06em;text-transform:uppercase;text-align:center;text-shadow:0 1px 4px rgba(100,20,0,0.35)">Tầng Lộ Trình</span>'
+        + '</div>'
+        + '</div>';
+      ring.appendChild(center);
+    }
+
+    // AI tool icons for this orbit
+    AI_TOOLS.filter(function(a){ return a.orbit === idx; }).forEach(function(a){
+      var pos = document.createElement('div');
+      pos.className = 'o-avatar-pos';
+      pos.style.transform = 'translate(-50%,-50%) rotate('+a.deg+'deg) translate('+a.r+'px) rotate('+(- a.deg)+'deg)';
+
+      var up = document.createElement('div');
+      up.className = 'o-avatar-upright ' + counterClass;
+      up.style.animationDuration = orb.dur + 's';
+
+      var icon = document.createElement('div');
+      icon.className = 'o-avatar ai-tool-icon ' + a.shape + ' ' + a.glow;
+      icon.title = a.name;
+      icon.style.cssText = 'width:'+a.sz+'px;height:'+a.sz+'px;background:'+a.bg+';animation-delay:'+a.delay+'s;opacity:0;animation:o-fly-in 0.9s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+a.delay+'s';
+
+      var logo = document.createElement('img');
+      logo.src = a.src;
+      logo.alt = a.name;
+      logo.style.cssText = 'width:62%;height:62%;object-fit:contain;display:block;';
+      // Fallback: show tool name initial if logo fails
+      logo.onerror = function() {
+        icon.innerHTML = '<span style="color:#fff;font-weight:900;font-size:'+(a.sz*0.36)+'px;font-family:Arial;letter-spacing:-0.02em">'+a.name.charAt(0)+'</span>';
+      };
+
+      icon.appendChild(logo);
+      up.appendChild(icon);
+      pos.appendChild(up);
+      ring.appendChild(pos);
+    });
+
+    scene.appendChild(ring);
+  });
+
+  // Count-up to 6
+  var el = document.getElementById('o-count');
+  if (el) {
+    setTimeout(function(){
+      var start = null;
+      function tick(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / 2000, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * 6);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, 1200);
+  }
+})();
+</script>
+<!-- Marquee: AI tool logos (rendered twice for seamless loop) -->
+<script>
+(function(){
+  var track = document.getElementById('ai-marquee');
+  if (!track) return;
+  var LOGOS = [
+    { name:'ChatGPT',    slug:'openai',        color:'10A37F', g:'linear-gradient(135deg,#10a37f,#0d8f6f)' },
+    { name:'Gemini',     slug:'googlegemini',  color:'4285F4', g:'linear-gradient(135deg,#4285F4,#1a73e8)' },
+    { name:'Claude',     slug:'claude',        color:'D97757', g:'linear-gradient(135deg,#D97757,#c65f3f)' },
+    { name:'Perplexity', slug:'perplexity',    color:'20808D', g:'linear-gradient(135deg,#20808D,#1a6b76)' },
+    { name:'Midjourney', slug:'midjourney',    color:'782DDC', g:'linear-gradient(135deg,#782DDC,#9b4dff)' },
+    { name:'Copilot',    slug:'githubcopilot', color:'0078D4', g:'linear-gradient(135deg,#0078D4,#005a9e)' },
+    { name:'Make',       slug:'make',          color:'6D00CC', g:'linear-gradient(135deg,#6D00CC,#8b1fd6)' },
+    { name:'n8n',        slug:'n8n',           color:'EA4B20', g:'linear-gradient(135deg,#EA4B20,#c93a15)' }
+  ];
+  function card(l){
+    var c = document.createElement('div');
+    c.className = 'logo-card'; c.title = l.name;
+    var g = document.createElement('div');
+    g.className = 'logo-card-glow'; g.style.background = l.g;
+    var img = document.createElement('img');
+    img.src = 'https://cdn.simpleicons.org/' + l.slug + '/' + l.color;
+    img.alt = l.name; img.loading = 'lazy';
+    img.onerror = function(){
+      img.style.display = 'none';
+      var s = document.createElement('span');
+      s.className = 'logo-card-fallback';
+      s.textContent = l.name;
+      c.appendChild(s);
+    };
+    c.appendChild(g); c.appendChild(img);
+    return c;
+  }
+  // Render twice for a seamless -50% loop
+  LOGOS.concat(LOGOS).forEach(function(l){ track.appendChild(card(l)); });
+})();
+</script>
+
+<!-- Logo intro: colored streak sweeps across → forms the logo -->
+<script>
+(function(){
+  var host   = document.querySelector('.logo-particles');
+  var word   = document.querySelector('.logo-word');
+  var streak = document.querySelector('.logo-streak');
+  var anim   = document.getElementById('logo-anim');
+  if (!host || !word || !streak || !anim) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Match the streak travel distance to the word width
+  var W = word.offsetWidth || 90;
+  streak.style.setProperty('--streak-end', (W + 20) + 'px');
+
+  var COLORS = ['#782DDC','#9b4dff','#c084fc','#FF7A00','#ffa64d','#ffffff'];
+  var N = 22;
+  var frag = document.createDocumentFragment();
+
+  for (var i = 0; i < N; i++) {
+    var dot = document.createElement('span');
+    dot.className = 'logo-dot';
+    var color = COLORS[i % COLORS.length];
+    var size = 2.5 + Math.random() * 3.5;
+    dot.style.width = dot.style.height = size.toFixed(1) + 'px';
+    dot.style.background = color;
+    dot.style.boxShadow = '0 0 6px ' + color;
+
+    // Particles ride along the horizontal sweep, scattering vertically as a trail
+    var startX = -14 + Math.random() * 8;
+    var endX   = W + 6 + Math.random() * 10;
+    var spreadY = (Math.random() - 0.5) * 26;
+    var midY    = (Math.random() - 0.5) * 8;
+
+    dot.style.setProperty('--px-start', startX.toFixed(1) + 'px');
+    dot.style.setProperty('--px-end',   endX.toFixed(1) + 'px');
+    dot.style.setProperty('--py-mid',   midY.toFixed(1) + 'px');
+    dot.style.setProperty('--py-end',   spreadY.toFixed(1) + 'px');
+    dot.style.animation = 'logo-dot-stream ' + (0.9 + Math.random()*0.35).toFixed(2) + 's cubic-bezier(0.4,0,0.3,1) forwards';
+    dot.style.animationDelay = (0.28 + i * 0.022).toFixed(3) + 's';
+    frag.appendChild(dot);
+  }
+  host.appendChild(frag);
+
+  var style = document.createElement('style');
+  style.textContent =
+    '@keyframes logo-dot-stream {' +
+    '  0%   { opacity:0; transform: translate(var(--px-start), 0) scale(0.5); }' +
+    '  20%  { opacity:1; }' +
+    '  55%  { opacity:1; transform: translate(calc((var(--px-start) + var(--px-end))/2), var(--py-mid)) scale(1.1); }' +
+    ' 100%  { opacity:0; transform: translate(var(--px-end), var(--py-end)) scale(0.4); }' +
+    '}' +
+    '@keyframes logo-glow-settle {' +
+    '  0%   { filter: drop-shadow(0 0 8px rgba(155,77,255,0.9)) drop-shadow(0 0 5px rgba(255,122,0,0.7)); }' +
+    ' 100%  { filter: drop-shadow(0 0 0 transparent); }' +
+    '}';
+  document.head.appendChild(style);
+
+  // Glow settle as the reveal completes (on parent so it won't clobber the reveal clip-path)
+  setTimeout(function(){
+    anim.style.animation = 'logo-glow-settle 0.7s ease-out forwards';
+  }, 1300);
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- GSAP demo: Case Studies batch reveal + stat count-up -->
+<script>
+(function(){
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  var section = document.getElementById('case-studies-section');
+  if (!section) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = section.querySelectorAll('.case-study-card');
+
+  if (cards.length && !reduced) {
+    gsap.set(cards, { autoAlpha: 0, y: 40 });
+    ScrollTrigger.batch(cards, {
+      onEnter: function(elements) {
+        gsap.to(elements, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.85,
+          ease: 'power2.out',
+          stagger: 0.18,
+          overwrite: true,
+          clearProps: 'transform'
+        });
+      },
+      start: 'top 88%',
+      once: true
+    });
+  }
+
+  section.querySelectorAll('.case-stat').forEach(function(el) {
+    var value = parseFloat(el.dataset.value);
+    if (isNaN(value)) return;
+
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var decimals = el.dataset.decimals !== undefined
+      ? parseInt(el.dataset.decimals, 10)
+      : (String(value).indexOf('.') >= 0 ? 1 : 0);
+    var counter = { val: reduced ? value : 0 };
+
+    function render() {
+      var n = decimals ? counter.val.toFixed(decimals) : Math.round(counter.val);
+      el.textContent = prefix + n + suffix;
+    }
+
+    render();
+
+    if (reduced) return;
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 92%',
+      once: true,
+      onEnter: function() {
+        gsap.to(counter, {
+          val: value,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: render
+        });
+      }
+    });
+  });
+
+  window.addEventListener('load', function() {
+    ScrollTrigger.refresh();
+  });
+})();
+</script>
+<!-- GSAP: Chương trình đào tạo — step selector + panel transition -->
+<script>
+(function(){
+  if (typeof gsap === 'undefined') return;
+
+  var section = document.getElementById('programs-scroll-section');
+  if (!section) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var panels = [
+    section.querySelector('#program-text1'),
+    section.querySelector('#program-text2'),
+    section.querySelector('#program-text3')
+  ].filter(Boolean);
+  var stepItems = section.querySelectorAll('.programs-step-item');
+  var lineFill = section.querySelector('#programs-line-fill');
+  var LINE_HEIGHT = ['0%', '50%', '100%'];
+  var currentStep = 0;
+  var animating = false;
+
+  if (!panels.length || !stepItems.length) return;
+
+  function initProgramsScrollReveal() {
+    if (reduced || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var header = section.querySelector('.programs-scroll-header');
+    var stage = section.querySelector('#programs-scroll-stage');
+    var stepsNav = section.querySelector('.programs-steps-nav');
+    var detailCard = section.querySelector('.programs-detail-card');
+    var mobileGrid = section.querySelector('.programs-mobile-only .grid');
+    var mobileCards = [];
+
+    if (header) {
+      gsap.set(header.children, { autoAlpha: 0, y: 36 });
+    }
+
+    if (stepsNav) {
+      gsap.set(stepItems, { autoAlpha: 0, x: -24 });
+    }
+
+    if (detailCard) {
+      gsap.set(detailCard, { autoAlpha: 0, y: 28, scale: 0.97 });
+    }
+
+    if (mobileGrid) {
+      Array.prototype.forEach.call(mobileGrid.children, function(col) {
+        if (col.classList.contains('lg:col-span-2')) {
+          col.querySelectorAll(':scope > div').forEach(function(card) {
+            mobileCards.push(card);
+          });
+        } else {
+          mobileCards.push(col);
+        }
+      });
+      if (mobileCards.length) {
+        gsap.set(mobileCards, { autoAlpha: 0, y: 32 });
+      }
+    }
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 78%',
+      once: true,
+      onEnter: function() {
+        if (header) {
+          gsap.to(header.children, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: 'power2.out',
+            overwrite: true
+          });
+        }
+      }
+    });
+
+    if (stage && stepsNav && detailCard) {
+      ScrollTrigger.create({
+        trigger: stage,
+        start: 'top 82%',
+        once: true,
+        onEnter: function() {
+          gsap.to(stepItems, {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.55,
+            stagger: 0.12,
+            ease: 'power2.out',
+            overwrite: true
+          });
+          gsap.to(detailCard, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.72,
+            ease: 'power2.out',
+            delay: 0.08,
+            overwrite: true
+          });
+          if (lineFill) {
+            gsap.fromTo(lineFill,
+              { height: '0%' },
+              {
+                height: LINE_HEIGHT[currentStep],
+                duration: 0.9,
+                ease: 'power2.inOut',
+                delay: 0.18,
+                overwrite: true
+              }
+            );
+          }
+        }
+      });
+    }
+
+    if (mobileGrid && mobileCards.length) {
+      ScrollTrigger.create({
+        trigger: mobileGrid,
+        start: 'top 88%',
+        once: true,
+        onEnter: function() {
+          gsap.to(mobileCards, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.62,
+            stagger: 0.14,
+            ease: 'power2.out',
+            overwrite: true
+          });
+        }
+      });
+    }
+  }
+
+  initProgramsScrollReveal();
+
+  function showStep(step, animate) {
+    if (step < 0 || step > 2 || step === currentStep) return;
+
+    var prev = currentStep;
+    currentStep = step;
+
+    stepItems.forEach(function(btn, i) {
+      var active = i === step;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    if (lineFill) lineFill.style.height = LINE_HEIGHT[step];
+
+    if (!animate || reduced) {
+      panels.forEach(function(panel, i) {
+        var active = i === step;
+        panel.classList.toggle('is-active', active);
+        panel.toggleAttribute('hidden', !active);
+        gsap.set(panel, { autoAlpha: active ? 1 : 0, y: 0 });
+      });
+      return;
+    }
+
+    if (animating) {
+      gsap.killTweensOf(panels);
+      animating = false;
+    }
+    animating = true;
+
+    var outPanel = panels[prev];
+    var inPanel = panels[step];
+
+    gsap.to(outPanel, {
+      autoAlpha: 0,
+      y: -8,
+      duration: 0.2,
+      ease: 'power2.in',
+      onComplete: function() {
+        outPanel.classList.remove('is-active');
+        outPanel.setAttribute('hidden', '');
+      }
+    });
+
+    inPanel.classList.add('is-active');
+    inPanel.removeAttribute('hidden');
+    gsap.fromTo(inPanel,
+      { autoAlpha: 0, y: 12 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.32,
+        ease: 'power2.out',
+        delay: 0.08,
+        onComplete: function() { animating = false; }
+      }
+    );
+  }
+
+  function bindStepClicks() {
+    stepItems.forEach(function(btn) {
+      var step = parseInt(btn.dataset.step, 10);
+      if (isNaN(step)) return;
+
+      btn.addEventListener('click', function() {
+        showStep(step, true);
+      });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showStep(step, true);
+        }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          showStep(Math.min(step + 1, 2), true);
+        }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          showStep(Math.max(step - 1, 0), true);
+        }
+      });
+    });
+  }
+
+  var mm = gsap.matchMedia();
+
+  mm.add('(min-width: 768px)', function() {
+    panels.forEach(function(panel, i) {
+      gsap.set(panel, { autoAlpha: i === 0 ? 1 : 0, y: 0 });
+    });
+    if (lineFill) lineFill.style.height = '0%';
+    bindStepClicks();
+
+    return function() {
+      animating = false;
+      currentStep = 0;
+      panels.forEach(function(panel, i) {
+        gsap.set(panel, { clearProps: 'opacity,visibility,transform' });
+        panel.classList.toggle('is-active', i === 0);
+        panel.toggleAttribute('hidden', i !== 0);
+      });
+      stepItems.forEach(function(btn, i) {
+        btn.classList.toggle('is-active', i === 0);
+        btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+      });
+      if (lineFill) lineFill.style.height = '0%';
+    };
+  });
+})();
+</script>
+<!-- GSAP: Phương pháp luận 5 bước — stagger entrance -->
+<script>
+(function(){
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  var section = document.getElementById('phuong-phap-section');
+  if (!section) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var header = section.querySelector('.text-center.mb-stack-lg');
+  var steps = section.querySelectorAll('.growth-step');
+  var bars = section.querySelectorAll('.growth-bar');
+  var labels = section.querySelectorAll('.growth-label');
+  var ground = document.getElementById('growth-ground');
+  var arrowTip = document.getElementById('growth-arrow-tip');
+  var panel = document.getElementById('growth-panel');
+
+  if (!steps.length) return;
+
+  function playEntrance() {
+    if (header) {
+      gsap.to(header.children, {
+        autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out', overwrite: true
+      });
+    }
+    gsap.to(bars, {
+      scaleY: 1,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power2.out',
+      delay: 0.1,
+      overwrite: true
+    });
+    gsap.to(labels, {
+      autoAlpha: 1, y: 0,
+      duration: 0.45,
+      stagger: 0.08,
+      ease: 'power2.out',
+      delay: 0.35,
+      overwrite: true
+    });
+    if (ground) {
+      gsap.to(ground, {
+        scaleX: 1,
+        duration: 0.9,
+        ease: 'power2.inOut',
+        delay: 0.5,
+        overwrite: true
+      });
+    }
+    if (arrowTip) {
+      gsap.to(arrowTip, {
+        autoAlpha: 1, x: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+        delay: 0.85,
+        overwrite: true
+      });
+    }
+    if (panel) {
+      gsap.to(panel, {
+        autoAlpha: 1, y: 0,
+        duration: 0.55,
+        ease: 'power2.out',
+        delay: 0.55,
+        overwrite: true
+      });
+    }
+  }
+
+  if (header) gsap.set(header.children, { autoAlpha: 0, y: 28 });
+  gsap.set(bars, { scaleY: 0, transformOrigin: 'bottom center' });
+  gsap.set(labels, { autoAlpha: 0, y: 8 });
+  if (panel) gsap.set(panel, { autoAlpha: 0, y: 20 });
+  if (arrowTip) gsap.set(arrowTip, { autoAlpha: 0, x: -8 });
+
+  var shell = section.querySelector('.growth-shell') || section;
+  var played = false;
+
+  ScrollTrigger.create({
+    trigger: shell,
+    start: 'top 80%',
+    once: true,
+    onEnter: function() {
+      if (played) return;
+      played = true;
+      playEntrance();
+    }
+  });
+
+  if (shell.getBoundingClientRect().top < window.innerHeight * 0.8) {
+    played = true;
+    playEntrance();
+  }
+})();
+</script>
+
+<!-- Assessment flip card — tap/keyboard support -->
+<script>
+(function(){
+  var card = document.querySelector('.assessment-flip-card');
+  if (!card) return;
+
+  card.addEventListener('click', function() {
+    card.classList.toggle('is-flipped');
+  });
+
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.classList.toggle('is-flipped');
+    }
+  });
+})();
+</script>
+<script src="/js/tieuchi-tabs.js?v=20260713" defer></script>
+<script src="/js/animated-calendar.js" defer></script>
+<script src="/js/vercel-nav.js" defer></script>
+
+<script>
+/* ── Tag arrow_forward icons for hover animation ── */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.material-symbols-outlined').forEach(function (el) {
+    if (el.textContent.trim() === 'arrow_forward') {
+      el.classList.add('arrow-icon');
+    }
+  });
+});
+</script>
+
+<script>
+/* ── Animated Theme Toggle ── */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  // Read saved or system preference
+  var saved = localStorage.getItem('sunext-theme');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = saved === 'dark' || (!saved && prefersDark);
+  if (isDark) document.documentElement.classList.add('dark');
+
+  btn.addEventListener('click', function () {
+    isDark = !isDark;
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('sunext-theme', isDark ? 'dark' : 'light');
+
+    // Burst animation
+    btn.classList.remove('burst');
+    void btn.offsetWidth; // reflow to restart animation
+    btn.classList.add('burst');
+    btn.addEventListener('animationend', function handler() {
+      btn.classList.remove('burst');
+      btn.removeEventListener('animationend', handler);
+    });
+  });
+})();
+</script>
+
+
+<!-- Partner marquee: brand logos below training section -->
+<script>
+(function(){
+  var track = document.getElementById('partner-marquee');
+  if (!track) return;
+  var PARTNERS = [
+    { name:'FPT',               src:'https://i.postimg.cc/52Sxjk50/FPT.png' },
+    { name:'MUFG',              src:'https://i.postimg.cc/rwN8zYG5/MUFG.png' },
+    { name:'BIDV',              src:'https://i.postimg.cc/4xQJnFvX/BIDV.png' },
+    { name:'Prudential',        src:'https://i.postimg.cc/VNsztB4X/Prudential.png' },
+    { name:'Vinhomes',          src:'https://i.postimg.cc/BvZJFcNY/Vinhomes.png' },
+    { name:'VNPT',              src:'https://i.postimg.cc/7LPqzMXB/VNPT.png' },
+    { name:'Mitsubishi',        src:'https://i.postimg.cc/RZLMqb1f/Mitsubishi.png' },
+    { name:'PV Power',          src:'https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png' },
+    { name:'PTSC',              src:'https://i.postimg.cc/Jh7RXcKN/PTSC.png' },
+    { name:'VACS',              src:'https://i.postimg.cc/434XcbwW/VACS.png' },
+    { name:'HTV',               src:'https://i.postimg.cc/T3JRhHjy/HTV.png' },
+    { name:'Gấu Đỏ',           src:'https://i.postimg.cc/CxsFd6CB/Gau-Do.png' },
+    { name:'YenViet',           src:'https://i.postimg.cc/1zRyFcMj/Yen-Viet.png' },
+    { name:'Trung Sơn Pharma',  src:'https://i.postimg.cc/yN67RXnn/Trung-Son-Pharma.png' }
+  ];
+  function makeCard(p) {
+    var c = document.createElement('div');
+    c.className = 'partner-logo-card';
+    c.title = p.name;
+    var glow = document.createElement('div');
+    glow.className = 'logo-card-glow';
+    var img = document.createElement('img');
+    img.src = p.src;
+    img.alt = p.name;
+    img.loading = 'lazy';
+    img.onerror = function(){
+      img.style.display = 'none';
+      var s = document.createElement('span');
+      s.className = 'logo-card-fallback';
+      s.textContent = p.name;
+      c.appendChild(s);
+    };
+    c.appendChild(glow);
+    c.appendChild(img);
+    return c;
+  }
+  // Render twice for seamless -50% loop
+  PARTNERS.concat(PARTNERS).forEach(function(p){ track.appendChild(makeCard(p)); });
+})();
+</script>
+
+<!-- Privacy Toast -->
+<div id="privacy-toast" class="fixed bottom-4 right-4 z-[9999] bg-white border border-outline-variant/30 enterprise-shadow rounded-[16px] p-5 max-w-[340px] w-[calc(100%-2rem)] md:w-80 transform transition-all duration-500 translate-y-[150%] opacity-0 flex flex-col gap-3">
+  <button id="privacy-toast-close" class="absolute top-3 right-3 text-on-surface-variant hover:text-primary transition-colors bg-surface-container-low hover:bg-primary/10 rounded-full w-8 h-8 flex items-center justify-center">
+    <span class="material-symbols-outlined text-[20px]">close</span>
+  </button>
+  <div class="flex items-center gap-2 text-primary font-bold">
+    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield_locked</span>
+    Cam kết bảo mật
+  </div>
+  <div class="text-[13px] text-on-surface-variant leading-[1.6] text-pretty pr-2">
+    Sunext cam kết bảo mật tuyệt đối dữ liệu cá nhân của bạn. Thông tin chỉ được sử dụng cho mục đích đã thông báo, không mua bán hay chia sẻ cho bên thứ ba. Hệ thống áp dụng chuẩn mã hóa để đảm bảo an toàn. Bạn có quyền yêu cầu xem, chỉnh sửa hoặc xoá dữ liệu bất kỳ lúc nào.
+  </div>
+</div>
+<style>
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(120, 45, 220, 0.2); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(120, 45, 220, 0.4); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var toast = document.getElementById('privacy-toast');
+  var closeBtn = document.getElementById('privacy-toast-close');
+  
+  if (!toast || !closeBtn) return;
+  
+  if (!localStorage.getItem('privacy_toast_dismissed')) {
+    setTimeout(function() {
+      toast.classList.remove('translate-y-[150%]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+    }, 1500);
+  } else {
+    toast.remove();
+  }
+  
+  closeBtn.addEventListener('click', function() {
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    toast.classList.add('translate-y-[150%]', 'opacity-0');
+    localStorage.setItem('privacy_toast_dismissed', 'true');
+    setTimeout(function() { toast.remove(); }, 500);
+  });
+});
+</script>
+
+</body></html>
+

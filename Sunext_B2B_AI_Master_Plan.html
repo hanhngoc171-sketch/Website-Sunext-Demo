@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional MVP PRD: Sunext B2B AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+        
+        :root {
+            --primary: #4F46E5; /* Indigo 600 - Corporate AI feel */
+            --primary-light: #6366F1;
+            --secondary: #EA580C; /* Orange 600 */
+            --bg-body: #FFFFFF;
+            --bg-sidebar: #F8FAFC; /* Slate 50 */
+            --bg-panel: #FFFFFF; 
+            --text-main: #0F172A; /* Slate 900 */
+            --text-muted: #475569; /* Slate 600 */
+            --border-color: #E2E8F0; /* Slate 200 */
+            --danger: #EF4444;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --code-bg: #F1F5F9;
+            --code-text: #2563EB; /* Blue 600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Layout */
+        .wrapper {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 24px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 6px;
+        }
+
+        .sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary);
+            background-color: #EEF2FF; /* Indigo 50 */
+            transform: translateX(4px);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 1200px;
+            box-sizing: border-box;
+            min-width: 0; /* fixes flexbox overflow */
+        }
+
+        header {
+            margin-bottom: 60px;
+        }
+
+        .document-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-sidebar);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-top: 80px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-top: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 24px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+
+        /* Components */
+        .card {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .alert {
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border-left: 4px solid;
+            background-color: var(--bg-panel);
+        }
+
+        .alert-info { border-color: var(--primary); background: #EEF2FF; }
+        .alert-warning { border-color: var(--warning); background: #FFFBEB; }
+        .alert-danger { border-color: var(--danger); background: #FEF2F2; }
+
+        .alert h4 { margin-top: 0; margin-bottom: 8px; color: var(--text-main); }
+        .alert p { color: var(--text-muted); margin-bottom: 0; }
+        .alert ul { color: var(--text-muted); margin-bottom: 0; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-panel);
+            margin: 24px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            display: block; /* Enables horizontal scroll */
+            overflow-x: auto;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            min-width: 120px; /* Prevent extreme squishing */
+        }
+
+        th {
+            background-color: #F8FAFC;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        td {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Code & Pre */
+        pre {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 24px 0;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--code-text);
+            border: 1px solid var(--border-color);
+        }
+
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            color: inherit;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-purple { background: #EEF2FF; color: var(--primary); border: 1px solid #C7D2FE; }
+        .badge-orange { background: #FFF7ED; color: var(--secondary); border: 1px solid #FFEDD5; }
+        .badge-green { background: #ECFDF5; color: var(--success); border: 1px solid #A7F3D0; }
+
+        /* User Story Box */
+        .user-story {
+            border-left: 4px solid var(--secondary);
+            background: #FFF7ED;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .user-story-title {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .acceptance-criteria {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #FDBA74;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar { width: 260px; padding: 30px 20px; }
+            .main-content { padding: 40px; }
+            h1 { font-size: 2.2rem; }
+        }
+        @media (max-width: 768px) {
+            .wrapper { flex-direction: column; }
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: static; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color); 
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+            .sidebar h2 { margin-bottom: 16px; }
+            .sidebar ul { display: flex; flex-wrap: wrap; gap: 8px; }
+            .sidebar li { margin-bottom: 0; }
+            .sidebar a { padding: 6px 10px; font-size: 0.85rem; background: #F1F5F9; border: 1px solid var(--border-color); }
+            .main-content { padding: 20px 16px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .card { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Functional MVP PRD</h2>
+        <ul>
+            <li><a href="#executive-summary">1. Executive Summary & Scope</a></li>
+            <li><a href="#personas">2. Target Personas (B2B)</a></li>
+            <li><a href="#framework-6-tiers">3. The 6-Tier Product Framework</a>
+                <ul style="padding-left:16px; margin-top:8px; border-left:1px solid rgba(255,255,255,0.1); margin-left:12px;">
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#program-catalog">3.1 Program Catalog & Progression</a></li>
+                </ul>
+            </li>
+            <li><a href="#b2b-funnel">4. Funnel & Lead Scoring Plan</a></li>
+            <li><a href="#assessment-matrix">5. Assessment Matrix (10 Qs)</a></li>
+            <li><a href="#aeo-seo-architecture">6. AEO/SEO Architecture</a>
+                <ul style="padding-left:16px; margin-top:8px; border-left:1px solid rgba(255,255,255,0.1); margin-left:12px;">
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#sitemap">6.1 Sitemap Entity Graph</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#metadata-matrix">6.2 Metadata Matrix</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#schema-fields">6.3 Schema Field Specs</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#content-brief">6.4 Content Brief (6 Tiers)</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#internal-linking">6.5 Internal Linking</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#eeat">6.6 E-E-A-T & Trust</a></li>
+                    <li style="margin-bottom:8px;"><a style="font-size:0.82rem; padding:5px 12px;" href="#cms-model">6.7 CMS/Content Model</a></li>
+                </ul>
+            </li>
+            <li><a href="#user-stories">7. User Stories & AC (Incl. SEO)</a></li>
+            <li><a href="#data-dictionary">8. Data Dictionary (Schema)</a></li>
+            <li><a href="#api-specs">9. API Contracts & Webhooks</a></li>
+            <li><a href="#nfr">10. Non-Functional Requirements</a></li>
+            <li><a href="#roadmap">11. Roadmap Triển Khai</a></li>
+            <li><a href="#page-by-page-specs">12. Page-by-Page Specs</a></li>
+            <li><a href="#components">13. Component Specs</a></li>
+            <li><a href="#design-system">14. Design System Mini</a></li>
+            <li><a href="#content-ops">15. Content Ops & MDX</a></li>
+            <li><a href="#analytics">16. Analytics Tracking</a></li>
+            <li><a href="#qa-uat">17. QA/UAT Test Matrix</a></li>
+            <li><a href="#launch">18. Launch Checklist</a></li>
+            <li><a href="#risks">19. Risks & Open Questions</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <header>
+            <div class="document-meta">
+                <span>Version: 7.0 (EXECUTION BIBLE)</span>
+                <span>Status: APPROVED FOR SPRINT PLANNING</span>
+                <span>Type: Product Requirements Document (PRD)</span>
+            </div>
+            <h1>Sunext AI B2B - Functional MVP PRD</h1>
+            <p style="font-size: 1.3rem; max-width: 900px;">Bản Đặc Tả Yêu Cầu Sản Phẩm (PRD) kết hợp Functional Spec & <strong>Kiến trúc AEO/SEO (AI Engine Optimization)</strong>. Mục tiêu xây dựng Sunext thành một <em>Entity Graph</em> chuyên gia thực thụ để AI Search có thể parse và trích dẫn.</p>
+        </header>
+
+        <!-- 1. Executive Summary & Scope -->
+        <section id="executive-summary">
+            <h2>1. Định Vị Dự Án & Phạm Vi MVP (Scope)</h2>
+            <div class="card">
+                <p><strong>Bối cảnh:</strong> Sunext Pivot từ EdTech bán lẻ sang <strong>B2B AI Transformation Consulting</strong>. Website đóng vai trò kép: (1) Cỗ máy Lead Generation (CRO), và (2) <strong>Knowledge Base có cấu trúc (AEO/SEO)</strong> để các cỗ máy AI (ChatGPT Search, Perplexity, Google AI Overviews / AI Mode) nhận diện Sunext là một Entity uy tín.</p>
+                <div class="alert alert-warning">
+                    <h4>Phân Định Phạm Vi (Scope MVP vs Phase 2)</h4>
+                    <table style="margin-top: 15px;">
+                        <tr>
+                            <th>Tính năng</th>
+                            <th>MVP (Phase 1 - 6 Tuần)</th>
+                            <th>Phase 2 (Sau MVP)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Trang chủ & UI</strong></td>
+                            <td>Landing Page, Tách riêng 6 URL cho 6 Tiers. (Bỏ Sticky Scroll phức tạp). Server-Side Rendering (SSR).</td>
+                            <td>Animation 3D Node Network.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assessment App</strong></td>
+                            <td>Form 10 câu hỏi -> Tính điểm logic cứng -> Đẩy email báo cáo chuẩn qua SendGrid API.</td>
+                            <td>Sử dụng LLM OpenAI để sinh PDF phân tích chuyên sâu.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CRM Sync & Handoff</strong></td>
+                            <td>Lưu Lead vào Supabase DB. Bắn Webhook sang Slack báo team Sales. Gửi Email.</td>
+                            <td>HubSpot 2-way sync.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lead Scoring</strong></td>
+                            <td>Dựa trên URL UTM và Data tĩnh (DB Events). Cộng điểm tay khi nhận action.</td>
+                            <td>Auto Lead Scoring workflow, Pixel tracking email open rate.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card" id="lms-boundary" style="margin-top: 20px; border-left: 4px solid #F59E0B;">
+                <h3>1.5. Non-Goals / LMS Boundary (Bắt buộc tuân thủ)</h3>
+                <p><strong>Website Sunext KHÔNG PHẢI là hệ thống LMS (Learning Management System)</strong> và không thay thế hệ thống LMS hiện có. Website này là B2B Corporate Website kết hợp hệ thống Lead Gen & AEO Knowledge Base.</p>
+                
+                <p><strong>Out of scope (Tuyệt đối không xây dựng trong dự án này):</strong></p>
+                <ul>
+                    <li>Không có tài khoản người học / Đăng nhập để học.</li>
+                    <li>Không có dashboard học tập (My Courses).</li>
+                    <li>Không có trình phát bài học / video khóa học (Video Player).</li>
+                    <li>Không có tracking tiến độ học.</li>
+                    <li>Không có bài kiểm tra / chấm điểm học viên.</li>
+                    <li>Không có thanh toán online khóa học (Checkout / Payment Gateway).</li>
+                    <li>Không có cấp chứng chỉ tự động.</li>
+                    <li>Không quản trị lớp học / giảng viên / học viên.</li>
+                </ul>
+
+                <p><strong>Website chỉ phục vụ:</strong></p>
+                <ul>
+                    <li>Giới thiệu công ty Sunext (Năng lực, đội ngũ, phương pháp luận).</li>
+                    <li>Giới thiệu các chương trình/dịch vụ AI.</li>
+                    <li>Giới thiệu khách hàng / đối tác / case studies.</li>
+                    <li>Thu lead B2B qua assessment, form tư vấn, gated content.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Existing LMS Integration Policy (Nút Đăng nhập):</strong>
+                    <ul>
+                        <li>Header/Footer có nút "Đăng nhập LMS" trỏ link trực tiếp sang hệ thống LMS hiện tại.</li>
+                        <li><strong>Behavior:</strong> Link mở tab mới (<code>target="_blank"</code>) kèm icon external link để user biết họ đang rời khỏi trang.</li>
+                        <li><strong>Tracking:</strong> Bắn event GA4 <code>lms_login_clicked</code> trước khi chuyển trang.</li>
+                        <li>Website Sunext KHÔNG xử lý authentication LMS. Không truyền token/session từ website sang LMS trong MVP. Không dùng chung database user.</li>
+                        <li>KHÔNG đồng bộ tiến độ học tập trong MVP này.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Personas -->
+        <section id="personas">
+            <h2>2. Chân Dung Khách Hàng (B2B Personas)</h2>
+            <p>Hệ thống Website phục vụ "Ủy ban mua hàng" (Buying Committee). Mỗi role có một động cơ và rào cản riêng.</p>
+            <table>
+                <tr>
+                    <th>Persona (Role)</th>
+                    <th>Jobs-to-be-done (Mục tiêu)</th>
+                    <th>Pain Points (Nỗi đau & Rào cản)</th>
+                    <th>Nội dung giải quyết trên Web</th>
+                </tr>
+                <tr>
+                    <td><strong>CEO / Founder / BOD</strong></td>
+                    <td>Tái cấu trúc mô hình kinh doanh, giảm chi phí vận hành (Tầng 6, 5).</td>
+                    <td>Sợ rủi ro bảo mật dữ liệu, sợ đầu tư tốn kém nhưng ROI mập mờ.</td>
+                    <td><strong>Gated Case Studies</strong> về ROI thực tế. Nhấn mạnh tầm nhìn chiến lược ở Tầng 6.</td>
+                </tr>
+                <tr>
+                    <td><strong>HR / L&D Director</strong></td>
+                    <td>Đào tạo Upskill cho toàn công ty nhanh nhất (Tầng 1).</td>
+                    <td>Sợ chương trình lý thuyết, nhân viên không dùng.</td>
+                    <td>Khẳng định <strong>"Thực chiến 1-2 ngày"</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Department Heads</strong></td>
+                    <td>Giải phóng nhân viên khỏi việc lặp lại (Tầng 2, 3, 4).</td>
+                    <td>Sợ AI khó dùng, mất thời gian setup công cụ.</td>
+                    <td><strong>Hub Giải Pháp theo phòng ban:</strong> Video Before/After chuyên biệt.</td>
+                </tr>
+                <tr>
+                    <td><strong>CTO / IT Director</strong></td>
+                    <td>Tích hợp AI vào ERP/CRM an toàn (Tầng 5).</td>
+                    <td>Data Privacy: Sợ lộ dữ liệu ra public LLM.</td>
+                    <td>Nhấn mạnh hạ tầng <strong>Private LLM, On-premise</strong>, tuân thủ bảo mật.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 3. The 6-Tier Framework -->
+        <section id="framework-6-tiers">
+            <h2>3. Khung Sản Phẩm 6 Tầng (Chi tiết nội dung)</h2>
+            <div class="alert alert-info" style="margin-top: 0;">
+                <h4>Quy ước thuật ngữ (Program vs Service)</h4>
+                <ul>
+                    <li><strong>Program (Chương trình đào tạo/huấn luyện):</strong> Áp dụng chủ yếu cho Tầng 1 đến Tầng 4 (Ví dụ: AI Foundation, AI Agent Bootcamp).</li>
+                    <li><strong>Service (Dịch vụ tư vấn/triển khai):</strong> Áp dụng chủ yếu cho Tầng 5 và Tầng 6 (Ví dụ: Tư vấn chiến lược AI-First, Triển khai Private LLM/RAG).</li>
+                </ul>
+            </div>
+            <p>Đây là lõi khung nội dung để thiết kế nội dung Website. Kiến trúc website sẽ bóc tách mỗi tầng thành một URL (Entity) riêng biệt để tối ưu crawl.</p>
+            
+            <div class="grid-2">
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-purple">Tầng 1: Low-risk</span>
+                    <h3 style="margin-top: 10px;">1. AI Cơ Bản (AI Foundation)</h3>
+                    <p><strong>Thời lượng:</strong> 1-2 ngày. <strong>Đối tượng:</strong> Toàn bộ nhân viên.</p>
+                    <p>Xóa mù AI, chuẩn hóa năng lực Prompting cơ bản (4 bước) để sửa lỗi chính tả, tóm tắt PDF, viết email.</p>
+                </div>
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-purple">Tầng 2: Specialization</span>
+                    <h3 style="margin-top: 10px;">2. AI Nâng Cao (Theo phòng ban)</h3>
+                    <p><strong>Thời lượng:</strong> 1-2 ngày. <strong>Đối tượng:</strong> Chuyên viên theo cụm (HR, MKT).</p>
+                    <p>Dùng công cụ trả phí (Midjourney, Advanced Data Analysis) giải quyết task chuyên sâu.</p>
+                </div>
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-orange">Tầng 3: Automation</span>
+                    <h3 style="margin-top: 10px;">3. Chatbot & Agentics</h3>
+                    <p><strong>Thời lượng:</strong> 3-5 ngày. <strong>Đối tượng:</strong> Tech-savvy.</p>
+                    <p>Tự tạo AI Agent nội bộ thay thế nhân viên data entry.</p>
+                </div>
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-orange">Tầng 4: Workflow</span>
+                    <h3 style="margin-top: 10px;">4. AI Vibe Coding & Automation</h3>
+                    <p><strong>Thời lượng:</strong> 2-3 ngày. <strong>Đối tượng:</strong> AI Champions.</p>
+                    <p>Dùng Make.com/Zapier nối các Agent lại thành luồng tự động xuyên phòng ban.</p>
+                </div>
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-green">Tầng 5: Enterprise</span>
+                    <h3 style="margin-top: 10px;">5. LLM & Private Data</h3>
+                    <p><strong>Thời lượng:</strong> Dự án tư vấn. <strong>Đối tượng:</strong> CTO, IT Director.</p>
+                    <p>Build Vector DB, RAG bảo mật 100%, tích hợp ERP/CRM.</p>
+                </div>
+                <div class="card" style="padding: 24px;">
+                    <span class="badge badge-green">Tầng 6: The Vision</span>
+                    <h3 style="margin-top: 10px;">6. AI-First Enterprise</h3>
+                    <p><strong>Thời lượng:</strong> Đồng hành dài hạn. <strong>Đối tượng:</strong> CEO, BOD.</p>
+                    <p>Biến AI thành lợi thế cạnh tranh cốt lõi, thay đổi business model.</p>
+                </div>
+            </div>
+
+            <!-- 3.1 Program Catalog & Progression Rules -->
+            <div class="card" id="program-catalog" style="margin-top: 32px;">
+                <h3>3.1. Program Catalog & Progression Rules</h3>
+                <p>Website không chặn đăng ký như LMS, nhưng phải hiển thị rõ lộ trình (progression) để định hướng user. Dưới đây là mapping chi tiết:</p>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th>Tầng</th>
+                            <th>Nhóm</th>
+                            <th>Chương trình hiện tại / ví dụ</th>
+                            <th>Điều kiện nên học (Prerequisites)</th>
+                        </tr>
+                        <tr>
+                            <td>Tầng 1</td>
+                            <td>Foundation</td>
+                            <td><strong>AI in Business</strong> / AI Foundation for Business</td>
+                            <td>Không cần điều kiện. Dành cho nhân sự mới bắt đầu hoặc doanh nghiệp muốn xóa mù AI.</td>
+                        </tr>
+                        <tr>
+                            <td>Tầng 2</td>
+                            <td>Department Specialization</td>
+                            <td><strong>AI in Marketing</strong>, AI in Sales, AI in HR, AI in Finance, AI in Operations</td>
+                            <td>Nên đã hoàn thành Tầng 1 hoặc có hiểu biết prompt/công cụ AI cơ bản.</td>
+                        </tr>
+                        <tr>
+                            <td>Tầng 3</td>
+                            <td>Agentic AI / Automation</td>
+                            <td><strong>Agentics AI Automations</strong>, AI Agent Bootcamp, Chatbot/Agent nội bộ</td>
+                            <td>Ưu tiên đã học Tầng 1 + một chương trình Tầng 2, hoặc assessment đạt mức sẵn sàng.</td>
+                        </tr>
+                        <tr>
+                            <td>Tầng 4</td>
+                            <td>Workflow / Vibe Coding</td>
+                            <td><strong>AI Workflow Automation</strong>, Vibe Coding for Business, No-code/Low-code</td>
+                            <td>Nên có use case rõ, có AI Champion, đã hiểu Agent/Automation cơ bản.</td>
+                        </tr>
+                        <tr>
+                            <td>Tầng 5</td>
+                            <td>Enterprise AI System</td>
+                            <td><strong>Private LLM</strong>, RAG, AI Knowledge Base, AI tích hợp ERP/CRM</td>
+                            <td>Cần IT/CTO tham gia, có dữ liệu nội bộ, có yêu cầu bảo mật. (Service)</td>
+                        </tr>
+                        <tr>
+                            <td>Tầng 6</td>
+                            <td>AI-First Enterprise</td>
+                            <td><strong>AI Strategy</strong>, AI Operating Model, AI Transformation Roadmap</td>
+                            <td>Cần CEO/BOD sponsor, mục tiêu chuyển đổi cấp công ty. (Service)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h4>Rules (Bắt buộc tuân thủ cho Lead Gen):</h4>
+                    <ul>
+                        <li>Mỗi chương trình bắt buộc có <code>tier</code>. Tầng 2 trở lên bắt buộc có <code>prerequisites</code>.</li>
+                        <li>Website hiển thị khuyến nghị: <em>“Phù hợp nếu bạn đã hoàn thành [Program name] hoặc có nền tảng AI cơ bản.”</em></li>
+                        <li>Form tư vấn (Strategy Call) cần thêm field: <strong>“Anh/chị đã từng tham gia chương trình nào của Sunext?”</strong>. Gửi kèm <code>interested_program</code>, <code>interested_tier</code>, <code>completed_programs_self_reported</code>.</li>
+                        <li>Assessment trả về <code>recommended_tier</code> VÀ danh sách <code>recommended_programs</code>.</li>
+                        <li>KHÔNG đồng bộ tiến độ học từ LMS trong MVP. Dữ liệu completed programs dựa trên self-report hoặc CRM (HubSpot).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Funnel & Scoring -->
+        <section id="b2b-funnel">
+            <h2>4. Phễu Chuyển Đổi & Kế Hoạch Lead Scoring</h2>
+            <div class="card">
+                <p>Mọi hành vi (Events) đều được lưu trữ trực tiếp vào DB thay vì chạy bằng "niềm tin".</p>
+                <ul>
+                    <li><strong>UTM Tracking:</strong> Capture <code>utm_source, utm_medium, utm_campaign</code> từ URL lưu vào <code>localStorage</code>.</li>
+                    <li><strong>Ghi nhận Event:</strong> Các hành động trên web lưu trực tiếp vào bảng <code>lead_events</code> trong Supabase.</li>
+                    <li><strong>Scoring Logic (MVP):</strong>
+                        <ul>
+                            <li>Submit Assessment: +20 điểm</li>
+                            <li>Tải Gated Content (PDF): +15 điểm / file</li>
+                            <li>Submit "Strategy Call" Form: +50 điểm (Auto Qualified Lead)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="alert alert-warning" style="margin-top: 24px;">
+                    <h4>Idempotency Rules (Chống điểm phồng)</h4>
+                    <p>Bắt buộc implement để tránh lead score bị thổi phồng do submit nhiều lần:</p>
+                    <ul>
+                        <li><strong>Assessment:</strong> Một email chỉ được cộng +20 điểm <em>một lần duy nhất</em> (lần submit đầu tiên). Các lần submit tiếp theo vẫn tạo bản ghi <code>assessments</code> mới (để so sánh tiến độ) nhưng <strong>không cộng thêm điểm</strong>. Backend kiểm tra: <code>SELECT COUNT(*) FROM assessments WHERE lead_id = ? </code>, nếu > 0 thì bỏ qua bước cộng điểm.</li>
+                        <li><strong>Gated Content:</strong> Một email chỉ được cộng +15 điểm cho <em>mỗi resource_slug là duy nhất</em>. Tải lại cùng file PDF nhiều lần không cộng thêm. Backend kiểm tra: <code>SELECT COUNT(*) FROM lead_events WHERE lead_id = ? AND event_type = 'download_resource' AND resource_slug = ?</code>, nếu > 0 thì skip.</li>
+                        <li><strong>Strategy Call:</strong> Một email chỉ được đặt trạng thái 'SQL' một lần. Nếu đã là 'SQL', không cộng thêm 50 điểm nữa.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Page Specs (Assessment) -->
+        <section id="assessment-matrix">
+            <h2>5. Assessment Matrix (10 Câu Hỏi Thực Tế)</h2>
+            <div class="card">
+                <p>Hệ thống sử dụng <strong>Analysis Animation</strong> (Loading thật 3 giây). Lập trình viên hard-code mảng này vào API để tính điểm.</p>
+                <table>
+                    <tr>
+                        <th width="30%">Câu hỏi</th>
+                        <th width="23%">A (0 điểm) - Manual</th>
+                        <th width="23%">B (5 điểm) - Basic AI</th>
+                        <th width="24%">C (10 điểm) - Advanced AI</th>
+                    </tr>
+                    <tr><td><strong>Q1. Hiện trạng dùng AI?</strong></td><td>Chưa dùng hoặc cấm.</td><td>Tự phát cá nhân.</td><td>Có tài khoản cty cấp & quy trình.</td></tr>
+                    <tr><td><strong>Q2. Tần suất sử dụng?</strong></td><td>Gần như không.</td><td>Vài lần 1 tuần.</td><td>Dùng hàng ngày mọi phòng ban.</td></tr>
+                    <tr><td><strong>Q3. Tạo Content & MKT?</strong></td><td>Làm tay 100%.</td><td>Dùng ChatGPT rời rạc.</td><td>Có Custom GPTs chuẩn Brand.</td></tr>
+                    <tr><td><strong>Q4. Lọc CV & Onboard HR?</strong></td><td>Đọc tay thủ công.</td><td>Dùng keyword search.</td><td>AI tự động chấm CV.</td></tr>
+                    <tr><td><strong>Q5. Xử lý CSKH & Chat?</strong></td><td>Nhân viên trực 24/7.</td><td>Chatbot rule-based cũ.</td><td>AI Agent hiểu context khách.</td></tr>
+                    <tr><td><strong>Q6. Xử lý Data & Report?</strong></td><td>Làm Excel bằng tay.</td><td>Dùng công thức/Macro.</td><td>Dùng AI Data Analysis API.</td></tr>
+                    <tr><td><strong>Q7. Quy trình liên phòng?</strong></td><td>Gửi email lộn xộn.</td><td>Dùng Trello/Jira.</td><td>Make/Zapier nối các Agent.</td></tr>
+                    <tr><td><strong>Q8. Quản trị tri thức (KB)?</strong></td><td>Lưu file rời rạc.</td><td>Google Drive chung.</td><td>AI RAG Chatbot nội bộ.</td></tr>
+                    <tr><td><strong>Q9. Bảo mật dữ liệu AI?</strong></td><td>Không quan tâm.</td><td>Cấm nhập data nhạy cảm.</td><td>Dùng Private LLM/On-premise.</td></tr>
+                    <tr><td><strong>Q10. Ngân sách & BOD?</strong></td><td>Chưa có ngân sách.</td><td>Cấp tiền mua Tool lẻ.</td><td>AI là cốt lõi chiến lược BOD.</td></tr>
+                </table>
+
+                <h4>Logic Mapping Điểm -> Recommended Tier</h4>
+                <ul>
+                    <li><strong>0 - 30đ:</strong> Đề xuất <strong>Tầng 1 (AI Cơ Bản)</strong>.</li>
+                    <li><strong>35 - 60đ:</strong> Đề xuất <strong>Tầng 2 & 3 (AI Nâng Cao & Agentics)</strong>.</li>
+                    <li><strong>65 - 100đ:</strong> Đề xuất <strong>Tầng 4 & 5 (Automation & LLM)</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. AEO / SEO Architecture (NEW) -->
+        <section id="aeo-seo-architecture">
+            <h2>6. Information Architecture & AEO/SEO Specs</h2>
+            <p>Để tối ưu cho <strong>Google AI Overviews / AI Mode</strong>, ChatGPT Search, và Perplexity, website tuyệt đối KHÔNG thiết kế kiểu "1 Landing Page cuộn dọc". Sunext phải là một <strong>Entity Graph</strong> chuyên gia với các URL rõ ràng, Schema chuẩn và nội dung public-crawlable. Theo Google Search Central, không có yêu cầu kỹ thuật riêng để xuất hiện trong AI Overviews — website chỉ cần index được, có snippet hữu ích, và được hiểu rõ bởi Search.</p>
+
+            <div class="card" id="sitemap">
+                <h3>6.1. Entity Graph Sitemap (Tách Rời thành 4 Nhóm)</h3>
+                <p>Cấu trúc URL bắt buộc để định tuyến crawler AI, chia làm 4 nhóm chức năng rõ rệt:</p>
+                
+                <h4>Nhóm 1: Giới thiệu Sunext</h4>
+                <ul>
+                    <li><code>/about</code> : Về Chúng Tôi – Đội Ngũ Sunext.</li>
+                    <li><code>/phuong-phap-luan</code> : (Tùy chọn) Phương pháp luận AI-First.</li>
+                    <li><code>/security</code> : Cam kết bảo mật, Private LLM.</li>
+                    <li><code>/faq</code> : Câu hỏi thường gặp.</li>
+                    <li><code>/contact</code> : Liên hệ.</li>
+                </ul>
+
+                <h4>Nhóm 2: Giới thiệu chương trình/dịch vụ</h4>
+                <ul>
+                    <li><code>/giai-phap</code> : Hub cho toàn bộ 6 Tầng dịch vụ giải pháp cao cấp.</li>
+                    <li><code>/chuong-trinh</code> : Hub danh sách các chương trình đào tạo/huấn luyện (T1-T4).</li>
+                    <li><code>/chuong-trinh/[slug]</code> : Trang chi tiết một chương trình (Ví dụ: AI in Marketing).</li>
+                    <li><code>/giai-phap/dao-tao-ai-co-ban</code> : Service page riêng Tầng 1.</li>
+                    <li><code>/giai-phap/ai-nang-cao-theo-phong-ban</code> : Service page riêng Tầng 2.</li>
+                    <li><code>/giai-phap/ai-agent-chatbot</code> : Service page riêng Tầng 3.</li>
+                    <li><code>/giai-phap/ai-automation-workflow</code> : Service page riêng Tầng 4.</li>
+                    <li><code>/giai-phap/private-llm-rag</code> : Service page riêng Tầng 5.</li>
+                    <li><code>/giai-phap/ai-first-enterprise</code> : Service page riêng Tầng 6.</li>
+                    <li><code>/giai-phap-theo-phong-ban/hr</code>, <code>/giai-phap-theo-phong-ban/marketing</code>, <code>/giai-phap-theo-phong-ban/sales</code>, <code>/giai-phap-theo-phong-ban/operations</code>, <code>/giai-phap-theo-phong-ban/it</code> : Cụm Intent AI cho phòng ban.</li>
+                </ul>
+
+                <h4>Nhóm 3: Khách hàng / Đối tác / Case Studies</h4>
+                <ul>
+                    <li><code>/case-studies</code> : Hub tổng hợp các dự án đã triển khai.</li>
+                    <li><code>/case-studies/[slug]</code> : Trang bài viết Case Study chi tiết (Có public summary).</li>
+                    <li><code>/khach-hang-doi-tac</code> : Trang danh sách Logo, Testimonials của khách hàng.</li>
+                </ul>
+
+                <h4>Nhóm 4: Lead Generation & Content SEO</h4>
+                <ul>
+                    <li><code>/ai-maturity-assessment</code> : Công cụ đánh giá độ trưởng thành AI.</li>
+                    <li><code>/resources</code> : Thư viện tài nguyên (Blog, Whitepaper).</li>
+                    <li><code>/resources/[slug]</code> : Trang tài nguyên chi tiết (Gate email để tải PDF).</li>
+                </ul>
+            </div>
+
+            <!-- 6.2 Metadata Matrix -->
+            <div class="card" id="metadata-matrix">
+                <h3>6.2. URL Metadata Matrix (Hoàn thiện toàn bộ)</h3>
+                <p>Bảng này là nguồn chân lý cho SEO/Dev. Cột Indexing quyết định thẻ <code>robots</code>. Cột Owner quy định người chịu trách nhiệm.</p>
+                <div style="overflow-x: auto;">
+                    <table style="font-size:0.85rem; min-width: 1000px;">
+                        <tr>
+                            <th>URL</th>
+                            <th>H1 / Intent</th>
+                            <th>Meta Title (≤60 char)</th>
+                            <th>Meta Description (≤160 char)</th>
+                            <th>Schema</th>
+                            <th>Index</th>
+                            <th>Priority</th>
+                            <th>Owner</th>
+                        </tr>
+                        <tr><td><code>/</code></td><td>Home / Kiến Tạo B2B AI-First</td><td>Tư Vấn Chuyển Đổi AI Doanh Nghiệp</td><td>Sunext đồng hành cùng doanh nghiệp Việt...</td><td>Organization, WebSite</td><td>index</td><td>1.0</td><td>SEO/Dev</td></tr>
+                        <tr><td><code>/giai-phap</code></td><td>Giải pháp AI toàn diện</td><td>6 Lộ Trình AI Doanh Nghiệp – Sunext</td><td>Từ xóa mù AI đến tái cấu trúc chiến lược...</td><td>CollectionPage</td><td>index</td><td>0.9</td><td>SEO</td></tr>
+                        <tr><td><code>/chuong-trinh</code></td><td>Hub Chương Trình Đào Tạo</td><td>Chương Trình Đào Tạo AI Thực Chiến</td><td>Tổng hợp các chương trình ứng dụng AI...</td><td>CollectionPage</td><td>index</td><td>0.9</td><td>SEO</td></tr>
+                        <tr><td><code>/chuong-trinh/[slug]</code></td><td>Dynamic Program</td><td>[Dynamic Title] – Sunext</td><td>[Dynamic Excerpt]</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/dao-tao-ai-co-ban</code></td><td>Tầng 1 / Đào tạo AI</td><td>Đào Tạo AI Cơ Bản Doanh Nghiệp</td><td>Chương trình 1-2 ngày giúp 100% nhân sự...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/ai-nang-cao-theo-phong-ban</code></td><td>Tầng 2 / Khối phòng ban</td><td>Đào Tạo AI Chuyên Sâu Từng Khối</td><td>Ứng dụng AI vào HR, Marketing, Sales...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/ai-agent-chatbot</code></td><td>Tầng 3 / AI Agent</td><td>Xây Dựng AI Agent Doanh Nghiệp</td><td>Tự tạo đội ngũ AI Agent trực 24/7...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/ai-automation-workflow</code></td><td>Tầng 4 / Automation</td><td>Tự Động Hóa Workflow Bằng AI</td><td>Liên kết các Agent AI thành luồng...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/private-llm-rag</code></td><td>Tầng 5 / Private LLM</td><td>Triển Khai Private LLM Bảo Mật</td><td>Đưa AI vào hạ tầng nội bộ 100% bảo mật...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap/ai-first-enterprise</code></td><td>Tầng 6 / Tư vấn lõi</td><td>Tư Vấn Chiến Lược AI-First</td><td>Tái cấu trúc toàn bộ doanh nghiệp...</td><td>Service</td><td>index</td><td>0.8</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap-theo-phong-ban/hr</code></td><td>HR / Tuyển dụng AI</td><td>Giải Pháp AI Cho Phòng HR</td><td>AI giúp HR sàng lọc 100 CV/phút...</td><td>Service</td><td>index</td><td>0.9</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap-theo-phong-ban/marketing</code></td><td>Marketing / AI Content</td><td>Giải Pháp AI Cho Marketing</td><td>Tạo content đa kênh x5 tốc độ...</td><td>Service</td><td>index</td><td>0.9</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap-theo-phong-ban/sales</code></td><td>Sales / AI CRM</td><td>Giải Pháp AI Cho Sales B2B</td><td>Rút ngắn chu kỳ bán hàng, cá nhân hóa...</td><td>Service</td><td>index</td><td>0.9</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap-theo-phong-ban/operations</code></td><td>Operations / Vận hành</td><td>Giải Pháp AI Cho Vận Hành</td><td>Tự động hóa báo cáo, theo dõi KPI...</td><td>Service</td><td>index</td><td>0.9</td><td>Content</td></tr>
+                        <tr><td><code>/giai-phap-theo-phong-ban/it</code></td><td>IT / Hạ tầng AI</td><td>Giải Pháp AI Cho IT & Bảo Mật</td><td>Triển khai RAG, API Gateway nội bộ...</td><td>Service</td><td>index</td><td>0.9</td><td>Content</td></tr>
+                        <tr><td><code>/ai-maturity-assessment</code></td><td>Test Assessment</td><td>Test AI Maturity Miễn Phí</td><td>Đánh giá mức độ sẵn sàng AI của bạn...</td><td>WebPage</td><td>index</td><td>0.7</td><td>Dev</td></tr>
+                        <tr><td><code>/about</code></td><td>Về Sunext</td><td>Về Chúng Tôi – Đội Ngũ Sunext</td><td>Hội tụ chuyên gia AI hàng đầu VN...</td><td>AboutPage</td><td>index</td><td>0.6</td><td>SEO</td></tr>
+                        <tr><td><code>/security</code></td><td>Bảo mật dữ liệu</td><td>Cam Kết Bảo Mật Dữ Liệu AI</td><td>Chính sách NDA, Private LLM an toàn...</td><td>WebPage</td><td>index</td><td>0.6</td><td>Legal</td></tr>
+                        <tr><td><code>/faq</code></td><td>Hỏi đáp</td><td>Câu Hỏi Thường Gặp Tư Vấn AI</td><td>Giải đáp thắc mắc về chi phí, bảo mật...</td><td>FAQPage</td><td>index</td><td>0.6</td><td>SEO</td></tr>
+                        <tr><td><code>/privacy</code>, <code>/terms</code></td><td>Chính sách & Điều khoản</td><td>Chính Sách Bảo Mật & Quyền Riêng Tư</td><td>Cách Sunext xử lý dữ liệu và cookie...</td><td>WebPage</td><td>noindex</td><td>-</td><td>Legal</td></tr>
+                        <tr><td><code>/contact</code></td><td>Liên hệ</td><td>Liên Hệ Tư Vấn Chiến Lược AI</td><td>Đặt lịch 30 phút trao đổi trực tiếp...</td><td>ContactPage</td><td>index</td><td>0.8</td><td>SEO</td></tr>
+                        <tr><td><code>/thank-you</code></td><td>Cảm ơn (Post-lead)</td><td>Cảm Ơn Bạn Đã Đăng Ký</td><td>Xác nhận thông tin thành công.</td><td>-</td><td>noindex</td><td>-</td><td>Dev</td></tr>
+                        <tr><td><code>/khach-hang-doi-tac</code></td><td>Khách Hàng & Đối Tác</td><td>Khách Hàng & Đối Tác Đồng Hành – Sunext</td><td>Các doanh nghiệp đã triển khai thành công...</td><td>CollectionPage</td><td>index</td><td>0.7</td><td>Content</td></tr>
+                        <tr><td><code>/case-studies/[slug]</code></td><td>Dynamic Case Study</td><td>[Dynamic Title] – Sunext</td><td>[Dynamic Excerpt]</td><td>Article</td><td>index</td><td>0.7</td><td>Content</td></tr>
+                        <tr><td><code>/resources/[slug]</code></td><td>Dynamic Resource</td><td>[Dynamic Title] – Sunext Blog</td><td>[Dynamic Excerpt]</td><td>Article</td><td>index</td><td>0.7</td><td>Content</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 6.3 Schema Field Specs -->
+            <div class="card" id="schema-fields">
+                <h3>6.3. Schema Field-Level Requirements</h3>
+                <p>Mỗi loại Schema phải có đủ các trường tối thiểu sau để tránh "thin schema":</p>
+
+                <h4>Organization (Trang chủ)</h4>
+                <pre style="font-size:0.82rem;">{
+  "@type": "Organization",
+  "name": "Sunext",
+  "url": "https://sunext.vn",
+  "logo": "https://sunext.vn/logo.png",
+  "description": "Công ty tư vấn chuyển đổi AI cho doanh nghiệp Việt Nam...",
+  "areaServed": "VN",
+  "contactPoint": { "@type": "ContactPoint", "contactType": "sales" },
+  "sameAs": ["https://linkedin.com/company/sunext"]
+}</pre>
+
+                <h4>Service (Mỗi trang Tier & Department)</h4>
+                <p style="color: var(--warning); font-size:0.9rem;">⚠️ <strong>Lưu ý:</strong> MVP chưa public giá. Không dùng <code>priceCurrency</code> trơ trọi dễ sinh Google Rich Results warning. Dùng <code>offers</code> chỉ với <code>url</code> dẫn đến trang contact.</p>
+                <pre style="font-size:0.82rem;">{
+  "@type": "Service",
+  "name": "Đào Tạo AI Cơ Bản Cho Doanh Nghiệp",
+  "description": "...",
+  "provider": { "@type": "Organization", "name": "Sunext" },
+  "serviceType": "AI Training",
+  "areaServed": "VN",
+  "audience": { "@type": "Audience", "audienceType": "Corporate Employees" },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": "https://sunext.vn/contact"
+  },
+  "mainEntityOfPage": "https://sunext.vn/giai-phap/dao-tao-ai-co-ban"
+}</pre>
+
+                <div class="alert alert-info" style="margin: 16px 0;">
+                    <h4>Quyết định Schema cho Program Pages (<code>/chuong-trinh/[slug]</code>)</h4>
+                    <ul>
+                        <li><strong>MVP:</strong> Dùng chung Schema <code>Service</code> (như trên) cho Program pages để tránh Google Course rich result warning (thiếu <code>provider</code>, <code>courseInstance</code>, <code>offers</code> đầy đủ theo yêu cầu của <code>Course</code> schema).</li>
+                        <li><strong>Phase 2:</strong> Có thể nâng cấp lên Schema <code>Course</code> khi đã có đủ dữ liệu <code>provider</code>, <code>hasCourseInstance</code> (lịch khai giảng), và <code>offers</code> hợp lệ.</li>
+                    </ul>
+                </div>
+
+                <h4>Article (Blog / Resources / Case Study)</h4>
+                <pre style="font-size:0.82rem;">{
+  "@type": "Article",
+  "headline": "...",
+  "author": { "@type": "Organization", "name": "Sunext" },
+  "datePublished": "YYYY-MM-DD",
+  "dateModified": "YYYY-MM-DD",
+  "publisher": { "@type": "Organization", "name": "Sunext", "logo": "..." },
+  "mainEntityOfPage": "..."
+}</pre>
+            </div>
+
+            <!-- 6.4 Content Brief -->
+            <div class="card" id="content-brief">
+                <h3>6.4. Content Brief Từng Trang Tier (Outline chuẩn AEO)</h3>
+                <p>Content Team phải tuân thủ sườn này khi viết. Không được tự ý đổi cấu trúc H2.</p>
+                <table style="font-size:0.88rem;">
+                    <tr>
+                        <th width="18%">Tier / URL</th>
+                        <th width="20%">H1 & Direct Answer (40-70 từ)</th>
+                        <th width="22%">Pain Points cần đề cập</th>
+                        <th width="20%">Outcomes cam kết</th>
+                        <th width="20%">FAQ gợi ý (3 câu tối thiểu)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>T1:</strong> <code>/giai-phap/dao-tao-ai-co-ban</code></td>
+                        <td>"Xóa mù AI cho toàn bộ nhân sự trong 1-2 ngày. Chương trình thực chiến 100%..."</td>
+                        <td>Nhân viên không biết dùng AI. Sợ mất thời gian học. Không rõ bắt đầu từ đâu.</td>
+                        <td>Tiết kiệm 1-2h/ngày/nhân sự. Giảm sai sót văn bản. Tư duy đúng về AI.</td>
+                        <td>Chương trình gồm những gì? Ai nên tham gia? Sau khi hoàn thành được gì?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T2:</strong> <code>/giai-phap/ai-nang-cao-theo-phong-ban</code></td>
+                        <td>"Ứng dụng AI vào từng khối công việc phòng ban trong 1-2 ngày..."</td>
+                        <td>HR viết JD mất cả ngày. MKT làm content mãi không đủ. Sales không biết prompt tốt.</td>
+                        <td>Tự động hóa task chuyên môn sâu. Chất lượng đầu ra x3. Biết dùng công cụ trả phí đúng.</td>
+                        <td>Học theo phòng ban nào? Điều kiện để đăng ký? Khác T1 thế nào?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T3:</strong> <code>/giai-phap/ai-agent-chatbot</code></td>
+                        <td>"Tự tạo đội ngũ AI Agent làm việc 24/7 không lương cho phòng ban trong 3-5 ngày..."</td>
+                        <td>CSKH trực tay 24/7 tốn kém. Data entry lặp đi lặp lại. Phân loại email mất 2h/ngày.</td>
+                        <td>Agent tự nhận yêu cầu, phân loại, cập nhật data. Tiết kiệm 4-6h/ngày/người.</td>
+                        <td>AI Agent khác Chatbot thế nào? Cần biết lập trình không? Mất bao lâu để setup?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T4:</strong> <code>/giai-phap/ai-automation-workflow</code></td>
+                        <td>"Liên kết các Agent AI thành luồng tự động xuyên suốt toàn bộ phòng ban..."</td>
+                        <td>Thông tin đứt gãy giữa phòng ban. Email manual qua lại. Báo cáo tổng hợp mất cả tuần.</td>
+                        <td>Luồng tự động: Form -> AI phân tích -> Gửi email cá nhân hóa -> Slack Manager.</td>
+                        <td>Cần dùng tool nào? Khác T3 thế nào? Chi phí tool tháng là bao nhiêu?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T5:</strong> <code>/giai-phap/private-llm-rag</code></td>
+                        <td>"Triển khai AI trên hạ tầng nội bộ — dữ liệu công ty không bao giờ ra khỏi tường lửa..."</td>
+                        <td>Sợ ChatGPT public lộ bí mật kinh doanh. Cần AI hiểu sâu tài liệu nội bộ.</td>
+                        <td>Chatbot nội bộ trả lời từ knowledge base riêng. Tích hợp ERP/CRM. 100% bảo mật.</td>
+                        <td>RAG là gì? Khác ChatGPT Enterprise thế nào? Chi phí hạ tầng?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T6:</strong> <code>/giai-phap/ai-first-enterprise</code></td>
+                        <td>"Tái cấu trúc toàn bộ doanh nghiệp theo tầm nhìn AI-First — AI là lõi kinh doanh..."</td>
+                        <td>Đối thủ đã AI hóa nhanh hơn. Không biết bắt đầu từ đâu ở cấp chiến lược.</td>
+                        <td>Lộ trình chiến lược rõ ràng. Văn hóa AI-First toàn công ty. ROI dài hạn.</td>
+                        <td>Tầng 6 khác consulting thường thế nào? Kết quả mong đợi sau 1 năm? Cần điều kiện gì?</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 6.4b Department Pages Content Brief -->
+            <div class="card" id="department-brief">
+                <h3>6.4b. Content Brief — 5 Trang Department (Outline chuẩn AEO)</h3>
+                <p>Các trang <code>/giai-phap-theo-phong-ban/[dept]</code> là cụm có Intent mạnh nhất khi AI Search nhận câu hỏi như <em>"AI cho HR là gì?"</em>. Cấu trúc H2 phải ổn định.</p>
+                <table style="font-size:0.87rem;">
+                    <tr>
+                        <th width="15%">Dept / URL</th>
+                        <th width="22%">H1 & Direct Answer</th>
+                        <th width="22%">Use Cases cụ thể (bullet)</th>
+                        <th width="22%">Tier được link đến</th>
+                        <th width="19%">FAQ gợi ý</th>
+                    </tr>
+                    <tr>
+                        <td><strong>HR</strong><br><code>/giai-phap-theo-phong-ban/hr</code></td>
+                        <td>"AI giúp phòng HR tuyển dụng, onboarding và đo lường năng suất nhanh hơn 5 lần."</td>
+                        <td>Sàng lọc CV tự động. Soạn JD chuẩn. Chatbot trả lời FAQ ứng viên 24/7. Báo cáo turnover tự động.</td>
+                        <td>T1 (Cơ bản), T2 (Nâng cao HR), T3 (Agent CSKH nội bộ)</td>
+                        <td>AI có thay thế HR không? Bảo mật hồ sơ ứng viên thế nào? Cần phần mềm gì thêm?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing</strong><br><code>/giai-phap-theo-phong-ban/marketing</code></td>
+                        <td>"AI giúp team Marketing tạo content chất lượng cao gấp 5 lần, tối ưu SEO và cá nhân hóa quảng cáo."</td>
+                        <td>Viết content đa kênh (Facebook, Email, Blog). Tạo hình ảnh Midjourney. Phân tích đối thủ. A/B test copy tự động.</td>
+                        <td>T1, T2 (Nâng cao Marketing), T4 (Automation content workflow)</td>
+                        <td>AI có viết đúng tone Brand không? Chi phí công cụ hàng tháng? Workflow tích hợp với CMS thế nào?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sales</strong><br><code>/giai-phap-theo-phong-ban/sales</code></td>
+                        <td>"AI giúp Sales rút ngắn chu kỳ bán hàng, cá nhân hóa đề xuất và tự động cập nhật CRM."</td>
+                        <td>Soạn email chào hàng cá nhân hóa. Phân tích hành vi Lead. Tóm tắt cuộc họp. Cập nhật CRM tự động.</td>
+                        <td>T1, T2 (Nâng cao Sales), T3 (Agent theo dõi Lead)</td>
+                        <td>AI có thể chốt đơn thay Sales không? Tích hợp với Salesforce/HubSpot thế nào?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operations</strong><br><code>/giai-phap-theo-phong-ban/operations</code></td>
+                        <td>"AI giúp Ops tự động hóa báo cáo, quản lý workflow và giảm lỗi quy trình thủ công."</td>
+                        <td>Tổng hợp báo cáo liên phòng ban. Theo dõi KPI tự động. Phát hiện bất thường dữ liệu. Tự động nhắc task.</td>
+                        <td>T2, T4 (Automation workflow), T5 (Tích hợp ERP)</td>
+                        <td>AI kết nối được với ERP không? Dữ liệu nội bộ có bị lộ không?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT</strong><br><code>/giai-phap-theo-phong-ban/it</code></td>
+                        <td>"AI giúp IT triển khai Private LLM, bảo mật dữ liệu nội bộ và tự động hóa hạ tầng."</td>
+                        <td>Build Vector DB nội bộ. RAG chatbot cho knowledge base. API gateway AI. Monitoring hạ tầng bằng AI.</td>
+                        <td>T5 (Private LLM & RAG), T6 (AI-First architecture)</td>
+                        <td>On-premise hay cloud? Chi phí GPU/compute? Tích hợp với hệ thống hiện tại?</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 6.5 Internal Linking -->
+            <div class="card" id="internal-linking">
+                <h3>6.5. Internal Linking Strategy</h3>
+                <p>Quy tắc cứng — Dev/Content phải tuân thủ khi build hoặc viết bài:</p>
+                <ul>
+                    <li><strong>Home → 6 Tiers:</strong> Trang chủ bắt buộc link đến 6 trang Tier (dạng Card/Grid).</li>
+                    <li><strong>Tier → Department:</strong> Mỗi trang Tier link ít nhất 2 trang Department liên quan. Ví dụ T2 → <code>/giai-phap-theo-phong-ban/hr</code> và <code>/giai-phap-theo-phong-ban/marketing</code>.</li>
+                    <li><strong>Department → Tier:</strong> Trang <code>/giai-phap-theo-phong-ban/hr</code> link ngược lại T1 và T2 dạng "Dịch vụ phù hợp".</li>
+                    <li><strong>Blog → Service:</strong> Mỗi bài Blog kết thúc bằng block "Dịch vụ liên quan" link về đúng Tier.</li>
+                    <li><strong>Case Study → Tier liên quan:</strong> Case Study "HR giảm 40% chi phí tuyển dụng" link về T1 và T2.</li>
+                    <li><strong>Assessment Result → Recommended Tier:</strong> Sau khi xem điểm, nút CTA link thẳng đến trang Tier được gợi ý.</li>
+                    <li><strong>Service Hub → Assessment:</strong> Trang <code>/giai-phap</code> luôn có nút "Không biết bắt đầu từ đâu? → Làm bài Test".</li>
+                    <li><strong>Program Hub → Program Detail:</strong> Trang <code>/chuong-trinh</code> link đến từng trang <code>/chuong-trinh/[slug]</code>.</li>
+                    <li><strong>Program Detail → Tier Page:</strong> Trang Detail chương trình link ngược về trang Tier tương ứng dạng "Giải pháp cấp doanh nghiệp".</li>
+                    <li><strong>Tier Page → Program liên quan:</strong> Mỗi trang Tier gợi ý 1-2 chương trình cụ thể dạng “Được giao hàng qua chương trình ...”</li>
+                    <li><strong>Program Detail → Recommended Next Program:</strong> Cuối trang bắt buộc có block “Chương trình tiếp theo gợi ý” link sang <code>recommendedNext</code>.</li>
+                    <li><strong>Program Detail → LMS (External):</strong> Nếu có <code>lmsUrl</code> và <code>externalLmsOnly: true</code>, hiển thị nút “Đăng nhập LMS để xem chương trình” (mở tab mới + track event <code>lms_login_clicked</code>).</li>
+                </ul>
+            </div>
+
+            <!-- 6.6 E-E-A-T -->
+            <div class="card" id="eeat">
+                <h3>6.6. E-E-A-T & Trust Requirements (Nội dung bắt buộc)</h3>
+                <p>Google đánh giá cao E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) đặc biệt với B2B. Các thành phần sau phải có mặt trên website:</p>
+                <table style="font-size:0.9rem;">
+                    <tr>
+                        <th>Thành phần Trust</th>
+                        <th>Vị trí triển khai</th>
+                        <th>Nội dung cụ thể yêu cầu</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Chuyên gia & Team</strong></td>
+                        <td>Trang <code>/about</code></td>
+                        <td>Ảnh thật, tên thật, LinkedIn link, số năm kinh nghiệm AI của Founder/Lead Consultant.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phương pháp luận</strong></td>
+                        <td>Block trên Trang chủ + <code>/about</code></td>
+                        <td>Mô tả quy trình tư vấn (Discovery → Audit → Train → Deploy → Review). Không dùng ngôn ngữ Marketing chung chung.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bảo mật dữ liệu</strong></td>
+                        <td>Trang <code>/security</code> + mỗi trang Tier</td>
+                        <td>Cam kết cụ thể: NDA trước khi tư vấn, không dùng data khách hàng để train model, T5 dùng On-premise.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case Studies</strong></td>
+                        <td><code>/case-studies/[slug]</code></td>
+                        <td>Tối thiểu: Ngành, Quy mô, Thách thức, Giải pháp, Kết quả định lượng. Có thể dùng tên công ty ẩn danh nếu cần.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FAQ thực chất</strong></td>
+                        <td>Mỗi trang Tier + <code>/faq</code></td>
+                        <td>FAQ phải trả lời câu hỏi thật của buyer (chi phí, thời gian, điều kiện, rủi ro). Không dùng FAQ Marketing giả tạo.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Privacy & Legal</strong></td>
+                        <td><code>/privacy</code>, <code>/terms</code></td>
+                        <td>Chính sách riêng tư bằng Tiếng Việt. Quy định rõ dữ liệu nào được thu thập và mục đích sử dụng.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 6.7 CMS Model -->
+            <div class="card" id="cms-model">
+                <h3>6.7. CMS & Content Source Decision</h3>
+                <p>Quyết định quan trọng này phải được chốt trước khi Dev bắt đầu viết code các trang dynamic:</p>
+                <div class="alert alert-warning" style="margin: 0;">
+                    <h4>Quyết định: Static MDX (MVP)</h4>
+                    <p>Với MVP 6 tuần, tất cả nội dung trang <strong>Service</strong> (<code>/giai-phap/[tier]</code>), <strong>Program</strong> (<code>/chuong-trinh/[slug]</code>), <strong>Department</strong> (<code>/giai-phap-theo-phong-ban/[dept]</code>), <strong>Case Studies</strong> (<code>/case-studies/[slug]</code>), và <strong>Resources</strong> (<code>/resources/[slug]</code>) sẽ được lưu dưới dạng <strong>file MDX trong thư mục <code>/content</code> của Next.js repo</strong>. Dev dùng <code>next-mdx-remote</code> hoặc <code>contentlayer</code> để parse và render.</p>
+                    <ul>
+                        <li><strong>Ưu điểm MVP:</strong> Không cần thêm hạ tầng CMS. Versioning nội dung bằng Git. Static Generation (SSG) cực nhanh và SEO tốt.</li>
+                        <li><strong>Nhược điểm (Phase 2 sẽ migrate):</strong> Non-technical content editor không tự sửa được. Phải qua Pull Request.</li>
+                        <li><strong>Phase 2 Upgrade:</strong> Migrate sang Headless CMS (Sanity.io hoặc Contentful) khi team Content cần tự quản lý nội dung mà không cần Dev.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical AEO (giữ lại) -->
+            <div class="alert alert-warning">
+                <h4>6.8. Technical AEO Checklist</h4>
+                <ul>
+                    <li><strong>SSR:</strong> Next.js App Router (RSC). H1, H2 phải có trong DOM gốc — không render qua Client JS.</li>
+                    <li><strong>robots.txt:</strong> <code>Allow: /</code> cho <code>OAI-SearchBot</code> (ChatGPT Search), <code>Googlebot</code>. Cho phép <code>PerplexityBot</code>. Kiểm soát riêng <code>GPTBot</code> (training bot).</li>
+                    <li><strong>llms.txt (Optional):</strong> Liệt kê URL + mô tả ngắn theo Markdown — hỗ trợ LLM crawler nhưng không đảm bảo ranking.</li>
+                    <li><strong>Cơ bản:</strong> <code>sitemap.xml</code> chứa đủ tất cả URL, Canonical URL, Open Graph unique cho từng page.</li>
+                </ul>
+            </div>
+
+            <!-- Content Clusters (giữ lại) -->
+            <div class="card">
+                <h3>6.9. B2B Content Clusters (Keyword cho Blog/Resources)</h3>
+                <ul>
+                    <li>"Lộ trình triển khai AI cho công ty 50-200 nhân sự"</li>
+                    <li>"Đào tạo AI nội bộ cho phòng HR"</li>
+                    <li>"AI Agent khác chatbot truyền thống thế nào?"</li>
+                    <li>"Private LLM và RAG cho dữ liệu nội bộ doanh nghiệp"</li>
+                    <li>"AI governance policy mẫu cho doanh nghiệp Việt Nam"</li>
+                    <li>"Cách đánh giá AI maturity của doanh nghiệp"</li>
+                    <li>"Các rủi ro bảo mật khi dùng ChatGPT trong công ty"</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7. User Stories -->
+        <section id="user-stories">
+            <h2>7. User Stories & Acceptance Criteria</h2>
+
+            <div class="user-story">
+                <div class="user-story-title">US01: Assessment - Logic validate Email & SendGrid</div>
+                <div class="acceptance-criteria">
+                    <ul>
+                        <li>AC1: Frontend chặn email <code>@gmail.com, @yahoo.com</code>.</li>
+                        <li>AC2: Nộp bài -> Hiển thị <strong>Analysis Animation</strong> (chờ 3s).</li>
+                        <li>AC3: Backend tính điểm (API). Bảng `assessments` được tạo mới kết nối vào `leads`. Nếu `leads.email` đã tồn tại, tự động UPSERT (cập nhật `last_activity_at`, không văng lỗi).</li>
+                        <li>AC4: Gọi SendGrid API gửi template email báo cáo chuẩn. Lưu log vào `webhook_logs`.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-story">
+                <div class="user-story-title">US02: Đặt lịch Tư vấn Chiến Lược (CRM Handoff)</div>
+                <div class="acceptance-criteria">
+                    <ul>
+                        <li>AC1: Form có: Tên, Email cty, Tên Cty, Role, Vấn đề. Checkbox "Marketing Consent".</li>
+                        <li>AC2: Lưu vào `form_submissions` (`form_type='strategy_call'`). Lead Score cộng 50 điểm. Status = 'SQL'.</li>
+                        <li>AC3: Backend kích hoạt Webhook bắn Data sang Slack.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-story">
+                <div class="user-story-title">US03: Gated Content (Tải Case Study)</div>
+                <div class="acceptance-criteria">
+                    <ul>
+                        <li>AC1: Giao diện Blur phần nội dung bên dưới (Giữ lại Public Summary ở trên để Crawler đọc).</li>
+                        <li>AC2: Nhập email hợp lệ -> Gọi API `/api/resources/unlock`.</li>
+                        <li>AC3: Backend lưu sự kiện vào <code>lead_events</code> với <code>event_type = 'download_resource'</code>.</li>
+                        <li>AC4: Frontend lưu Cookie `unlocked_resources=[slug]`. Lớp mờ biến mất.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-story">
+                <div class="user-story-title">US04: Mobile Responsive & Analytics Tracking</div>
+                <div class="acceptance-criteria">
+                    <ul>
+                        <li>AC1: 100% trang Responsive. Assessment Tool hiển thị 1 câu hỏi/màn hình.</li>
+                        <li>AC2: Khi user click submit form, push event <code>generate_lead</code> vào dataLayer (GTM).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-story">
+                <div class="user-story-title">US05: SEO/AEO Technical Acceptance Criteria (QA trước khi Launch)</div>
+                <p><em>Dành cho Dev/QA chạy trước khi Go-live. Fail bất kỳ AC nào = Blocked Launch.</em></p>
+                <div class="acceptance-criteria">
+                    <ul>
+                        <li><strong>AC1 (Schema):</strong> Chạy Google Rich Results Test cho 5 trang quan trọng (Home, 2 Tier, Assessment, 1 Case Study). Kết quả: Zero "Critical errors".</li>
+                        <li><strong>AC2 (SSR):</strong> Chạy <code>curl -s https://sunext.vn/giai-phap/dao-tao-ai-co-ban | grep "&lt;h1"</code>. Kết quả: H1 phải có mặt trong response HTML — không được để trống rồi mới render bằng JS.</li>
+                        <li><strong>AC3 (Sitemap):</strong> File <code>/sitemap.xml</code> chứa đủ tất cả 20+ URL (6 Tiers + 5 Departments + Assessment + Home + About + ...). Validate bằng Screaming Frog hoặc sitemap validator online.</li>
+                        <li><strong>AC4 (Canonical & OG):</strong> Mỗi trang có thẻ <code>&lt;link rel="canonical"&gt;</code> trỏ về chính nó. Mỗi trang có <code>og:title</code>, <code>og:description</code>, <code>og:image</code> unique — không dùng default chung.</li>
+                        <li><strong>AC5 (Performance):</strong> Lighthouse Performance Score ≥ 80 trên Mobile. LCP &lt; 2.5s trên 4G giả lập.</li>
+                        <li><strong>AC6 (robots.txt):</strong> File tồn tại và có <code>Allow: /</code> cho <code>OAI-SearchBot</code>. Không có dòng <code>Disallow: /</code> chặn service pages.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Data Dictionary -->
+        <section id="data-dictionary">
+            <h2>8. Data Dictionary (Schema DB Chặt Chẽ)</h2>
+            <p>Schema đã được bổ sung Index, `updated_at` trigger, và các constraint idempotency.</p>
+            <pre>
+-- 1. Bảng companies
+CREATE TABLE companies (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  domain VARCHAR(255) UNIQUE NOT NULL, 
+  name VARCHAR(255),
+  size_range VARCHAR(50),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX idx_companies_domain ON companies(domain);
+
+-- 2. Bảng leads (Khách hàng)
+CREATE TABLE leads (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email VARCHAR(255) UNIQUE NOT NULL, 
+  full_name VARCHAR(255),
+  company_id UUID REFERENCES companies(id) ON DELETE SET NULL,
+  total_score INT DEFAULT 0, 
+  status VARCHAR(50) DEFAULT 'New', 
+  marketing_consent BOOLEAN DEFAULT false,
+  consent_timestamp TIMESTAMPTZ,
+  consent_source VARCHAR(255), -- url nơi user tick consent
+  utm_source VARCHAR(100),
+  utm_campaign VARCHAR(100),
+  last_activity_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at TIMESTAMPTZ -- cho soft delete
+);
+CREATE INDEX idx_leads_email ON leads(email);
+CREATE INDEX idx_leads_company_id ON leads(company_id);
+
+-- 3. Bảng assessments
+CREATE TABLE assessments (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  lead_id UUID REFERENCES leads(id) ON DELETE CASCADE,
+  answers_json JSONB NOT NULL,
+  calculated_score INT NOT NULL,
+  recommended_tier INT,
+  recommended_programs JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX idx_assessments_lead_id ON assessments(lead_id);
+
+-- 4. Bảng form_submissions
+CREATE TABLE form_submissions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  lead_id UUID REFERENCES leads(id) ON DELETE CASCADE,
+  form_type VARCHAR(50) NOT NULL, 
+  payload JSONB NOT NULL,
+  ip_address VARCHAR(50), 
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. Bảng lead_events (Phân biệt với score events)
+CREATE TABLE lead_events (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  lead_id UUID REFERENCES leads(id) ON DELETE CASCADE,
+  event_type VARCHAR(100) NOT NULL, -- VD: 'download_resource', 'page_view'
+  resource_slug VARCHAR(255),
+  score_added INT DEFAULT 0, 
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+-- Constraint Idempotency cho Gated Content (1 email tải 1 file chỉ có 1 event download)
+CREATE UNIQUE INDEX idx_lead_events_idempotency 
+ON lead_events(lead_id, event_type, resource_slug) 
+WHERE event_type = 'download_resource';
+
+-- 6. Bảng webhook_logs
+CREATE TABLE webhook_logs (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  target_system VARCHAR(50), 
+  payload JSONB,
+  response_status INT,
+  error_message TEXT,
+  retry_count INT DEFAULT 0,
+  webhook_status VARCHAR(20) DEFAULT 'pending', -- 'success', 'failed'
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+            </pre>
+        </section>
+
+        <!-- 9. API Specs -->
+        <section id="api-specs">
+            <h2>9. API Contracts & Webhooks (BFF)</h2>
+            <p>Mọi API route (Next.js) đều yêu cầu Turnstile token (<code>cf-turnstile-response</code>) và Rate Limit dựa trên IP (qua Vercel KV hoặc middleware).</p>
+
+            <div class="card">
+                <h3>1. POST <code>/api/assessment/submit</code></h3>
+                <p><strong>Rate Limit:</strong> 5 req / 10 min / IP. <strong>Auth:</strong> Turnstile.</p>
+                <p><strong>Request Payload:</strong></p>
+                <pre>{
+  "email": "a@fpt.com", "fullName": "Nguyen A",
+  "answers": { "q1": "c", "q2": "b", "q3": "c", "q4": "a", "q5": "b", "q6": "a", "q7": "c", "q8": "b", "q9": "c", "q10": "b" },
+  "utm": { "source": "fb" },
+  "cf-turnstile-response": "..."
+}</pre>
+                <p><strong>Logic Backend & Idempotency:</strong>
+                1. Validate Turnstile.<br>
+                2. Upsert <code>companies</code> (fpt.com).<br>
+                3. Check DB <code>assessments</code>: Nếu chưa có assessment nào của <code>lead_id</code> này -> Upsert <code>leads</code> (cộng +20đ). Nếu đã có -> không cộng điểm.<br>
+                4. Tính điểm, insert vào <code>assessments</code>.<br>
+                5. Gọi SendGrid API gửi email. Lưu <code>webhook_logs</code>.<br>
+                6. Trả về kết quả 200 OK.</p>
+                <p><strong>Response (200 OK):</strong> <code>{ "success": true, "data": { "score": 65, "recommended_tier": 3, "recommended_programs": ["agentics-ai-automations", "ai-agent-bootcamp"] } }</code></p>
+                <p><strong>Error Responses (Tương tự cho cả 3 API):</strong></p>
+                <pre>// 400: Lỗi input (Email cá nhân, thiếu field)
+{ "success": false, "error": "VALIDATION_ERROR", "message": "Email công ty là bắt buộc." }
+// 401: Turnstile fail
+{ "success": false, "error": "CAPTCHA_FAILED", "message": "Xác minh thất bại. Vui lòng thử lại." }
+// 429: Rate limit
+{ "success": false, "error": "RATE_LIMITED", "message": "Thử lại sau 5 phút.", "retryAfterSeconds": 300 }
+// 500: Lỗi Server/DB (không trả chi tiết DB ra client)
+{ "success": false, "error": "INTERNAL_ERROR", "message": "Có lỗi hệ thống." }</pre>
+            </div>
+
+            <div class="card">
+                <h3>2. POST <code>/api/leads/strategy-call</code></h3>
+                <p><strong>Rate Limit:</strong> 3 req / 5 min / IP. <strong>Auth:</strong> Turnstile.</p>
+                <p><strong>Request Payload:</strong></p>
+                <pre>{
+  "email": "b.le@fpt.com", "fullName": "Le Van B", "companyName": "FPT",
+  "companySize": "1000+", "jobTitle": "CTO", "painPoint": "Need RAG",
+  "interested_program": "ai-in-marketing", "interested_tier": 2, 
+  "completed_programs_self_reported": ["ai-in-business"],
+  "consent": true, "cf-turnstile-response": "..."
+}</pre>
+                <p><strong>Logic Backend & Idempotency:</strong> 1. Upsert <code>leads</code> (cộng 50đ và set status='SQL' <em>chỉ nếu</em> status hiện tại != 'SQL'). 2. Insert <code>form_submissions</code>. 3. Gọi Slack Webhook. Trả 200 OK.</p>
+            </div>
+
+            <div class="card">
+                <h3>3. POST <code>/api/resources/unlock</code></h3>
+                <p><strong>Rate Limit:</strong> 10 req / 5 min / IP. <strong>Auth:</strong> Turnstile (ngầm).</p>
+                <p><strong>Request Payload:</strong> <code>{ "email": "a@fpt.com", "resource_slug": "case-study-hr", "cf-turnstile-response": "..." }</code></p>
+                <p><strong>Logic Backend & Idempotency:</strong> Upsert <code>leads</code> — cộng +15đ <em>chỉ nếu</em> chưa có record trong <code>lead_events</code> trùng (idempotency check bọc bởi UNIQUE constraint DB). Insert <code>lead_events</code>. Trả về presigned URL của PDF.</p>
+                <p><strong>Response (200 OK):</strong> <code>{ "success": true, "data": { "downloadUrl": "https://...", "expiresIn": 3600 } }</code></p>
+            </div>
+        </section>
+
+        <!-- 10. NFR -->
+        <section id="nfr">
+            <h2>10. Cấu Hình Bảo Mật & Non-Functional Requirements</h2>
+
+            <h3>10.1. Supabase Row Level Security (RLS) Policy</h3>
+            <div class="card">
+                <p>Bắt buộc thiết lập RLS trên tất cả bảng chứa dữ liệu Lead trước khi Go-live. Nguyên tắc: <strong>anon role không bao giờ được phép SELECT dữ liệu Lead.</strong></p>
+                <pre>-- Bật RLS trên tất cả bảng nhạy cảm
+ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+ALTER TABLE assessments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE form_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE lead_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE webhook_logs ENABLE ROW LEVEL SECURITY;
+
+-- KHÔNG tạo policy SELECT cho anon. Mặc định: deny all.
+-- Chỉ cho phép service_role (dùng trong BFF/API Routes) toàn quyền.
+-- Frontend Client-side TUYỆT ĐỐI không được gọi Supabase trực tiếp vào các bảng này.
+-- Mọi INSERT/UPDATE phải đi qua Next.js API Routes (BFF) dùng SUPABASE_SERVICE_ROLE_KEY.</pre>
+                <div class="alert alert-danger" style="margin: 0;">
+                    <h4>Biến môi trường bắt buộc phân tách</h4>
+                    <ul>
+                        <li><code>NEXT_PUBLIC_SUPABASE_URL</code> — Dùng ở client-side (an toàn).</li>
+                        <li><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> — Chỉ dùng cho các tác vụ public (đọc trang tĩnh, không liên quan Lead).</li>
+                        <li><code>SUPABASE_SERVICE_ROLE_KEY</code> — <strong>TUYỆT ĐỐI không đặt vào NEXT_PUBLIC_*</strong>. Chỉ dùng trong <code>process.env</code> của API Routes server-side.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>10.2. Privacy & Cookie Data Spec</h3>
+            <div class="card">
+                <p>Mọi dữ liệu sau đây phải được mô tả rõ trong trang <code>/privacy</code> bằng Tiếng Việt:</p>
+                <table style="font-size:0.9rem;">
+                    <tr>
+                        <th>Loại dữ liệu thu thập</th>
+                        <th>Cơ chế lưu trữ</th>
+                        <th>Mục đích sử dụng</th>
+                        <th>Thời gian lưu trữ</th>
+                    </tr>
+                    <tr><td>UTM parameters</td><td><code>localStorage</code> (Client-side)</td><td>Đo hiệu quả marketing, gắn nguồn Lead</td><td>Đến khi user xóa hoặc submit form</td></tr>
+                    <tr><td>Unlocked resource cookie</td><td><code>cookie</code> (httpOnly = false; 30 ngày)</td><td>Không hỏi Email lại khi user quay lại trang</td><td>30 ngày hoặc đến khi xóa trình duyệt</td></tr>
+                    <tr><td>IP Address trong <code>form_submissions</code></td><td>Supabase PostgreSQL (Server-side)</td><td>Chống Spam và Rate Limiting</td><td>Lưu 90 ngày rồi tự xóa (cron job)</td></tr>
+                    <tr><td>Marketing Consent flag</td><td>Supabase PostgreSQL, cột <code>leads.marketing_consent</code></td><td>Phân loại Lead được phép nhận email marketing</td><td>Vô thời hạn (hoặc đến khi user yêu cầu xóa)</td></tr>
+                    <tr><td>Self-reported completed programs</td><td>Supabase PostgreSQL, cột <code>form_submissions.payload</code></td><td>Tư vấn lộ trình Program phù hợp</td><td>Theo retention policy chung của lead data</td></tr>
+                </table>
+                <p style="margin-top: 16px;">User có quyền yêu cầu xóa dữ liệu bằng cách gửi email tới địa chỉ được nêu trong <code>/privacy</code>. Team kỹ thuật phải thực hiện trong vòng 30 ngày.</p>
+            </div>
+
+            <h3>10.3. NFR chung</h3>
+            <ul>
+                <li><strong>Privacy & Compliance (PDPA/GDPR):</strong> Banner <em>Cookie Consent</em> ở lần đầu truy cập. Checkbox <code>marketing_consent</code> trên mọi Form B2B.</li>
+                <li><strong>Logging & Observability:</strong> Tích hợp Vercel Analytics. Mọi lỗi 500 của API được log qua Sentry.</li>
+                <li><strong>Abuse Handling (Chống Spam):</strong> Bắt buộc dùng Turnstile (Cloudflare) hoặc reCAPTCHA ẩn cho các form API. Giới hạn IP Rate Limiting.</li>
+            </ul>
+        </section>
+
+        <!-- 11. Roadmap -->
+        <section id="roadmap">
+            <h2>11. Lộ Trình Triển Khai MVP (Dependencies)</h2>
+            <div class="alert alert-danger">
+                <h4>Phụ thuộc Nội dung (Content Dependency - Blocker)</h4>
+                <p>Dự án sẽ không thể pass UAT nếu phải dùng "Lorem Ipsum". Khác với PRD bản cũ, kiến trúc SEO yêu cầu viết nội dung rất có cấu trúc. <strong>Trong Tuần 1 &amp; 2, Business Team BẮT BUỘC phải bàn giao:</strong></p>
+                <ol>
+                    <li>Copywriting cho <strong>6 Trang Tầng</strong> (chuẩn form H1/H2 AEO).</li>
+                    <li><strong>Bảng Matrix Assessment</strong> Final (10 câu, thang điểm, mapping tier).</li>
+                    <li>Ít nhất <strong>1 tài liệu Case Study</strong> có "Public Summary" để tránh Lorem Ipsum tại launch.</li>
+                    <li><strong>Template Email SendGrid</strong> (Assessment report, Thank-you, Strategy Call confirm).</li>
+                    <li><strong>Danh sách chương trình active:</strong> Tối thiểu cần xác nhận slug chính thức của: <em>AI in Business</em>, <em>AI in Marketing</em>, <em>Agentics AI Automations</em> — để dev có thể hardcode mapping trong API.</li>
+                    <li><strong>Copywriting cho từng Program Detail Page</strong> (Mỗi chương trình cần hero text, pain points, module outline, tool stack, CTA).</li>
+                    <li><strong>Mapping Lộ Trình Program:</strong> Xác nhận <code>recommendedAfter</code> và <code>recommendedNext</code> cho từng chương trình.</li>
+                </ol>
+            </div>
+
+            <table>
+                <tr>
+                    <th width="15%">Milestone</th>
+                    <th width="85%">Công việc Dev & Dependencies</th>
+                </tr>
+                <tr>
+                    <td><strong>Tuần 1-2</strong><br>(Setup & Static UI)</td>
+                    <td>
+                        - Dev: Khởi tạo Next.js App Router (SSR), Setup Supabase Schema, Config Tailwind.<br>
+                        - Dev: Code Landing Page tĩnh & 6 trang URL Tiers riêng biệt.<br>
+                        - Dev: Code Program Hub <code>/chuong-trinh</code> và dynamic Program Detail <code>/chuong-trinh/[slug]</code>.<br>
+                        - <em>Blocker: Cần Wireframe copy chuẩn AEO.</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Tuần 3-4</strong><br>(Logic & Assessment)</td>
+                    <td>
+                        - Dev: Code UI Assessment Tool & Gated Content Blur.<br>
+                        - Dev: Viết API `/api/assessment/submit` và `/api/resources/unlock`.<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Tuần 5</strong><br>(CRM & Webhooks)</td>
+                    <td>
+                        - Dev: Viết API `/api/leads/strategy-call`.<br>
+                        - Dev: Tích hợp SendGrid Email API & Slack Webhook.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Tuần 6</strong><br>(SEO/QA, UAT & Launch)</td>
+                    <td>
+                        - Dev: Cấu hình `sitemap.xml`, `robots.txt` (`OAI-SearchBot`), `llms.txt`, JSON-LD Schemas.<br>
+                        - QA: Test Spam Form, SEO Audit, Mobile.<br>
+                        - Ops: Add Cookie Consent, GTM Tracking. Go-live.
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 12. Page-by-Page Specifications -->
+        <section id="page-specs">
+            <h2>12. Page-by-Page Specifications (Full Matrix)</h2>
+            <p>Đặc tả chi tiết để Dev và Content có thể hình dung từng trang trước khi code/viết.</p>
+
+            <div class="card">
+                <h3>12.1. Home Page (<code>/</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Trở thành Hub điều hướng, định vị Sunext là B2B AI Consulting hàng đầu.</li>
+                    <li><strong>Primary persona:</strong> CEO, Founder, C-Level.</li>
+                    <li><strong>Sections Order:</strong> 
+                        1. Hero (H1 + Subtitle + "Làm bài Test" CTA).<br>
+                        2. Trust Band (Logo đối tác / Số liệu).<br>
+                        3. The Wedge Strategy (Phễu 6 Tầng dạng Grid).<br>
+                        4. Phương pháp luận (Discovery -> Audit -> Deploy).<br>
+                        5. Highlighted Case Studies.<br>
+                        6. Expert Profiles.<br>
+                        7. Final CTA (Assessment / Strategy Call).
+                    </li>
+                    <li><strong>Internal Links:</strong> Trỏ về đủ 6 Tier pages, /about, /case-studies.</li>
+                    <li><strong>Tracking:</strong> <code>home_assessment_click</code>, <code>home_tier_card_click</code>.</li>
+                    <li><strong>AC:</strong> LCP &lt; 2.5s. H1 có mặt trong initial HTML. Schema Organization hợp lệ.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.2. Service Tier Pages (<code>/giai-phap/[tier]</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Thuyết phục doanh nghiệp mua lộ trình AI cụ thể.</li>
+                    <li><strong>Primary persona:</strong> Department Head (T1-T4), CIO/CTO (T5), CEO (T6).</li>
+                    <li><strong>Sections Order:</strong> 
+                        1. Hero (H1 AEO + Direct Answer 50 words).<br>
+                        2. Meta Data Table (Thời gian, Đầu ra, Đối tượng).<br>
+                        3. Dịch vụ này giải quyết vấn đề gì? (Pain points).<br>
+                        4. Dịch vụ này gồm những gì? (Deliverables).<br>
+                        5. Gợi ý ứng dụng theo phòng ban (Link to Department pages).<br>
+                        6. Data Security Guarantee.<br>
+                        7. FAQ.<br>
+                        8. Strategy Call Form.
+                    </li>
+                    <li><strong>AC:</strong> Có FAQPage Schema. Không render H1 qua JS. Nút Submit gọi API <code>/api/leads/strategy-call</code>.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.3. Department Pages (<code>/giai-phap-theo-phong-ban/[dept]</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Hứng Search Intent đuôi dài (VD: "Phần mềm AI cho HR").</li>
+                    <li><strong>Sections Order:</strong> 
+                        1. Hero (H1 AEO + Direct Answer).<br>
+                        2. 3 bài toán lớn nhất của phòng ban được AI giải quyết.<br>
+                        3. Đề xuất Tier phù hợp (VD: HR nên học T1 + dùng T3 agent).<br>
+                        4. Tool stack gợi ý (Midjourney, ChatGPT, Zapier...).<br>
+                        5. Case Study HR/Marketing liên quan.<br>
+                        6. FAQ.
+                    </li>
+                    <li><strong>AC:</strong> Internal link 2 chiều với các trang Tier. Schema Service có <code>audience</code> là tên phòng ban.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.4. Assessment Tool Page (<code>/ai-maturity-assessment</code>)</h3>
+                <ul>
+                    <li><strong>Sections Order:</strong>
+                        1. AEO Explainer (Đoạn text ngắn cho Google crawl trước khi vào form).<br>
+                        2. Interactive Form (10 steps).<br>
+                        3. Gate (Nhập email).<br>
+                        4. Result Page (Dynamic Score + Recommended Tier + Recommended Programs + CTA).
+                    </li>
+                    <li><strong>AC:</strong> Form state giữ bằng React Context / Zustand. Hỗ trợ Enter để next. Chặn spam email domain.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.6. Clients / Partners Page (<code>/khach-hang-doi-tac</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Chứng minh năng lực Sunext qua các công ty đã đồng hành, xây dựng Trust.</li>
+                    <li><strong>Sections Order:</strong>
+                        1. Hero: Các doanh nghiệp đồng hành cùng Sunext.<br>
+                        2. Logo Grid (Có thể chia theo: Đã tư vấn / Đã đào tạo).<br>
+                        3. Filter theo ngành/quy mô.<br>
+                        4. Case study cards (Link sang trang detail).<br>
+                        5. Partner relationship disclaimer (ẩn danh nếu cần).<br>
+                        6. CTA: Xem case study / Đặt lịch tư vấn.
+                    </li>
+                    <li><strong>AC:</strong> Schema CollectionPage hoặc Organization (dạng danh sách sameAs/knowsAbout). KHÔNG hiển thị logo nếu chưa có quyền sử dụng.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.7. Trust Pages (<code>/about</code>, <code>/security</code>, <code>/faq</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Xây dựng E-E-A-T cho Google và Buyer.</li>
+                    <li><strong>/security:</strong> Giải thích rõ Data Handling Policy, cam kết không train data (Private LLM).</li>
+                    <li><strong>/about:</strong> Có Profile, hình ảnh thật, link LinkedIn của team tư vấn.</li>
+                    <li><strong>AC:</strong> Cả 3 trang này link chặt chẽ từ Footer. Có schema tương ứng (AboutPage, WebPage, FAQPage).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.8. Program Hub Page (<code>/chuong-trinh</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Phân định rạch ròi các Chương trình đào tạo/huấn luyện (Program) khỏi Dịch vụ tư vấn cấp cao (Service). Hiển thị lộ trình progression.</li>
+                    <li><strong>Sections Order:</strong>
+                        1. Hero: Nâng cao năng lực AI cho tổ chức.<br>
+                        2. Lộ trình học AI đề xuất (Ví dụ: AI in Business → AI in Marketing → Agentics).<br>
+                        3. Danh sách chương trình (Grid cards với badge <code>Tầng 1</code>, <code>Tầng 2</code>).<br>
+                        4. CTA Assessment: "Chưa biết bắt đầu ở đâu? Làm AI Maturity Assessment".
+                    </li>
+                    <li><strong>AC:</strong> Các chương trình Tầng 3 trở lên phải có block "Điều kiện nên có trước khi tham gia" (Prerequisites). Mỗi chương trình hiển thị đúng tier, audience, duration và next recommended program.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>12.9. Program Detail Page (<code>/chuong-trinh/[slug]</code>)</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Thuyết phục đúng đối tượng đăng ký một chương trình cụ thể, đồng thời định tuyến rõ ràng sang chương trình tiếp theo hoặc Tier/LMS liên quan.</li>
+                    <li><strong>Sections Order:</strong>
+                        1. Hero: Tên chương trình + tier + audience + duration.<br>
+                        2. Chương trình này dành cho ai.<br>
+                        3. Điều kiện nên có trước khi học (Prerequisites — bắt buộc từ Tầng 3 trở lên, dùng component <strong>Prerequisite Alert</strong>).<br>
+                        4. Học xong làm được gì (Outcomes).<br>
+                        5. Nội dung chính / module outline.<br>
+                        6. Công cụ sử dụng (Tool stack).<br>
+                        7. Recommended next program (block "Chương trình tiếp theo gợi ý", dùng component <strong>Progression Map</strong>, link theo <code>recommendedNext</code>).<br>
+                        8. Link sang LMS hiện tại nếu <code>externalLmsOnly: true</code> (mở tab mới, track <code>lms_login_clicked</code>).<br>
+                        9. FAQ.<br>
+                        10. CTA tư vấn lộ trình (<strong>Strategy Form</strong> với <code>sourceProgram</code> và <code>sourceTier</code> tự động điền).
+                    </li>
+                    <li><strong>AC:</strong> H1 và meta description có trong DOM gốc (SSR). Schema <code>Service</code> (xem 6.3). Nút CTA gọi API <code>/api/leads/strategy-call</code> kèm <code>interested_program</code>. Nếu chương trình Tầng 3+, bắt buộc có <code>recommendedAfter</code> và hiển thị Prerequisite Alert; nếu thiếu <code>recommendedAfter</code>, page fail content validation/build.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 13. UI/UX Component Specifications -->
+        <section id="components">
+            <h2>13. UI/UX Component Specifications</h2>
+            <p>Quy chuẩn cho các component tái sử dụng (React/Next.js).</p>
+
+            <table style="font-size:0.87rem; margin-top: 10px;">
+                <tr>
+                    <th width="20%">Component</th>
+                    <th width="35%">Behavior & Props</th>
+                    <th width="45%">Design/Accessibility (AC)</th>
+                </tr>
+                <tr>
+                    <td><strong>Header / Nav</strong></td>
+                    <td>Sticky on scroll. Desktop: Mega menu cho Giải pháp. Mobile: Hamburger menu trượt ngang.</td>
+                    <td>Logo SVG nét. Bắt buộc có nút "Làm bài Test" nổi bật. <code>&lt;nav&gt;</code> tag hợp lệ.</td>
+                </tr>
+                <tr>
+                    <td><strong>Program Card</strong></td>
+                    <td>Props: <code>title</code>, <code>tier</code>, <code>duration</code>, <code>audience</code>, <code>prerequisites</code>, <code>nextProgram</code>.</td>
+                    <td>Hiển thị rõ Badge Tier. Nếu có prerequisite, hiển thị cảnh báo nhẹ báo hiệu nền tảng cần thiết. CTA: Xem chương trình.</td>
+                </tr>
+                <tr>
+                    <td><strong>Progression Map</strong></td>
+                    <td>Flowchart ngang/dọc hiển thị trình tự T1 -> T2 -> T3.</td>
+                    <td>Nhấn mạnh program hiện tại, làm mờ (opacity) các program đã qua hoặc chưa tới.</td>
+                </tr>
+                <tr>
+                    <td><strong>Prerequisite Alert</strong></td>
+                    <td>Dùng cho trang Detail của Tầng 3+. Cảnh báo user nên học khóa cơ bản trước.</td>
+                    <td>Component Alert box màu vàng/cam. Nút CTA link ngược về khóa T1/T2 tương ứng.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tier Card (Cũ)</strong></td>
+                    <td>Props: <code>tier</code>, <code>title</code>, <code>description</code>, <code>duration</code>, <code>slug</code>. Click toàn bộ card để vào bài.</td>
+                    <td>Hover effect: Nổi nhẹ (shadow), đổi màu viền. Không giật UI. Có mũi tên <code>-&gt;</code> chỉ báo.</td>
+                </tr>
+                <tr>
+                    <td><strong>Assessment Step</strong></td>
+                    <td>Props: <code>question</code>, <code>options</code>, <code>currentStep</code>, <code>onSelect</code>.</td>
+                    <td>Transition: Slide trái/phải mượt mà. Label to, dễ tap trên mobile. Bấm số 1-4 trên phím để chọn.</td>
+                </tr>
+                <tr>
+                    <td><strong>Gated Modal</strong></td>
+                    <td>Props: <code>resourceSlug</code>. Trạng thái: <code>idle | loading | success | error</code>.</td>
+                    <td>Blur background <code>backdrop-blur-sm</code>. Lock scroll của body. Bắt buộc có nút X (Close). Focus trap.</td>
+                </tr>
+                <tr>
+                    <td><strong>Strategy Form</strong></td>
+                    <td>Props: <code>sourceProgram?</code>, <code>sourceTier?</code>, <code>completedProgramsSelfReported?</code>, <code>hiddenUtmFields</code>. Validation realtime: Email công ty, Độ dài chữ.<br><em>Các props optional được populate tự động khi form được gọi từ trang Program Detail.</em></td>
+                    <td>Floating labels hoặc placeholder rõ ràng. Nút Submit hiện Loading spinner kèm disable khi đang gọi API. Trường “Đã tham gia chương trình nào?” hiển thị dạng checkbox multi-select.</td>
+                </tr>
+                <tr>
+                    <td><strong>Loading State</strong></td>
+                    <td>Skeleton UI cho các trang dynamic (Case study).</td>
+                    <td>Không dùng spinner quay vòng trừ nút bấm. Skeleton màu nhạt (shimmer effect).</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 14. Design System Mini -->
+        <section id="design-system">
+            <h2>14. Design System Mini Spec</h2>
+            <div class="card">
+                <p><strong>Design Philosophy:</strong> Không UI lòe loẹt, không over-animation. Hướng tới sự tĩnh lặng, an tâm, chuyên nghiệp, "Enterprise feel".</p>
+                <ul>
+                    <li><strong>Color Tokens:</strong> 
+                        <ul>
+                            <li><code>--primary: #7B2FF2</code> (Tím đậm công nghệ - dùng cho nút bấm chính).</li>
+                            <li><code>--surface: #1E293B</code> (Slate 800 - Nền các Card).</li>
+                            <li><code>--bg: #0F172A</code> (Slate 900 - Nền toàn trang, Dark Mode default).</li>
+                            <li><code>--text-body: #94A3B8</code> (Slate 400 - Đọc không mỏi mắt).</li>
+                            <li><code>--text-heading: #F8FAFC</code> (Slate 50).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Typography:</strong> <code>Inter</code> cho toàn bộ website (Dễ đọc, trung tính). Font size base: 16px. H1: 40px (Mobile 32px), H2: 32px (Mobile 24px).</li>
+                    <li><strong>Motion Rules:</strong> CSS transitions max <code>300ms ease-in-out</code>. Không dùng scroll-jacking. Không dùng các thư viện animation nặng như Three.js nếu không thật sự cần thiết.</li>
+                    <li><strong>Accessibility:</strong> Contrast ratio các nút CTA bắt buộc &gt;= 4.5:1. Mọi <code>&lt;img&gt;</code> phải có <code>alt</code>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 15. Content Ops & MDX -->
+        <section id="content-ops">
+            <h2>15. Content Operations & MDX Workflow</h2>
+            <div class="card">
+                <h3>15.1. MDX Frontmatter Schema (Bắt buộc)</h3>
+                <p>Toàn bộ file MDX đặt trong <code>/content/case-studies</code> và <code>/content/resources</code> phải tuân thủ schema YAML sau:</p>
+                <pre>---
+title: "Tối ưu chi phí tuyển dụng 40% với AI"
+slug: "toi-uu-chi-phi-tuyen-dung-hr-ai"
+metaTitle: "Case Study: Giảm 40% Chi Phí Tuyển Dụng Bằng AI - Sunext"
+metaDescription: "Tìm hiểu cách Sunext giúp một doanh nghiệp bán lẻ 500 nhân sự tự động hóa quy trình sàng lọc CV..."
+primaryKeyword: "AI trong tuyển dụng HR"
+persona: "HR Director"
+schemaType: "Article"
+relatedServices: ["dao-tao-ai-co-ban", "ai-agent-chatbot"]
+relatedDepartments: ["hr"]
+canonical: "https://sunext.vn/case-studies/toi-uu-chi-phi-tuyen-dung-hr-ai"
+ogImage: "/images/og/case-study-hr.jpg"
+publishedAt: "2026-07-15"
+updatedAt: "2026-07-20"
+author: "Nguyen Van A"
+reviewedBy: "Le Van B (Legal)"
+---</pre>
+                
+                <h4>Frontmatter cho Programs (<code>/content/programs</code>)</h4>
+                <pre>---
+title: "AI in Marketing"
+slug: "ai-in-marketing"
+tier: 2
+category: "Department Specialization"
+programType: "Training"
+audience:
+  - "Marketing Manager"
+  - "Content Team"
+  - "Brand Team"
+duration: "1-2 ngày"
+prerequisites:
+  - "Đã học AI in Business hoặc hiểu prompt cơ bản"
+recommendedAfter:
+  - "ai-in-business"
+recommendedNext:
+  - "agentics-ai-automations"
+department:
+  - "marketing"
+ctaLabel: "Tư vấn lộ trình AI Marketing"
+lmsUrl: "https://..."
+externalLmsOnly: true
+status: "active"
+---</pre>
+
+                <h3>15.2. Workflow & Trách nhiệm</h3>
+                <ul>
+                    <li><strong>Ai viết content?</strong> Đội Content Marketing (Chuyên môn B2B).</li>
+                    <li><strong>Ai duyệt chuyên môn?</strong> Founder / Lead Consultant duyệt tính thực tế của các giải pháp AI, tránh các claim ảo (VD: "AI tự động hoàn toàn không cần người").</li>
+                    <li><strong>Ai duyệt pháp lý/bảo mật?</strong> Legal/Security duyệt các Case Study để đảm bảo không vi phạm NDA khách hàng.</li>
+                    <li><strong>Quy trình Publish (MVP):</strong> Content gửi file Markdown (.md) cho Dev. Dev check frontmatter, tạo Pull Request, preview Vercel, merge vào `main` để Live.</li>
+                    <li><strong>Quy tắc claim số liệu:</strong> Mọi claim như "Giảm 40% chi phí" phải có context rõ ràng bên dưới (VD: *So với chi phí agency thuê ngoài năm 2025*). Không dùng số liệu vô căn cứ.</li>
+                </ul>
+
+                <h3>15.3. Logo Usage / Legal Permission (Bắt Buộc)</h3>
+                <div class="alert alert-warning">
+                    <p>Vì Sunext định vị B2B Consulting, việc dùng danh tiếng khách hàng phải cực kỳ chặt chẽ:</p>
+                    <ul>
+                        <li>Chỉ dùng Logo thật khi có văn bản (written permission) cho phép từ khách hàng.</li>
+                        <li>Nếu chưa có quyền public, bắt buộc phải dùng mô tả ẩn danh: <em>"Doanh nghiệp bán lẻ nội thất 500 nhân sự"</em>.</li>
+                        <li>Các Case Study ẩn danh phải ghi rõ badge <strong>"Anonymized Client"</strong> để duy trì tính minh bạch E-E-A-T.</li>
+                        <li>Nghiêm cấm claim ROI (như tăng 300% doanh thu) nếu số liệu đó chưa được BOD của khách hàng approve.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. Analytics Tracking -->
+        <section id="analytics">
+            <h2>16. Analytics & Event Tracking Plan (GA4 / GTM)</h2>
+            <table style="font-size:0.85rem; width: 100%;">
+                <tr>
+                    <th width="25%">Event Name (GTM / GA4)</th>
+                    <th width="35%">Trigger Condition</th>
+                    <th width="40%">Event Properties (dataLayer)</th>
+                </tr>
+                <tr>
+                    <td><code>assessment_start</code></td>
+                    <td>Click nút "Bắt đầu Test"</td>
+                    <td><code>{ page_url, utm_source }</code></td>
+                </tr>
+                <tr>
+                    <td><code>assessment_completed</code></td>
+                    <td>Hoàn thành câu 10, hiển thị form email</td>
+                    <td><code>{ total_score, recommended_tier, recommended_programs }</code></td>
+                </tr>
+                <tr>
+                    <td><code>program_card_clicked</code></td>
+                    <td>Click vào Program Card ở Hub</td>
+                    <td><code>{ program_slug, tier_id }</code></td>
+                </tr>
+                <tr>
+                    <td><code>program_cta_clicked</code></td>
+                    <td>Click nút "Xem chương trình" hoặc "Đăng ký" trong chi tiết Program</td>
+                    <td><code>{ program_slug, tier_id, source_page }</code></td>
+                </tr>
+                <tr>
+                    <td><code>program_prerequisite_viewed</code></td>
+                    <td>Hiển thị box Prerequisite (Tầng 3+)</td>
+                    <td><code>{ program_slug, recommended_after }</code></td>
+                </tr>
+                <tr>
+                    <td><code>lead_generated</code></td>
+                    <td>Submit thành công email ở bất kỳ form nào</td>
+                    <td><code>{ lead_type: 'assessment'|'strategy'|'resource', email_hash }</code></td>
+                </tr>
+                <tr>
+                    <td><code>strategy_call_opened</code></td>
+                    <td>Mở modal/chuyển trang Strategy Call</td>
+                    <td><code>{ source_tier, source_program, source_page }</code></td>
+                </tr>
+                <tr>
+                    <td><code>resource_unlocked</code></td>
+                    <td>Nhập email thành công để đọc Case Study</td>
+                    <td><code>{ resource_slug, resource_type }</code></td>
+                </tr>
+                <tr>
+                    <td><code>tier_cta_clicked</code></td>
+                    <td>Click nút đăng ký ở trang Tier</td>
+                    <td><code>{ tier_id, section_name }</code></td>
+                </tr>
+                <tr>
+                    <td><code>security_page_viewed</code></td>
+                    <td>Load trang /security (Đo lường độ lo ngại)</td>
+                    <td><code>{ previous_page }</code></td>
+                </tr>
+                <tr>
+                    <td><code>lms_login_clicked</code></td>
+                    <td>Click nút "Đăng nhập LMS" (Header/Footer hoặc Program Detail)</td>
+                    <td><code>{ source_page, source_program, lms_url }</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 17. QA/UAT Test Matrix -->
+        <section id="qa-uat">
+            <h2>17. QA/UAT Test Matrix (P0 Blockers)</h2>
+            <table style="font-size:0.87rem; width: 100%;">
+                <tr>
+                    <th>Test Case (Priority P0)</th>
+                    <th>Expected Result</th>
+                    <th>Owner</th>
+                </tr>
+                <tr>
+                    <td><strong>SEO SSR:</strong> Chạy <code>curl -s https://.../hr | grep "&lt;h1"</code></td>
+                    <td>H1 hiển thị trong raw HTML, không phụ thuộc JS.</td>
+                    <td>Dev</td>
+                </tr>
+                <tr>
+                    <td><strong>DB Security:</strong> Anon user query bằng Supabase Client</td>
+                    <td>Permission Denied (Nhờ RLS bảo vệ).</td>
+                    <td>Dev/Sec</td>
+                </tr>
+                <tr>
+                    <td><strong>Idempotency:</strong> Submit cùng 1 email ở Assessment 2 lần</td>
+                    <td>Lần 2 vẫn báo thành công, nhưng <code>total_score</code> trong DB KHÔNG tăng thêm 20.</td>
+                    <td>QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Spam Form:</strong> Dùng script spam API `/api/leads/strategy-call`</td>
+                    <td>Bị chặn bởi Rate Limit (HTTP 429) hoặc Turnstile (HTTP 401).</td>
+                    <td>QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Webhook Fail:</strong> Gỡ SendGrid API Key rồi submit form</td>
+                    <td>Form vẫn submit thành công. DB lưu log <code>webhook_logs</code> có lỗi.</td>
+                    <td>QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Accessibility:</strong> Dùng Lighthouse kiểm tra trang Tier</td>
+                    <td>Contrast Score 100, có thẻ Alt ảnh, Navigatable bằng phím Tab.</td>
+                    <td>QA</td>
+                </tr>
+                <tr>
+                    <td><strong>[P0] Program SSR:</strong> <code>/chuong-trinh/ai-in-marketing</code> — kiểm tra raw HTML trước khi JS chạy</td>
+                    <td>H1 và meta description có trong DOM gốc. Không render qua Client JS.</td>
+                    <td>QA/Dev</td>
+                </tr>
+                <tr>
+                    <td><strong>[P0] Prerequisite Alert:</strong> Mở bất kỳ trang Program Tầng 3+</td>
+                    <td>Prerequisite Alert box luôn hiển thị (không tracking tiến độ học), khuyến nghị học T1/T2 trước, có CTA link về chương trình T1/T2 tương ứng.</td>
+                    <td>QA</td>
+                </tr>
+                <tr>
+                    <td><strong>[P0] Assessment Recommendation:</strong> Submit assessment với score ≥ 35</td>
+                    <td>API trả về <code>recommended_programs</code> khác rỗng, <code>recommended_tier</code> ≥ 2.</td>
+                    <td>Dev/QA</td>
+                </tr>
+                <tr>
+                    <td><strong>[P1] Strategy Form Payload:</strong> Submit form từ trang Program Detail</td>
+                    <td><code>form_submissions.payload</code> trong DB chứa <code>interested_program</code> và <code>completed_programs_self_reported</code>.</td>
+                    <td>QA</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 18. Launch Checklist -->
+        <section id="launch">
+            <h2>18. Go-Live Launch Checklist</h2>
+            <ul>
+                <li><input type="checkbox"> Domain <code>sunext.vn</code> connected & HTTPS active.</li>
+                <li><input type="checkbox"> <code>sitemap.xml</code> và <code>robots.txt</code> sinh đúng tự động. Submit lên Google Search Console.</li>
+                <li><input type="checkbox"> Supabase RLS bật cho 100% các bảng Lead.</li>
+                <li><input type="checkbox"> Env vars phân tách rõ ràng (Service Role key tuyệt đối không nằm trong NEXT_PUBLIC).</li>
+                <li><input type="checkbox"> Google Analytics 4 và GTM container active. Các tags kích hoạt đúng.</li>
+                <li><input type="checkbox"> SendGrid Domain Authentication hoàn tất (tránh email vào Spam).</li>
+                <li><input type="checkbox"> Slack Webhook kết nối đúng channel <code>#leads-b2b</code>.</li>
+                <li><input type="checkbox"> Cookie Consent banner hiển thị trên Production.</li>
+                <li><input type="checkbox"> Trang <code>/privacy</code> và <code>/terms</code> đã publish.</li>
+                <li><input type="checkbox"> Lighthouse Mobile Performance >= 80.</li>
+                <li><input type="checkbox"> <code>/chuong-trinh</code> và tối thiểu 3 Program Detail pages đã có trong <code>sitemap.xml</code>, có canonical, OG image, và Schema <code>Service</code> hợp lệ.</li>
+            </ul>
+        </section>
+
+        <!-- 19. Risks & Open Questions -->
+        <section id="risks">
+            <h2>19. Risks & Open Questions (Cần Business chốt)</h2>
+            <div class="alert alert-danger">
+                <ul>
+                    <li><strong>Q1: Sunext đã có Case Study thật chưa?</strong> Nếu chưa có, có được phép dùng data giả lập (anonymized) trong MVP không? <em>(Blocker cho team Content)</em></li>
+                    <li><strong>Q2: Ai là Expert (E-E-A-T) đứng tên bài viết?</strong> Cần profile thật của ban giám đốc (Ảnh, LinkedIn, Bio) để tăng độ tin cậy với Google.</li>
+                    <li><strong>Q3: Có chính sách bảo mật/NDA mẫu chưa?</strong> Trang <code>/security</code> yêu cầu cam kết rõ ràng. Legal team cần cung cấp file PDF hoặc text chính thức.</li>
+                    <li><strong>Q4: Domain gửi email SendGrid là gì?</strong> Cần bộ phận IT verify domain (VD: <code>@sunext.vn</code>) để email báo cáo không rớt vào Spam.</li>
+                    <li><strong>Q5: Tích hợp CRM sau MVP?</strong> Hiện tại Lead đẩy qua Slack và lưu DB. Có kế hoạch đẩy sang HubSpot / Salesforce ở Phase 2 không để Dev chuẩn bị kiến trúc?</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>

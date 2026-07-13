@@ -1,0 +1,62 @@
+/* Vercel-style sliding tabs for main navigation */
+.vercel-nav {
+  position: relative;
+  gap: 2px;
+  padding: 4px 0;
+  isolation: isolate;
+}
+
+.vercel-nav-hover,
+.vercel-nav-underline {
+  position: absolute;
+  pointer-events: none;
+}
+
+.vercel-nav-hover {
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 8px;
+  background: rgba(120, 45, 220, 0.08);
+  opacity: 0;
+  will-change: transform, width, height, opacity;
+}
+
+.vercel-nav-underline {
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #782DDC 0%, #FF7A00 100%);
+  opacity: 0;
+  will-change: transform, width, opacity;
+}
+
+.vercel-nav-link {
+  position: relative;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #4b4455;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+.vercel-nav-link.is-active,
+.vercel-nav.is-hovering .vercel-nav-link.is-hovered {
+  color: #782DDC;
+}
+
+.vercel-nav-link.is-active {
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vercel-nav-hover,
+  .vercel-nav-underline {
+    transition: none !important;
+  }
+}

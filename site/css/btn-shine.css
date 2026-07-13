@@ -1,0 +1,54 @@
+/* Animated gradient shine — Sunext brand (purple / orange) */
+.btn-shine {
+  position: relative;
+  z-index: 1;
+  border: none;
+  overflow: visible;
+  color: #fff !important;
+  background: linear-gradient(90deg, #782DDC, #FF7A00, #d6baff, #782DDC) !important;
+  background-size: 300% !important;
+  transition: transform 0.25s ease;
+}
+
+.btn-shine:hover {
+  animation: btn-shine-ani 8s linear infinite;
+}
+
+@keyframes btn-shine-ani {
+  0% { background-position: 0%; }
+  100% { background-position: 400%; }
+}
+
+.btn-shine::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #782DDC, #FF7A00, #d6baff, #782DDC);
+  background-size: 400%;
+  opacity: 0.55;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.btn-shine:hover::before {
+  filter: blur(18px);
+  opacity: 1;
+}
+
+.btn-shine:active {
+  background: linear-gradient(32deg, #782DDC, #FF7A00, #d6baff, #782DDC) !important;
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine:hover {
+    animation: none;
+  }
+  .btn-shine:hover::before {
+    filter: none;
+  }
+}

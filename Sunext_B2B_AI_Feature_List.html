@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature List: Sunext B2B AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #6366F1;
+            --secondary: #EA580C;
+            --bg-body: #FFFFFF;
+            --bg-sidebar: #F8FAFC;
+            --bg-panel: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --border-color: #E2E8F0;
+            --danger: #EF4444;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --code-bg: #F1F5F9;
+            --code-text: #2563EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .wrapper { display: flex; max-width: 1750px; margin: 0 auto; }
+
+        .sidebar {
+            width: 300px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 24px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .sidebar ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar li { margin-bottom: 6px; }
+        .sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        .sidebar a:hover { color: var(--primary); background-color: #EEF2FF; transform: translateX(4px); }
+
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 1450px;
+            box-sizing: border-box;
+            min-width: 0;
+        }
+
+        header { margin-bottom: 48px; }
+
+        .document-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-sidebar);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 { font-size: 2.3rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; letter-spacing: -1px; }
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 64px;
+            margin-bottom: 8px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+        }
+        .module-sub { color: var(--text-muted); font-size: 0.92rem; margin: 0 0 20px 0; }
+        h3 { font-size: 1.15rem; color: var(--primary); margin-top: 8px; margin-bottom: 16px; font-weight: 600; }
+        p { font-size: 1.02rem; color: var(--text-muted); margin-bottom: 20px; }
+
+        .card {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-panel);
+            margin: 8px 0 24px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            display: block;
+            overflow-x: auto;
+        }
+
+        th, td {
+            padding: 10px 13px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            min-width: 80px;
+        }
+        th { background-color: #F8FAFC; color: var(--text-main); font-weight: 600; font-size: 0.78rem; white-space: nowrap; }
+        td { font-size: 0.83rem; color: var(--text-muted); }
+        td strong { color: var(--text-main); }
+        td code { white-space: nowrap; }
+        tr:last-child td { border-bottom: none; }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: var(--code-text);
+            border: 1px solid var(--border-color);
+        }
+
+        a.ref-link { color: var(--primary); text-decoration: none; font-family: 'Fira Code', monospace; font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
+        a.ref-link:hover { text-decoration: underline; }
+
+        .fid { font-family: 'Fira Code', monospace; font-size: 0.78rem; font-weight: 700; color: var(--text-main); white-space: nowrap; }
+        .dep { font-family: 'Fira Code', monospace; font-size: 0.76rem; }
+        .sprint { font-family: 'Fira Code', monospace; font-size: 0.78rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+        .badge-p0 { background: #FEF2F2; color: var(--danger); border: 1px solid #FCA5A5; }
+        .badge-p1 { background: #EEF2FF; color: var(--primary); border: 1px solid #C7D2FE; }
+        .badge-p2 { background: #F1F5F9; color: var(--text-muted); border: 1px solid #E2E8F0; }
+        .badge-phase2 { background: #FFF7ED; color: var(--secondary); border: 1px solid #FFEDD5; }
+
+        .summary-table td, .summary-table th { text-align: center; }
+        .summary-table td:nth-child(2), .summary-table th:nth-child(2) { text-align: left; min-width: 220px; }
+
+        .legend { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; font-size: 0.88rem; color: var(--text-muted); }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 260px; padding: 30px 20px; }
+            .main-content { padding: 40px; }
+            h1 { font-size: 1.9rem; }
+        }
+        @media (max-width: 768px) {
+            .wrapper { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-color); padding: 20px; display: flex; flex-direction: column; }
+            .sidebar ul { display: flex; flex-wrap: wrap; gap: 8px; }
+            .sidebar li { margin-bottom: 0; }
+            .sidebar a { padding: 6px 10px; font-size: 0.82rem; background: #F1F5F9; border: 1px solid var(--border-color); }
+            .main-content { padding: 20px 16px; }
+            .card { padding: 20px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <aside class="sidebar">
+        <h2>Feature List v3</h2>
+        <ul>
+            <li><a href="#tong-quan">0. Tổng Quan & Sprint Plan</a></li>
+            <li><a href="#module-pages">1. Trang & Kiến Trúc Website (WEB)</a></li>
+            <li><a href="#module-lms">2. LMS Boundary & Integration (LMS)</a></li>
+            <li><a href="#module-assessment">3. Assessment Tool (ASM)</a></li>
+            <li><a href="#module-leadgen">4. Lead Generation & Forms (LEAD)</a></li>
+            <li><a href="#module-program">5. Chương Trình & Khung 6 Tầng (PRG)</a></li>
+            <li><a href="#module-content">6. Content Readiness (CNT)</a></li>
+            <li><a href="#module-backend">7. Backend, Database & API (API)</a></li>
+            <li><a href="#module-cms">8. CMS & Content Operations (CMS)</a></li>
+            <li><a href="#module-seo">9. SEO / AEO Architecture (SEO)</a></li>
+            <li><a href="#module-analytics">10. Analytics & Tracking (ANL)</a></li>
+            <li><a href="#module-security">11. Security & NFR (SEC)</a></li>
+            <li><a href="#module-design">12. Design System & Components (UI)</a></li>
+            <li><a href="#module-qa">13. QA & Launch Readiness (QA)</a></li>
+            <li><a href="#module-phase2">14. Phase 2 Roadmap (PH2)</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="document-meta">
+                <span>Nguồn: Sunext_B2B_AI_Master_Plan.html (v7.0)</span>
+                <span>Loại: Sprint-Ready Backlog</span>
+                <span>Version: 3.0</span>
+            </div>
+            <h1>Sunext AI B2B — Feature List Chi Tiết (v3)</h1>
+            <p style="font-size: 1.1rem; max-width: 920px;">108 tính năng với <strong>Feature ID</strong>, <strong>P0/P1/P2/Phase 2</strong>, <strong>Sprint (S1-S6)</strong>, <strong>Acceptance Criteria</strong>, <strong>Owner</strong>, <strong>Dependency</strong>. Dependency graph đã rà soát để loại vòng lặp (A chờ B, B chờ A) và bỏ wildcard mơ hồ (<code>WEB-*</code>...) để đưa thẳng vào Jira/Linear được. Mở cùng thư mục với <code>Sunext_B2B_AI_Master_Plan.html</code> để link tham chiếu hoạt động.</p>
+        </header>
+
+        <!-- 0. Tổng quan -->
+        <section id="tong-quan">
+            <h2>0. Tổng Quan & Sprint Plan</h2>
+            <div class="card">
+                <div class="legend">
+                    <span class="legend-item"><span class="badge badge-p0">P0</span> Must-have — launch blocker</span>
+                    <span class="legend-item"><span class="badge badge-p1">P1</span> Should-have — có thể trượt sang patch sau launch</span>
+                    <span class="legend-item"><span class="badge badge-p2">P2</span> Nice-to-have — cắt trước nếu cháy deadline</span>
+                    <span class="legend-item"><span class="badge badge-phase2">Phase 2</span> Ngoài phạm vi MVP</span>
+                </div>
+                <h3 style="margin-top:0;">Priority theo Module</h3>
+                <table class="summary-table">
+                    <tr>
+                        <th>Module</th><th style="text-align:left;">Nội dung</th><th>Tổng</th><th>P0</th><th>P1</th><th>P2</th><th>Phase 2</th>
+                    </tr>
+                    <tr><td>WEB</td><td>Trang & Kiến Trúc Website</td><td>17</td><td>9</td><td>5</td><td>3</td><td>0</td></tr>
+                    <tr><td>LMS</td><td>LMS Boundary & Integration</td><td>3</td><td>1</td><td>2</td><td>0</td><td>0</td></tr>
+                    <tr><td>ASM</td><td>Assessment Tool</td><td>6</td><td>5</td><td>0</td><td>1</td><td>0</td></tr>
+                    <tr><td>LEAD</td><td>Lead Generation & Forms</td><td>6</td><td>3</td><td>3</td><td>0</td><td>0</td></tr>
+                    <tr><td>PRG</td><td>Chương Trình & Khung 6 Tầng</td><td>6</td><td>4</td><td>2</td><td>0</td><td>0</td></tr>
+                    <tr><td>CNT</td><td>Content Readiness</td><td>7</td><td>6</td><td>1</td><td>0</td><td>0</td></tr>
+                    <tr><td>API</td><td>Backend, Database & API</td><td>8</td><td>6</td><td>2</td><td>0</td><td>0</td></tr>
+                    <tr><td>CMS</td><td>CMS & Content Operations</td><td>7</td><td>4</td><td>3</td><td>0</td><td>0</td></tr>
+                    <tr><td>SEO</td><td>SEO / AEO Architecture</td><td>12</td><td>7</td><td>4</td><td>1</td><td>0</td></tr>
+                    <tr><td>ANL</td><td>Analytics & Tracking</td><td>11</td><td>3</td><td>6</td><td>2</td><td>0</td></tr>
+                    <tr><td>SEC</td><td>Security & NFR</td><td>5</td><td>4</td><td>1</td><td>0</td><td>0</td></tr>
+                    <tr><td>UI</td><td>Design System & Components</td><td>11</td><td>8</td><td>2</td><td>1</td><td>0</td></tr>
+                    <tr><td>QA</td><td>QA & Launch Readiness</td><td>3</td><td>3</td><td>0</td><td>0</td><td>0</td></tr>
+                    <tr><td>PH2</td><td>Phase 2 Roadmap</td><td>6</td><td>0</td><td>0</td><td>0</td><td>6</td></tr>
+                    <tr><td colspan="2"><strong>Tổng cộng</strong></td><td><strong>108</strong></td><td><strong>63</strong></td><td><strong>31</strong></td><td><strong>8</strong></td><td><strong>6</strong></td></tr>
+                </table>
+
+                <h3>Sprint Distribution (chỉ tính P0 — backlog thật của 6 tuần)</h3>
+                <p style="margin-top:-8px;">S1-S6 map với Tuần 1-6 trong roadmap của Master Plan (§11). Đây là con số nên nhìn khi chia việc cho dev/content mỗi tuần, thay vì nhìn tổng 63 P0 một cục.</p>
+                <table class="summary-table">
+                    <tr><th>Sprint</th><th style="text-align:left;">Trọng tâm</th><th>Số P0 feature</th></tr>
+                    <tr><td>S1 (Tuần 1)</td><td>Setup hạ tầng, DB schema, CMS content model + validation, Content Readiness deliverables, Security foundation, Design tokens, Program/Content Brief</td><td>21</td></tr>
+                    <tr><td>S2 (Tuần 2)</td><td>Static Pages (Home/Tier/Program/Trust/Legal), SEO metadata/schema, Program components, Header/Nav</td><td>16</td></tr>
+                    <tr><td>S3 (Tuần 3)</td><td>Assessment Tool đầy đủ (UI + API + email)</td><td>9</td></tr>
+                    <tr><td>S4 (Tuần 4)</td><td>Lead Gen: Strategy Call, Idempotency/Scoring, Thank-you page, Turnstile/Rate limit hoàn thiện trên cả 3 endpoint</td><td>8</td></tr>
+                    <tr><td>S5 (Tuần 5)</td><td>Analytics core events, Error/Empty states hardening</td><td>4</td></tr>
+                    <tr><td>S6 (Tuần 6)</td><td>404/Redirect, Technical AEO checklist, QA/UAT, Go-Live Checklist</td><td>5</td></tr>
+                    <tr><td colspan="2"><strong>Tổng P0</strong></td><td><strong>63</strong></td></tr>
+                </table>
+                <p style="margin-bottom:0;">S1 nặng (21 P0) vì mọi nền tảng — DB, CMS, content deliverable, security — phải xong trước khi các sprint sau build được gì. Nếu S1 trễ, toàn bộ lịch trượt theo. <strong>Website Sunext không phải LMS</strong> — xem Module 2 để biết ranh giới.</p>
+            </div>
+        </section>
+
+        <!-- 1. Pages -->
+        <section id="module-pages">
+            <h2>1. Trang & Kiến Trúc Website</h2>
+            <p class="module-sub">Prefix: <span class="fid">WEB-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">WEB-001</td><td><strong>Trang chủ</strong> <code>/</code></td><td>Hub điều hướng: Hero, Trust Band, 6-Tier Grid, Phương pháp luận, Case Studies, Expert Profiles, Final CTA.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>H1 SSR trong DOM gốc.<br>Link đủ 6 Tier pages + /about + /case-studies.<br>Schema Organization pass Rich Results Test (SEO-003 gắn vào page này).<br>LCP &lt; 2.5s Mobile.</td><td>Dev + Content</td><td class="dep">CNT-001</td></tr>
+                    <tr><td class="fid">WEB-002</td><td><strong>Service Tier Pages (x6)</strong> <code>/giai-phap/[tier]</code></td><td>6 URL riêng biệt, H1/H2 chuẩn AEO, FAQ, Strategy Form.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Mỗi trang H1 SSR theo Content Brief (SEO-007).<br>FAQPage Schema hợp lệ.<br>CTA gọi đúng /api/leads/strategy-call (form wiring hoàn thiện khi LEAD-001 xong ở S4).<br>Có block Data Security Guarantee.</td><td>Dev + Content</td><td class="dep">CNT-001, SEO-007</td></tr>
+                    <tr><td class="fid">WEB-003</td><td><strong>Department Pages (x5)</strong> <code>/giai-phap-theo-phong-ban/[dept]</code></td><td>HR/Marketing/Sales/Operations/IT — long-tail Search Intent.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>H1 theo Content Brief Department (SEO-008).<br>Internal link 2 chiều với Tier pages liên quan.<br>Schema Service có audience = tên phòng ban.</td><td>Dev + Content</td><td class="dep">SEO-008, WEB-002</td></tr>
+                    <tr><td class="fid">WEB-004</td><td><strong>Program Hub</strong> <code>/chuong-trinh</code></td><td>Danh sách chương trình đào tạo, lộ trình progression, CTA Assessment.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Grid card đủ chương trình active theo CNT-005.<br>Chương trình Tầng 3+ có badge Prerequisite.<br>CTA link sang /ai-maturity-assessment.</td><td>Dev + Content</td><td class="dep">CNT-005, PRG-003, PRG-004</td></tr>
+                    <tr><td class="fid">WEB-005</td><td><strong>Program Detail Pages</strong> <code>/chuong-trinh/[slug]</code></td><td>10-section: hero, audience, prerequisite, outcomes, module outline, tool stack, recommended next, LMS link, FAQ, CTA.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>H1 + meta description SSR.<br>Schema Service (SEO-004).<br>Tier ≥3 → Prerequisite Alert bắt buộc hiển thị.<br>CTA gửi interested_program qua Strategy Form.</td><td>Dev + Content</td><td class="dep">CNT-006, CNT-007, CMS-003, PRG-006</td></tr>
+                    <tr><td class="fid">WEB-006</td><td><strong>Assessment Tool Page</strong> <code>/ai-maturity-assessment</code></td><td>10 câu hỏi tương tác, kết quả Score + Tier + Program.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Form giữ state qua 10 bước, hỗ trợ phím 1-4.<br>Gate email trước khi hiện kết quả.<br>Result hiện đủ Score + Tier + Programs + CTA.</td><td>Dev</td><td class="dep">ASM-001, ASM-002, ASM-003</td></tr>
+                    <tr><td class="fid">WEB-007</td><td><strong>Case Studies Hub</strong> <code>/case-studies</code></td><td>Tổng hợp dự án đã triển khai.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>List tối thiểu 1 case study live (CNT-003).<br>Schema CollectionPage.</td><td>Dev + Content</td><td class="dep">CNT-003</td></tr>
+                    <tr><td class="fid">WEB-008</td><td><strong>Case Study Detail</strong> <code>/case-studies/[slug]</code></td><td>Ngành, Quy mô, Thách thức, Giải pháp, Kết quả. Public Summary + phần gated.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Public Summary crawl được, không bị gate.<br>Schema Article đầy đủ.<br>Phần dưới yêu cầu email theo LEAD-003 (gating chỉ hoạt động từ S4 khi LEAD-003 xong).</td><td>Dev + Content + Legal</td><td class="dep">CNT-003, LEAD-003</td></tr>
+                    <tr><td class="fid">WEB-009</td><td><strong>Resources Hub</strong> <code>/resources</code></td><td>Thư viện Blog/Whitepaper.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>List bài viết theo CMS Frontmatter.<br>Schema CollectionPage.</td><td>Content</td><td class="dep">CMS-002</td></tr>
+                    <tr><td class="fid">WEB-010</td><td><strong>Resource Detail</strong> <code>/resources/[slug]</code></td><td>Trang tài nguyên chi tiết, gate email tải PDF.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>Gate email hoạt động đúng LEAD-003.<br>Schema Article.</td><td>Content + Dev</td><td class="dep">CMS-002, LEAD-003</td></tr>
+                    <tr><td class="fid">WEB-011</td><td><strong>Clients/Partners Page</strong> <code>/khach-hang-doi-tac</code></td><td>Logo Grid, filter, case study cards, disclaimer.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>Không hiển thị logo nếu chưa có quyền sử dụng (CMS-006).<br>Schema CollectionPage/Organization.</td><td>Content</td><td class="dep">CMS-006</td></tr>
+                    <tr><td class="fid">WEB-012</td><td><strong>Trust Pages</strong> <code>/about, /security, /faq</code></td><td>E-E-A-T: profile thật, data handling, FAQ thực chất.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>/about có ảnh thật + LinkedIn team.<br>/security có cam kết NDA/Private LLM cụ thể.<br>Link 2 chiều từ Footer, Schema tương ứng (nội dung theo checklist SEO-010).</td><td>Content + Legal</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">WEB-013</td><td><strong>Contact Page</strong> <code>/contact</code></td><td>Đặt lịch 30 phút tư vấn.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Form/Booking hoạt động, gửi được lead.<br>Schema ContactPage.</td><td>Dev</td><td class="dep">LEAD-001</td></tr>
+                    <tr><td class="fid">WEB-014</td><td><strong>Legal Pages</strong> <code>/privacy, /terms</code></td><td>Chính sách bảo mật & điều khoản, noindex.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Nội dung Tiếng Việt mô tả đủ bảng Privacy Data Spec (SEC-003).<br>noindex tag đúng.</td><td>Legal</td><td class="dep">SEC-003</td></tr>
+                    <tr><td class="fid">WEB-015</td><td><strong>Thank-you Page</strong> <code>/thank-you</code></td><td>Xác nhận sau submit lead, noindex.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Redirect đúng sau mọi form submit thành công.<br>noindex tag.</td><td>Dev</td><td class="dep">LEAD-001, LEAD-003</td></tr>
+                    <tr><td class="fid">WEB-016</td><td><strong>Phương Pháp Luận</strong> <code>/phuong-phap-luan</code></td><td>(Tùy chọn) Discovery→Audit→Train→Deploy→Review.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>Nếu build: H1 SSR + link từ Home.</td><td>Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">WEB-017</td><td><strong>404 Page & Redirect Rules</strong></td><td>Xử lý slug không tồn tại và URL cũ/rút gọn.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S6</td><td>Slug Program/Case Study/Resource không tồn tại → 404 SSR (status code thật, không soft-404).<br>URL cũ/rút gọn (nếu có) → 301 về canonical.<br>Mọi trang tự canonical về chính nó.</td><td>Dev</td><td class="dep">SEO-002</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. LMS Boundary -->
+        <section id="module-lms">
+            <h2>2. LMS Boundary & Integration</h2>
+            <p class="module-sub">Prefix: <span class="fid">LMS-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">LMS-001</td><td><strong>Nút "Đăng nhập LMS"</strong></td><td>Header/Footer trỏ LMS hiện tại, mở tab mới.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>target="_blank" + icon external link để user biết đang rời trang.<br>Sự kiện tracking chi tiết xem ANL-011 (không phải điều kiện để nút hoạt động).</td><td>Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">LMS-002</td><td><strong>Non-Goals Guardrails</strong></td><td>Không xây tài khoản học viên, dashboard, video player, payment, chứng chỉ.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Code review xác nhận không có route/table phục vụ tính năng bị cấm.<br>QA checklist xác nhận trước UAT.</td><td>Dev/Product</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">LMS-003</td><td><strong>Không chia sẻ Auth/Session</strong></td><td>Không xử lý authentication LMS, không share token/DB user.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Không có API route forward session sang domain LMS.<br>Không có bảng DB user học viên trong schema.</td><td>Dev/Sec</td><td class="dep">API-001</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. Assessment Tool -->
+        <section id="module-assessment">
+            <h2>3. Assessment Tool (AI Maturity Test)</h2>
+            <p class="module-sub">Prefix: <span class="fid">ASM-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">ASM-001</td><td><strong>Ngân hàng 10 câu hỏi</strong></td><td>10 câu hard-code, 3 mức đáp án/câu (0/5/10đ).</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Đúng 10 câu theo Bảng Matrix Final (CNT-002).<br>Không đổi thứ tự/nội dung câu hỏi sau khi launch.</td><td>Dev + Content</td><td class="dep">CNT-002</td></tr>
+                    <tr><td class="fid">ASM-002</td><td><strong>Logic Score → Recommended Tier</strong></td><td>0-30đ→T1; 35-60đ→T2&3; 65-100đ→T4&5.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Unit test cho từng khoảng điểm trả đúng tier.<br>Test riêng các biên giới 30/35/60/65.</td><td>Dev</td><td class="dep">ASM-001</td></tr>
+                    <tr><td class="fid">ASM-003</td><td><strong>Recommended Programs</strong></td><td>API trả recommended_programs song song recommended_tier.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Score ≥35 → recommended_programs khác rỗng.<br>Danh sách program khớp slug active (CNT-005).</td><td>Dev</td><td class="dep">PRG-003, CNT-005</td></tr>
+                    <tr><td class="fid">ASM-004</td><td><strong>Analysis Animation</strong></td><td>Loading ~3s trước khi hiện kết quả.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>Animation không chặn quá 3.5s (timeout an toàn nếu API chậm).</td><td>Design + Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">ASM-005</td><td><strong>Email Gate trước kết quả</strong></td><td>Chặn email cá nhân, yêu cầu email công ty.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Regex chặn @gmail.com/@yahoo.com..., hiển thị lỗi rõ.<br>Email hợp lệ → gọi API assessment/submit.</td><td>Dev</td><td class="dep">API-002</td></tr>
+                    <tr><td class="fid">ASM-006</td><td><strong>SendGrid Report Email</strong></td><td>Gửi template báo cáo ngay sau khi tính điểm.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Email gửi trong &lt;30s sau submit.<br>Nếu SendGrid fail: vẫn trả 200 OK, log lỗi vào webhook_logs.</td><td>Dev</td><td class="dep">CNT-004, API-008</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. Lead Gen & Forms -->
+        <section id="module-leadgen">
+            <h2>4. Lead Generation & Forms</h2>
+            <p class="module-sub">Prefix: <span class="fid">LEAD-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">LEAD-001</td><td><strong>Strategy Call Form</strong></td><td>Tên, Email công ty, Company, Role, Pain point, Consent checkbox.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Validation email công ty realtime.<br>Submit → lưu form_submissions + cộng 50đ (idempotent).<br>Trigger Slack Webhook.</td><td>Dev</td><td class="dep">API-003, LEAD-004</td></tr>
+                    <tr><td class="fid">LEAD-002</td><td><strong>Program-aware Fields</strong></td><td>interested_program, interested_tier, completed_programs_self_reported.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Field tự động điền khi form mở từ Program Detail.<br>Payload DB chứa đủ 3 field khi submit từ Program page.</td><td>Dev</td><td class="dep">PRG-003, WEB-005</td></tr>
+                    <tr><td class="fid">LEAD-003</td><td><strong>Gated Content Unlock</strong></td><td>Blur nội dung, nhập email unlock, cookie 30 ngày.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Public Summary luôn crawl được, phần dưới blur.<br>Email hợp lệ → API resources/unlock trả presigned URL.<br>Cookie unlocked_resources 30 ngày, không hỏi lại email.</td><td>Dev</td><td class="dep">API-004</td></tr>
+                    <tr><td class="fid">LEAD-004</td><td><strong>Idempotency Rules</strong></td><td>Chống điểm phồng: Assessment/Gated/Strategy Call.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Submit assessment 2 lần cùng email → chỉ +20đ lần đầu.<br>Tải cùng resource_slug nhiều lần → chỉ +15đ lần đầu (UNIQUE constraint).<br>Strategy Call set SQL chỉ 1 lần/email.</td><td>Dev</td><td class="dep">API-001</td></tr>
+                    <tr><td class="fid">LEAD-005</td><td><strong>Lead Scoring Engine</strong></td><td>+20/+15/+50 theo hành động.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>total_score cộng đúng theo bảng scoring, có log lead_events.</td><td>Dev</td><td class="dep">LEAD-004</td></tr>
+                    <tr><td class="fid">LEAD-006</td><td><strong>UTM Tracking</strong></td><td>Capture utm_source/medium/campaign vào localStorage.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>UTM giữ nguyên qua điều hướng nội bộ đến khi submit form.<br>Gửi kèm utm vào mọi form payload.</td><td>Dev</td><td class="dep">–</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. Program & Tier Framework -->
+        <section id="module-program">
+            <h2>5. Chương Trình & Khung 6 Tầng</h2>
+            <p class="module-sub">Prefix: <span class="fid">PRG-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">PRG-001</td><td><strong>6-Tier Product Framework</strong></td><td>Nội dung 6 tầng: Foundation → ... → AI-First Vision.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Nội dung mỗi tầng khớp Content Brief (SEO-007).<br>Badge tier hiển thị nhất quán toàn site.</td><td>Content</td><td class="dep">SEO-007</td></tr>
+                    <tr><td class="fid">PRG-002</td><td><strong>Quy ước Program vs Service</strong></td><td>Program=đào tạo (T1-T4); Service=tư vấn (T5-T6).</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Toàn bộ copy site dùng đúng thuật ngữ theo tầng, content review pass.</td><td>Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">PRG-003</td><td><strong>Program Catalog & Progression Rules</strong></td><td>Mapping tier→nhóm→chương trình→prerequisites.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Mỗi program có đủ field tier, prerequisites (nếu tier≥2).<br>Bảng mapping khớp CNT-007.</td><td>Content + Dev</td><td class="dep">CNT-005, CNT-007</td></tr>
+                    <tr><td class="fid">PRG-004</td><td><strong>Program Card (Component)</strong></td><td>Props: title, tier, duration, audience, prerequisites, nextProgram.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Badge Tier đúng màu theo nhóm.<br>Cảnh báo nhẹ nếu có prerequisite.<br>CTA "Xem chương trình" link đúng slug.</td><td>Design + Dev</td><td class="dep">PRG-003</td></tr>
+                    <tr><td class="fid">PRG-005</td><td><strong>Progression Map (Component)</strong></td><td>Flowchart T1→T2→T3, làm mờ program ngoài lộ trình hiện tại.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>Program hiện tại highlight; trước/sau bị mờ opacity.<br>Click node chuyển đúng sang program tương ứng.</td><td>Design + Dev</td><td class="dep">PRG-003</td></tr>
+                    <tr><td class="fid">PRG-006</td><td><strong>Prerequisite Alert (Component)</strong></td><td>Cảnh báo bắt buộc cho Program Tầng 3+.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Hiển thị 100% khi mở Program Tầng 3+ (không phụ thuộc tracking tiến độ).<br>CTA link đúng về program recommendedAfter.<br>Frontmatter thiếu recommendedAfter → build fail (CMS-007).</td><td>Design + Dev</td><td class="dep">CMS-007</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. Content Readiness -->
+        <section id="module-content">
+            <h2>6. Content Readiness</h2>
+            <p class="module-sub">Prefix: <span class="fid">CNT-xxx</span> — Blocker bắt buộc Business Team bàn giao trong Tuần 1 (Sprint S1), trước khi các page phụ thuộc ở S2+ có thể hoàn thiện.</p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">CNT-001</td><td><strong>Copywriting 6 Tier Pages</strong></td><td>Copy chuẩn H1/H2 AEO cho toàn bộ Service Tier Pages.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Đủ 6 bài theo outline Content Brief (SEO-007).<br>Bàn giao trước cuối Tuần 1.</td><td>Business/Content</td><td class="dep">SEO-007</td></tr>
+                    <tr><td class="fid">CNT-002</td><td><strong>Bảng Matrix Assessment Final</strong></td><td>10 câu, thang điểm, mapping tier — bản chốt cuối.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Không đổi câu hỏi/thang điểm sau khi Dev bắt đầu code (ASM-001).<br>Business sign-off bằng văn bản.</td><td>Business</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CNT-003</td><td><strong>Case Study Public Summary (≥1)</strong></td><td>Tối thiểu 1 case study có Public Summary, tránh Lorem Ipsum khi launch.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Đủ Ngành/Quy mô/Thách thức/Giải pháp/Kết quả.<br>Legal đã duyệt NDA compliance.</td><td>Business + Legal</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CNT-004</td><td><strong>SendGrid Email Templates</strong></td><td>Assessment report, Thank-you, Strategy Call confirm.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Đủ 3 template, đúng brand voice.<br>Domain Authentication verify trước khi gửi thật.</td><td>Business/Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CNT-005</td><td><strong>Danh sách Chương trình Active + Slug</strong></td><td>Xác nhận slug chính thức: AI in Business, AI in Marketing, Agentics AI Automations...</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Danh sách slug final, không đổi sau khi Dev hardcode mapping.<br>Tối thiểu 3 program active tại launch.</td><td>Business</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CNT-006</td><td><strong>Copywriting Program Detail Pages (≥3)</strong></td><td>Hero text, pain points, module outline, tool stack, CTA cho từng chương trình.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Tối thiểu 3 Program Detail Page có copy đầy đủ 10-section (WEB-005).<br>Không dùng placeholder text khi launch.</td><td>Business/Content</td><td class="dep">CNT-005</td></tr>
+                    <tr><td class="fid">CNT-007</td><td><strong>Mapping recommendedAfter/recommendedNext</strong></td><td>Xác nhận lộ trình progression cho từng chương trình.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Mọi program tier≥3 có recommendedAfter xác định.<br>Mapping khớp Progression Map (PRG-005) hiển thị đúng thứ tự.</td><td>Business/Content</td><td class="dep">CNT-005</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7. Backend -->
+        <section id="module-backend">
+            <h2>7. Backend, Database & API</h2>
+            <p class="module-sub">Prefix: <span class="fid">API-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">API-001</td><td><strong>Database Schema (6 bảng)</strong></td><td>companies, leads, assessments, form_submissions, lead_events, webhook_logs.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Đủ Index (email, company_id, lead_id).<br>UNIQUE constraint idempotency trên lead_events.<br>updated_at trigger hoạt động.</td><td>Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">API-002</td><td><strong>/api/assessment/submit</strong></td><td>Validate→Upsert→Tính điểm→Insert→SendGrid.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Response schema đúng (score, recommended_tier, recommended_programs).<br>Rate limit 5 req/10min/IP.<br>Error responses đúng format (400/401/429/500).</td><td>Dev</td><td class="dep">API-001, ASM-002</td></tr>
+                    <tr><td class="fid">API-003</td><td><strong>/api/leads/strategy-call</strong></td><td>Upsert lead (+50đ), insert form_submissions, Slack Webhook.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Rate limit 3 req/5min/IP.<br>Idempotent status SQL.<br>Slack nhận đúng payload trong &lt;10s.</td><td>Dev</td><td class="dep">API-001, LEAD-004</td></tr>
+                    <tr><td class="fid">API-004</td><td><strong>/api/resources/unlock</strong></td><td>Upsert lead (+15đ nếu chưa unlock), trả presigned URL.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Rate limit 10 req/5min/IP.<br>presigned URL expiresIn hợp lý (vd 3600s).<br>Idempotent theo (lead_id, resource_slug).</td><td>Dev</td><td class="dep">API-001</td></tr>
+                    <tr><td class="fid">API-005</td><td><strong>Turnstile Bot Protection</strong></td><td>cf-turnstile-response bắt buộc mọi API route.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Request thiếu/sai token → 401 CAPTCHA_FAILED.<br>Áp dụng cho cả 3 API endpoints (bắt đầu từ API-002 ở S3, hoàn thiện cả 3 route ở S4).</td><td>Dev/Sec</td><td class="dep">API-002, API-003, API-004</td></tr>
+                    <tr><td class="fid">API-006</td><td><strong>Rate Limiting theo IP</strong></td><td>Giới hạn theo endpoint qua Vercel KV/middleware.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Vượt giới hạn → 429 kèm retryAfterSeconds.<br>Test bằng script spam xác nhận bị chặn trên cả 3 route.</td><td>Dev/Sec</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">API-007</td><td><strong>Slack Webhook</strong></td><td>Bắn lead mới sang kênh Sales.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Payload có đủ tên/company/pain point/source.<br>Nếu Slack fail, vẫn trả 200 cho user, log lỗi webhook_logs.</td><td>Dev</td><td class="dep">API-001, API-003</td></tr>
+                    <tr><td class="fid">API-008</td><td><strong>SendGrid Integration</strong></td><td>Gửi 3 loại email, log webhook_logs.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Domain Authentication xong trước launch (tránh spam folder).<br>Fail vẫn không chặn form submit thành công.</td><td>Dev</td><td class="dep">CNT-004</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 8. CMS -->
+        <section id="module-cms">
+            <h2>8. CMS & Content Operations</h2>
+            <p class="module-sub">Prefix: <span class="fid">CMS-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">CMS-001</td><td><strong>Static MDX Content Model</strong></td><td>Service/Program/Department/Case Study/Resources lưu MDX trong /content.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>next-mdx-remote/contentlayer parse đúng toàn bộ file.<br>SSG build thành công không lỗi content.</td><td>Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CMS-002</td><td><strong>Frontmatter Schema (Case Study/Resource)</strong></td><td>title, slug, metaTitle, metaDescription, schemaType, canonical, ogImage...</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Schema field định nghĩa đầy đủ, dùng làm input cho validator CMS-007.<br>canonical khớp URL thật.</td><td>Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CMS-003</td><td><strong>Frontmatter Schema (Program)</strong></td><td>tier, prerequisites, recommendedAfter, recommendedNext, lmsUrl, externalLmsOnly, status.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>status chỉ nhận active/draft/archived.<br>tier≥3 field prerequisites + recommendedAfter định nghĩa rõ để CMS-007 validate.</td><td>Content</td><td class="dep">CNT-007</td></tr>
+                    <tr><td class="fid">CMS-004</td><td><strong>Content Publish Workflow</strong></td><td>Markdown→PR→Preview Vercel→Merge main.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Mọi content mới đi qua PR review trước khi live.<br>Preview URL hoạt động trước khi merge.</td><td>Dev + Content</td><td class="dep">CMS-001</td></tr>
+                    <tr><td class="fid">CMS-005</td><td><strong>Content Approval Roles</strong></td><td>Founder duyệt chuyên môn, Legal duyệt case study/NDA.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Mỗi case study có sign-off Legal trước publish.<br>Claim số liệu có context rõ ràng, không vô căn cứ.</td><td>Business/Legal</td><td class="dep">CNT-003</td></tr>
+                    <tr><td class="fid">CMS-006</td><td><strong>Logo Usage / Legal Permission Policy</strong></td><td>Chỉ dùng logo có văn bản cho phép; nếu chưa có, ẩn danh + badge.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Không publish logo chưa có written permission lưu trữ.<br>Case study ẩn danh có badge "Anonymized Client".</td><td>Legal</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">CMS-007</td><td><strong>MDX Frontmatter Validation (build-time)</strong></td><td>Validate schema khi build, chặn content thiếu field bắt buộc.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Build fail nếu thiếu title/slug/metaTitle/metaDescription.<br>Program tier≥3 thiếu recommendedAfter → build fail.<br>status không thuộc active/draft/archived → build fail.<br>canonical không khớp URL pattern → warning/fail.</td><td>Dev</td><td class="dep">CMS-002, CMS-003</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 9. SEO -->
+        <section id="module-seo">
+            <h2>9. SEO / AEO Architecture</h2>
+            <p class="module-sub">Prefix: <span class="fid">SEO-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">SEO-001</td><td><strong>Entity Graph Sitemap</strong></td><td>4 nhóm URL: Giới thiệu, Chương trình/Dịch vụ, Khách hàng, Lead Gen/Content.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>sitemap.xml chứa đủ toàn bộ URL 4 nhóm.<br>Không có orphan page (mọi trang có ≥1 internal link trỏ tới).</td><td>SEO</td><td class="dep">All P0 WEB-xxx pages</td></tr>
+                    <tr><td class="fid">SEO-002</td><td><strong>URL Metadata Matrix</strong></td><td>Title/Description/Schema/Index/Priority/Owner cho từng URL.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Mỗi URL live khớp matrix (title ≤60, description ≤160 ký tự).<br>robots index/noindex đúng theo bảng.</td><td>SEO</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEO-003</td><td><strong>Schema: Organization</strong></td><td>JSON-LD trang chủ.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Google Rich Results Test pass, 0 lỗi.<br>sameAs có LinkedIn công ty.</td><td>SEO/Dev</td><td class="dep">WEB-001</td></tr>
+                    <tr><td class="fid">SEO-004</td><td><strong>Schema: Service</strong></td><td>Dùng cho Tier/Department/Program. offers.url trỏ /contact, không public giá.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Không dùng priceCurrency trơ trọi.<br>mainEntityOfPage khớp URL trang.</td><td>SEO/Dev</td><td class="dep">WEB-002, WEB-005, SEO-006</td></tr>
+                    <tr><td class="fid">SEO-005</td><td><strong>Schema: Article</strong></td><td>Dùng cho Blog/Resources/Case Study.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Đủ headline/author/datePublished/dateModified/publisher.<br>Rich Results Test pass.</td><td>SEO/Dev</td><td class="dep">WEB-008</td></tr>
+                    <tr><td class="fid">SEO-006</td><td><strong>Program Schema Decision</strong></td><td>MVP dùng Service; Phase 2 cân nhắc Course.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Quyết định ghi rõ trong content brief trước khi Dev code SEO-004, tránh Course rich-result warning ở MVP.</td><td>SEO</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEO-007</td><td><strong>Content Brief — 6 Tier Pages</strong></td><td>H1/Direct Answer/Pain Points/Outcomes/FAQ cho mỗi Tier.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Content Team follow đúng outline H2, không tự đổi cấu trúc.<br>FAQ tối thiểu 3 câu/trang.</td><td>SEO/Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEO-008</td><td><strong>Content Brief — 5 Department Pages</strong></td><td>H1/Use Cases/Tier liên quan/FAQ cho mỗi phòng ban.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S1</td><td>Mỗi trang link tối thiểu 2 Tier pages liên quan.<br>FAQ tối thiểu 3 câu/trang.</td><td>SEO/Content</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEO-009</td><td><strong>Internal Linking Strategy</strong></td><td>12 quy tắc cứng Home↔Tier, Program↔Tier, Program↔Next...</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>Crawl audit (Screaming Frog) xác nhận không thiếu link bắt buộc trong 12 quy tắc.</td><td>SEO/Dev</td><td class="dep">All P0 WEB-xxx pages</td></tr>
+                    <tr><td class="fid">SEO-010</td><td><strong>E-E-A-T & Trust Requirements</strong></td><td>Chuyên gia thật, phương pháp luận, bảo mật, case study, FAQ thực chất.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>/about có ảnh + LinkedIn thật.<br>/security có cam kết cụ thể (NDA, Private LLM).</td><td>Content/Legal</td><td class="dep">WEB-012</td></tr>
+                    <tr><td class="fid">SEO-011</td><td><strong>Technical AEO Checklist</strong></td><td>SSR RSC, robots.txt, llms.txt, sitemap.xml, canonical/OG unique.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S6</td><td>curl raw HTML thấy H1 (không qua Client JS).<br>robots.txt Allow OAI-SearchBot/Googlebot/PerplexityBot.<br>Mỗi trang og:title/description/image unique.</td><td>Dev</td><td class="dep">WEB-017</td></tr>
+                    <tr><td class="fid">SEO-012</td><td><strong>B2B Content Clusters</strong></td><td>Keyword mục tiêu cho Blog/Resources.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>Tối thiểu 2 bài blog launch theo cluster đã liệt kê.</td><td>Content</td><td class="dep">WEB-009</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 10. Analytics -->
+        <section id="module-analytics">
+            <h2>10. Analytics & Tracking</h2>
+            <p class="module-sub">Prefix: <span class="fid">ANL-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature (Event)</th><th width="15%">Mô tả / Trigger</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">ANL-001</td><td><code>assessment_start</code></td><td>Click nút "Bắt đầu Test".</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event bắn kèm page_url, utm_source vào dataLayer khi click.</td><td>Dev</td><td class="dep">WEB-006</td></tr>
+                    <tr><td class="fid">ANL-002</td><td><code>assessment_completed</code></td><td>Hoàn thành câu 10, hiện form email.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S5</td><td>Event kèm total_score, recommended_tier, recommended_programs.</td><td>Dev</td><td class="dep">ASM-003</td></tr>
+                    <tr><td class="fid">ANL-003</td><td><code>program_card_clicked</code></td><td>Click Program Card ở Hub.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event kèm program_slug, tier_id đúng card được click.</td><td>Dev</td><td class="dep">WEB-004</td></tr>
+                    <tr><td class="fid">ANL-004</td><td><code>program_cta_clicked</code></td><td>Click "Xem chương trình"/"Đăng ký" ở Program Detail.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event kèm program_slug, tier_id, source_page.</td><td>Dev</td><td class="dep">WEB-005</td></tr>
+                    <tr><td class="fid">ANL-005</td><td><code>program_prerequisite_viewed</code></td><td>Hiển thị Prerequisite Alert (Tầng 3+).</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S5</td><td>Event kèm program_slug, recommended_after mỗi lần Alert render.</td><td>Dev</td><td class="dep">PRG-006</td></tr>
+                    <tr><td class="fid">ANL-006</td><td><code>lead_generated</code></td><td>Submit thành công email ở bất kỳ form nào.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S5</td><td>Event kèm lead_type (assessment/strategy/resource), email_hash (không log plain email).</td><td>Dev</td><td class="dep">LEAD-001, LEAD-003</td></tr>
+                    <tr><td class="fid">ANL-007</td><td><code>strategy_call_opened</code></td><td>Mở modal/chuyển trang Strategy Call.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S5</td><td>Event kèm source_tier, source_program, source_page đúng ngữ cảnh mở form.</td><td>Dev</td><td class="dep">LEAD-001</td></tr>
+                    <tr><td class="fid">ANL-008</td><td><code>resource_unlocked</code></td><td>Nhập email thành công đọc Case Study/Resource gated.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event kèm resource_slug, resource_type.</td><td>Dev</td><td class="dep">LEAD-003</td></tr>
+                    <tr><td class="fid">ANL-009</td><td><code>tier_cta_clicked</code></td><td>Click nút đăng ký ở trang Tier.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event kèm tier_id, section_name.</td><td>Dev</td><td class="dep">WEB-002</td></tr>
+                    <tr><td class="fid">ANL-010</td><td><code>security_page_viewed</code></td><td>Load trang /security.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S5</td><td>Event kèm previous_page.</td><td>Dev</td><td class="dep">WEB-012</td></tr>
+                    <tr><td class="fid">ANL-011</td><td><code>lms_login_clicked</code></td><td>Click "Đăng nhập LMS".</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Event kèm source_page, source_program, lms_url, bắn trước khi chuyển trang.</td><td>Dev</td><td class="dep">LMS-001</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 11. Security -->
+        <section id="module-security">
+            <h2>11. Security & Non-Functional Requirements</h2>
+            <p class="module-sub">Prefix: <span class="fid">SEC-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">SEC-001</td><td><strong>Supabase RLS Policies</strong></td><td>RLS bật toàn bộ bảng Lead, anon deny-all.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Anon query bất kỳ bảng Lead nào → Permission Denied.<br>Chỉ service_role (qua BFF) có quyền INSERT/UPDATE.</td><td>Dev/Sec</td><td class="dep">API-001</td></tr>
+                    <tr><td class="fid">SEC-002</td><td><strong>Env Var Separation</strong></td><td>SERVICE_ROLE_KEY không nằm NEXT_PUBLIC.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Code scan xác nhận không có SERVICE_ROLE_KEY trong bundle client-side.</td><td>Dev/Sec</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEC-003</td><td><strong>Privacy & Cookie Data Spec</strong></td><td>Bảng công khai loại dữ liệu/lưu trữ/mục đích/thời gian.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Liệt kê đủ mọi loại dữ liệu đang thu thập thực tế trên site (đây là input để WEB-014 viết nội dung /privacy).<br>Có quy trình xóa dữ liệu trong 30 ngày khi user yêu cầu.</td><td>Legal</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEC-004</td><td><strong>Cookie Consent Banner</strong></td><td>Hiện lần đầu truy cập, PDPA/GDPR.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Banner hiển thị trước khi set cookie không thiết yếu.<br>Checkbox marketing_consent có trên mọi form B2B (áp dụng chéo khi LEAD-001 build ở S4).</td><td>Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">SEC-005</td><td><strong>Logging & Observability</strong></td><td>Vercel Analytics + Sentry cho lỗi 500.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S5</td><td>Lỗi 500 ở bất kỳ API route nào xuất hiện trên Sentry dashboard trong &lt;1min.</td><td>Dev</td><td class="dep">API-002, API-003, API-004</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 12. Design System -->
+        <section id="module-design">
+            <h2>12. Design System & UI Components</h2>
+            <p class="module-sub">Prefix: <span class="fid">UI-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">UI-001</td><td><strong>Design Tokens</strong></td><td>Color, Typography (Inter), Motion rules (≤300ms).</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Toàn bộ component dùng token, không hardcode màu rời rạc.</td><td>Design</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">UI-002</td><td><strong>Accessibility Requirements</strong></td><td>Contrast ≥4.5:1, alt text bắt buộc.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S1</td><td>Lighthouse Accessibility score = 100 trên trang Tier mẫu.<br>Mọi &lt;img&gt; có alt.</td><td>Design/Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">UI-003</td><td><strong>Header / Nav</strong></td><td>Sticky, Mega menu Desktop, Hamburger Mobile.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Nút "Làm bài Test" luôn visible.<br>&lt;nav&gt; tag hợp lệ, Tab-navigable.</td><td>Design/Dev</td><td class="dep">UI-001</td></tr>
+                    <tr><td class="fid">UI-004</td><td><strong>Tier Card</strong></td><td>Props: tier, title, description, duration, slug.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Click toàn card vào đúng slug.<br>Hover shadow, không giật UI.</td><td>Design/Dev</td><td class="dep">UI-001</td></tr>
+                    <tr><td class="fid">UI-005</td><td><strong>Assessment Step</strong></td><td>Props: question, options, currentStep, onSelect.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S3</td><td>Hỗ trợ phím 1-4 để chọn.<br>Transition slide mượt, không lag trên Mobile.</td><td>Design/Dev</td><td class="dep">ASM-001</td></tr>
+                    <tr><td class="fid">UI-006</td><td><strong>Gated Modal</strong></td><td>Props: resourceSlug, states idle/loading/success/error.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S4</td><td>Focus trap hoạt động, ESC/nút X đóng modal.<br>Lock scroll body khi mở.</td><td>Design/Dev</td><td class="dep">LEAD-003</td></tr>
+                    <tr><td class="fid">UI-007</td><td><strong>Strategy Form</strong></td><td>Props: sourceProgram?, sourceTier?, completedProgramsSelfReported?, hiddenUtmFields.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S4</td><td>Props tự động điền khi mở từ Program Detail.<br>Nút Submit disable + spinner khi đang gọi API.</td><td>Design/Dev</td><td class="dep">LEAD-002</td></tr>
+                    <tr><td class="fid">UI-008</td><td><strong>Loading State</strong></td><td>Skeleton shimmer cho trang dynamic.</td><td><span class="badge badge-p2">P2</span></td><td class="sprint">S6</td><td>Không dùng spinner ngoại trừ nút bấm.</td><td>Design</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">UI-009</td><td><strong>Enterprise Dark Mode Feel</strong></td><td>Thẩm mỹ tĩnh lặng, không over-animation.</td><td><span class="badge badge-p1">P1</span></td><td class="sprint">S2</td><td>Không dùng Three.js/animation nặng nếu không cần thiết.<br>Review thẩm mỹ pass từ Design Lead.</td><td>Design</td><td class="dep">UI-001</td></tr>
+                    <tr><td class="fid">UI-010</td><td><strong>Responsive Layout</strong></td><td>100% trang responsive, Assessment 1 câu/màn hình Mobile.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S2</td><td>Test viewport 375px không vỡ layout trên toàn bộ static pages.<br>Assessment hiện đúng 1 câu/step trên Mobile (verify tiếp ở S3 khi UI-005 xong).</td><td>Design/Dev</td><td class="dep">–</td></tr>
+                    <tr><td class="fid">UI-011</td><td><strong>User-facing Error & Empty States</strong></td><td>SendGrid fail, Slack fail, Rate limit, Turnstile fail, email cá nhân bị chặn, không có case study/program, download URL hết hạn.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S5</td><td>Mỗi lỗi API (400/401/429/500) có message tiếng Việt rõ ràng, không lộ chi tiết kỹ thuật.<br>Trang Hub rỗng (chưa có program/case study) hiện empty state thay vì trắng trang.<br>Link download hết hạn hiện thông báo + CTA lấy lại.</td><td>Design/Dev</td><td class="dep">API-002, API-003, API-004, API-007, API-008</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 13. QA & Launch -->
+        <section id="module-qa">
+            <h2>13. QA & Launch Readiness</h2>
+            <p class="module-sub">Prefix: <span class="fid">QA-xxx</span></p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="13%">Feature</th><th width="15%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th width="22%">Acceptance Criteria</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">QA-001</td><td><strong>SEO/AEO Technical AC</strong></td><td>6 AC: Schema Rich Results, SSR H1, Sitemap, Canonical/OG, Lighthouse ≥80, robots.txt.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S6</td><td>Chạy đủ 6 kiểm tra trên 5 trang trọng yếu trước Go-live.<br>Zero critical errors.</td><td>QA/Dev</td><td class="dep">All P0 SEO-xxx items, WEB-017</td></tr>
+                    <tr><td class="fid">QA-002</td><td><strong>QA/UAT P0 Test Matrix</strong></td><td>SEO SSR, DB Security, Idempotency, Spam Form, Webhook Fail, Accessibility, Program SSR, Prerequisite Alert, Assessment Recommendation, Strategy Form Payload.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S6</td><td>Toàn bộ P0 test case pass trước khi mở Launch Checklist (QA-003).</td><td>QA</td><td class="dep">All P0 features (WEB/LMS/ASM/LEAD/PRG/CNT/API/CMS/SEO/ANL/SEC/UI)</td></tr>
+                    <tr><td class="fid">QA-003</td><td><strong>Go-Live Launch Checklist</strong></td><td>Domain/HTTPS, sitemap/robots, RLS, env vars, GA4/GTM, SendGrid domain auth, Slack, Cookie consent, Privacy/Terms, Lighthouse, Program pages.</td><td><span class="badge badge-p0">P0</span></td><td class="sprint">S6</td><td>100% checklist tick trước khi thông báo Go-live.</td><td>Ops/QA</td><td class="dep">QA-002</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- 14. Phase 2 -->
+        <section id="module-phase2">
+            <h2>14. Phase 2 Roadmap (Ngoài Phạm Vi MVP)</h2>
+            <p class="module-sub">Prefix: <span class="fid">PH2-xxx</span> — Chưa cần Acceptance Criteria chi tiết ở giai đoạn này, sẽ định nghĩa khi vào Phase 2 discovery.</p>
+            <div class="card">
+                <table>
+                    <tr><th>ID</th><th width="16%">Feature</th><th width="28%">Mô tả</th><th>Ưu tiên</th><th>Sprint</th><th>Owner</th><th>Dependency</th></tr>
+                    <tr><td class="fid">PH2-001</td><td><strong>3D Node Network Animation</strong></td><td>Animation trang chủ nâng cao, thay bản tĩnh MVP.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">WEB-001</td></tr>
+                    <tr><td class="fid">PH2-002</td><td><strong>LLM-Generated PDF Report</strong></td><td>OpenAI sinh PDF phân tích chuyên sâu thay report chuẩn MVP.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">ASM-006</td></tr>
+                    <tr><td class="fid">PH2-003</td><td><strong>HubSpot 2-Way CRM Sync</strong></td><td>Đồng bộ 2 chiều thay vì chỉ Slack + DB.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">API-003</td></tr>
+                    <tr><td class="fid">PH2-004</td><td><strong>Auto Lead Scoring Workflow</strong></td><td>Tự động hóa scoring + pixel tracking email open.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">LEAD-005</td></tr>
+                    <tr><td class="fid">PH2-005</td><td><strong>Headless CMS Migration</strong></td><td>Sanity.io/Contentful thay Static MDX.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">CMS-001</td></tr>
+                    <tr><td class="fid">PH2-006</td><td><strong>Course Schema Upgrade</strong></td><td>Nâng Schema Program từ Service lên Course.</td><td><span class="badge badge-phase2">Phase 2</span></td><td class="sprint">Post-MVP</td><td>Product</td><td class="dep">SEO-006</td></tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>

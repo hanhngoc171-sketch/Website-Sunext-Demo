@@ -1,0 +1,244 @@
+{
+  "brand": {
+    "name": "Sunext",
+    "website": "sunext.vn",
+    "tagline": "Chuyển đổi AI từ chiến lược đến thực thi",
+    "positioning": "Sunext kết hợp hiểu biết sâu về vận hành doanh nghiệp với năng lực AI thực chiến để tìm đúng điểm nghẽn, thiết kế đúng giải pháp và tạo ra kết quả đo lường được.",
+    "shortDescription": "Sunext đồng hành cùng doanh nghiệp trong hành trình chuyển đổi AI: từ đánh giá mức độ sẵn sàng, xây dựng chiến lược, huấn luyện năng lực đội ngũ đến triển khai các giải pháp AI thực tế trong vận hành."
+  },
+  "contact": {
+    "email": "contact@sunext.vn",
+    "phone": "+84 909134153",
+    "phoneDisplay": "0909 134 153",
+    "phoneHref": "tel:0909134153",
+    "website": "https://sunext.vn",
+    "address": "Tầng 2, 68 Nguyễn Huệ, Phường Sài Gòn, TP. Hồ Chí Minh, Việt Nam",
+    "addressEn": "2nd Floor, 68 Nguyen Hue Street, Saigon Ward, Ho Chi Minh City, Vietnam"
+  },
+  "seo": {
+    "home": {
+      "title": "Chuyển Đổi AI Doanh Nghiệp | Sunext",
+      "description": "Sunext đồng hành doanh nghiệp chuyển đổi AI: đánh giá sẵn sàng, chiến lược, đào tạo đội ngũ và triển khai giải pháp AI có kết quả đo lường được."
+    },
+    "about": {
+      "title": "Về Sunext | Đội Ngũ Lãnh Đạo & Phương Pháp Chuyển Đổi AI",
+      "description": "Sunext kết hợp kinh nghiệm vận hành doanh nghiệp và năng lực AI thực chiến. Tìm hiểu định vị, lộ trình 6 bước và đội ngũ lãnh đạo."
+    },
+    "contact": {
+      "title": "Liên Hệ Sunext | Tư Vấn Chuyển Đổi AI",
+      "description": "Liên hệ Sunext để đánh giá mức độ sẵn sàng AI và xác định cơ hội ứng dụng có tác động cao cho doanh nghiệp của bạn."
+    },
+    "solutions": {
+      "title": "Giải Pháp AI Doanh Nghiệp | Sunext",
+      "description": "Khám phá các giải pháp AI của Sunext: xử lý tài liệu, chatbot nội bộ, AI Agents, phân tích dự báo và AI tăng trưởng."
+    },
+    "programs": {
+      "title": "Đào Tạo & Xây Dựng Năng Lực AI | Sunext",
+      "description": "Chương trình huấn luyện AI theo phòng ban, cấp bậc và use case thực tế — từ lãnh đạo đến đội ngũ vận hành."
+    },
+    "caseStudies": {
+      "title": "Dự Án Chuyển Đổi AI | Sunext",
+      "description": "Các dự án chuyển đổi AI tiêu biểu của Sunext: đào tạo quy mô lớn, chatbot nội bộ, trợ lý AI Sales và sản phẩm AI."
+    }
+  },
+  "hero": {
+    "eyebrow": "B2B AI Transformation",
+    "h1": "Chuyển đổi AI từ chiến lược đến thực thi",
+    "h1Highlight": "từ chiến lược đến thực thi",
+    "description": "Sunext giúp doanh nghiệp xác định đúng điểm nghẽn, thiết kế đúng giải pháp AI và triển khai để tạo ra kết quả có thể đo lường.",
+    "bullets": [
+      "Đánh giá sẵn sàng AI trước khi đầu tư công cụ",
+      "Lộ trình rõ ràng: chiến lược, đào tạo và triển khai",
+      "Giải pháp gắn với quy trình vận hành thực tế"
+    ],
+    "primaryCta": { "label": "Làm AI Maturity Assessment", "href": "/ai-maturity-assessment/" },
+    "secondaryCta": { "label": "Xem giải pháp AI", "href": "/giai-phap/" }
+  },
+  "journeySteps": [
+    {
+      "id": 1,
+      "title": "Đánh giá",
+      "short": "Sẵn sàng AI",
+      "description": "Đánh giá mức độ sẵn sàng ứng dụng AI của doanh nghiệp trên dữ liệu, hệ thống và năng lực đội ngũ.",
+      "href": "/ai-maturity-assessment/"
+    },
+    {
+      "id": 2,
+      "title": "Chiến lược",
+      "short": "Lộ trình đầu tư",
+      "description": "Xây dựng chiến lược và lộ trình AI phù hợp với ưu tiên kinh doanh, use case và chỉ số thành công.",
+      "href": "/contact/"
+    },
+    {
+      "id": 3,
+      "title": "Xây dựng",
+      "short": "Năng lực đội ngũ",
+      "description": "Huấn luyện và xây dựng năng lực AI theo phòng ban, cấp bậc và tình huống sử dụng thực tế.",
+      "href": "/chuong-trinh/"
+    },
+    {
+      "id": 4,
+      "title": "Thực thi",
+      "short": "Triển khai AI",
+      "description": "Triển khai AI vào quy trình làm việc thực tế và các hệ thống nòng cốt của doanh nghiệp.",
+      "href": "/giai-phap/"
+    },
+    {
+      "id": 5,
+      "title": "Đo lường & Tối ưu",
+      "short": "ROI liên tục",
+      "description": "Theo dõi mức độ ứng dụng, hiệu suất làm việc và ROI; cải tiến liên tục theo dữ liệu thực tế.",
+      "href": "/giai-phap/"
+    },
+    {
+      "id": 6,
+      "title": "Mở rộng & Duy trì",
+      "short": "AI trong tổ chức",
+      "description": "Tích hợp AI trong tổ chức thông qua dữ liệu, hệ thống và ra quyết định — duy trì lợi thế dài hạn.",
+      "href": "/giai-phap/"
+    }
+  ],
+  "services": [
+    {
+      "title": "Đánh giá mức độ sẵn sàng AI",
+      "description": "Đánh giá dữ liệu, hệ thống và năng lực đội ngũ để xác định mức độ sẵn sàng ứng dụng AI.",
+      "outcomes": ["Bảng đánh giá rõ ràng", "Khoảng trống then chốt", "Nhận diện rủi ro", "Ưu tiên bước tiếp theo"]
+    },
+    {
+      "title": "Chiến lược & lộ trình AI",
+      "description": "Kết hợp ưu tiên kinh doanh và xác định cơ hội AI có khả năng mang lại hiệu quả cao.",
+      "outcomes": ["Lộ trình sẵn sàng đầu tư", "Use case rõ ràng", "Cột mốc quan trọng", "Chỉ số đo lường thành công"]
+    },
+    {
+      "title": "Xây dựng & huấn luyện năng lực AI",
+      "description": "Thiết kế chương trình đào tạo theo phòng ban, cấp bậc và use case thực tế của doanh nghiệp.",
+      "outcomes": ["Khảo sát trước đào tạo", "Chương trình cá nhân hóa", "Thực hành trên bài toán thật", "Đánh giá sau đào tạo"]
+    },
+    {
+      "title": "Kỹ thuật & tích hợp",
+      "description": "Triển khai AI vào hệ thống và quy trình thực tế: kết nối dữ liệu, ERP/CRM và tự động hóa.",
+      "outcomes": ["Bản đồ hệ thống & dữ liệu", "Lớp tích hợp an toàn", "AI + RPA", "Tối ưu liên tục"]
+    },
+    {
+      "title": "Dữ liệu & hệ điều hành",
+      "description": "Chuẩn hóa dữ liệu, tái cấu trúc quy trình và xây dựng kho tri thức để AI tạo giá trị.",
+      "outcomes": ["Nguồn dữ liệu thống nhất", "SOP & tri thức có cấu trúc", "Truy cập thông tin nhanh hơn"]
+    }
+  ],
+  "solutions": [
+    {
+      "title": "AI xử lý tài liệu",
+      "description": "Đọc, trích xuất, xác thực và định tuyến hóa đơn, hợp đồng, biểu mẫu — nhanh hơn, chính xác hơn, có thể truy vết."
+    },
+    {
+      "title": "GPT & Chatbot nội bộ",
+      "description": "Tập trung hóa SOP, chính sách và tài liệu nội bộ để nhân viên hỏi bằng ngôn ngữ tự nhiên và nhận câu trả lời kèm nguồn."
+    },
+    {
+      "title": "AI Agents",
+      "description": "Agent cho CEO, Sales và Marketing: theo dõi tín hiệu, tóm tắt, cảnh báo và hỗ trợ hành động đúng lúc."
+    },
+    {
+      "title": "Phân tích dự báo",
+      "description": "Dự báo doanh thu, tồn kho và rủi ro rời bỏ khách hàng dựa trên dữ liệu vận hành thực tế."
+    },
+    {
+      "title": "AI tăng trưởng: AEO, GEO & Media Engine",
+      "description": "Tối ưu khả năng hiển thị thương hiệu trong câu trả lời AI và khuếch đại nội dung trên nhiều kênh."
+    }
+  ],
+  "caseStudies": [
+    {
+      "slug": "prudential-ngay-mind",
+      "client": "Prudential",
+      "label": "Bảo hiểm · Đào tạo AI quy mô quốc gia",
+      "title": "Ngày Mind: đào tạo AI và xây dựng agent nội bộ",
+      "summary": "Chương trình kết hợp masterclass online quy mô lớn và AI Agent nội bộ dành cho đội ngũ tư vấn bảo hiểm, tập trung vào các quy trình tư vấn có tác động cao.",
+      "impact": "Nâng cao chất lượng tư vấn và hỗ trợ đội ngũ trên toàn quốc.",
+      "href": "/case-studies/"
+    },
+    {
+      "slug": "chatbot-private-cloud-finance-jp",
+      "client": "Tài chính Nhật Bản",
+      "label": "Tài chính · Private Cloud",
+      "title": "Chatbot nội bộ khai thác tri thức và phân tích dữ liệu",
+      "summary": "Triển khai chatbot nội bộ trên Private Cloud cho 20 công ty tài chính tại Nhật Bản, ứng dụng RAG, OpenSearch và Code Interpreter.",
+      "impact": "Tra cứu tài liệu, quản lý tri thức và phân tích dữ liệu trong môi trường yêu cầu bảo mật cao.",
+      "href": "/case-studies/"
+    },
+    {
+      "slug": "ai-sales-assistant-jp",
+      "client": "Bảo hiểm · Quỹ · Chứng khoán",
+      "label": "Nhật Bản · AI Sales",
+      "title": "Trợ lý AI Sales: transcript, tóm tắt và tuân thủ",
+      "summary": "Hỗ trợ ghi âm, speech-to-text, tóm tắt cuộc họp và phân tích hội thoại cho Sales/CS, kèm Compliance Detection.",
+      "impact": "Nhận diện tín hiệu mua hàng, cơ hội chốt sales và rủi ro tuân thủ kịp thời.",
+      "href": "/case-studies/"
+    }
+  ],
+  "caseStudiesTodo": [
+    "GeniAI — trợ lý AI cá nhân (lịch, email, công việc)",
+    "EazyHunt — trợ lý tuyển dụng AI đọc CV/JD",
+    "CrowdLoan — loan matching với 40+ tổ chức tài chính Nhật Bản",
+    "TODO: Xác nhận danh sách logo/khách hàng được phép công khai trên website."
+  ],
+  "leadership": [
+    {
+      "name": "Lý Đức Toàn",
+      "nameEn": "Ly Duc Toan",
+      "role": "CEO",
+      "experience": "25+ năm",
+      "summary": "25 năm kinh nghiệm sales B2B và lãnh đạo bán hàng tại các tập đoàn đa quốc gia như Tetra Pak và Multi-Color Corporation. Thế mạnh tăng trưởng doanh thu, phát triển tài khoản chiến lược và kết nối cấp lãnh đạo."
+    },
+    {
+      "name": "Nguyễn Phước Vĩnh Hưng",
+      "nameEn": "Nguyen Phuoc Vinh Hung",
+      "role": "Chief AI Officer",
+      "experience": "10+ năm",
+      "summary": "10 năm chiến lược, vận hành và chuyển đổi AI đa ngành. Trực tiếp triển khai chuyển đổi AI cho hơn 30 doanh nghiệp từ năm 2023 và đào tạo hàng nghìn học viên ứng dụng AI."
+    },
+    {
+      "name": "Lê Hoài Nam",
+      "nameEn": "Le Hoai Nam",
+      "role": "Chief Technology Officer",
+      "experience": "15+ năm",
+      "summary": "Hơn 15 năm xây dựng phần mềm cho ngân hàng, chứng khoán và bảo hiểm tại Nhật Bản; dẫn dắt đội ngũ hơn 100 kỹ sư. Tập trung giải pháp AI Fintech an toàn, ổn định và tuân thủ."
+    },
+    {
+      "name": "Nguyễn Tùng Chi",
+      "nameEn": "Nguyen Tung Chi",
+      "role": "Chief Strategic Officer",
+      "experience": "25+ năm",
+      "summary": "25 năm kinh nghiệm CFO, COO và tư vấn M&A tại tổ chức tài chính, quỹ đầu tư và doanh nghiệp niêm yết. Góc nhìn hệ thống về chiến lược, rủi ro và tăng trưởng."
+    },
+    {
+      "name": "Võ Thị Hồng Thủy",
+      "nameEn": "Vo Thi Hong Thuy",
+      "role": "Business Development Director",
+      "experience": "20+ năm",
+      "summary": "Hơn 20 năm Trade Marketing và Sales tại FrieslandCampina, Mondelez và Masan. Phụ trách phát triển khách hàng chiến lược và chương trình chuyển đổi AI trong Marketing & Sales."
+    }
+  ],
+  "cta": {
+    "primary": {
+      "title": "Sẵn sàng bắt đầu lộ trình chuyển đổi AI?",
+      "description": "Liên hệ Sunext để cùng đánh giá mức độ sẵn sàng AI và xác định những cơ hội ứng dụng có tác động cao nhất cho doanh nghiệp của bạn."
+    },
+    "secondary": {
+      "title": "Biến AI thành kết quả kinh doanh thực tế",
+      "description": "Hãy trao đổi với Sunext để xây dựng lộ trình AI phù hợp với dữ liệu, hệ thống, đội ngũ và mục tiêu tăng trưởng của doanh nghiệp."
+    }
+  },
+  "footer": {
+    "blurb": "Sunext đồng hành doanh nghiệp chuyển đổi AI: từ đánh giá và chiến lược đến đào tạo đội ngũ và triển khai giải pháp có kết quả đo lường được.",
+    "badges": "NDA-first · Triển khai an toàn · Kết quả đo lường được"
+  },
+  "todos": [
+    "TODO: Xác nhận danh sách logo/khách hàng được phép công khai trên website.",
+    "TODO: Bổ sung ảnh chân dung chính thức cho leadership team.",
+    "TODO: Tạo trang chi tiết riêng cho từng case study (Prudential, chatbot JP, AI Sales, GeniAI, EazyHunt, CrowdLoan).",
+    "TODO: Xác nhận có được dùng claim ISO 27001 hay không — hiện đã gỡ khỏi footer vì không có trong profile.",
+    "TODO: Xác nhận năm thành lập công ty nếu cần hiển thị trên About.",
+    "TODO: Đồng bộ footer + nội dung còn lại trên toàn bộ subpages chưa cập nhật trong đợt này."
+  ]
+}

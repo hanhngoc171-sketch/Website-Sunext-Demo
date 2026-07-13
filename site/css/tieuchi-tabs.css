@@ -1,0 +1,351 @@
+/* Department tabs — 2 columns: nav left, panel right */
+.dept-tabs-shell {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.dept-unified-card {
+  display: grid;
+  grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid rgba(120, 45, 220, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(120, 45, 220, 0.07);
+  overflow: hidden;
+}
+
+.dept-tabs-nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  padding: 20px 14px;
+  background: #faf7ff;
+  border-right: 1px solid rgba(120, 45, 220, 0.1);
+}
+
+.dept-tabs-line {
+  position: absolute;
+  left: 31px;
+  top: 28px;
+  bottom: 28px;
+  width: 2px;
+  height: auto;
+  background: #e2d8ef;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.dept-tabs-line-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #782ddc 0%, #ff7a00 100%);
+  border-radius: 2px;
+  transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dept-tab-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 10px 10px 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.dept-tab-item:hover {
+  background: rgba(120, 45, 220, 0.06);
+}
+
+.dept-tab-item:focus-visible {
+  outline: 2px solid #782ddc;
+  outline-offset: 2px;
+}
+
+.dept-tab-item.is-active {
+  background: rgba(120, 45, 220, 0.08);
+}
+
+.dept-tab-icon {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c7486;
+  background: #fff;
+  border: 2px solid #d8cce8;
+  transition: all 0.3s ease;
+}
+
+.dept-tab-icon .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.dept-tab-item.is-active .dept-tab-icon,
+.dept-tab-item:hover .dept-tab-icon {
+  color: #fff;
+  background: #782ddc;
+  border-color: #782ddc;
+  box-shadow: 0 4px 12px rgba(120, 45, 220, 0.25);
+}
+
+.dept-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dept-tab-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #9b8fad;
+}
+
+.dept-tab-item.is-active .dept-tab-label {
+  color: #782ddc;
+}
+
+.dept-tab-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4b4455;
+  line-height: 1.25;
+}
+
+.dept-tab-item.is-active .dept-tab-name {
+  color: #1c1528;
+}
+
+.dept-panel-main {
+  padding: 20px 22px;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.dept-panels-stack {
+  position: relative;
+  width: 100%;
+}
+
+.dept-panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(200px, 0.95fr) minmax(0, 1.05fr);
+  gap: 20px;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(8px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0.32s ease;
+  pointer-events: none;
+}
+
+.dept-panel.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.dept-panel-visual {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #f3eaff;
+  box-shadow: 0 6px 20px rgba(120, 45, 220, 0.1);
+}
+
+.dept-panel-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.dept-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.dept-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dept-panel-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: rgba(120, 45, 220, 0.1);
+  color: #782ddc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dept-panel-icon .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.dept-panel-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9b8fad;
+  margin-bottom: 3px;
+}
+
+.dept-panel-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1c1528;
+  line-height: 1.2;
+}
+
+.dept-panel-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dept-panel-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4b4455;
+  background: #f9f0ff;
+  border: 1px solid rgba(120, 45, 220, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.dept-panel-features .material-symbols-outlined {
+  font-size: 18px;
+  color: #782ddc;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-variation-settings: "FILL" 1;
+}
+
+.dept-panel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 700;
+  color: #782ddc;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.dept-panel-cta:hover {
+  color: #5e00be;
+  gap: 10px;
+}
+
+.dept-panel-cta .material-symbols-outlined {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .dept-unified-card {
+    grid-template-columns: 1fr;
+  }
+
+  .dept-tabs-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(120, 45, 220, 0.1);
+    scrollbar-width: none;
+  }
+
+  .dept-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dept-tabs-line {
+    display: none;
+  }
+
+  .dept-tab-item {
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-width: 80px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .dept-tab-label {
+    display: none;
+  }
+
+  .dept-tab-name {
+    font-size: 11px;
+  }
+
+  .dept-panel-main {
+    padding: 16px 14px 20px;
+  }
+
+  .dept-panel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dept-panel-visual {
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dept-panel,
+  .dept-tabs-line-fill {
+    transition: none;
+  }
+}

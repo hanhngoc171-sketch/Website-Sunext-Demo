@@ -1,0 +1,25 @@
+/* Footer column links — subtle glow on hover */
+footer ul.space-y-3 a {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: -2px -6px;
+  transition:
+    color 0.28s ease,
+    text-shadow 0.32s ease,
+    transform 0.28s ease;
+}
+
+footer ul.space-y-3 a:hover {
+  text-shadow:
+    0 0 6px rgba(214, 186, 255, 0.7),
+    0 0 14px rgba(120, 45, 220, 0.45),
+    0 0 22px rgba(255, 122, 0, 0.2);
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  footer ul.space-y-3 a:hover {
+    transform: none;
+  }
+}
