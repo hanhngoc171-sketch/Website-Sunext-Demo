@@ -121,6 +121,22 @@
   html.dark .bg-white { background:#1e1530 !important; }
   html.dark .text-on-surface-variant { color:#b0a0cc !important; }
   html.dark .border-outline-variant\/30 { border-color:rgba(255,255,255,0.08) !important; }
+  /* Fix: text-on-surface dùng màu #240d48 không thấy trên nền tối */
+  html.dark .text-on-surface { color:#e8e0f0 !important; }
+  html.dark .text-on-background { color:#e8e0f0 !important; }
+  /* ── Hero card dark mode ── */
+  html.dark .hero-card {
+    background: #0f0a1a;
+    border-color: rgba(120,45,220,0.2);
+  }
+  html.dark .hero-fade {
+    background:
+      linear-gradient(100deg, rgba(15,10,26,0.97) 0%, rgba(26,18,37,0.86) 28%, rgba(30,21,48,0.46) 50%, rgba(15,10,26,0.06) 78%, transparent 100%),
+      linear-gradient(125deg, rgba(120,45,220,0.30) 0%, rgba(150,60,230,0.16) 45%, rgba(255,122,0,0.22) 100%) !important;
+  }
+  html.dark .hero-card h1 { color:#e8e0f0 !important; }
+  html.dark .hero-card p { color:#c4b8da !important; }
+  html.dark .hero-card li { color:#e8e0f0 !important; }
 
   /* ── Scroll Reveal System (IntersectionObserver driven) ── */
   @media (prefers-reduced-motion: no-preference) {
@@ -2984,7 +3000,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div class="text-center bg-white rounded-[20px] p-8 enterprise-shadow border border-outline-variant/30">
   <div class="relative w-24 h-24 mx-auto mb-6">
-    <img src="/images/team/ly-duc-toan.jpg" alt="Lý Đức Toàn" class="w-24 h-24 rounded-full object-cover ring-2 ring-primary/20 bg-primary/10 mx-auto" aria-hidden="true">
+    <img src="/images/team/ly-duc-toan.jpg" alt="Lý Đức Toàn" class="w-24 h-24 rounded-full object-cover object-top ring-2 ring-primary/20 bg-primary/10 mx-auto" aria-hidden="true">
     <span class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-cta flex items-center justify-center shadow-md"><span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1;">verified</span></span>
   </div>
   <h4 class="text-h3-card">Lý Đức Toàn</h4><p class="text-primary font-bold mb-3">CEO</p>
