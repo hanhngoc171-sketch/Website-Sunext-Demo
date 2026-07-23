@@ -33,14 +33,14 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   function initReveal(){
     /* Section headings */
     document.querySelectorAll('h2, h3').forEach(function(el, i){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.classList.contains('reveal') || el.classList.contains('reveal-up')) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.closest('#roadmap-steps') || el.classList.contains('reveal') || el.classList.contains('reveal-up')) return;
       el.classList.add('reveal-up');
       io.observe(el);
     });
 
     /* Cards - tier cards, program cards, case study cards */
     document.querySelectorAll('.enterprise-shadow, [class*="rounded-[24px]"], [class*="rounded-[20px]"]').forEach(function(el, i){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.classList.contains('case-study-card') || el.classList.contains('testimonial-card') || el.closest('.assessment-flip-card')) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.classList.contains('case-study-card') || el.classList.contains('testimonial-card') || el.closest('.assessment-flip-card') || el.closest('#roadmap-steps')) return;
       el.classList.add('reveal-scale', 'card-hover');
       el.style.transitionDelay = Math.min(i % 4, 3) * 80 + 'ms';
       io.observe(el);
@@ -48,7 +48,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
 
     /* Paragraph text blocks in sections */
     document.querySelectorAll('section p, section ul, section .space-y-3').forEach(function(el){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.classList.contains('reveal') || (el.parentElement && el.parentElement.classList.contains('reveal'))) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.closest('#roadmap-steps') || el.classList.contains('reveal') || (el.parentElement && el.parentElement.classList.contains('reveal'))) return;
       el.classList.add('reveal');
       io.observe(el);
     });
@@ -69,7 +69,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   /* ── 2.2. Stagger grid children on scroll ── */
   function initStagger(){
     document.querySelectorAll('section .grid, section [class*="grid-cols"]').forEach(function(grid){
-      if(isHeroZone(grid) || grid.closest('.hero-dark') || grid.closest('#case-studies-section') || grid.closest('#programs-scroll-section')) return;
+      if(isHeroZone(grid) || grid.closest('.hero-dark') || grid.closest('#case-studies-section') || grid.closest('#programs-scroll-section') || grid.closest('#roadmap-steps')) return;
       var children = Array.from(grid.children);
       if(children.length < 2 || children.length > 9) return;
       children.forEach(function(child, i){
@@ -386,42 +386,6 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
       requestAnimationFrame(tick);
     }, 1200);
   }
-})();
-
-/* ── 5. Marquee: AI tool logos (lines 3546–3581) ── */
-(function(){
-  var track = document.getElementById('ai-marquee');
-  if (!track) return;
-  var LOGOS = [
-    { name:'ChatGPT',    slug:'openai',        color:'10A37F', g:'linear-gradient(135deg,#10a37f,#0d8f6f)' },
-    { name:'Gemini',     slug:'googlegemini',  color:'4285F4', g:'linear-gradient(135deg,#4285F4,#1a73e8)' },
-    { name:'Claude',     slug:'claude',        color:'D97757', g:'linear-gradient(135deg,#D97757,#c65f3f)' },
-    { name:'Perplexity', slug:'perplexity',    color:'20808D', g:'linear-gradient(135deg,#20808D,#1a6b76)' },
-    { name:'Midjourney', slug:'midjourney',    color:'782DDC', g:'linear-gradient(135deg,#782DDC,#9b4dff)' },
-    { name:'Copilot',    slug:'githubcopilot', color:'0078D4', g:'linear-gradient(135deg,#0078D4,#005a9e)' },
-    { name:'Make',       slug:'make',          color:'6D00CC', g:'linear-gradient(135deg,#6D00CC,#8b1fd6)' },
-    { name:'n8n',        slug:'n8n',           color:'EA4B20', g:'linear-gradient(135deg,#EA4B20,#c93a15)' }
-  ];
-  function card(l){
-    var c = document.createElement('div');
-    c.className = 'logo-card'; c.title = l.name;
-    var g = document.createElement('div');
-    g.className = 'logo-card-glow'; g.style.background = l.g;
-    var img = document.createElement('img');
-    img.src = 'https://cdn.simpleicons.org/' + l.slug + '/' + l.color;
-    img.alt = l.name; img.loading = 'lazy';
-    img.onerror = function(){
-      img.style.display = 'none';
-      var s = document.createElement('span');
-      s.className = 'logo-card-fallback';
-      s.textContent = l.name;
-      c.appendChild(s);
-    };
-    c.appendChild(g); c.appendChild(img);
-    return c;
-  }
-  // Render twice for a seamless -50% loop
-  LOGOS.concat(LOGOS).forEach(function(l){ track.appendChild(card(l)); });
 })();
 
 /* ── 6. Logo intro: colored streak sweeps across → forms the logo (lines 3583–3644) ── */
@@ -966,12 +930,8 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
     };
   }
 
-  function curvedPath(x1, y1, x2, y2, curvature) {
-    var mx = (x1 + x2) / 2;
-    var my = (y1 + y2) / 2;
-    var dx = x2 - x1;
-    var cy = my + dx * curvature * 0.45;
-    return 'M ' + x1 + ',' + y1 + ' Q ' + mx + ',' + cy + ' ' + x2 + ',' + y2;
+  function straightPath(x1, y1, x2, y2) {
+    return 'M ' + x1 + ',' + y1 + ' L ' + x2 + ',' + y2;
   }
 
   function clearBeams() {
@@ -996,8 +956,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
     for (var i = 0; i < nodes.length - 1; i++) {
       var from = nodeCenter(nodes[i]);
       var to = nodeCenter(nodes[i + 1]);
-      var curvature = (i % 2 === 0) ? 0.4 : -0.4;
-      var d = curvedPath(from.x, from.y, to.x, to.y, curvature);
+      var d = straightPath(from.x, from.y, to.x, to.y);
       var colors = COLORS[i % COLORS.length];
       var gid = 'roadmap-beam-grad-' + i;
 
@@ -1105,21 +1064,17 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
 
   var eyebrow = section.querySelector('.roadmap-intro-eyebrow');
   var title = section.querySelector('.roadmap-intro-title');
-  var cols = section.querySelectorAll('.roadmap-intro-col');
+  var lead = section.querySelector('.roadmap-intro-lead');
   var icons = shell.querySelectorAll('.roadmap-flow-icon');
   var labels = shell.querySelectorAll('.roadmap-flow-text');
-  var pillarsLabel = section.querySelector('.roadmap-pillars-label');
-  var pillars = section.querySelectorAll('.roadmap-pillars li');
   var played = false;
 
   if (eyebrow) gsap.set(eyebrow, { autoAlpha: 0, y: 18 });
   if (title) gsap.set(title, { autoAlpha: 0, y: 28 });
-  if (cols.length) gsap.set(cols, { autoAlpha: 0, y: 24 });
+  if (lead) gsap.set(lead, { autoAlpha: 0, y: 20 });
   /* Icons: scale/opacity only so beam node centers stay stable */
   if (icons.length) gsap.set(icons, { autoAlpha: 0, scale: 0.6 });
   if (labels.length) gsap.set(labels, { autoAlpha: 0, y: 10 });
-  if (pillarsLabel) gsap.set(pillarsLabel, { autoAlpha: 0, y: 10 });
-  if (pillars.length) gsap.set(pillars, { autoAlpha: 0, y: 12 });
   gsap.set(svg, { autoAlpha: 0 });
 
   function playEntrance() {
@@ -1134,9 +1089,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
 
     if (eyebrow) tl.to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.45 }, 0);
     if (title) tl.to(title, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08);
-    if (cols.length) {
-      tl.to(cols, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 }, 0.2);
-    }
+    if (lead) tl.to(lead, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.18);
 
     if (icons.length) {
       gsap.set(icons, { willChange: 'transform, opacity' });
@@ -1146,23 +1099,12 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
         duration: 0.45,
         stagger: 0.09,
         ease: 'back.out(1.6)'
-      }, 0.4);
+      }, 0.35);
     }
     if (labels.length) {
-      tl.to(labels, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.09 }, 0.5);
+      tl.to(labels, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.09 }, 0.45);
     }
-    tl.to(svg, { autoAlpha: 1, duration: 0.55, ease: 'power2.out' }, 0.55);
-    if (pillarsLabel) {
-      tl.to(pillarsLabel, { autoAlpha: 1, y: 0, duration: 0.35 }, 0.95);
-    }
-    if (pillars.length) {
-      tl.to(pillars, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.4,
-        stagger: 0.06
-      }, 1.0);
-    }
+    tl.to(svg, { autoAlpha: 1, duration: 0.55, ease: 'power2.out' }, 0.5);
   }
 
   function tryPlay() {
@@ -1632,5 +1574,80 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('pagehide', function() {
     if (ctx) ctx.revert();
     pulseTweens.forEach(function(t){ t.kill(); });
+  });
+})();
+
+/* ── Roadmap steps: SVG scroll progress (zigzag) ── */
+(function(){
+  var section = document.getElementById('roadmap-steps');
+  var zigzag = document.getElementById('rsp-zigzag');
+  var path = document.getElementById('rsp-path');
+  var rows = section ? section.querySelectorAll('.rsp-row') : [];
+  if (!section || !zigzag || !path || !rows.length) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var st = null;
+  var rowTriggers = [];
+
+  function setupPath(progress) {
+    try {
+      var len = path.getTotalLength();
+      if (!len) return;
+      path.style.strokeDasharray = String(len);
+      path.style.strokeDashoffset = String(len * (1 - Math.max(0, Math.min(1, progress))));
+    } catch (err) {}
+  }
+
+  function setRowState(index) {
+    rows.forEach(function(row, i) {
+      row.classList.toggle('is-active', i === index);
+      row.classList.toggle('is-done', i <= index);
+    });
+  }
+
+  function killAll() {
+    if (st) { st.kill(); st = null; }
+    rowTriggers.forEach(function(t){ t.kill(); });
+    rowTriggers = [];
+  }
+
+  function init() {
+    killAll();
+    setupPath(reduced ? 1 : 0);
+
+    if (reduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      rows.forEach(function(row){ row.classList.add('is-done'); row.classList.remove('is-active'); });
+      setupPath(1);
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+    setRowState(0);
+
+    st = ScrollTrigger.create({
+      trigger: zigzag,
+      start: 'top 70%',
+      end: 'bottom 35%',
+      scrub: 0.4,
+      onUpdate: function(self) {
+        setupPath(self.progress);
+      }
+    });
+
+    rows.forEach(function(row, i) {
+      var t = ScrollTrigger.create({
+        trigger: row,
+        start: 'top 72%',
+        end: 'bottom 40%',
+        onEnter: function(){ setRowState(i); },
+        onEnterBack: function(){ setRowState(i); }
+      });
+      rowTriggers.push(t);
+    });
+  }
+
+  init();
+  window.addEventListener('resize', function() {
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
   });
 })();

@@ -7,7 +7,7 @@
 
 <link rel="canonical" href="https://sunext.vn/"/>
 <link rel="stylesheet" href="/css/tailwind.css">
-<link rel="stylesheet" href="/css/main.css?v=20260723ac">
+<link rel="stylesheet" href="/css/main.css?v=20260723af">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -142,229 +142,167 @@
     </div>
   </div>
 </section>
-<!-- Marquee logo scroller -->
-<section class="pt-10 pb-2">
-  <div class="marquee-mask max-w-container-max mx-auto px-margin-mobile">
-    <div class="marquee-track" id="ai-marquee"></div>
-  </div>
-</section>
 <section class="roadmap-intro-section" id="roadmap-intro" aria-labelledby="roadmap-intro-title">
   <div class="roadmap-intro-bg" aria-hidden="true"></div>
-  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter roadmap-intro-inner">
-    <div class="roadmap-intro-eyebrow section-pill">
-      <span class="material-symbols-outlined" aria-hidden="true">route</span>
-      Phương pháp chuyển đổi AI
-    </div>
-    <h2 class="roadmap-intro-title" id="roadmap-intro-title">Lộ trình rõ ràng để đưa AI vào vận hành thực tế.</h2>
-
-    <div class="roadmap-intro-grid">
-      <div class="roadmap-intro-col">
-        <span class="roadmap-intro-label">Quá trình liên tục</span>
-        <p>Chuyển đổi AI không phải là một dự án công nghệ triển khai một lần, mà là một quá trình liên tục. Doanh nghiệp cần đi từ đánh giá hiện trạng, lựa chọn ứng dụng AI phù hợp, thử nghiệm và đo lường kết quả đến tích hợp giải pháp vào quy trình vận hành và mở rộng trên toàn tổ chức.</p>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+    <div class="roadmap-intro-stack">
+      <div class="roadmap-intro-head">
+        <div class="roadmap-intro-eyebrow section-pill">
+          <span class="material-symbols-outlined" aria-hidden="true">route</span>
+          Phương pháp chuyển đổi AI
+        </div>
+        <h2 class="roadmap-intro-title" id="roadmap-intro-title">Lộ trình rõ ràng để đưa AI vào vận hành thực tế.</h2>
+        <p class="roadmap-intro-lead">Chuyển đổi AI là lộ trình nhiều giai đoạn — từ đánh giá, ưu tiên, thử nghiệm đến vận hành và mở rộng trên toàn tổ chức. Governance, bảo mật, quản trị thay đổi và đo lường giá trị được gắn vào ngay từ đầu, đi cùng từng bước.</p>
       </div>
-      <div class="roadmap-intro-col">
-        <span class="roadmap-intro-label">Thiết kế từ đầu</span>
-        <p>Trong suốt quá trình này, cơ chế quản trị (governance), bảo mật, quản trị thay đổi và phương pháp đo lường giá trị cần được thiết kế ngay từ đầu, thay vì chỉ bổ sung sau khi giải pháp đã hoàn thành.</p>
+
+      <div class="roadmap-flow-shell" id="roadmap-flow">
+        <svg class="roadmap-beams" id="roadmap-beams" aria-hidden="true"></svg>
+        <ol class="roadmap-flow" aria-label="Các giai đoạn chuyển đổi AI">
+          <li class="roadmap-flow-item">
+            <span class="roadmap-flow-icon" data-beam-node="0" aria-hidden="true">01</span>
+            <span class="roadmap-flow-text">Đánh giá</span>
+          </li>
+          <li class="roadmap-flow-item">
+            <span class="roadmap-flow-icon" data-beam-node="1" aria-hidden="true">02</span>
+            <span class="roadmap-flow-text">Ưu tiên</span>
+          </li>
+          <li class="roadmap-flow-item">
+            <span class="roadmap-flow-icon" data-beam-node="2" aria-hidden="true">03</span>
+            <span class="roadmap-flow-text">Thử nghiệm</span>
+          </li>
+          <li class="roadmap-flow-item">
+            <span class="roadmap-flow-icon" data-beam-node="3" aria-hidden="true">04</span>
+            <span class="roadmap-flow-text">Vận hành</span>
+          </li>
+          <li class="roadmap-flow-item">
+            <span class="roadmap-flow-icon" data-beam-node="4" aria-hidden="true">05</span>
+            <span class="roadmap-flow-text">Mở rộng</span>
+          </li>
+        </ol>
       </div>
-    </div>
-
-    <div class="roadmap-flow-shell" id="roadmap-flow">
-      <svg class="roadmap-beams" id="roadmap-beams" aria-hidden="true"></svg>
-      <ol class="roadmap-flow" aria-label="Các giai đoạn chuyển đổi AI">
-        <li class="roadmap-flow-item">
-          <span class="roadmap-flow-icon" data-beam-node="0" aria-hidden="true">01</span>
-          <span class="roadmap-flow-text">Đánh giá</span>
-        </li>
-        <li class="roadmap-flow-item">
-          <span class="roadmap-flow-icon" data-beam-node="1" aria-hidden="true">02</span>
-          <span class="roadmap-flow-text">Ưu tiên</span>
-        </li>
-        <li class="roadmap-flow-item">
-          <span class="roadmap-flow-icon" data-beam-node="2" aria-hidden="true">03</span>
-          <span class="roadmap-flow-text">Thử nghiệm</span>
-        </li>
-        <li class="roadmap-flow-item">
-          <span class="roadmap-flow-icon" data-beam-node="3" aria-hidden="true">04</span>
-          <span class="roadmap-flow-text">Vận hành</span>
-        </li>
-        <li class="roadmap-flow-item">
-          <span class="roadmap-flow-icon" data-beam-node="4" aria-hidden="true">05</span>
-          <span class="roadmap-flow-text">Mở rộng</span>
-        </li>
-      </ol>
-    </div>
-
-    <div class="roadmap-pillars-wrap">
-      <span class="roadmap-pillars-label">Song song từ đầu</span>
-      <ul class="roadmap-pillars" aria-label="Trụ cột cần có từ đầu">
-      <li>
-        <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
-        Governance
-      </li>
-      <li>
-        <span class="material-symbols-outlined" aria-hidden="true">shield_lock</span>
-        Bảo mật
-      </li>
-      <li>
-        <span class="material-symbols-outlined" aria-hidden="true">group</span>
-        Quản trị thay đổi
-      </li>
-      <li>
-        <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
-        Đo lường giá trị
-      </li>
-      </ul>
     </div>
   </div>
 </section>
 
-<section class="py-stack-xl" id="roadmap-steps" aria-labelledby="roadmap-steps-title">
+<section class="rsp-section py-stack-xl" id="roadmap-steps" aria-labelledby="roadmap-steps-title">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-<div class="roadmap-steps-header">
-  <p class="roadmap-steps-eyebrow section-pill">
-    <span class="material-symbols-outlined" aria-hidden="true">account_tree</span>
-    6 bước triển khai
-  </p>
-  <h2 class="text-h2" id="roadmap-steps-title">Từ đánh giá đến nhân rộng trên toàn tổ chức</h2>
+  <div class="roadmap-steps-header">
+    <p class="roadmap-steps-eyebrow section-pill">
+      <span class="material-symbols-outlined" aria-hidden="true">account_tree</span>
+      6 bước triển khai
+    </p>
+    <h2 class="text-h2" id="roadmap-steps-title">Từ đánh giá đến nhân rộng trên toàn tổ chức</h2>
+  </div>
+
+  <div class="rsp-zigzag" id="rsp-zigzag">
+    <svg class="rsp-spine" id="rsp-svg" viewBox="0 0 24 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="rsp-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#782DDC"/>
+          <stop offset="100%" stop-color="#FF7A00"/>
+        </linearGradient>
+      </defs>
+      <path class="rsp-path-base" d="M12 0 V1000" fill="none" stroke-linecap="round"/>
+      <path class="rsp-path-progress" id="rsp-path" d="M12 0 V1000" fill="none" stroke="url(#rsp-grad)" stroke-linecap="round"/>
+    </svg>
+
+    <ol class="rsp-list" aria-label="6 bước triển khai">
+      <li class="rsp-row rsp-row--left" data-rsp-step="0">
+        <article class="rsp-panel" id="rsp-text1">
+          <span class="rsp-kicker">Bước 1 · Đánh giá</span>
+          <h3>Đánh giá hiện trạng và xác định mục tiêu</h3>
+          <p>Rà soát chiến lược, dữ liệu, hệ thống, quy trình, năng lực đội ngũ và mức độ sẵn sàng thay đổi để xác định doanh nghiệp đang ở đâu, còn thiếu gì và muốn đạt kết quả gì với AI.</p>
+          <div class="rsp-tags"><span>Hiện trạng</span><span>Mục tiêu AI</span></div>
+          <a class="rsp-link" href="/ai-maturity-assessment/">Làm Assessment <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="0">01</span>
+        </div>
+        <div class="rsp-spacer" aria-hidden="true"></div>
+      </li>
+
+      <li class="rsp-row rsp-row--right" data-rsp-step="1">
+        <div class="rsp-spacer" aria-hidden="true"></div>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="1">02</span>
+        </div>
+        <article class="rsp-panel" id="rsp-text2">
+          <span class="rsp-kicker">Bước 2 · Ưu tiên</span>
+          <h3>Xác định và ưu tiên các ứng dụng AI</h3>
+          <p>Tìm những công việc, quyết định và quy trình có thể cải thiện bằng AI. Mỗi ứng dụng được đánh giá theo giá trị mang lại, mức độ phù hợp với chiến lược, khả năng triển khai, rủi ro và thời gian tạo kết quả.</p>
+          <p>Với mỗi ứng dụng ưu tiên, doanh nghiệp xác định rõ mức cơ sở ban đầu (baseline), chỉ số đo lường (KPI), người chịu trách nhiệm và điều kiện để tiếp tục đầu tư.</p>
+          <div class="rsp-tags"><span>Ưu tiên</span><span>Baseline · KPI</span></div>
+          <a class="rsp-link" href="/contact/">Trao đổi chiến lược <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+      </li>
+
+      <li class="rsp-row rsp-row--left" data-rsp-step="2">
+        <article class="rsp-panel" id="rsp-text3">
+          <span class="rsp-kicker">Bước 3 · Chuẩn bị</span>
+          <h3>Chuẩn bị nền tảng và năng lực triển khai</h3>
+          <p>Chuẩn bị dữ liệu, hệ thống, khả năng tích hợp, quyền truy cập, chính sách bảo mật và các cơ chế kiểm soát cần thiết.</p>
+          <p>Đồng thời, trang bị kiến thức và kỹ năng cho lãnh đạo, đội ngũ nghiệp vụ và bộ phận triển khai để sử dụng, giám sát và quản lý AI hiệu quả.</p>
+          <div class="rsp-tags"><span>Nền tảng</span><span>Năng lực đội ngũ</span></div>
+          <a class="rsp-link" href="/chuong-trinh/">Xem chương trình <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="2">03</span>
+        </div>
+        <div class="rsp-spacer" aria-hidden="true"></div>
+      </li>
+
+      <li class="rsp-row rsp-row--right" data-rsp-step="3">
+        <div class="rsp-spacer" aria-hidden="true"></div>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="3">04</span>
+        </div>
+        <article class="rsp-panel" id="rsp-text4">
+          <span class="rsp-kicker">Bước 4 · Thử nghiệm</span>
+          <h3>Thử nghiệm và kiểm chứng giá trị</h3>
+          <p>Triển khai thử nghiệm (pilot) trong phạm vi kiểm soát để đánh giá hiệu quả, chất lượng đầu ra, chi phí vận hành, mức độ chấp nhận của người dùng và các rủi ro phát sinh.</p>
+          <p>Dựa trên kết quả thực tế, doanh nghiệp quyết định mở rộng, điều chỉnh hoặc dừng ứng dụng.</p>
+          <div class="rsp-tags"><span>Pilot</span><span>Kiểm chứng giá trị</span></div>
+          <a class="rsp-link" href="/giai-phap/">Xem giải pháp <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+      </li>
+
+      <li class="rsp-row rsp-row--left" data-rsp-step="4">
+        <article class="rsp-panel" id="rsp-text5">
+          <span class="rsp-kicker">Bước 5 · Vận hành</span>
+          <h3>Đưa AI vào vận hành</h3>
+          <p>Tích hợp giải pháp đã được kiểm chứng vào quy trình và hệ thống thực tế, đồng thời xác định rõ vai trò của con người và AI tại từng bước công việc.</p>
+          <p>Theo dõi KPI, mức độ sử dụng, chất lượng, chi phí và rủi ro để bảo đảm giải pháp tạo ra kết quả ổn định.</p>
+          <div class="rsp-tags"><span>Vận hành thực tế</span><span>Theo dõi KPI</span></div>
+          <a class="rsp-link" href="/giai-phap/">Xem giải pháp <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="4">05</span>
+        </div>
+        <div class="rsp-spacer" aria-hidden="true"></div>
+      </li>
+
+      <li class="rsp-row rsp-row--right" data-rsp-step="5">
+        <div class="rsp-spacer" aria-hidden="true"></div>
+        <div class="rsp-node-wrap">
+          <span class="rsp-node" data-rsp-node="5">06</span>
+        </div>
+        <article class="rsp-panel" id="rsp-text6">
+          <span class="rsp-kicker">Bước 6 · Mở rộng</span>
+          <h3>Mở rộng và cải tiến liên tục</h3>
+          <p>Nhân rộng những ứng dụng đã chứng minh hiệu quả sang các phòng ban, quy trình hoặc đơn vị phù hợp.</p>
+          <p>Song song đó, chuẩn hóa vai trò, trách nhiệm, quy trình, kiến trúc hệ thống, cơ chế quản trị và phương pháp đo lường để AI trở thành năng lực vận hành lâu dài của doanh nghiệp.</p>
+          <div class="rsp-tags"><span>Nhân rộng</span><span>Cải tiến liên tục</span></div>
+          <a class="rsp-link" href="/giai-phap/">Xem giải pháp <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </article>
+      </li>
+    </ol>
+  </div>
+
+  <div class="text-center mt-stack-lg">
+    <a class="inline-flex items-center gap-2 bg-cta text-white px-8 py-3.5 rounded-[14px] font-bold shadow-[0_4px_14px_rgba(255,122,0,0.39)] hover:-translate-y-0.5 active:scale-95 transition-all" href="/lo-trinh-chuyen-doi-ai/">Khám phá lộ trình chuyển đổi AI <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+  </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="morph-tier-grid">
-
-  <div class="flip-card morph-card" data-morph-index="0">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">01</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">assessment</span>
-        <h3 class="flip-title">Đánh giá hiện trạng và xác định mục tiêu</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Hiện trạng</span>
-          <span class="flip-badge">Mục tiêu AI</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 1 · Đánh giá</span>
-        <p class="flip-title-back">Đánh giá hiện trạng và xác định mục tiêu</p>
-        <p class="flip-desc-back">Rà soát chiến lược, dữ liệu, hệ thống, quy trình, năng lực đội ngũ và mức độ sẵn sàng thay đổi để xác định doanh nghiệp đang ở đâu, còn thiếu gì và muốn đạt kết quả gì với AI.</p>
-        <a href="/ai-maturity-assessment/" class="flip-link-back">Làm Assessment <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-card morph-card" data-morph-index="1">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">02</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">strategy</span>
-        <h3 class="flip-title">Xác định và ưu tiên các ứng dụng AI</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Ưu tiên</span>
-          <span class="flip-badge">Baseline · KPI</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 2 · Ưu tiên</span>
-        <p class="flip-title-back">Xác định và ưu tiên các ứng dụng AI</p>
-        <p class="flip-desc-back">Tìm những công việc, quyết định và quy trình có thể cải thiện bằng AI. Mỗi ứng dụng được đánh giá theo giá trị mang lại, mức độ phù hợp với chiến lược, khả năng triển khai, rủi ro và thời gian tạo kết quả.</p>
-        <p class="flip-desc-back">Với mỗi ứng dụng ưu tiên, doanh nghiệp xác định rõ mức cơ sở ban đầu (baseline), chỉ số đo lường (KPI), người chịu trách nhiệm và điều kiện để tiếp tục đầu tư.</p>
-        <a href="/contact/" class="flip-link-back">Trao đổi chiến lược <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-card morph-card" data-morph-index="2">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">03</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">school</span>
-        <h3 class="flip-title">Chuẩn bị nền tảng và năng lực triển khai</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Nền tảng</span>
-          <span class="flip-badge">Năng lực đội ngũ</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 3 · Chuẩn bị</span>
-        <p class="flip-title-back">Chuẩn bị nền tảng và năng lực triển khai</p>
-        <p class="flip-desc-back">Chuẩn bị dữ liệu, hệ thống, khả năng tích hợp, quyền truy cập, chính sách bảo mật và các cơ chế kiểm soát cần thiết.</p>
-        <p class="flip-desc-back">Đồng thời, trang bị kiến thức và kỹ năng cho lãnh đạo, đội ngũ nghiệp vụ và bộ phận triển khai để sử dụng, giám sát và quản lý AI hiệu quả.</p>
-        <a href="/chuong-trinh/" class="flip-link-back">Xem chương trình <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-card morph-card" data-morph-index="3">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">04</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">rocket_launch</span>
-        <h3 class="flip-title">Thử nghiệm và kiểm chứng giá trị</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Pilot</span>
-          <span class="flip-badge">Kiểm chứng giá trị</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 4 · Thử nghiệm</span>
-        <p class="flip-title-back">Thử nghiệm và kiểm chứng giá trị</p>
-        <p class="flip-desc-back">Triển khai thử nghiệm (pilot) trong phạm vi kiểm soát để đánh giá hiệu quả, chất lượng đầu ra, chi phí vận hành, mức độ chấp nhận của người dùng và các rủi ro phát sinh.</p>
-        <p class="flip-desc-back">Dựa trên kết quả thực tế, doanh nghiệp quyết định mở rộng, điều chỉnh hoặc dừng ứng dụng.</p>
-        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-card morph-card" data-morph-index="4">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">05</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">monitoring</span>
-        <h3 class="flip-title">Đưa AI vào vận hành</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Vận hành thực tế</span>
-          <span class="flip-badge">Theo dõi KPI</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 5 · Vận hành</span>
-        <p class="flip-title-back">Đưa AI vào vận hành</p>
-        <p class="flip-desc-back">Tích hợp giải pháp đã được kiểm chứng vào quy trình và hệ thống thực tế, đồng thời xác định rõ vai trò của con người và AI tại từng bước công việc.</p>
-        <p class="flip-desc-back">Theo dõi KPI, mức độ sử dụng, chất lượng, chi phí và rủi ro để bảo đảm giải pháp tạo ra kết quả ổn định.</p>
-        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-card morph-card" data-morph-index="5">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="flip-number">06</div>
-        <span class="card-icon material-symbols-outlined flip-icon" style="font-variation-settings:'FILL' 1">hub</span>
-        <h3 class="flip-title">Mở rộng và cải tiến liên tục</h3>
-        <div class="flip-badges">
-          <span class="flip-badge">Nhân rộng</span>
-          <span class="flip-badge">Cải tiến liên tục</span>
-        </div>
-        <span class="flip-cta">Xem chi tiết <span class="material-symbols-outlined" style="font-size:0.8rem">arrow_forward</span></span>
-      </div>
-      <div class="flip-card-back">
-        <span class="flip-tier-back">Bước 6 · Mở rộng</span>
-        <p class="flip-title-back">Mở rộng và cải tiến liên tục</p>
-        <p class="flip-desc-back">Nhân rộng những ứng dụng đã chứng minh hiệu quả sang các phòng ban, quy trình hoặc đơn vị phù hợp.</p>
-        <p class="flip-desc-back">Song song đó, chuẩn hóa vai trò, trách nhiệm, quy trình, kiến trúc hệ thống, cơ chế quản trị và phương pháp đo lường để AI trở thành năng lực vận hành lâu dài của doanh nghiệp.</p>
-        <a href="/giai-phap/" class="flip-link-back">Xem giải pháp <span class="material-symbols-outlined" style="font-size:0.9rem">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-
-</div>
-<div class="text-center mt-stack-lg">
-  <a class="inline-flex items-center gap-2 bg-cta text-white px-8 py-3.5 rounded-[14px] font-bold shadow-[0_4px_14px_rgba(255,122,0,0.39)] hover:-translate-y-0.5 active:scale-95 transition-all" href="/lo-trinh-chuyen-doi-ai/">Khám phá lộ trình chuyển đổi AI <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
-</div>
-</div></section>
+</section>
 <section class="programs-scroll-section py-stack-xl bg-surface-container-low" id="programs-scroll-section">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
     <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6 programs-scroll-header">
@@ -1205,6 +1143,6 @@
 </div>
 
 
-<script src="/js/main.js?v=20260723v" defer></script>
+<script src="/js/main.js?v=20260723y" defer></script>
 </body></html>
 

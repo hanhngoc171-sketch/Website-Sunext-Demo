@@ -3,3 +3,5 @@ dist/
 backup.tar.gz
 .DS_Store
 **/.DS_Store
+.vercel
+.env*
