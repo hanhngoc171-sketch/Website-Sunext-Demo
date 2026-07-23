@@ -1,0 +1,29 @@
+.pp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .pp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .pp-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.pp-info-grid {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .pp-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.pp-span-2 {
+  grid-column: 1 / -1;
+}
+.pp-card {
+  height: 100%;
+}

@@ -41,6 +41,47 @@
       "description": "Các dự án chuyển đổi AI tiêu biểu của Sunext: đào tạo quy mô lớn, chatbot nội bộ, trợ lý AI Sales và sản phẩm AI."
     }
   },
+  "navigation": [
+    {
+      "label": "Giải pháp",
+      "href": "/giai-phap/",
+      "dataPath": "/giai-phap",
+      "children": [
+        { "label": "Dịch vụ", "href": "/contact/" },
+        { "label": "Giải pháp AI", "href": "/giai-phap/" },
+        { "label": "Theo phòng ban", "href": "/giai-phap-theo-phong-ban/" }
+      ]
+    },
+    {
+      "label": "Phương pháp",
+      "href": "/about/#phuong-phap-6-buoc",
+      "dataPath": "/about",
+      "children": [
+        { "label": "Vấn đề doanh nghiệp", "href": "/about/" },
+        { "label": "Lộ trình chuyển đổi AI", "href": "/about/#phuong-phap-6-buoc" },
+        { "label": "Đánh giá mức độ sẵn sàng AI", "href": "/ai-maturity-assessment/" }
+      ]
+    },
+    {
+      "label": "Dự án",
+      "href": "/case-studies/",
+      "dataPath": "/case-studies",
+      "children": [
+        { "label": "Dự án tiêu biểu", "href": "/case-studies/" },
+        { "label": "Đội ngũ", "href": "/about/#doi-ngu" },
+        { "label": "Bảo mật & triển khai", "href": "/security/" }
+      ]
+    },
+    {
+      "label": "Về Sunext",
+      "href": "/about/",
+      "dataPath": "/about",
+      "children": [
+        { "label": "Giới thiệu", "href": "/about/" },
+        { "label": "Liên hệ", "href": "/contact/" }
+      ]
+    }
+  ],
   "hero": {
     "eyebrow": "B2B AI Transformation",
     "h1": "Chuyển đổi AI từ chiến lược đến thực thi",

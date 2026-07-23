@@ -2,24 +2,18 @@
 <html class="scroll-smooth" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Giải Pháp AI Doanh Nghiệp | Sunext</title>
-<meta name="description" content="Khám phá các giải pháp AI của Sunext: xử lý tài liệu, chatbot nội bộ, AI Agents, phân tích dự báo và AI tăng trưởng."/>
-
+<title>Giải pháp AI | Document AI, Chatbot, Agent &amp; Automation | Sunext</title>
+<meta name="description" content="Sunext thiết kế Document AI, chatbot, AI agent và automation xoay quanh dữ liệu, hệ thống và bài toán vận hành thực tế của doanh nghiệp."/>
 <link rel="canonical" href="https://sunext.vn/giai-phap/"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="/css/tailwind.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
   body { font-family: 'Plus Jakarta Sans', sans-serif; }
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-  .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
   .enterprise-shadow { box-shadow: 0px 10px 30px rgba(24,0,61,0.05); }
-  .enterprise-shadow:hover { box-shadow: 0px 20px 40px rgba(24,0,61,0.08); }
   .gradient-text { background: linear-gradient(90deg,#782DDC 0%,#FF7A00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .brand-gradient { background: linear-gradient(135deg,#782DDC 0%,#FF7A00 100%); }
-  .gate-blur { filter: blur(6px); user-select: none; pointer-events: none; }
-  @keyframes spinslow { to { transform: rotate(360deg); } }
-  .animate-spin-slow { animation: spinslow 3s linear infinite; }
 </style>
 <script id="tailwind-config">
 tailwind.config = { darkMode: "class", theme: { extend: {
@@ -27,11 +21,13 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   "borderRadius": {"DEFAULT":"0.5rem","md":"0.75rem","lg":"1rem","xl":"1.5rem","full":"9999px"},
   "spacing": {"stack-sm":"16px","stack-lg":"48px","stack-md":"24px","container-max":"1280px","margin-mobile":"20px","stack-xs":"8px","gutter":"32px","stack-xl":"80px"},
   "fontSize": {"label-eyebrow":["12px",{"lineHeight":"1.2","letterSpacing":"0.1em","fontWeight":"700"}],"h3-card":["22px",{"lineHeight":"1.4","fontWeight":"700"}],"h2":["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"700"}],"h1-desktop":["64px",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"800"}],"h1-mobile":["40px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"800"}]}
-}}};
+}};
 </script>
-<link rel="stylesheet" href="/css/vercel-nav.css"/>
+<link rel="stylesheet" href="/css/vercel-nav.css?v=20260723a"/>
 <link rel="stylesheet" href="/css/btn-shine.css"/>
 <link rel="stylesheet" href="/css/footer-glow.css"/>
+<link rel="stylesheet" href="/css/gioi-thieu.css?v=20260723a"/>
+<link rel="stylesheet" href="/css/giai-phap-ai.css?v=20260723a"/>
 </head>
 <body class="bg-surface text-on-surface selection:bg-primary/20">
 
@@ -40,11 +36,11 @@ tailwind.config = { darkMode: "class", theme: { extend: {
     <a class="text-secondary-container ml-2 hover:underline inline-flex items-center gap-1" href="/ai-maturity-assessment/">Làm bài test ngay <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
   </p>
 </div>
-<header class="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0px_10px_30px_rgba(24,0,61,0.05)]">
+<header class="site-header-nav sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0px_10px_30px_rgba(24,0,61,0.05)]">
   <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-gutter py-4">
     <div class="flex items-center gap-10">
       <a class="text-h3-card font-extrabold flex items-center gap-1 gradient-text" href="/">Sunext</a>
-      <nav class="vercel-nav hidden lg:flex items-center text-[15px]" aria-label="Điều hướng chính"><span class="vercel-nav-hover" aria-hidden="true"></span><span class="vercel-nav-underline" aria-hidden="true"></span><a class="vercel-nav-link" href="/giai-phap/" data-path="/giai-phap">Giải pháp AI</a><a class="vercel-nav-link" href="/chuong-trinh/" data-path="/chuong-trinh">Chương trình</a><a class="vercel-nav-link" href="/giai-phap-theo-phong-ban/" data-path="/giai-phap-theo-phong-ban">Theo phòng ban</a><a class="vercel-nav-link" href="/ai-maturity-assessment/" data-path="/ai-maturity-assessment">Assessment</a><a class="vercel-nav-link" href="/case-studies/" data-path="/case-studies">Case Studies</a><a class="vercel-nav-link" href="/about/" data-path="/about">Về Sunext</a></nav>
+      <nav class="vercel-nav hidden lg:flex items-center text-[15px]" aria-label="Điều hướng chính"><span class="vercel-nav-hover" aria-hidden="true"></span><span class="vercel-nav-underline" aria-hidden="true"></span><div class="vercel-nav-item"><button type="button" class="vercel-nav-link vercel-nav-trigger" data-path="/giai-phap" aria-haspopup="true" aria-expanded="false">Giải pháp<span class="vercel-nav-chevron material-symbols-outlined" aria-hidden="true">expand_more</span></button><div class="nav-item-mega" aria-hidden="true"><div class="nav-mega-panel-inner max-w-container-max mx-auto px-margin-mobile md:px-gutter py-10"><div class="nav-mega-grid"><div class="nav-mega-col"><a href="/giai-phap/dich-vu/" class="nav-mega-heading">Dịch vụ</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/giai-phap/dich-vu/">Tư vấn và triển khai dịch vụ chuyển đổi AI</a></li></ul></div><div class="nav-mega-col"><a href="/giai-phap/" class="nav-mega-heading">Giải pháp AI</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/giai-phap/">Document AI, chatbot, agent và automation</a></li></ul></div><div class="nav-mega-col"><a href="/giai-phap-theo-phong-ban/" class="nav-mega-heading">Theo phòng ban</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/giai-phap-theo-phong-ban/">Giải pháp theo Sales, Marketing, HR, IT</a></li></ul></div></div></div></div></div><div class="vercel-nav-item"><button type="button" class="vercel-nav-link vercel-nav-trigger" data-path="/about" aria-haspopup="true" aria-expanded="false">Phương pháp<span class="vercel-nav-chevron material-symbols-outlined" aria-hidden="true">expand_more</span></button><div class="nav-item-mega" aria-hidden="true"><div class="nav-mega-panel-inner max-w-container-max mx-auto px-margin-mobile md:px-gutter py-10"><div class="nav-mega-grid"><div class="nav-mega-col"><a href="/about/" class="nav-mega-heading">Vấn đề doanh nghiệp</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/about/">Thách thức AI thường gặp của doanh nghiệp B2B</a></li></ul></div><div class="nav-mega-col"><a href="/lo-trinh-chuyen-doi-ai/" class="nav-mega-heading">Lộ trình chuyển đổi AI</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/lo-trinh-chuyen-doi-ai/">Quy trình 6 bước từ đánh giá đến mở rộng</a></li></ul></div><div class="nav-mega-col"><a href="/ai-maturity-assessment/" class="nav-mega-heading">Đánh giá mức độ sẵn sàng AI</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/ai-maturity-assessment/">Bài test AI Maturity miễn phí trong 5 phút</a></li></ul></div></div></div></div></div><div class="vercel-nav-item"><button type="button" class="vercel-nav-link vercel-nav-trigger" data-path="/case-studies" aria-haspopup="true" aria-expanded="false">Dự án<span class="vercel-nav-chevron material-symbols-outlined" aria-hidden="true">expand_more</span></button><div class="nav-item-mega" aria-hidden="true"><div class="nav-mega-panel-inner max-w-container-max mx-auto px-margin-mobile md:px-gutter py-10"><div class="nav-mega-grid"><div class="nav-mega-col"><a href="/case-studies/" class="nav-mega-heading">Dự án tiêu biểu</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/case-studies/">Case study Prudential, JP và các dự án thực tế</a></li></ul></div><div class="nav-mega-col"><a href="/doi-ngu/" class="nav-mega-heading">Đội ngũ</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/doi-ngu/">Đội ngũ lãnh đạo và chuyên gia Sunext</a></li></ul></div><div class="nav-mega-col"><a href="/security/" class="nav-mega-heading">Bảo mật &amp; triển khai</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/security/">Tiêu chuẩn bảo mật và quy trình triển khai</a></li></ul></div></div></div></div></div><div class="vercel-nav-item"><button type="button" class="vercel-nav-link vercel-nav-trigger" data-path="/giai-phap/gioi-thieu" aria-haspopup="true" aria-expanded="false">Về Sunext<span class="vercel-nav-chevron material-symbols-outlined" aria-hidden="true">expand_more</span></button><div class="nav-item-mega" aria-hidden="true"><div class="nav-mega-panel-inner max-w-container-max mx-auto px-margin-mobile md:px-gutter py-10"><div class="nav-mega-grid cols-2"><div class="nav-mega-col"><a href="/giai-phap/gioi-thieu/" class="nav-mega-heading">Giới thiệu</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/giai-phap/gioi-thieu/">Sứ mệnh, phương pháp và năng lực cốt lõi</a></li></ul></div><div class="nav-mega-col"><a href="/contact/" class="nav-mega-heading">Liên hệ</a><div class="nav-mega-rule"></div><ul class="nav-mega-list"><li><a href="/contact/">Đặt lịch tư vấn và kết nối với Sunext</a></li></ul></div></div></div></div></div></nav>
     </div>
     <div class="flex items-center gap-4">
       <a class="hidden xl:flex items-center gap-1 text-on-surface-variant font-bold hover:text-primary transition-colors" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
@@ -55,77 +51,118 @@ tailwind.config = { darkMode: "class", theme: { extend: {
     </div>
   </div>
   <div id="mmenu" class="hidden lg:hidden bg-surface border-t border-outline-variant/30 px-margin-mobile pb-6">
-    <a class="block py-3 border-b border-outline-variant/30 font-bold" href="/giai-phap/">Giải pháp AI</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/chuong-trinh/">Chương trình</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/giai-phap-theo-phong-ban/">Theo phòng ban</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/ai-maturity-assessment/">Assessment</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/case-studies/">Case Studies</a><a class="block py-3 border-b border-outline-variant/30 font-bold" href="/about/">Về Sunext</a>
+    <div class="mmenu-group"><button type="button" class="mmenu-group-title" aria-expanded="false">Giải pháp</button><div class="mmenu-subpanel"><a class="mmenu-sublink" href="/giai-phap/dich-vu/">Dịch vụ</a><a class="mmenu-sublink" href="/giai-phap/">Giải pháp AI</a><a class="mmenu-sublink" href="/giai-phap-theo-phong-ban/">Theo phòng ban</a></div></div><div class="mmenu-group"><button type="button" class="mmenu-group-title" aria-expanded="false">Phương pháp</button><div class="mmenu-subpanel"><a class="mmenu-sublink" href="/about/">Vấn đề doanh nghiệp</a><a class="mmenu-sublink" href="/lo-trinh-chuyen-doi-ai/">Lộ trình chuyển đổi AI</a><a class="mmenu-sublink" href="/ai-maturity-assessment/">Đánh giá mức độ sẵn sàng AI</a></div></div><div class="mmenu-group"><button type="button" class="mmenu-group-title" aria-expanded="false">Dự án</button><div class="mmenu-subpanel"><a class="mmenu-sublink" href="/case-studies/">Dự án tiêu biểu</a><a class="mmenu-sublink" href="/doi-ngu/">Đội ngũ</a><a class="mmenu-sublink" href="/security/">Bảo mật & triển khai</a></div></div><div class="mmenu-group"><button type="button" class="mmenu-group-title" aria-expanded="false">Về Sunext</button><div class="mmenu-subpanel"><a class="mmenu-sublink" href="/giai-phap/gioi-thieu/">Giới thiệu</a><a class="mmenu-sublink" href="/contact/">Liên hệ</a></div></div>
     <a class="block py-3 font-bold text-primary" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS ↗</a>
   </div>
 </header>
+
 <main>
-<section class="pt-10 pb-6"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-<div class="max-w-3xl mx-auto text-center">
-  <h1 class="text-h1-mobile md:text-h1-desktop mb-6">Giải pháp AI gắn với vận hành thực tế</h1>
-  <p class="text-lg text-on-surface-variant leading-relaxed">Sunext thiết kế và triển khai các giải pháp AI giúp doanh nghiệp xử lý tài liệu, khai thác tri thức nội bộ, hỗ trợ ra quyết định và tăng trưởng — không dừng ở demo hay khóa học riêng lẻ.</p></div></div></section>
-<section class="py-12"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<a href="/contact/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Tài liệu</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">description</span></div>
-  <h3 class="text-h3-card mb-3">AI xử lý tài liệu</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Đọc, trích xuất, xác thực và định tuyến hóa đơn, hợp đồng, biểu mẫu — nhanh hơn, chính xác hơn, có thể truy vết.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Trao đổi triển khai</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-<a href="/giai-phap/private-llm-rag/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Tri thức nội bộ</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">forum</span></div>
-  <h3 class="text-h3-card mb-3">GPT &amp; Chatbot nội bộ</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Tập trung hóa SOP, chính sách và tài liệu nội bộ để nhân viên hỏi bằng ngôn ngữ tự nhiên và nhận câu trả lời kèm nguồn.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Xem chi tiết</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-<a href="/giai-phap/ai-agent-chatbot/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Agents</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">smart_toy</span></div>
-  <h3 class="text-h3-card mb-3">AI Agents</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Agent cho CEO, Sales và Marketing: theo dõi tín hiệu, tóm tắt, cảnh báo và hỗ trợ hành động đúng lúc.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Xem chi tiết</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-<a href="/contact/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Dự báo</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">analytics</span></div>
-  <h3 class="text-h3-card mb-3">Phân tích dự báo</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Dự báo doanh thu, tồn kho và rủi ro rời bỏ khách hàng dựa trên dữ liệu vận hành thực tế.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Trao đổi triển khai</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-<a href="/contact/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Tăng trưởng</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">trending_up</span></div>
-  <h3 class="text-h3-card mb-3">AI tăng trưởng: AEO, GEO &amp; Media</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Tối ưu khả năng hiển thị thương hiệu trong câu trả lời AI và khuếch đại nội dung trên nhiều kênh.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Trao đổi triển khai</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-<a href="/chuong-trinh/" class="block bg-white p-stack-md rounded-[20px] border border-outline-variant/30 enterprise-shadow transition-all hover:-translate-y-2 hover:border-primary group">
-  <div class="flex justify-between items-start mb-5"><span class="bg-surface-container-high text-primary px-3 py-1 rounded-full text-xs font-bold uppercase whitespace-nowrap">Năng lực</span>
-    <span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors">school</span></div>
-  <h3 class="text-h3-card mb-3">Đào tạo &amp; xây dựng năng lực</h3>
-  <p class="text-on-surface-variant text-sm mb-5">Chương trình huấn luyện theo phòng ban, cấp bậc và use case thực tế — nền tảng để giải pháp AI đi vào vận hành.</p>
-  <div class="pt-4 border-t border-outline-variant/30 flex justify-between items-center">
-    <span class="text-[12px] font-bold text-primary uppercase">Xem chương trình</span>
-    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div>
-</a>
-</div></div></section>
-<section class="py-12"><div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-<div class="bg-surface-container rounded-[32px] p-10 text-center">
-  <h2 class="text-h2 mb-4">Không biết bắt đầu từ đâu?</h2>
-  <p class="text-on-surface-variant max-w-xl mx-auto mb-8">Làm bài AI Maturity Assessment 5 phút để xác định mức độ sẵn sàng và bước tiếp theo phù hợp với doanh nghiệp của bạn.</p>
-  <a class="inline-block bg-cta text-white px-10 py-4 rounded-[12px] font-bold text-[18px] shadow-lg hover:-translate-y-1 transition-all" href="/ai-maturity-assessment/">Làm bài Test ngay</a></div></div></section>
+  <section class="gt-hero" aria-labelledby="gp-hero-title">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+      <p class="gt-pill gt-reveal"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span> Giải pháp AI</p>
+      <h1 id="gp-hero-title" class="gt-hero-title gt-reveal">Giải pháp AI cho tài liệu, hội thoại và tự động hóa quy trình</h1>
+      <p class="gt-hero-lead gt-reveal">Sunext thiết kế Document AI, chatbot, agent và automation xoay quanh dữ liệu, hệ thống và bài toán vận hành thực tế của doanh nghiệp.</p>
+      <div class="gt-hero-copy gt-reveal">
+        <p>Thay vì mang đến những công cụ AI chung chung, chúng tôi xây dựng giải pháp theo từng ngữ cảnh: xử lý tài liệu, chuyển đổi hội thoại thành dữ liệu, trợ lý nội bộ và tự động hóa các tác vụ lặp lại.</p>
+        <p>Mỗi giải pháp đều được thiết kế để đo lường rõ ràng về thời gian xử lý, chi phí vận hành, chất lượng đầu ra và mức độ chấp nhận của người dùng.</p>
+      </div>
+      <nav class="gp-jump gt-reveal" aria-label="Nhảy tới nhóm giải pháp">
+        <a href="#document-ai"><span class="material-symbols-outlined" aria-hidden="true">description</span> Document AI</a>
+        <a href="#chatbot-agent"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span> Chatbot &amp; Agent</a>
+        <a href="#automation"><span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span> Automation</a>
+      </nav>
+      <div class="gt-cta-row gt-reveal" style="margin-top:1.25rem">
+        <a class="gt-cta-primary btn-shine" href="#bo-giai-phap">Khám phá bộ giải pháp AI của Sunext</a>
+        <a class="gt-cta-secondary" href="/contact/">Xem demo Document AI, chatbot và automation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gt-section gt-section--alt" id="bo-giai-phap" aria-label="Bộ giải pháp AI">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter gp-stack">
+
+      <article class="gp-block gt-reveal" id="document-ai" aria-labelledby="gp-doc-title">
+        <div class="gp-block-head">
+          <span class="gp-block-icon" aria-hidden="true"><span class="material-symbols-outlined">description</span></span>
+          <h2 id="gp-doc-title">Document AI – Tự động hóa xử lý tài liệu trong vài giây</h2>
+        </div>
+        <p class="gp-lead">Document AI giúp doanh nghiệp tự động tiếp nhận, phân loại, trích xuất, kiểm tra và đối chiếu dữ liệu từ hóa đơn, hợp đồng, biểu mẫu, báo cáo và các tài liệu nghiệp vụ.</p>
+        <p class="gp-label">Khả năng chính</p>
+        <ul class="gp-list">
+          <li>Đọc và hiểu nhiều loại tài liệu từ email, bản scan hoặc file tải lên.</li>
+          <li>Phân loại tài liệu và trích xuất trường dữ liệu quan trọng: tên, số tiền, ngày tháng, điều khoản…</li>
+          <li>Đối chiếu với hệ thống hiện có, gắn cờ các lỗi, trường thông tin còn thiếu hoặc cần xác minh.</li>
+          <li>Tự động chuyển các trường hợp phù hợp đến đúng nhóm, hệ thống hoặc quy trình phê duyệt.</li>
+          <li>Bảng đo lường hiển thị trạng thái, lịch sử và ngoại lệ theo thời gian thực.</li>
+        </ul>
+        <p class="gp-label">Ví dụ kết quả</p>
+        <div class="gp-examples">
+          <div class="gp-example">
+            <strong>Hóa đơn &amp; đơn hàng mua</strong>
+            <p>Rút ngắn thời gian xử lý từ vài ngày xuống vài phút, giảm sai sót nhập liệu.</p>
+          </div>
+          <div class="gp-example">
+            <strong>Hợp đồng &amp; tài liệu pháp lý</strong>
+            <p>Xác định điều khoản quan trọng, thời hạn và nghĩa vụ, cảnh báo khi sắp hết hạn.</p>
+          </div>
+          <div class="gp-example">
+            <strong>Biểu mẫu &amp; đơn đăng ký</strong>
+            <p>Giảm tới 90% khối lượng nhập liệu thủ công, đảm bảo dữ liệu đầy đủ trước khi xử lý.</p>
+          </div>
+        </div>
+        <a class="gp-block-link" href="/giai-phap/ai-nang-cao-theo-phong-ban/">Xem giải pháp xử lý tài liệu <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </article>
+
+      <article class="gp-block gt-reveal" id="chatbot-agent" aria-labelledby="gp-agent-title">
+        <div class="gp-block-head">
+          <span class="gp-block-icon gp-block-icon--orange" aria-hidden="true"><span class="material-symbols-outlined">smart_toy</span></span>
+          <h2 id="gp-agent-title">Chatbot &amp; AI Agent – Tăng tốc tương tác và ra quyết định</h2>
+        </div>
+        <p class="gp-lead">Sunext xây dựng chatbot và AI agent phục vụ khách hàng và nội bộ, giúp đội ngũ trả lời nhanh hơn, nhất quán hơn và tự động hóa một phần luồng công việc.</p>
+        <p class="gp-label">Khả năng</p>
+        <ul class="gp-list">
+          <li>Chatbot khách hàng: giải đáp câu hỏi, hướng dẫn quy trình đăng ký, tra cứu trạng thái hồ sơ và dẫn dắt khách hàng đến đúng kênh hỗ trợ.</li>
+          <li>Agent nội bộ: tự động lấy dữ liệu từ ERP/CRM, tổng hợp báo cáo, nhắc việc và kích hoạt các workflow đã được phê duyệt.</li>
+          <li>Tích hợp chặt chẽ với hệ thống hiện có để đảm bảo thông tin luôn cập nhật và chính xác.</li>
+        </ul>
+        <div class="gt-cta-row" style="gap:1.25rem">
+          <a class="gp-block-link" href="/giai-phap/ai-agent-chatbot/">Xem AI Agent &amp; Chatbot <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+          <a class="gp-block-link" href="/giai-phap/private-llm-rag/">Xem trợ lý tri thức nội bộ <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        </div>
+      </article>
+
+      <article class="gp-block gt-reveal" id="automation" aria-labelledby="gp-auto-title">
+        <div class="gp-block-head">
+          <span class="gp-block-icon" aria-hidden="true"><span class="material-symbols-outlined">precision_manufacturing</span></span>
+          <h2 id="gp-auto-title">Automation – Giảm thao tác lặp lại, tăng tốc độ thực thi</h2>
+        </div>
+        <p class="gp-lead">Chúng tôi thiết kế giải pháp tự động hóa các tác vụ lặp lại trên các bộ phận Tài chính, Vận hành, Dịch vụ khách hàng, Nhân sự và Kinh doanh, kết hợp AI và RPA.</p>
+        <p class="gp-label">Kết quả</p>
+        <ul class="gp-list">
+          <li>Giảm khối lượng công việc thủ công và sai sót do nhập liệu tay.</li>
+          <li>Rút ngắn thời gian xử lý, tăng tốc độ ra quyết định.</li>
+          <li>Giúp đội ngũ tập trung vào những công việc có giá trị cao hơn, thay vì xử lý tác vụ hành chính lặp lại.</li>
+        </ul>
+        <a class="gp-block-link" href="/giai-phap/ai-automation-workflow/">Xem tự động hóa quy trình <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="gt-section" aria-labelledby="gp-cta-title">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+      <div class="gt-final-cta gt-reveal">
+        <h2 id="gp-cta-title">Sẵn sàng khám phá bộ giải pháp AI?</h2>
+        <p>Xem chi tiết từng giải pháp hoặc đặt lịch demo Document AI, chatbot và automation với đội ngũ Sunext.</p>
+        <div class="gt-cta-row">
+          <a class="gt-cta-primary btn-shine" href="#bo-giai-phap">Khám phá bộ giải pháp AI của Sunext</a>
+          <a class="gt-cta-secondary" href="/contact/">Xem demo Document AI, chatbot và automation</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
 <footer class="bg-inverse-surface text-surface-variant pt-10 pb-stack-md border-t border-white/5 mt-10">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-5 gap-gutter">
     <div class="md:col-span-2 space-y-6">
@@ -137,32 +174,30 @@ tailwind.config = { darkMode: "class", theme: { extend: {
       <h4 class="text-white font-bold mb-6">Giải pháp</h4>
       <ul class="space-y-3 text-sm">
         <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/">Giải pháp AI</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/private-llm-rag/">Private LLM & RAG</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/ai-agent-chatbot/">AI Agent & Chatbot</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/ai-maturity-assessment/">AI Maturity Assessment</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/ai-agent-chatbot/">AI Agent &amp; Chatbot</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/private-llm-rag/">Private LLM &amp; RAG</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="text-white font-bold mb-6">Chương trình</h4>
+      <h4 class="text-white font-bold mb-6">Lộ trình</h4>
       <ul class="space-y-3 text-sm">
-        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/">Tất cả chương trình</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/ai-in-business/">AI in Business</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/agentics-ai-automations/">Agentics AI Automations</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="https://lms.sunext.vn" target="_blank" rel="noopener">Đăng nhập LMS ↗</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/lo-trinh-chuyen-doi-ai/">Lộ trình 6 bước</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/ai-maturity-assessment/">AI Maturity Assessment</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/chuong-trinh/">Chương trình đào tạo</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap-theo-phong-ban/">Theo phòng ban</a></li>
       </ul>
     </div>
     <div>
       <h4 class="text-white font-bold mb-6">Công ty</h4>
       <ul class="space-y-3 text-sm">
-        <li><a class="hover:text-primary-fixed transition-colors" href="/about/">Về chúng tôi</a></li>
+        <li><a class="hover:text-primary-fixed transition-colors" href="/giai-phap/gioi-thieu/">Về chúng tôi</a></li>
         <li><a class="hover:text-primary-fixed transition-colors" href="/security/">Cam kết bảo mật</a></li>
-        <li><a class="hover:text-primary-fixed transition-colors" href="/khach-hang-doi-tac/">Khách hàng & Đối tác</a></li>
         <li><a class="hover:text-primary-fixed transition-colors" href="/faq/">FAQ</a></li>
         <li><a class="hover:text-primary-fixed transition-colors" href="/contact/">Liên hệ</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-contact-bar max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-md flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-10 text-sm">
+  <div class="footer-contact-bar max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-md flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-10 text-sm justify-center items-center">
     <a href="tel:0909134153" class="inline-flex items-center gap-2 hover:text-primary-fixed transition-colors">
       <span class="material-symbols-outlined text-secondary-container text-[18px]">call</span>
       <span class="font-bold">0909 134 153</span>
@@ -178,20 +213,36 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   </div>
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-lg pt-stack-sm border-t border-white/5 text-[12px] opacity-60 flex flex-col md:flex-row justify-between gap-4">
     <p>© 2026 Sunext AI Transformation Consulting. All rights reserved.</p>
-    <p><a class="hover:underline" href="/privacy/">Chính sách bảo mật</a> · <a class="hover:underline" href="/terms/">Điều khoản</a> · Website không phải LMS — LMS dành riêng cho học viên doanh nghiệp.</p>
+    <p><a class="hover:underline" href="/privacy/">Chính sách bảo mật</a> · <a class="hover:underline" href="/terms/">Điều khoản</a></p>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="/js/vercel-nav.js?v=20260722g" defer></script>
 <script>
-document.querySelectorAll("[data-acc]").forEach(function(btn){
-  btn.addEventListener("click", function(){ btn.nextElementSibling.classList.toggle("hidden");
-    var ic = btn.querySelector(".material-symbols-outlined"); if(ic) ic.classList.toggle("rotate-180"); });
+document.addEventListener('DOMContentLoaded', function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.gt-reveal');
+  if (!items.length) return;
+  if (reduce || typeof gsap === 'undefined') {
+    items.forEach(function (el) { el.style.opacity = '1'; });
+    return;
+  }
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+  gsap.set(items, { opacity: 0, y: 12 });
+  items.forEach(function (el) {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.35, ease: 'power1.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none reverse' }
+    });
+  });
 });
 </script>
-<script src="/js/vercel-nav.js" defer></script>
 
 <!-- Privacy Toast -->
 <div id="privacy-toast" class="fixed bottom-4 right-4 z-[9999] bg-white border border-outline-variant/30 enterprise-shadow rounded-[16px] p-5 max-w-[340px] w-[calc(100%-2rem)] md:w-80 transform transition-all duration-500 translate-y-[150%] opacity-0 flex flex-col gap-3">
-  <button id="privacy-toast-close" class="absolute top-3 right-3 text-on-surface-variant hover:text-primary transition-colors bg-surface-container-low hover:bg-primary/10 rounded-full w-8 h-8 flex items-center justify-center">
+  <button id="privacy-toast-close" class="absolute top-3 right-3 text-on-surface-variant hover:text-primary transition-colors bg-surface-container-low hover:bg-primary/10 rounded-full w-8 h-8 flex items-center justify-center" aria-label="Đóng">
     <span class="material-symbols-outlined text-[20px]">close</span>
   </button>
   <div class="flex items-center gap-2 text-primary font-bold">
@@ -199,22 +250,14 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
     Cam kết bảo mật
   </div>
   <div class="text-[13px] text-on-surface-variant leading-[1.6] text-pretty pr-2">
-    Sunext cam kết bảo mật tuyệt đối dữ liệu cá nhân của bạn. Thông tin chỉ được sử dụng cho mục đích đã thông báo, không mua bán hay chia sẻ cho bên thứ ba. Hệ thống áp dụng chuẩn mã hóa để đảm bảo an toàn. Bạn có quyền yêu cầu xem, chỉnh sửa hoặc xoá dữ liệu bất kỳ lúc nào.
+    Sunext cam kết bảo mật tuyệt đối dữ liệu cá nhân của bạn. Thông tin chỉ được sử dụng cho mục đích đã thông báo, không mua bán hay chia sẻ cho bên thứ ba.
   </div>
 </div>
-<style>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(120, 45, 220, 0.2); border-radius: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(120, 45, 220, 0.4); }
-</style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var toast = document.getElementById('privacy-toast');
   var closeBtn = document.getElementById('privacy-toast-close');
-  
   if (!toast || !closeBtn) return;
-  
   if (!localStorage.getItem('privacy_toast_dismissed')) {
     setTimeout(function() {
       toast.classList.remove('translate-y-[150%]', 'opacity-0');
@@ -223,7 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     toast.remove();
   }
-  
   closeBtn.addEventListener('click', function() {
     toast.classList.remove('translate-y-0', 'opacity-100');
     toast.classList.add('translate-y-[150%]', 'opacity-0');
@@ -232,5 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-
 </body></html>
+
+

@@ -1,8 +1,51 @@
-/* Vercel-style sliding tabs for main navigation */
+/* Sunext navigation — spacing & brand tone */
+:root {
+  --nav-purple: #5e00be;
+  --nav-purple-bright: #782ddc;
+  --nav-orange: #ff7a00;
+  --nav-ink: #240d48;
+  --nav-muted: #4b4455;
+  --nav-surface: #fef7ff;
+  --nav-surface-soft: #f9f0ff;
+  --nav-border: rgba(205, 194, 215, 0.45);
+}
+
+/* Header bar layout — sticky so nav stays visible on scroll */
+.site-header-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  overflow: visible !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: rgba(254, 247, 255, 0.98) !important;
+  border-bottom-color: var(--nav-border) !important;
+  box-shadow: 0 8px 24px rgba(36, 13, 72, 0.04) !important;
+}
+
+.site-header-nav.is-scrolled {
+  box-shadow: 0 10px 28px rgba(36, 13, 72, 0.08) !important;
+}
+
+.site-header-nav > .flex.justify-between {
+  min-height: 68px;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.site-header-nav > .flex > .flex.items-center.gap-10 {
+  gap: 1.75rem;
+}
+
+.site-header-nav > .flex > .flex.items-center.gap-4 {
+  gap: 0.625rem;
+}
+
+/* Nav links row */
 .vercel-nav {
   position: relative;
-  gap: 2px;
-  padding: 4px 0;
+  gap: 0.35rem;
+  padding: 0;
   isolation: isolate;
 }
 
@@ -16,8 +59,8 @@
   top: 0;
   left: 0;
   z-index: 0;
-  border-radius: 8px;
-  background: rgba(120, 45, 220, 0.08);
+  border-radius: 10px;
+  background: rgba(120, 45, 220, 0.1);
   opacity: 0;
   will-change: transform, width, height, opacity;
 }
@@ -28,7 +71,7 @@
   z-index: 1;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #782DDC 0%, #FF7A00 100%);
+  background: linear-gradient(90deg, var(--nav-purple-bright) 0%, var(--nav-orange) 100%);
   opacity: 0;
   will-change: transform, width, opacity;
 }
@@ -36,27 +79,370 @@
 .vercel-nav-link {
   position: relative;
   z-index: 2;
-  padding: 6px 12px;
-  border-radius: 8px;
-  color: #4b4455;
-  font-weight: 500;
+  padding: 0.5rem 0.875rem;
+  border-radius: 10px;
+  color: var(--nav-muted);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 150ms ease;
+  transition: color 160ms ease;
 }
 
 .vercel-nav-link.is-active,
-.vercel-nav.is-hovering .vercel-nav-link.is-hovered {
-  color: #782DDC;
+.vercel-nav.is-hovering .vercel-nav-link.is-hovered,
+.vercel-nav-item.is-open > .vercel-nav-trigger,
+.vercel-nav-item:hover > .vercel-nav-trigger {
+  color: var(--nav-purple);
 }
 
 .vercel-nav-link.is-active {
   font-weight: 700;
 }
 
+.vercel-nav-item {
+  position: static;
+}
+
+.vercel-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  border-radius: 10px;
+  transition:
+    box-shadow 220ms ease,
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.vercel-nav-item:hover .vercel-nav-trigger,
+.vercel-nav-item.is-open .vercel-nav-trigger,
+.vercel-nav-item:focus-within .vercel-nav-trigger {
+  background: rgba(120, 45, 220, 0.06);
+  box-shadow: 0 6px 18px rgba(94, 0, 190, 0.1);
+}
+
+.vercel-nav-chevron {
+  font-size: 17px;
+  line-height: 1;
+  margin-top: 1px;
+  opacity: 0.45;
+  transition: transform 200ms ease, opacity 160ms ease;
+}
+
+.vercel-nav-item:hover .vercel-nav-chevron,
+.vercel-nav-item.is-open .vercel-nav-chevron,
+.vercel-nav-item:focus-within .vercel-nav-chevron {
+  transform: rotate(180deg);
+  opacity: 0.85;
+  color: var(--nav-purple-bright);
+}
+
+/* Mega menu panel */
+.nav-item-mega {
+  position: fixed;
+  top: var(--mega-panel-top, 72px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 200;
+  background: linear-gradient(180deg, #ffffff 0%, var(--nav-surface) 100%);
+  border-top: 1px solid var(--nav-border);
+  box-shadow: 0 20px 48px rgba(36, 13, 72, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 200ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 200ms ease;
+}
+
+.vercel-nav-item:hover .nav-item-mega,
+.vercel-nav-item.is-open .nav-item-mega,
+.vercel-nav-item:focus-within .nav-item-mega,
+.nav-item-mega.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.vercel-nav-item:hover .nav-mega-col,
+.vercel-nav-item.is-open .nav-mega-col,
+.nav-item-mega.is-visible .nav-mega-col {
+  animation: megaColReveal 380ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.vercel-nav-item:hover .nav-mega-col:nth-child(1),
+.vercel-nav-item.is-open .nav-mega-col:nth-child(1),
+.nav-item-mega.is-visible .nav-mega-col:nth-child(1) { animation-delay: 30ms; }
+.vercel-nav-item:hover .nav-mega-col:nth-child(2),
+.vercel-nav-item.is-open .nav-mega-col:nth-child(2),
+.nav-item-mega.is-visible .nav-mega-col:nth-child(2) { animation-delay: 70ms; }
+.vercel-nav-item:hover .nav-mega-col:nth-child(3),
+.vercel-nav-item.is-open .nav-mega-col:nth-child(3),
+.nav-item-mega.is-visible .nav-mega-col:nth-child(3) { animation-delay: 110ms; }
+
+.nav-mega-panel-inner {
+  padding-top: 1.75rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.nav-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 1.75rem;
+}
+
+.nav-mega-grid:has(> .nav-mega-col:nth-child(4)) {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .nav-mega-grid:has(> .nav-mega-col:nth-child(4)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.nav-mega-grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  max-width: 720px;
+  width: 100%;
+}
+
+.nav-mega-grid.cols-2:has(> .nav-mega-col:nth-child(4)) {
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+}
+
+.nav-mega-col {
+  position: relative;
+  min-width: 0;
+  perspective: 900px;
+  padding: 1.125rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 45, 220, 0.08);
+  background: linear-gradient(165deg, #ffffff 0%, var(--nav-surface-soft) 100%);
+  transition:
+    transform 260ms cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 260ms ease,
+    border-color 200ms ease;
+}
+
+@keyframes megaColReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-mega-col:hover {
+  border-color: rgba(120, 45, 220, 0.22);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(94, 0, 190, 0.1);
+}
+
+.nav-mega-heading {
+  display: inline-block;
+  color: var(--nav-purple);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 140ms ease;
+}
+
+.nav-mega-col:hover .nav-mega-heading,
+.nav-mega-heading:focus-visible {
+  color: var(--nav-purple-bright);
+  outline: none;
+}
+
+.nav-mega-rule {
+  height: 2px;
+  margin: 0.625rem 0 0.875rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(120, 45, 220, 0.45) 0%, rgba(255, 122, 0, 0.35) 100%);
+}
+
+.nav-mega-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-mega-list li {
+  position: relative;
+  margin-bottom: 0.625rem;
+  padding-left: 0.875rem;
+}
+
+.nav-mega-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: rgba(94, 0, 190, 0.35);
+  transition: background 140ms ease;
+}
+
+.nav-mega-col:hover .nav-mega-list li::before {
+  background: var(--nav-orange);
+}
+
+.nav-mega-list a {
+  display: block;
+  color: var(--nav-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  transition: color 140ms ease;
+}
+
+.nav-mega-list a:hover,
+.nav-mega-list a:focus-visible {
+  color: var(--nav-purple);
+  outline: none;
+}
+
+/* Mobile menu */
+.mmenu-group {
+  border-bottom: 1px solid rgba(205, 194, 215, 0.35);
+}
+
+.mmenu-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  color: var(--nav-ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mmenu-group-title::after {
+  content: "expand_more";
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.5;
+  transition: transform 160ms ease;
+}
+
+.mmenu-group.is-open .mmenu-group-title::after {
+  transform: rotate(180deg);
+}
+
+.mmenu-subpanel {
+  display: none;
+  padding-bottom: 8px;
+}
+
+.mmenu-group.is-open .mmenu-subpanel {
+  display: block;
+}
+
+.mmenu-sublink {
+  display: block;
+  padding: 8px 0 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--nav-muted);
+  border-left: 2px solid rgba(120, 45, 220, 0.2);
+  margin-left: 2px;
+}
+
+.mmenu-sublink:hover {
+  color: var(--nav-purple);
+}
+
+/* Dark mode */
+html.dark .site-header-nav {
+  background: rgba(15, 10, 26, 0.94) !important;
+}
+
+html.dark .vercel-nav-link {
+  color: #c4b8da;
+}
+
+html.dark .vercel-nav-item:hover .vercel-nav-trigger,
+html.dark .vercel-nav-item.is-open .vercel-nav-trigger {
+  background: rgba(120, 45, 220, 0.14);
+}
+
+html.dark .nav-item-mega {
+  background: linear-gradient(180deg, #1a1228 0%, #120c1e 100%);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+html.dark .nav-mega-col {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, rgba(120, 45, 220, 0.06) 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html.dark .nav-mega-heading {
+  color: #d6baff;
+}
+
+html.dark .nav-mega-list a {
+  color: #c4b8da;
+}
+
+@media (max-width: 1023px) {
+  .nav-item-mega {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .vercel-nav {
+    gap: 0.5rem;
+  }
+
+  .vercel-nav-link {
+    padding: 0.5rem 1rem;
+  }
+
+  .site-header-nav > .flex > .flex.items-center.gap-10 {
+    gap: 2.25rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vercel-nav-hover,
-  .vercel-nav-underline {
+  .vercel-nav-underline,
+  .nav-item-mega,
+  .vercel-nav-trigger,
+  .vercel-nav-chevron,
+  .nav-mega-col,
+  .mmenu-group-title::after {
     transition: none !important;
+    animation: none !important;
+  }
+
+  .nav-mega-col:hover {
+    transform: none;
   }
 }

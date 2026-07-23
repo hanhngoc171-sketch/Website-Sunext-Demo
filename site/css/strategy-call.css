@@ -1,0 +1,348 @@
+/* ── Strategy call form UI + visible bento motion ── */
+#strategy-call.sc-bento {
+  border: 1px solid rgba(120, 45, 220, 0.18);
+  box-shadow: 0 18px 42px rgba(24, 0, 61, 0.1);
+}
+#strategy-call .sc-info-panel {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(155deg, rgba(120, 45, 220, 0.28) 0%, rgba(57, 37, 94, 0.35) 42%, transparent 72%),
+    linear-gradient(180deg, #2f1a55 0%, #241246 55%, #1c0f38 100%);
+}
+#strategy-call .sc-info-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(145deg, rgba(214, 186, 255, 0.1) 0%, transparent 45%);
+}
+#strategy-call .sc-info-inner {
+  position: relative;
+  z-index: 10;
+}
+#strategy-call .sc-info-eyebrow {
+  margin: 0 0 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d6baff;
+}
+#strategy-call .sc-info-lead {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(247, 237, 255, 0.82);
+}
+#strategy-call .sc-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+#strategy-call .sc-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(214, 186, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+#strategy-call .sc-info-row:hover {
+  border-color: rgba(214, 186, 255, 0.4);
+  background: rgba(120, 45, 220, 0.18);
+  box-shadow: 0 8px 20px rgba(24, 0, 61, 0.22);
+}
+#strategy-call .sc-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  background: rgba(120, 45, 220, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(214, 186, 255, 0.35);
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+#strategy-call .sc-info-icon .material-symbols-outlined {
+  color: #d6baff;
+  font-size: 1.15rem;
+}
+#strategy-call .sc-info-row:hover .sc-info-icon {
+  background: rgba(120, 45, 220, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(214, 186, 255, 0.55), 0 0 16px rgba(120, 45, 220, 0.35);
+}
+#strategy-call .sc-info-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #f7edff;
+}
+#strategy-call .sc-info-link {
+  color: #ecdcff;
+  transition: color 0.2s ease;
+}
+#strategy-call .sc-info-link:hover {
+  color: #ffffff;
+}
+#strategy-call .sc-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(36px);
+  opacity: 0.9;
+  z-index: 0;
+}
+#strategy-call .sc-orb--info {
+  right: -3rem;
+  bottom: -4rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(120, 45, 220, 0.55);
+}
+#strategy-call .sc-orb--info-b {
+  left: -3rem;
+  top: -2.5rem;
+  width: 12rem;
+  height: 12rem;
+  background: rgba(214, 186, 255, 0.22);
+}
+#strategy-call .sc-orb--form-a {
+  right: -2.5rem;
+  bottom: -3rem;
+  width: 17rem;
+  height: 17rem;
+  background: rgba(120, 45, 220, 0.32);
+}
+#strategy-call .sc-orb--form-b {
+  left: -2.5rem;
+  top: -2.5rem;
+  width: 13rem;
+  height: 13rem;
+  background: rgba(214, 186, 255, 0.35);
+}
+#strategy-call .sc-orb--form-c {
+  left: 42%;
+  top: 48%;
+  width: 10rem;
+  height: 10rem;
+  background: rgba(94, 0, 190, 0.18);
+}
+#strategy-call .sc-grid-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(120, 45, 220, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 45, 220, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 20%, transparent 75%);
+}
+#strategy-call .sc-grid-glow--info {
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(214, 186, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 186, 255, 0.12) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 80% 70% at 30% 40%, #000 15%, transparent 78%);
+}
+#strategy-call .sc-form-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  isolation: isolate;
+  min-height: 100%;
+}
+#strategy-call .sc-form-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(145deg, rgba(120, 45, 220, 0.14) 0%, rgba(214, 186, 255, 0.1) 40%, rgba(255, 255, 255, 0.2) 100%);
+}
+#strategy-call .sc-form-inner {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+#strategy-call .sc-form-intro {
+  margin-bottom: 0.85rem;
+  flex-shrink: 0;
+}
+#strategy-call .sc-form-eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #782DDC;
+}
+#strategy-call .sc-form-lead {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #4b4455;
+}
+#strategy-call .sc-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#strategy-call .sc-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+#strategy-call .sc-form-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+#strategy-call .sc-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4b4455;
+}
+#strategy-call .sc-field {
+  position: relative;
+  padding: 0.55rem 0.65rem 0.6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 45, 220, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+#strategy-call .sc-field:hover {
+  border-color: rgba(120, 45, 220, 0.35);
+  box-shadow: 0 8px 18px rgba(94, 0, 190, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+}
+#strategy-call .sc-field.is-focused {
+  border-color: rgba(120, 45, 220, 0.55);
+  box-shadow: 0 0 0 2px rgba(120, 45, 220, 0.12), 0 8px 18px rgba(94, 0, 190, 0.1);
+  background: #fff;
+}
+#strategy-call .sc-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 45, 220, 0.14);
+  background: #faf7ff;
+  color: #240d48;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+#strategy-call .sc-textarea {
+  height: auto;
+  min-height: 4.5rem;
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  resize: vertical;
+  line-height: 1.4;
+}
+#strategy-call .sc-input::placeholder {
+  color: rgba(75, 68, 85, 0.55);
+}
+#strategy-call .sc-input:hover {
+  border-color: rgba(120, 45, 220, 0.3);
+}
+#strategy-call .sc-field.is-focused .sc-input,
+#strategy-call .sc-input:focus {
+  border-color: #782DDC;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(120, 45, 220, 0.12);
+}
+#strategy-call .sc-calendar .animated-calendar-trigger {
+  height: 44px;
+  border-radius: 12px;
+  border-color: rgba(120, 45, 220, 0.14);
+  background: #faf7ff;
+  font-size: 0.95rem;
+}
+#strategy-call .sc-field.is-focused .animated-calendar-trigger,
+#strategy-call .sc-calendar .animated-calendar-trigger:hover,
+#strategy-call .sc-calendar .animated-calendar-trigger:focus-visible,
+#strategy-call .sc-calendar .animated-calendar-trigger[aria-expanded="true"] {
+  border-color: #782DDC;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(120, 45, 220, 0.12);
+}
+#strategy-call .sc-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #4b4455;
+  cursor: pointer;
+}
+#strategy-call .sc-checkbox {
+  margin-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(120, 45, 220, 0.35);
+  accent-color: #782DDC;
+}
+#strategy-call .sc-submit {
+  height: 50px;
+  border-radius: 14px;
+  font-size: 1rem;
+  box-shadow: 0 12px 26px rgba(94, 0, 190, 0.18);
+}
+#strategy-call .sc-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+@media (min-width: 1024px) {
+  #strategy-call.sc-bento {
+    min-height: min(88vh, 780px);
+    max-height: none;
+    align-items: stretch;
+  }
+  #strategy-call .sc-info-panel,
+  #strategy-call .sc-form-panel {
+    height: 100%;
+  }
+  #strategy-call .sc-field:has(.sc-textarea) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  #strategy-call .sc-field:has(.sc-textarea) .sc-textarea {
+    flex: 1;
+    min-height: 5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #strategy-call .sc-orb,
+  #strategy-call .sc-info-icon,
+  #strategy-call .sc-field {
+    transition: none !important;
+  }
+}

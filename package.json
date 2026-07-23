@@ -1,0 +1,26 @@
+{
+  "name": "website-sunext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanhngoc171-sketch/Website-Sunext-Demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanhngoc171-sketch/Website-Sunext-Demo/issues"
+  },
+  "homepage": "https://github.com/hanhngoc171-sketch/Website-Sunext-Demo#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^4.3.3"
+  }
+}

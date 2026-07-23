@@ -1,0 +1,33 @@
+/* Theo phòng ban — 2×2 Soft UI grid */
+.tpb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 900px) {
+  .tpb-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.tpb-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+.tpb-card:hover {
+  border-color: rgba(120, 45, 220, 0.32);
+  box-shadow: 0 14px 32px rgba(94, 0, 190, 0.1);
+  transform: translateY(-2px);
+}
+.tpb-card .gp-block-link {
+  margin-top: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tpb-card {
+    transition: none !important;
+  }
+  .tpb-card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,185 @@
+/* Giải pháp AI hub — Soft UI feature blocks */
+.gp-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 0.25rem;
+}
+.gp-jump a {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 45, 220, 0.22);
+  background: rgba(255, 255, 255, 0.85);
+  color: #5e00be;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.gp-jump a:hover {
+  background: rgba(94, 0, 190, 0.06);
+  border-color: rgba(120, 45, 220, 0.4);
+  transform: translateY(-1px);
+}
+.gp-jump a:focus-visible {
+  outline: 2px solid #5e00be;
+  outline-offset: 3px;
+}
+.gp-jump .material-symbols-outlined {
+  font-size: 1.05rem;
+  color: #FF7A00;
+}
+
+.gp-block {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 24px;
+  border: 1px solid rgba(120, 45, 220, 0.14);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(24, 0, 61, 0.05);
+}
+.gp-block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.gp-block-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 0.95rem;
+  background: rgba(120, 45, 220, 0.1);
+  border: 1px solid rgba(120, 45, 220, 0.22);
+}
+.gp-block-icon .material-symbols-outlined {
+  color: #782DDC;
+  font-size: 1.45rem;
+}
+.gp-block-icon--orange {
+  background: rgba(255, 122, 0, 0.1);
+  border-color: rgba(255, 122, 0, 0.22);
+}
+.gp-block-icon--orange .material-symbols-outlined {
+  color: #FF7A00;
+}
+.gp-block h2 {
+  margin: 0;
+  flex: 1;
+  min-width: 12rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #240d48;
+  text-wrap: balance;
+}
+.gp-block > p,
+.gp-lead {
+  margin: 0 0 1.15rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #4b4455;
+}
+.gp-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5e00be;
+}
+.gp-list {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+.gp-list li {
+  display: grid;
+  grid-template-columns: 1.35rem 1fr;
+  gap: 0.55rem;
+  align-items: start;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #4b4455;
+}
+.gp-list li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  border-radius: 2px;
+  background: #782DDC;
+}
+.gp-examples {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
+}
+@media (min-width: 768px) {
+  .gp-examples {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.gp-example {
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(120, 45, 220, 0.12);
+  background: #f9f0ff;
+}
+.gp-example strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #240d48;
+}
+.gp-example p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #4b4455;
+}
+.gp-block-link {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #5e00be;
+  transition: gap 0.2s ease;
+}
+.gp-block-link:hover {
+  gap: 0.55rem;
+}
+.gp-block-link:focus-visible {
+  outline: 2px solid #5e00be;
+  outline-offset: 3px;
+}
+.gp-block-link .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.gp-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gp-jump a {
+    transition: none !important;
+  }
+  .gp-jump a:hover {
+    transform: none;
+  }
+}

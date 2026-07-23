@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Quét toàn bộ file HTML/JS trong thư mục site */
+@source "../site";
+
+/* darkMode: "class" → Tailwind v4 custom variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ══════════════════════════════════════════
+     Colors (từ theme.extend.colors)
+     ══════════════════════════════════════════ */
+  --color-on-secondary-container: #592600;
+  --color-background: #fef7ff;
+  --color-tertiary: #5c00c0;
+  --color-primary-fixed-dim: #d6baff;
+  --color-on-surface: #240d48;
+  --color-secondary-container: #fb7800;
+  --color-outline: #7c7486;
+  --color-surface: #fef7ff;
+  --color-outline-variant: #cdc2d7;
+  --color-primary: #5e00be;
+  --color-inverse-primary: #d6baff;
+  --color-on-secondary: #ffffff;
+  --color-error: #ba1a1a;
+  --color-surface-container-low: #f9f0ff;
+  --color-inverse-surface: #39255e;
+  --color-surface-container-high: #f0e3ff;
+  --color-inverse-on-surface: #f7edff;
+  --color-on-background: #240d48;
+  --color-secondary: #994700;
+  --color-surface-container-highest: #ebdcff;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-error: #ffffff;
+  --color-surface-container: #f4eaff;
+  --color-on-surface-variant: #4b4455;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary-container: #e3cfff;
+  --color-primary-container: #782ddc;
+  --color-primary-fixed: #ecdcff;
+  --color-surface-variant: #ebdcff;
+  --color-cta: #FF7A00;
+
+  /* ══════════════════════════════════════════
+     Border Radius (từ theme.extend.borderRadius)
+     DEFAULT → --radius  (class: rounded)
+     ══════════════════════════════════════════ */
+  --radius: 0.875rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-full: 9999px;
+  --radius-card: 1.25rem;
+  --radius-container: 1.75rem;
+
+  /* ══════════════════════════════════════════
+     Spacing (từ theme.extend.spacing)
+     ══════════════════════════════════════════ */
+  --spacing-stack-xs: 8px;
+  --spacing-stack-sm: 16px;
+  --spacing-stack-md: 24px;
+  --spacing-stack-lg: 48px;
+  --spacing-stack-xl: 80px;
+  --spacing-container-max: 1280px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 32px;
+
+  /* ══════════════════════════════════════════
+     Font Size (từ theme.extend.fontSize)
+     Cú pháp v4: --text-*, --text-*--line-height,
+                 --text-*--letter-spacing, --text-*--font-weight
+     ══════════════════════════════════════════ */
+
+  /* label-eyebrow: 12px / 1.2 / 0.1em / 700 */
+  --text-label-eyebrow: 12px;
+  --text-label-eyebrow--line-height: 1.2;
+  --text-label-eyebrow--letter-spacing: 0.1em;
+  --text-label-eyebrow--font-weight: 700;
+
+  /* h3-card: 22px / 1.4 / normal / 700 */
+  --text-h3-card: 22px;
+  --text-h3-card--line-height: 1.4;
+  --text-h3-card--font-weight: 700;
+
+  /* h2: 40px / 1.2 / -0.01em / 700 */
+  --text-h2: 40px;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 700;
+
+  /* h1-desktop: 64px / 1.1 / -0.02em / 800 */
+  --text-h1-desktop: 64px;
+  --text-h1-desktop--line-height: 1.1;
+  --text-h1-desktop--letter-spacing: -0.02em;
+  --text-h1-desktop--font-weight: 800;
+
+  /* h1-mobile: 40px / 1.2 / -0.01em / 800 */
+  --text-h1-mobile: 40px;
+  --text-h1-mobile--line-height: 1.2;
+  --text-h1-mobile--letter-spacing: -0.01em;
+  --text-h1-mobile--font-weight: 800;
+}
