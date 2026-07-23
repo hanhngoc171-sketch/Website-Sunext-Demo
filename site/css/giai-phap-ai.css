@@ -80,6 +80,12 @@
   color: #240d48;
   text-wrap: balance;
 }
+.gp-en {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #782DDC;
+}
 .gp-block > p,
 .gp-lead {
   margin: 0 0 1.15rem;

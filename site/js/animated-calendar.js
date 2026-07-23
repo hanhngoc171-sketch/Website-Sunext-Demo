@@ -34,8 +34,10 @@
   }
 
   function initCalendar(root) {
+    if (root.dataset.calendarReady === "1") return;
     var hidden = root.querySelector('input[type="hidden"]');
     if (!hidden) return;
+    root.dataset.calendarReady = "1";
 
     var placeholder = root.getAttribute("data-placeholder") || "Chọn ngày";
     var today = startOfDay(new Date());
@@ -268,6 +270,8 @@
     document.querySelectorAll("[data-animated-calendar]").forEach(initCalendar);
 
     document.querySelectorAll("[data-strategy-form]").forEach(function (form) {
+      if (form.dataset.calendarValidateBound === "1") return;
+      form.dataset.calendarValidateBound = "1";
       form.addEventListener("submit", function (e) {
         var hidden = form.querySelector('[name="preferredDate"]');
         if (!hidden || hidden.value) return;
@@ -278,6 +282,8 @@
       }, true);
     });
   }
+
+  window.SunextInitAnimatedCalendars = boot;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

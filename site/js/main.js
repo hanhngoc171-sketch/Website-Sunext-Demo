@@ -33,14 +33,14 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   function initReveal(){
     /* Section headings */
     document.querySelectorAll('h2, h3').forEach(function(el, i){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.closest('#roadmap-steps') || el.classList.contains('reveal') || el.classList.contains('reveal-up')) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#dich-vu-noi-bat') || el.closest('#giai-phap-noi-bat') || el.closest('#roadmap-steps') || el.closest('#thuc-trang-doanh-nghiep') || el.closest('#case-studies-section') || el.classList.contains('reveal') || el.classList.contains('reveal-up')) return;
       el.classList.add('reveal-up');
       io.observe(el);
     });
 
     /* Cards - tier cards, program cards, case study cards */
     document.querySelectorAll('.enterprise-shadow, [class*="rounded-[24px]"], [class*="rounded-[20px]"]').forEach(function(el, i){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.classList.contains('case-study-card') || el.classList.contains('testimonial-card') || el.closest('.assessment-flip-card') || el.closest('#roadmap-steps')) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.classList.contains('case-study-card') || el.classList.contains('testimonial-card') || el.closest('#roadmap-steps')) return;
       el.classList.add('reveal-scale', 'card-hover');
       el.style.transitionDelay = Math.min(i % 4, 3) * 80 + 'ms';
       io.observe(el);
@@ -48,7 +48,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
 
     /* Paragraph text blocks in sections */
     document.querySelectorAll('section p, section ul, section .space-y-3').forEach(function(el){
-      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#programs-scroll-section') || el.closest('#dept-tabs-section') || el.closest('#roadmap-steps') || el.classList.contains('reveal') || (el.parentElement && el.parentElement.classList.contains('reveal'))) return;
+      if(isHeroZone(el) || el.closest('.hero-dark') || el.closest('#dich-vu-noi-bat') || el.closest('#giai-phap-noi-bat') || el.closest('#roadmap-steps') || el.closest('#thuc-trang-doanh-nghiep') || el.closest('#case-studies-section') || el.classList.contains('reveal') || (el.parentElement && el.parentElement.classList.contains('reveal'))) return;
       el.classList.add('reveal');
       io.observe(el);
     });
@@ -60,7 +60,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
     document.querySelectorAll('.section-eyebrow').forEach(function(el){ io.observe(el); });
 
     /* CTA links outside hero only */
-    document.querySelectorAll('a[href="/ai-maturity-assessment/"], a[href="/contact/"]').forEach(function(el){
+    document.querySelectorAll('a[href="/contact/"]').forEach(function(el){
       if(isHeroZone(el)) return;
       el.classList.add('btn-pulse');
     });
@@ -69,7 +69,7 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   /* ── 2.2. Stagger grid children on scroll ── */
   function initStagger(){
     document.querySelectorAll('section .grid, section [class*="grid-cols"]').forEach(function(grid){
-      if(isHeroZone(grid) || grid.closest('.hero-dark') || grid.closest('#case-studies-section') || grid.closest('#programs-scroll-section') || grid.closest('#roadmap-steps')) return;
+      if(isHeroZone(grid) || grid.closest('.hero-dark') || grid.closest('#case-studies-section') || grid.closest('#roadmap-steps') || grid.closest('#thuc-trang-doanh-nghiep')) return;
       var children = Array.from(grid.children);
       if(children.length < 2 || children.length > 9) return;
       children.forEach(function(child, i){
@@ -463,11 +463,11 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   var ctx = gsap.context(function() {
     if (!reduced) {
       var headTitle = section.querySelector('.case-studies-head-title');
-      var headPoints = section.querySelectorAll('.case-studies-head-point');
+      var headCopy = section.querySelector('.case-studies-head-copy');
       var cards = section.querySelectorAll('.case-study-card');
 
       if (headTitle) gsap.set(headTitle, { autoAlpha: 0, y: 18 });
-      if (headPoints.length) gsap.set(headPoints, { autoAlpha: 0, y: 16 });
+      if (headCopy) gsap.set(headCopy, { autoAlpha: 0, y: 16 });
       if (cards.length) gsap.set(cards, { autoAlpha: 0, y: 24 });
 
       ScrollTrigger.create({
@@ -479,12 +479,11 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
           if (headTitle) {
             tl.to(headTitle, { autoAlpha: 1, y: 0, duration: 0.45, clearProps: 'transform' }, 0);
           }
-          if (headPoints.length) {
-            tl.to(headPoints, {
+          if (headCopy) {
+            tl.to(headCopy, {
               autoAlpha: 1,
               y: 0,
               duration: 0.4,
-              stagger: 0.08,
               clearProps: 'transform'
             }, 0.1);
           }
@@ -551,254 +550,6 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
 
   window.addEventListener('pagehide', function() {
     if (ctx) ctx.revert();
-  });
-})();
-
-/* ── 8. GSAP: Chương trình đào tạo — step selector + panel transition (lines 3721–3967) ── */
-(function(){
-  if (typeof gsap === 'undefined') return;
-
-  var section = document.getElementById('programs-scroll-section');
-  if (!section) return;
-
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var panels = [
-    section.querySelector('#program-text1'),
-    section.querySelector('#program-text2'),
-    section.querySelector('#program-text3')
-  ].filter(Boolean);
-  var stepItems = section.querySelectorAll('.programs-step-item');
-  var lineFill = section.querySelector('#programs-line-fill');
-  var LINE_HEIGHT = ['0%', '50%', '100%'];
-  var currentStep = 0;
-  var animating = false;
-
-  if (!panels.length || !stepItems.length) return;
-
-  function initProgramsScrollReveal() {
-    if (reduced || typeof ScrollTrigger === 'undefined') return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    var header = section.querySelector('.programs-scroll-header');
-    var stage = section.querySelector('#programs-scroll-stage');
-    var stepsNav = section.querySelector('.programs-steps-nav');
-    var detailCard = section.querySelector('.programs-detail-card');
-    var mobileGrid = section.querySelector('.programs-mobile-only .grid');
-    var mobileCards = [];
-
-    if (header) {
-      gsap.set(header.children, { autoAlpha: 0, y: 36 });
-    }
-
-    if (stepsNav) {
-      gsap.set(stepItems, { autoAlpha: 0, x: -24 });
-    }
-
-    if (detailCard) {
-      gsap.set(detailCard, { autoAlpha: 0, y: 28, scale: 0.97 });
-    }
-
-    if (mobileGrid) {
-      Array.prototype.forEach.call(mobileGrid.children, function(col) {
-        if (col.classList.contains('lg:col-span-2')) {
-          col.querySelectorAll(':scope > div').forEach(function(card) {
-            mobileCards.push(card);
-          });
-        } else {
-          mobileCards.push(col);
-        }
-      });
-      if (mobileCards.length) {
-        gsap.set(mobileCards, { autoAlpha: 0, y: 32 });
-      }
-    }
-
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top 78%',
-      once: true,
-      onEnter: function() {
-        if (header) {
-          gsap.to(header.children, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.65,
-            stagger: 0.1,
-            ease: 'power2.out',
-            overwrite: true
-          });
-        }
-      }
-    });
-
-    if (stage && stepsNav && detailCard) {
-      ScrollTrigger.create({
-        trigger: stage,
-        start: 'top 82%',
-        once: true,
-        onEnter: function() {
-          gsap.to(stepItems, {
-            autoAlpha: 1,
-            x: 0,
-            duration: 0.55,
-            stagger: 0.12,
-            ease: 'power2.out',
-            overwrite: true
-          });
-          gsap.to(detailCard, {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.72,
-            ease: 'power2.out',
-            delay: 0.08,
-            overwrite: true
-          });
-          if (lineFill) {
-            gsap.fromTo(lineFill,
-              { height: '0%' },
-              {
-                height: LINE_HEIGHT[currentStep],
-                duration: 0.9,
-                ease: 'power2.inOut',
-                delay: 0.18,
-                overwrite: true
-              }
-            );
-          }
-        }
-      });
-    }
-
-    if (mobileGrid && mobileCards.length) {
-      ScrollTrigger.create({
-        trigger: mobileGrid,
-        start: 'top 88%',
-        once: true,
-        onEnter: function() {
-          gsap.to(mobileCards, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.62,
-            stagger: 0.14,
-            ease: 'power2.out',
-            overwrite: true
-          });
-        }
-      });
-    }
-  }
-
-  initProgramsScrollReveal();
-
-  function showStep(step, animate) {
-    if (step < 0 || step > 2 || step === currentStep) return;
-
-    var prev = currentStep;
-    currentStep = step;
-
-    stepItems.forEach(function(btn, i) {
-      var active = i === step;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
-
-    if (lineFill) lineFill.style.height = LINE_HEIGHT[step];
-
-    if (!animate || reduced) {
-      panels.forEach(function(panel, i) {
-        var active = i === step;
-        panel.classList.toggle('is-active', active);
-        panel.toggleAttribute('hidden', !active);
-        gsap.set(panel, { autoAlpha: active ? 1 : 0, y: 0 });
-      });
-      return;
-    }
-
-    if (animating) {
-      gsap.killTweensOf(panels);
-      animating = false;
-    }
-    animating = true;
-
-    var outPanel = panels[prev];
-    var inPanel = panels[step];
-
-    gsap.to(outPanel, {
-      autoAlpha: 0,
-      y: -8,
-      duration: 0.2,
-      ease: 'power2.in',
-      onComplete: function() {
-        outPanel.classList.remove('is-active');
-        outPanel.setAttribute('hidden', '');
-      }
-    });
-
-    inPanel.classList.add('is-active');
-    inPanel.removeAttribute('hidden');
-    gsap.fromTo(inPanel,
-      { autoAlpha: 0, y: 12 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.32,
-        ease: 'power2.out',
-        delay: 0.08,
-        onComplete: function() { animating = false; }
-      }
-    );
-  }
-
-  function bindStepClicks() {
-    stepItems.forEach(function(btn) {
-      var step = parseInt(btn.dataset.step, 10);
-      if (isNaN(step)) return;
-
-      btn.addEventListener('click', function() {
-        showStep(step, true);
-      });
-      btn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          showStep(step, true);
-        }
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-          e.preventDefault();
-          showStep(Math.min(step + 1, 2), true);
-        }
-        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          showStep(Math.max(step - 1, 0), true);
-        }
-      });
-    });
-  }
-
-  var mm = gsap.matchMedia();
-
-  mm.add('(min-width: 768px)', function() {
-    panels.forEach(function(panel, i) {
-      gsap.set(panel, { autoAlpha: i === 0 ? 1 : 0, y: 0 });
-    });
-    if (lineFill) lineFill.style.height = '0%';
-    bindStepClicks();
-
-    return function() {
-      animating = false;
-      currentStep = 0;
-      panels.forEach(function(panel, i) {
-        gsap.set(panel, { clearProps: 'opacity,visibility,transform' });
-        panel.classList.toggle('is-active', i === 0);
-        panel.toggleAttribute('hidden', i !== 0);
-      });
-      stepItems.forEach(function(btn, i) {
-        btn.classList.toggle('is-active', i === 0);
-        btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
-      });
-      if (lineFill) lineFill.style.height = '0%';
-    };
   });
 })();
 
@@ -1150,83 +901,6 @@ document.querySelectorAll("[data-acc]").forEach(function(btn){
   setTimeout(tryPlay, 120);
 })();
 
-/* ── 9c. GSAP: Assessment bento — light entrance (transform/opacity) ── */
-(function(){
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  var section = document.getElementById('assessment-problem-section');
-  if (!section) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  var cards = section.querySelectorAll('.bento-card');
-  var played = false;
-  if (!cards.length) return;
-
-  gsap.set(cards, { autoAlpha: 0, y: 22 });
-
-  function play() {
-    gsap.to(cards, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.5,
-      stagger: 0.07,
-      ease: 'power2.out',
-      overwrite: 'auto'
-    });
-  }
-
-  function tryPlay() {
-    if (played) return;
-    var rect = section.getBoundingClientRect();
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < vh * 0.88 && rect.bottom > 80) {
-      played = true;
-      play();
-    }
-  }
-
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top 85%',
-    once: true,
-    onEnter: tryPlay
-  });
-
-  if (typeof IntersectionObserver !== 'undefined') {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          tryPlay();
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.15 });
-    io.observe(section);
-  }
-
-  requestAnimationFrame(tryPlay);
-  window.addEventListener('load', tryPlay);
-  setTimeout(tryPlay, 120);
-})();
-
-/* ── 10. Assessment flip card — tap/keyboard support (lines 4071–4086) ── */
-(function(){
-  var card = document.querySelector('.assessment-flip-card');
-  if (!card) return;
-
-  card.addEventListener('click', function() {
-    card.classList.toggle('is-flipped');
-  });
-
-  card.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      card.classList.toggle('is-flipped');
-    }
-  });
-})();
-
 /* ── 11. Tag arrow_forward icons for hover animation (lines 4092–4100) ── */
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.material-symbols-outlined').forEach(function (el) {
@@ -1263,49 +937,94 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
-/* ── 13. Partner marquee: brand logos below training section (lines 4134–4177) ── */
+/* ── 13. Partner marquee: VN brands by industry (3 rows) ── */
 (function(){
-  var track = document.getElementById('partner-marquee');
-  if (!track) return;
-  var PARTNERS = [
-    { name:'FPT',               src:'https://i.postimg.cc/52Sxjk50/FPT.png' },
-    { name:'MUFG',              src:'https://i.postimg.cc/rwN8zYG5/MUFG.png' },
-    { name:'BIDV',              src:'https://i.postimg.cc/4xQJnFvX/BIDV.png' },
-    { name:'Prudential',        src:'https://i.postimg.cc/VNsztB4X/Prudential.png' },
-    { name:'Vinhomes',          src:'https://i.postimg.cc/BvZJFcNY/Vinhomes.png' },
-    { name:'VNPT',              src:'https://i.postimg.cc/7LPqzMXB/VNPT.png' },
-    { name:'Mitsubishi',        src:'https://i.postimg.cc/RZLMqb1f/Mitsubishi.png' },
-    { name:'PV Power',          src:'https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png' },
-    { name:'PTSC',              src:'https://i.postimg.cc/Jh7RXcKN/PTSC.png' },
-    { name:'VACS',              src:'https://i.postimg.cc/434XcbwW/VACS.png' },
-    { name:'HTV',               src:'https://i.postimg.cc/T3JRhHjy/HTV.png' },
-    { name:'Gấu Đỏ',           src:'https://i.postimg.cc/CxsFd6CB/Gau-Do.png' },
-    { name:'YenViet',           src:'https://i.postimg.cc/1zRyFcMj/Yen-Viet.png' },
-    { name:'Trung Sơn Pharma',  src:'https://i.postimg.cc/yN67RXnn/Trung-Son-Pharma.png' }
-  ];
+  var tracks = document.querySelectorAll('[data-partner-track]');
+  if (!tracks.length) return;
+
+  var BASE = '/images/partners/';
+  var GROUPS = {
+    'tai-chinh-cong-nghe': [
+      { name: 'Prudential', src: BASE + 'prudential.png' },
+      { name: 'BIDV', src: BASE + 'bidv.png' },
+      { name: 'Vietcombank', src: BASE + 'vcb.png' },
+      { name: 'FPT', src: BASE + 'fpt.png' },
+      { name: 'VNPT', src: BASE + 'vnpt.png' }
+    ],
+    'bat-dong-san-cong-nghiep': [
+      { name: 'PTSC', src: BASE + 'ptsc.png' },
+      { name: 'PetroVietnam Power', src: BASE + 'petrovietnam-power.png' },
+      { name: 'PTEXIM Corp', src: BASE + 'ptexim.png' },
+      { name: 'Huỳnh Anh', src: BASE + 'huynh-anh.png' },
+      { name: 'Thắng Lợi Group', src: BASE + 'thang-loi.png' },
+      { name: 'Vinhomes', src: BASE + 'vinhomes.png' },
+      { name: 'Smartland', src: BASE + 'smartland.png' },
+      { name: 'Phương Trường An', src: BASE + 'phuong-truong-an.png' },
+      { name: 'Prestige Stay', src: BASE + 'prestige-stay.png' },
+      { name: 'VACS', src: BASE + 'vacs.png' }
+    ],
+    'tieu-dung-dich-vu': [
+      { name: 'Trung Sơn Pharma', src: BASE + 'trung-son-pharma.png' },
+      { name: 'Gấu Đỏ', src: BASE + 'gau-do.png' },
+      { name: 'Yến Việt', src: BASE + 'yen-viet.png' },
+      { name: 'Maison Vie', src: BASE + 'maison-vie.png' },
+      { name: 'VAG International', src: BASE + 'vag.png' },
+      { name: 'Poêmy', src: BASE + 'poemy.png' },
+      { name: 'Julyhouse', src: BASE + 'julyhouse.png' },
+      { name: 'Droppii', src: BASE + 'droppii.png' },
+      { name: 'HTV', src: BASE + 'htv.png' },
+      { name: 'Trương Đoàn Marketing Group', src: BASE + 'truong-doan.png' },
+      { name: 'Dentsu', src: BASE + 'dentsu.png' }
+    ]
+  };
+
   function makeCard(p) {
     var c = document.createElement('div');
     c.className = 'partner-logo-card';
     c.title = p.name;
     var glow = document.createElement('div');
     glow.className = 'logo-card-glow';
-    var img = document.createElement('img');
-    img.src = p.src;
-    img.alt = p.name;
-    img.loading = 'lazy';
-    img.onerror = function(){
-      img.style.display = 'none';
-      var s = document.createElement('span');
-      s.className = 'logo-card-fallback';
-      s.textContent = p.name;
-      c.appendChild(s);
-    };
     c.appendChild(glow);
-    c.appendChild(img);
+
+    if (p.src) {
+      var img = document.createElement('img');
+      img.src = p.src;
+      img.alt = p.name;
+      img.loading = 'lazy';
+      img.onerror = function() {
+        img.remove();
+        var s = document.createElement('span');
+        s.className = 'logo-card-fallback';
+        s.textContent = p.name;
+        c.appendChild(s);
+      };
+      c.appendChild(img);
+    } else {
+      var fallback = document.createElement('span');
+      fallback.className = 'logo-card-fallback';
+      fallback.textContent = p.name;
+      c.appendChild(fallback);
+    }
     return c;
   }
-  // Render twice for seamless -50% loop
-  PARTNERS.concat(PARTNERS).forEach(function(p){ track.appendChild(makeCard(p)); });
+
+  function fillTrack(track, partners) {
+    if (!partners || !partners.length) return;
+    // Repeat enough times so short lists still fill the viewport, then double for seamless -50% loop
+    var minCards = 10;
+    var base = [];
+    while (base.length < minCards) {
+      partners.forEach(function(p) { base.push(p); });
+    }
+    base.concat(base).forEach(function(p) {
+      track.appendChild(makeCard(p));
+    });
+  }
+
+  tracks.forEach(function(track) {
+    var key = track.getAttribute('data-partner-track');
+    fillTrack(track, GROUPS[key] || []);
+  });
 })();
 
 /* ── 14. Privacy Toast (lines 4199–4222) ── */
@@ -1366,6 +1085,71 @@ document.addEventListener("DOMContentLoaded", function () {
       panel.setAttribute("hidden", "");
     }
     if (label) label.textContent = open ? "Thu gọn" : "Xem chi tiết";
+  });
+});
+
+/* ── Roadmap intro: xem tiếp ── */
+document.addEventListener("DOMContentLoaded", function () {
+  var wrap = document.getElementById("roadmap-intro-more");
+  var btn = document.getElementById("roadmap-intro-more-btn");
+  var panel = document.getElementById("roadmap-intro-more-panel");
+  if (!wrap || !btn || !panel) return;
+
+  var label = btn.querySelector(".roadmap-intro-more-label");
+
+  btn.addEventListener("click", function () {
+    var open = wrap.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      panel.removeAttribute("hidden");
+    } else {
+      panel.setAttribute("hidden", "");
+    }
+    if (label) label.textContent = open ? "Thu gọn" : "Xem tiếp";
+  });
+});
+
+/* ── Case studies intro: xem tiếp ── */
+document.addEventListener("DOMContentLoaded", function () {
+  var wrap = document.getElementById("case-studies-more");
+  var btn = document.getElementById("case-studies-more-btn");
+  var panel = document.getElementById("case-studies-more-panel");
+  if (!wrap || !btn || !panel) return;
+
+  var label = btn.querySelector(".case-studies-more-label");
+
+  btn.addEventListener("click", function () {
+    var open = wrap.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      panel.removeAttribute("hidden");
+    } else {
+      panel.setAttribute("hidden", "");
+    }
+    if (label) label.textContent = open ? "Thu gọn" : "Xem tiếp";
+  });
+});
+
+/* ── Case study cards: xem tiếp mô tả ── */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("[data-case-more]").forEach(function (wrap) {
+    var btn = wrap.querySelector(".case-study-more-btn");
+    var panel = wrap.querySelector(".case-study-more-panel");
+    if (!btn || !panel) return;
+    var label = btn.querySelector(".case-study-more-label");
+
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = wrap.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        panel.removeAttribute("hidden");
+      } else {
+        panel.setAttribute("hidden", "");
+      }
+      if (label) label.textContent = open ? "Thu gọn" : "Xem tiếp";
+    });
   });
 });
 
@@ -1577,7 +1361,120 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 
-/* ── Roadmap steps: SVG scroll progress (zigzag) ── */
+/* ── Tieuchi sections: light scroll reveal ── */
+(function(){
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.tieuchi-section').forEach(function(section) {
+    var header = section.querySelector('.tieuchi-section-header');
+    var nav = section.querySelector('.tieuchi-nav');
+    var card = section.querySelector('.tieuchi-card.active, .tieuchi-content-wrapper');
+    var cta = section.querySelector('.tieuchi-section-cta');
+
+    if (header) {
+      gsap.from(header.children, {
+        autoAlpha: 0,
+        y: 14,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: header, start: 'top 88%', once: true }
+      });
+    }
+    if (nav) {
+      gsap.from(nav.querySelectorAll('.tieuchi-item'), {
+        autoAlpha: 0,
+        y: 12,
+        duration: 0.35,
+        stagger: 0.04,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: nav, start: 'top 86%', once: true }
+      });
+    }
+    if (card) {
+      gsap.from(card, {
+        autoAlpha: 0,
+        y: 16,
+        duration: 0.4,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+      });
+    }
+    if (cta) {
+      gsap.from(cta, {
+        autoAlpha: 0,
+        y: 10,
+        duration: 0.35,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: cta, start: 'top 94%', once: true }
+      });
+    }
+  });
+})();
+
+/* ── Thực trạng: morph header rồi cards, giữ nguyên ── */
+(function(){
+  var section = document.getElementById('thuc-trang-doanh-nghiep');
+  var panel = section ? section.querySelector('.reality-panel') : null;
+  var pyramid = document.querySelector('.pain-pyramid');
+  var headerItems = panel ? panel.querySelectorAll('.reality-morph') : [];
+  var cards = pyramid ? pyramid.querySelectorAll('.pain-item.pain-morph') : [];
+
+  if (!section || (!headerItems.length && !cards.length)) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function revealHeader() {
+    headerItems.forEach(function(item) {
+      item.classList.add('morph-visible');
+    });
+  }
+
+  function revealCards() {
+    cards.forEach(function(item) {
+      item.classList.add('morph-visible');
+      var idx = parseInt(item.getAttribute('data-morph-index') || '0', 10);
+      setTimeout(function() {
+        item.classList.add('morph-glow');
+      }, 520 + idx * 110);
+    });
+  }
+
+  if (reduced) {
+    revealHeader();
+    revealCards();
+  } else {
+    var started = false;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        revealHeader();
+        setTimeout(revealCards, headerItems.length ? 520 : 0);
+        observer.disconnect();
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+    observer.observe(panel || section);
+  }
+
+  var links = document.querySelector('.pain-links');
+  if (links && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(links.children, {
+      autoAlpha: 0,
+      y: 12,
+      duration: 0.35,
+      stagger: 0.06,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: links, start: 'top 92%', once: true }
+    });
+  }
+})();
+
+/* ── Roadmap steps: zigzag morph + SVG scroll progress ── */
 (function(){
   var section = document.getElementById('roadmap-steps');
   var zigzag = document.getElementById('rsp-zigzag');
@@ -1586,68 +1483,181 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!section || !zigzag || !path || !rows.length) return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desktop = window.matchMedia('(min-width: 1024px)');
   var st = null;
-  var rowTriggers = [];
+  var morphTweens = [];
+  var pathLen = 0;
+  var ctx = null;
 
-  function setupPath(progress) {
+  function measurePath() {
     try {
-      var len = path.getTotalLength();
-      if (!len) return;
-      path.style.strokeDasharray = String(len);
-      path.style.strokeDashoffset = String(len * (1 - Math.max(0, Math.min(1, progress))));
-    } catch (err) {}
+      pathLen = path.getTotalLength() || 0;
+      if (pathLen > 0) {
+        path.style.strokeDasharray = String(pathLen);
+        path.style.strokeDashoffset = String(pathLen);
+      }
+    } catch (e) {
+      pathLen = 0;
+    }
   }
 
-  function setRowState(index) {
-    rows.forEach(function(row, i) {
-      row.classList.toggle('is-active', i === index);
-      row.classList.toggle('is-done', i <= index);
-    });
+  function setupPath(progress) {
+    if (!pathLen) measurePath();
+    if (!pathLen) return;
+    var p = Math.max(0, Math.min(1, progress));
+    path.style.strokeDashoffset = String(pathLen * (1 - p));
+  }
+
+  function lockRow(row) {
+    row.classList.add('is-done', 'is-morphed');
+    row.classList.remove('is-active');
   }
 
   function killAll() {
+    if (ctx) {
+      ctx.revert();
+      ctx = null;
+    }
     if (st) { st.kill(); st = null; }
-    rowTriggers.forEach(function(t){ t.kill(); });
-    rowTriggers = [];
+    morphTweens.forEach(function(t){ if (t && t.kill) t.kill(); });
+    morphTweens = [];
+  }
+
+  function showAllStatic() {
+    rows.forEach(function(row) {
+      lockRow(row);
+      var card = row.querySelector('.rsp-card');
+      var node = row.querySelector('.rsp-node');
+      if (card) gsap.set(card, { clearProps: 'all' });
+      if (node) gsap.set(node, { clearProps: 'all' });
+    });
+    setupPath(1);
   }
 
   function init() {
     killAll();
+    rows.forEach(function(row) {
+      row.classList.remove('is-done', 'is-morphed', 'is-active');
+    });
+    measurePath();
     setupPath(reduced ? 1 : 0);
 
     if (reduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      rows.forEach(function(row){ row.classList.add('is-done'); row.classList.remove('is-active'); });
-      setupPath(1);
+      showAllStatic();
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
-    setRowState(0);
-
-    st = ScrollTrigger.create({
-      trigger: zigzag,
-      start: 'top 70%',
-      end: 'bottom 35%',
-      scrub: 0.4,
-      onUpdate: function(self) {
-        setupPath(self.progress);
-      }
-    });
-
-    rows.forEach(function(row, i) {
-      var t = ScrollTrigger.create({
-        trigger: row,
-        start: 'top 72%',
-        end: 'bottom 40%',
-        onEnter: function(){ setRowState(i); },
-        onEnterBack: function(){ setRowState(i); }
+    ctx = gsap.context(function() {
+      st = ScrollTrigger.create({
+        trigger: zigzag,
+        start: 'top 78%',
+        end: 'bottom 22%',
+        scrub: 0.45,
+        onUpdate: function(self) {
+          setupPath(self.progress);
+        }
       });
-      rowTriggers.push(t);
-    });
+
+      var header = section.querySelector('.roadmap-steps-header');
+      if (header) {
+        gsap.fromTo(header, {
+          autoAlpha: 0,
+          y: 20
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 88%',
+            once: true
+          }
+        });
+      }
+
+      rows.forEach(function(row, i) {
+        var card = row.querySelector('.rsp-card');
+        var node = row.querySelector('.rsp-node');
+        if (!card || !node) return;
+
+        var isLeft = !!(row.querySelector('.rsp-side--start .rsp-card'));
+        var fromX = desktop.matches ? (isLeft ? 40 : -40) : 28;
+
+        gsap.set(card, {
+          autoAlpha: 0,
+          x: fromX,
+          y: 20,
+          scale: 0.96,
+          transformOrigin: isLeft && desktop.matches ? '100% 50%' : '0% 50%'
+        });
+        gsap.set(node, {
+          scale: 0.7,
+          autoAlpha: 0.35,
+          transformOrigin: '50% 50%'
+        });
+
+        var cardTween = gsap.to(card, {
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 82%',
+            once: true,
+            toggleActions: 'play none none none'
+          },
+          onComplete: function() {
+            lockRow(row);
+            gsap.set(card, { clearProps: 'transform,filter,clipPath' });
+          }
+        });
+
+        var nodeTween = gsap.to(node, {
+          scale: 1,
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 82%',
+            once: true,
+            toggleActions: 'play none none none'
+          },
+          onComplete: function() {
+            lockRow(row);
+            gsap.set(node, { clearProps: 'transform' });
+          }
+        });
+
+        morphTweens.push(cardTween, nodeTween);
+      });
+    }, section);
+
+    ScrollTrigger.refresh();
   }
 
-  init();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ requestAnimationFrame(init); });
+  } else {
+    requestAnimationFrame(init);
+  }
+
+  var resizeTimer;
   window.addEventListener('resize', function() {
-    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      measurePath();
+      if (st) setupPath(st.progress);
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    }, 120);
+  });
+
+  desktop.addEventListener('change', function() {
+    requestAnimationFrame(init);
   });
 })();

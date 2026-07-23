@@ -8,6 +8,11 @@
   .dv-services {
     grid-template-columns: repeat(2, 1fr);
   }
+  .dv-service:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.5rem);
+    justify-self: center;
+  }
 }
 .dv-service {
   height: 100%;
@@ -58,11 +63,18 @@
   font-size: 1.2rem;
 }
 .dv-service h3 {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.35rem;
   font-size: 1.15rem;
   font-weight: 800;
   line-height: 1.3;
   color: #240d48;
+}
+.dv-service-en {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #782DDC;
 }
 .dv-service-copy {
   display: grid;

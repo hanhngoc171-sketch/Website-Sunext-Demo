@@ -1,0 +1,57 @@
+/* Eng / Viet language switch */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(120, 45, 220, 0.25);
+  background: rgba(255, 255, 255, 0.72);
+  flex-shrink: 0;
+}
+
+.lang-switch-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  min-width: 2.55rem;
+  height: 1.9rem;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4b4455;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.lang-switch-btn:hover {
+  color: #5e00be;
+  background: rgba(120, 45, 220, 0.08);
+}
+
+.lang-switch-btn.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, #5e00be 0%, #782ddc 100%);
+  box-shadow: 0 4px 12px rgba(94, 0, 190, 0.25);
+}
+
+.lang-switch-btn:focus-visible {
+  outline: 2px solid #782ddc;
+  outline-offset: 2px;
+}
+
+html.dark .lang-switch {
+  background: rgba(30, 21, 48, 0.85);
+  border-color: rgba(214, 186, 255, 0.28);
+}
+
+html.dark .lang-switch-btn {
+  color: #cfc3e4;
+}
+
+html.dark .lang-switch-btn.is-active {
+  color: #fff;
+}
